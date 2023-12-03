@@ -1,0 +1,49 @@
+톰캣 서버가 시작될 때(정확한 시점은 모르겠음) 자동적으로 메모리에 로드되도록
+
+----------------------------------------------------------------------------
+
+<servlet>
+     <servlet-name>.........</servlet-name>
+     <servlet-class>..................</servlet-class>
+     <init-param>
+       <param-name>............</param-name>
+       <param-value>............</param-value>
+     </init-param>
+     <!-- Load this servlet at server startup time -->
+     <load-on-startup>0</load-on-startup>
+   </servlet>
+
+톰캣 서버가 시작하는 시점은 아니고,
+컨텍스트의 웹 애플리케이션이 톰캣 서버에 의해 인식되는 시점입니다.
+
+load-on-startup 엘리먼트에 적어준 숫자가
+
+  음의 정수인 경우:
+      그 서블릿에 접근될 때 (즉, load-on-startup 엘리먼트가 없는 경우와 동일함)
+
+  0 이거나 양의 정수인 경우:
+      그 서블릿이 배치(deploy)될 때 (즉, 컨텍스트가 인식될 때)
+         숫자가 작은 것 부터 먼저 로딩된다.
+
+
+
+아래는 "Java™ Servlet Specification Version 2.3" 에서 뽑아온 원문입니다.
+
+<!--
+The load-on-startup element indicates that this servlet should be
+loaded (instantiated and have its init() called) on the startup
+of the web application. The optional contents of
+these element must be an integer indicating the order in which
+the servlet should be loaded. If the value is a negative integer,
+or the element is not present, the container is free to load the
+servlet whenever it chooses. If the value is a positive integer
+or 0, the container must load and initialize the servlet as the
+application is deployed. The container must guarantee that
+servlets marked with lower integers are loaded before servlets
+marked with higher integers. The container may choose the order
+of loading of servlets with the same load-on-start-up value.
+
+Used in: servlet
+-->
+
+<!ELEMENT load-on-startup (#PCDATA)>

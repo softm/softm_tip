@@ -1,0 +1,45 @@
+<form name="sForm" onsubmit="return fExec();">
+<input type=text name="frm_date" value='2012-08-01'>
+<input type=text name="to_date"  value='2012-08-30'>
+<button type="submit" >권한위임</button>
+</form>
+<script>
+/*
+var frmDate = new Date(2012,1,1);
+var toDate = new Date(2012,8,10);
+var betweenDay = ( toDate - frmDate)/(1000*60*60*24) + 1 ;
+var frmDate2 = new Date();
+    frmDate2.setYear(2012);
+    frmDate2.setMonth(0);
+    frmDate2.setDate(1);
+var addDay = 60;
+var add30DayDate = new Date( frmDate2.getTime() + ( addDay * (1000*60*60*24) ) );
+    console.debug( frmDate.toUTCString() );
+    console.debug( frmDate2.toUTCString() );
+    console.debug( add30DayDate.toUTCString() );
+    console.debug( add30DayDate.getFullYear() + "-"              + ( add30DayDate.getMonth() + 1 )  + "-"              + ( add30DayDate.getDate() ));
+    console.debug(betweenDay);
+var calDate = new Date( toDate - frmDate );
+console.debug(calDate);
+*/
+window.onload = function () {
+    }
+
+function fExec() {
+    var fDate = document.sForm.frm_date.value;
+    var tDate = document.sForm.to_date.value;
+    var fInfo = fDate.split("-");
+    var tInfo = tDate.split("-");
+
+    var frmDate = new Date(parseInt(fInfo[0]),parseInt(fInfo[1]),parseInt(fInfo[2]));
+    var toDate  = new Date(parseInt(tInfo[0]),parseInt(tInfo[1]),parseInt(tInfo[2]));
+    var betweenDay = ( toDate.getTime() - frmDate.getTime() ) / (1000*60*60*24) + 1;
+    alert(betweenDay);
+    if ( betweenDay < 30 ) {
+        alert("위임기간은 30일이상 되어야합니다.");
+    } else {
+        alert("전송..!!!");
+    }
+    return false;
+}
+</script>

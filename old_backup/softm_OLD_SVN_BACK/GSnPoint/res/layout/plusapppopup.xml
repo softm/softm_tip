@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	
+	>
+
+    <FrameLayout
+		android:id="@+id/layout_frame"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		android:orientation="vertical"
+		android:gravity="center"
+		>
+		
+        <LinearLayout 
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="bottom|center_horizontal"
+			android:background="@drawable/popup_plusapp_bg"
+			android:layout_marginBottom="28dip">
+
+            <ImageButton
+                android:id="@+id/plusapp_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:background="@drawable/btn_plusapp" 
+                android:layout_marginLeft="28dip"
+                android:layout_marginBottom="18dip"
+                />
+            
+        </LinearLayout>
+        
+		<FrameLayout
+			android:id="@android:id/tabcontent"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="center_vertical|right"
+			android:layout_marginRight="10dip"
+			android:layout_marginTop="8dip"
+			>
+		
+             <ImageButton
+			     android:id="@+id/popup_close_button"
+			     android:layout_width="wrap_content"
+			     android:layout_height="wrap_content" 
+			     android:background="@drawable/btn_close_img" />
+		
+        </FrameLayout>
+		
+	</FrameLayout>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

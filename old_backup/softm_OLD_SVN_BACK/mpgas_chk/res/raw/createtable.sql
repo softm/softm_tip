@@ -1,0 +1,237 @@
+/* 사용자 */
+CREATE TABLE USER (
+	USER_ID TEXT NOT NULL, /* 아이디 */
+	USER_NM TEXT NOT NULL, /* 사용자명 */
+	PW TEXT NOT NULL, /* 비밀번호 */
+	DEPT_CD TEXT, /* 부서코드 */
+	HP_NO TEXT, /* 휴대전화번호 */
+	LEVEL_CD TEXT, /* 관리레벨코드 */
+	PW_CHANGE_DT TEXT, /* 비밀번호갱신일자 */
+	PDA_USER_YN TEXT NOT NULL, /* 현장지원사용자여부 */
+	AREA_CENTER_CD TEXT, /* 고객센터코드 */
+	GUM_AUTH_YN TEXT NOT NULL, /* 검침권한여부 */
+	CHG_AUTH_YN TEXT NOT NULL, /* 교체권한여부 */
+	CHK_AUTH_YN TEXT NOT NULL, /* 점검권한여부 */
+	REQ_AUTH_YN TEXT NOT NULL, /* 민원권한여부 */
+	DEF_AUTH_YN TEXT NOT NULL, /* 체납권한여부 */
+
+	PRIMARY KEY (
+		USER_ID
+	)
+);
+
+/* 코드 */
+CREATE TABLE CODE (
+	TYPE_CD TEXT NOT NULL, /* 구분코드 */
+	CD TEXT NOT NULL, /* 코드 */
+	CD_NM TEXT NOT NULL, /* 코드명 */
+	MGT_CHAR1 TEXT, /* 관리문자1 */
+	MGT_CHAR2 TEXT, /* 관리문자2 */
+	MGT_CHAR3 TEXT, /* 관리문자3 */
+	MGT_CHAR4 TEXT, /* 관리문자4 */
+	MGT_CHAR5 TEXT, /* 관리문자5 */
+	MGT_CHAR6 TEXT, /* 관리문자6 */
+	MGT_NUM1 NUMERIC, /* 관리숫자1 */
+	MGT_NUM2 NUMERIC, /* 관리숫자2 */
+	ORD INTEGER, /* 정렬 */
+	REMARK TEXT, /* 비고 */
+
+	PRIMARY KEY (
+		TYPE_CD, 
+		CD
+	)
+);
+
+/* 공급자 */
+CREATE TABLE PROVIDER (
+	CO_NM text n, /* 공급자명 */
+	CO_NO VARCHAR2(10) NOT NULL, /* 사업자번호 */
+	CEO_NM VARCHAR2(50) NOT NULL, /* 대표자명 */
+	ADDR VARCHAR2(255), /* 주소 */
+	ROAD_ADDR1 VARCHAR2(255), /* 도로명주소1 */
+	ROAD_ADDR2 VARCHAR2(255), /* 도로명주소2 */
+	TEL_NO VARCHAR2(30), /* 전화번호 */
+	VAN_NO  VARCHAR2(20), /* 단말기번호 */
+	VAN_CARD_NO VARCHAR2(20) /* 신용카드VAN번호 */
+);
+
+/* 고객센터 */
+CREATE TABLE AREA_CENTER (
+	AREA_CENTER_CD VARCHAR2(20) NOT NULL, /* 고객센터코드 */
+	AREA_CENTER_NM VARCHAR2(100) NOT NULL, /* 고객센터명 */
+	TEL_NO VARCHAR2(30) /* 전화번호 */
+	, Primary Key (
+		AREA_CENTER_CD
+	)
+);
+
+
+
+/* 점검부적합내용 */
+CREATE TABLE JUM_NOCFM (
+	CHECKUP_IDX NUMBER NOT NULL, /* 가수용가번호 */
+	FA_CD VARCHAR2(10) NOT NULL, /* 사용자시설코드 */
+	CHECKUP_ITEM_CD VARCHAR2(10) NOT NULL, /* 점검항목코드 */
+	CHECKUP_REMARK_CD VARCHAR2(10) NOT NULL /* 점검내용코드 */
+	, PRIMARY KEY (
+			CHECKUP_IDX,
+			FA_CD,
+			CHECKUP_ITEM_CD,
+			CHECKUP_REMARK_CD
+		)
+);
+
+/* 보일러정보 */
+CREATE TABLE JUM_BOILER (
+	CHECKUP_IDX NUMBER NOT NULL, /* 수용가번호 */
+	BOI_IDX VARCHAR2(10) NOT NULL, 
+	BOI_NO VARCHAR2(40) NOT NULL, 
+	MODEL_NM VARCHAR2(100) NOT NULL, 
+	MAKE_NO VARCHAR2(20) NOT NULL, 
+	MAKE_YY VARCHAR2(4) NOT NULL, 
+	MAKER_CD VARCHAR2(20) NOT NULL, 
+	INSTALL_CO_CD VARCHAR2(20) NOT NULL, 
+	INSTALL_USER_NM VARCHAR2(50) NOT NULL, 
+	PRIMARY KEY (
+			CHECKUP_IDX,
+			BOI_IDX
+		)
+);
+
+
+/* 점검제외내용 */
+CREATE TABLE JUM_EXCEPTION (
+	CHECKUP_IDX NUMBER NOT NULL, /* 가수용가번호 */
+	FA_CD VARCHAR2(10) NOT NULL, /* 사용자시설코드 */
+	CHECKUP_ITEM_CD VARCHAR2(10) NOT NULL /* 점검항목코드 */
+	, PRIMARY KEY (
+			CHECKUP_IDX,
+			FA_CD,
+			CHECKUP_ITEM_CD
+		)
+);
+
+/* 점검미점검방문이력 */
+CREATE TABLE JUM_VISIT (
+	CHECKUP_IDX NUMBER NOT NULL, /* 가수용가번호 */
+	VISIT_SEQ INTEGER NOT NULL, /* 방문순번 */
+	VISIT_DT VARCHAR2(8), /* 방문일자 */
+	VISIT_TM VARCHAR2(6), /* 방문시각 */
+	VISIT_RESULT_CD VARCHAR2(10), /* 방문결과코드 */
+	SEND_YN CHAR(1) NOT NULL
+	, PRIMARY KEY (
+			CHECKUP_IDX,
+			VISIT_SEQ
+		)
+);
+
+/* 점검 */
+CREATE TABLE JUM (
+  CHECKUP_IDX NUMBER NOT NULL,
+	CHECKUP_YM VARCHAR2(6) NOT NULL, /* 작업년월 */
+	CHECKUP_CD VARCHAR2(10) NOT NULL, /* 업무코드 */
+	HOUSE_NO VARCHAR2(14) NOT NULL, /* 수용가번호 */
+	FAKE_HOUSE_NO VARCHAR(10) NOT NULL, /* 가수용가번호 */
+	EQUIP_CD VARCHAR2(20), /* 기기번호코드 */
+	BLDG_ORD INTEGER, /* 건물순로  */
+	HOUSE_ORD INTEGER, /* 세대순로 */
+	AREA_CD VARCHAR2(1), /* 지역코드 */
+	SECTOR_CD VARCHAR2(3), /* 구역코드 */
+	COMPLEX_CD VARCHAR2(7), /* 단지코드 */
+	BLDG_CD VARCHAR2(10), /* 건물코드 */
+	AREA_NM VARCHAR2(50), /* 지역명 */
+	SECTOR_NM VARCHAR2(50), /* 구역명 */
+	COMPLEX_NM VARCHAR2(50), /* 단지명 */
+	BLDG_NM VARCHAR2(50),
+	BLDG_NO VARCHAR2(50), /* 번지 */
+	ROOM_NO VARCHAR2(50), /* 동호수 */
+	FAKE_ROOM_NO VARCHAR2(50), /* 가수용가명 */
+	ROAD_NM VARCHAR2(80), /* 도로명 */
+	CUST_NO VARCHAR2(10), /* 고객번호 */
+	CUST_NM VARCHAR2(50), /* 고객명 */
+	CO_NM VARCHAR2(50), /* 상호 */
+	TEL_NO VARCHAR2(30), /* 고객전화번호 */
+	HP_NO VARCHAR2(30), /* 고객핸드폰번호 */
+	WORK_TEL_NO VARCHAR2(30), /* 직장전화번호 */
+	TEL_CD VARCHAR2(20), /* 주전화번호구분코드 */
+	STATUS_CD VARCHAR2(20), /* 수용가상태코드 */
+	GM_NO VARCHAR2(20), /* 계량기번호 */
+	INSTALL_LOC_CD VARCHAR2(20), /* 설치위치구분 */
+	PURPOSE_CD VARCHAR2(20), /* 용도코드 */
+	CHG_DT VARCHAR2(8), /* 교체일자 */
+	CHG_METER INTEGER, /* 교체지침 */
+	BF_METER INTEGER, /* 전월지침 */
+	LAST_CHECKUP_DT VARCHAR2(8), /* 전점검일자 */
+	LAST_CHECKUP_CD VARCHAR2(10), /* 전점검결과 */
+	LAST_USER_CD VARCHAR2(20), /* 전점검작업자 */
+	CHE_YN CHAR(1) DEFAULT 'N' NOT NULL, /* 체납여부 */
+	GM_ERROR_YN CHAR(1) DEFAULT 'N' NOT NULL, /* 불회확인여부 */
+	LONG_NO_CHECKUP_YN CHAR(1) DEFAULT 'N' NOT NULL, /* 장기미점검여부 */
+	LONG_ACCEPT_YN CHAR(1) DEFAULT 'N' NOT NULL, /* 장기인정고지세대여부 */
+	BOILER_OK_YN CHAR(1), /* 보일러점검결과  */
+	BURNER_OK_YN CHAR(1), /* 연소기점검결과  */
+	PIPE_OK_YN CHAR(1), /* 배관점검결과  */
+	GM_OK_YN CHAR(1), /* 계량기점검결과  */
+	BREAKER_OK_YN CHAR(1), /* 차단기보일러점검결과  */
+	CHECKUP_DT VARCHAR2(8), /* 점검일자 */
+	CHECKUP_BEGIN_DT VARCHAR2(6), /* 점검시작시간 */
+	CHECKUP_END_DT VARCHAR2(6), /* 점검종료시간 */
+	CHECKUP_USER_CD VARCHAR2(20), /* 점검작업자 */
+	CHECKUP_RESULT_CD VARCHAR2(10), /* 점검결과 */
+	CHECKUP_METER INTEGER, /* 점검지침 */
+	GM_NO_CFM VARCHAR2(20), /* 확인계량기번호 */
+	QR_YN CHAR(1) DEFAULT 'N', /* 건물내부QR코드인식여부  */
+	PHOTO_FILE_NM VARCHAR2(50), /* 사진파일명 */
+	SIGN_FILE_NM VARCHAR2(50), /* 서명파일명 */
+	END_YN CHAR(1) DEFAULT 'N', /* 완료여부 */
+	SEND_YN CHAR(1) DEFAULT 'N', /* 전송여부 */
+	PRIMARY KEY (
+			CHECKUP_IDX,
+			CHECKUP_YM,
+			CHECKUP_CD,
+			HOUSE_NO,
+			FAKE_HOUSE_NO
+		)
+);
+
+/* 점검부적합사진파일 */
+CREATE TABLE JUM_NOCFM_PHOTO (
+	CHECKUP_IDX NUMBER NOT NULL, /* 가수용가번호 */
+	FA_CD VARCHAR2(10) NOT NULL, /* 사용자시설코드 */
+	PHOTO_FILE_NM VARCHAR2(50) NOT NULL /* 부적합사진파일명 */
+	, PRIMARY KEY (
+			CHECKUP_IDX,
+			FA_CD,
+			PHOTO_FILE_NM
+		)
+);
+
+/* 점검고객정보수정 */
+CREATE TABLE JUM_CUST (
+	CHECKUP_IDX NUMBER NOT NULL, /* 고객번호 */
+	CUST_NM VARCHAR2(50), /* 고객명 */
+	TEL_NO VARCHAR2(30), /* 전화번호 */
+	WORK_TEL_NO VARCHAR2(30), /* 직장전화번호 */
+	HP_NO VARCHAR2(30), /* 핸드폰번호 */
+	TEL_CD VARCHAR2(20), /* 주전화번호구분코드 */
+	PRIMARY KEY (
+			CHECKUP_IDX
+		)
+);
+
+
+/* 점검전회부적합미개선내역 */
+CREATE TABLE JUM_NOIMP (
+	CHECKUP_IDX NUMBER NOT NULL, /* 가수용가번호 */
+	FA_CD VARCHAR2(10) NOT NULL, /* 사용자시설코드 */
+	CHECKUP_ITEM_CD VARCHAR2(10) NOT NULL, /* 점검항목코드 */
+	CHECKUP_REMARK_CD VARCHAR2(10) NOT NULL /* 점검내용코드 */
+	, PRIMARY KEY (
+			CHECKUP_IDX,
+			FA_CD,
+			CHECKUP_ITEM_CD,
+			CHECKUP_REMARK_CD
+		)
+);
+
+PRAGMA user_version = 2;

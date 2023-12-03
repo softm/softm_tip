@@ -1,0 +1,37 @@
+@CHARSET "UTF-8";
+	//#tbl_list{ background-color:red}
+    #tbl_list button {border:1px solid #000066;background-color:#336699;color:white;font-weight:bold;font-size:9pt;font-family:'Arial';cursor:pointer}
+    #tbl_list tbody td {}
+/*
+    #tbl_list tbody td select {background-color:transparent}
+    #tbl_list tbody td input  {background-color:transparent}
+    #tbl_list tbody td.col0 {background-color:red}
+    #tbl_list tbody td.col1 {background-color:orange}
+*/
+    #tbl_list tbody td.col0 {width:100px}
+    #tbl_list tbody td.col1 {width:200px;text-align:center}
+    #tbl_list tbody td.col2 {width:200px;text-align:center}
+    #tbl_list tbody td.col3 {width:300px;text-align:center}
+
+	#tbl_list.change {border:1px solid blue;}
+    #tbl_list tr.select { font-size:19pt;background-color:LightSteelBlue;color:#000000 }
+/*
+    #tbl_list tbody td.col1 {background-color:#D0D0FF;}
+    #tbl_list tbody td.col2 {background-color:#CACAFF;}
+    #tbl_list tbody td.col3 {background-color:#C4C4FF;}
+*/
+	#tbl_list th       {  }
+    #tbl_list td       { }
+
+    #tbl_list td.select { background-color:#E8E8FF;color:#000099; }
+
+    #tbl_list td.select textarea { font-weight:bold;border:1px solid gray;background-color:#FFF }
+    #tbl_list td.select select   { font-weight:bold;border:1px solid gray;}
+
+    #tbl_list tr.insert .select{ background-color:#f00; }
+    #tbl_list td.insert { background-color:#ffff99; }
+
+    #tbl_list tr.update { background-color:#e1ffc4; }
+    #tbl_list td.update { background-color:#c9ff93; font-weight:bold;font-style:italic; }
+
+    #tbl_list tr.delete { font-weight:bold;font-style:oblique ;background-color:#dddddd}

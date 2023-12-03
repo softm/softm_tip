@@ -1,0 +1,112 @@
+관심기업                                tbl_interest_company                
+담당자정보                              tbl_worker                          
+
+기술자 정보                             tbl_engineer                        
+기술자 경력사항                         tbl_engineer_career                 
+지도 실적 및 경험                       tbl_engineer_adviser                
+지도가능분야                            tbl_engineer_adviser_field          
+관심기술자                              tbl_interest_engineer               
+기술자매칭                              tbl_engineer_consult                
+기술자 선택정보                         tbl_engineer_consult_engineer       
+기술자 매칭 관리자                      tbl_engineer_consult_admin_comment  
+일본기술자 활용 월별 계획               tbl_engineer_consult_monthly_useplan
+기술니즈신청 & 기술시드매칭신청         tbl_tech_consult                    
+기술시드                                tbl_tech_seed                       
+기술분류                                tbl_tech_category                   
+
+
+
+
+
+/* 관심기업 */
+--- 테이블 변경 : 키값 변경
+DROP TABLE IF EXISTS tbl_interest_company;
+CREATE TABLE tbl_interest_company (
+    USER_NO             INT UNSIGNED                NOT NULL                            COMMENT '회원번호'          ,
+    COMPANY_NO          INT UNSIGNED                NOT NULL                            COMMENT '관심기업번호'          ,
+    REG_DATE            DATETIME                    DEFAULT '0000-00-00 00:00:00'       COMMENT '등록 일자'         ,
+    CONSTRAINT tbl_interest_company_PK PRIMARY KEY (USER_NO,COMPANY_NO)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='관심기업' ;
+
+
+	/**
+	 * @param DataBase $db
+	 * @param int $userNo
+	 * @param int $addCompanyNo
+	 * @return boolean
+	 */
+	static function addInterestCompany($db,$userNo, $addCompanyNo) {
+	    $query  = array();
+	    $query[]  = " INSERT INTO " . TBL_INTEREST_COMPANY;
+	    $query[]  = " ( ";
+	    $query[]  = " USER_NO   ,";
+	    $query[]  = " COMPANY_NO,";
+	    $query[]  = " REG_DATE   ";
+	    $query[]  = " ) VALUES ";
+	    $query[]  = " (";
+	    $query[]  = " '" . $userNo      . "',";
+	    $query[]  = " '" . $addCompanyNo   . "',";
+	    $query[]  = " now() ";
+	    $query[]  = " )";
+	    return $db->exec(join("\n", $query));
+	}
+
+	/**
+	 * @param DataBase $db
+	 * @param int $userNo
+	 * @param int $companyNo
+	 */
+	static function removeInterestCompany($db,$userNo, $removeCompanyNo) {
+	    $query  = array();
+	    $query[]  = " DELETE FROM " . TBL_INTEREST_COMPANY;
+	    $query[]  = " WHERE USER_NO = '" .  $userNo . "'";
+	    $query[]  = " AND   COMPANY_NO = '" .  $removeCompanyNo . "'";
+	    return $db->exec(join("\n", $query));
+	}
+
+/* 관심기술자 */
+--- 테이블 변경 : 키값 변경
+DROP TABLE IF EXISTS tbl_interest_engineer;
+CREATE TABLE tbl_interest_engineer (
+    USER_NO             INT UNSIGNED                NOT NULL                            COMMENT '회원번호'          ,
+    ENGINEER_NO         INT UNSIGNED                NOT NULL                            COMMENT '기술자번호'        ,
+    REG_DATE            DATETIME                    DEFAULT '0000-00-00 00:00:00'       COMMENT '등록 일자'         ,
+    MOD_DATE            DATETIME                    DEFAULT '0000-00-00 00:00:00'       COMMENT '수정 일자'         ,
+    CONSTRAINT tbl_interest_engineer_PK PRIMARY KEY (USER_NO,ENGINEER_NO)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci COMMENT='관심기술자' ;
+
+	/**
+	 * @param DataBase $db
+	 * @param int $userNo
+	 * @param int $addEngineerNo
+	 * @return boolean
+	 */
+	static function addInterestEngineer($db,$userNo, $addEngineerNo) {
+	    $query  = array();
+	    $query[]  = " INSERT INTO " . TBL_INTEREST_ENGINEER;
+	    $query[]  = " ( ";
+	    $query[]  = " USER_NO   ,";
+	    $query[]  = " ENGINEER_NO,";
+	    $query[]  = " REG_DATE   ";
+	    $query[]  = " ) VALUES ";
+	    $query[]  = " (";
+	    $query[]  = " '" . $userNo      . "',";
+	    $query[]  = " '" . $addEngineerNo   . "',";
+	    $query[]  = " now() ";
+	    $query[]  = " )";
+	    return $db->exec(join("\n", $query));
+	}
+
+	/**
+	 * @param DataBase $db
+	 * @param int $userNo
+	 * @param int $removeEngineerNo
+	 */
+	static function removeInterestEngineer($db,$userNo, $removeEngineerNo) {
+	    $query  = array();
+	    $query[]  = " DELETE FROM " . TBL_INTEREST_ENGINEER;
+	    $query[]  = " WHERE USER_NO = '" .  $userNo . "'";
+	    $query[]  = " AND   ENGINEER_NO = '" .  $removeEngineerNo . "'";
+	    return $db->exec(join("\n", $query));
+	}
+

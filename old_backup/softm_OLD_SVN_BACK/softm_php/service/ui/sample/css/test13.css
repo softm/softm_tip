@@ -1,0 +1,59 @@
+/* ------------------
+ styling for the tables 
+   ------------------   */
+
+
+body
+{
+	line-height: 1.6em;
+}
+
+#tbl_list
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+
+	text-align: left;
+	border-collapse: collapse;
+	background: url('/img/table-images/blurry.jpg') 330px 59px no-repeat;
+}
+#tbl_list th
+{
+	padding: 12px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #339;
+}
+#tbl_list td
+{
+	padding: 9px 12px;
+	color: #669;
+	border-top: 1px solid #fff;
+}
+#tbl_list tfoot td
+{
+	font-size: 11px;
+}
+#tbl_list tbody td
+{
+	background: url('/img/table-images/back.png');
+}
+* html #tbl_list tbody td
+{
+	/* 
+	   ----------------------------
+		PUT THIS ON IE6 ONLY STYLE 
+		AS THE RULE INVALIDATES
+		YOUR STYLESHEET
+	   ----------------------------
+	*/
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='table-images/back.png',sizingMethod='crop');
+	background: none;
+}	
+#tbl_list tbody tr:hover td
+{
+	color: #339;
+	background: none;
+}
+
+

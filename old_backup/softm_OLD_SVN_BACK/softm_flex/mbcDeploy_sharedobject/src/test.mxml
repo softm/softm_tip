@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onLoad()">
+<mx:Script>
+	<![CDATA[
+		import mx.controls.Alert;
+		private var imageName:String;
+//		import flash.filesystem.*;
+       import FSCommandExample;
+        import mx.core.UIComponent;
+        import mx.controls.Alert;
+  private var fileup:FileReference = new FileReference(); 
+      private var filedown:FileReference = new FileReference();
+
+		private function onLoad():void {
+//			Alert.show("실행");
+			   
+//			var fileName:File = new File(); 
+//				fileName.nativePath = "C:/test.txt"; 
+//			trace(fileName.exists);
+//			var ff:FileReference= new FileReference();
+//				Application.application.isDocument
+//			var temp:File = File.createTempFile();
+//			trace(temp.exists) // true
+		  var spriteExample : FSCommandExample = new FSCommandExample();
+          var ref : UIComponent = new UIComponent();
+          addChild( ref );
+          ref.addChild( spriteExample );
+		}
+	]]>
+</mx:Script>
+	
+</mx:Application>

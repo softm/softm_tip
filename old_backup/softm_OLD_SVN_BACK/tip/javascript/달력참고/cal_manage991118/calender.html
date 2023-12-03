@@ -1,0 +1,252 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+
+<html>
+<title>LinuxValley</title>
+<style type=text/css>
+<!--
+a:link, a:visited, a:active { text-decoration: none; }
+a:hover { text-decoration:underline; }
+td { font-size: 10pt; }
+-->
+</style>
+</head>
+
+<script Language="javaScript">
+<!--
+	function send(url) {
+		location.href=url;
+	}
+	function makeWin(url) {
+		newWin=window.open(url,'EntranceTest',"width=420,height=430,scrollbars=1,resizable=0");
+		if (newWin !=null) {
+				newWin.opener=self;
+		}
+  }
+  	function autoWin(url) {
+		newWin=window.open(url,'EntranceTest',"width=750,height=500,scrollbars=1,resizable=0");
+		if (newWin !=null) {
+				newWin.opener=self;
+		}
+  }
+	function send(url) {
+		location.href=url;
+	}
+	function sendWin(url) {
+		remote1=window.open(url,"remote","width=420,height=430,resizable=0,scrollbars=1")
+		if (remote1 !=null) {
+			remote1.opener=self
+		}
+	}
+//-->
+</script>
+
+<body bgcolor=#000000>
+<div align=center><table width=710 border=0 cellpadding=0 bgcolor=#000000>
+<tr><td valign=top>
+<!-- 메인 내용이 들어가는 테이블 -->
+<!-- ******************************************************************************** -->
+
+<table width=600 height=100% border bgcolor=#DFDFDF  cellpadding=0 bordercolordark=white bordercolorlight=white>
+<tr>
+	<td width=600 height=10 colspan=0 align=center valign=middle bgcolor=Black><font size=-1 color=White><B>' BYTE.PE.KR '</b></font>.</td>
+</tr><tr>
+	<td width=600 align=left valign=middle>
+
+
+<? 
+
+//-----------------------------------------------------------------------------------------------------------
+//
+//											1999/11/17 업데이트.....황석훈.....
+//
+//
+
+//-----------------------------------------------------------------------------------------------------------
+//															  common command line
+
+$connect = mysql_connect("localhost", "knight75","") or die("Can't connect Server");
+mysql_select_db( "knight75", $connect );
+
+//-----------------------------------------------------------------------------------------------------------
+//															  일정 처리 함수( 일정 판단 여부 )
+function get_something($i_year, $i_month, $i_day)
+{
+	global $connect;
+	
+	$SQL = "SELECT count(*) FROM CALENDAR WHERE year=$i_year and month=$i_month and day=$i_day";
+	$sel = mysql_query( $SQL, $connect );
+	
+	if( mysql_result($sel, 0, "count(*)") > 0 ) 
+		return TRUE;
+	else
+		return FALSE;		
+}
+
+
+//-----------------------------------------------------------------------------------------------------------
+//																달력 처리 함수
+
+function calendar($s_month, $s_year)
+{
+	//받아온 날짜에 대해서 처리하는 부분이다..
+	//--------------------------------------------
+	$len_month = strlen($s_month);
+	$len_year = strlen($s_year);
+	
+	$i_month = (int)($s_month);
+	$i_year = (int)($s_year);
+	//--------------------------------------------
+		
+	//check input
+	if($len_month == 0 || $len_year == 0 || $i_month < 1 || $i_month > 12){
+		echo ("<script>
+                  window.alert('입력이 잘못되었습니다. 다시 확인하여 주십시요.')
+                  history.go(-1)
+                 </script> "); 
+		exit;
+	}			//--------------------------------------------
+	
+	
+	$count = 0;
+	$str_temp_date = date("Y m d");
+	$str_today = $str_temp_date;			//오늘의 날짜...
+	$array_today = explode(" ", $str_temp_date);
+	
+	// 각 날짜와 날짜에 대한 정보 배열...임돠...
+	
+	$m_days[0] = 31; $m_name[0] = "JANUARY";       	$m_weekand[0] = "Sunday";
+	$m_days[1] = 28; $m_name[1] = "FEBRUARY";		$m_weekand[1] = "Monday";
+	$m_days[2] = 31; $m_name[2] = "MARCH";			$m_weekand[2] = "Tuesday";
+	$m_days[3] = 30; $m_name[3] = "APRIL";			$m_weekand[3] = "Wednesday";
+	$m_days[4] = 31; $m_name[4] = "MAY";			$m_weekand[4] = "Thursday";
+	$m_days[5] = 30; $m_name[5] = "JUNE";			$m_weekand[5] = "Friday";
+	$m_days[6] = 31; $m_name[6] = "JULY";			$m_weekand[6] = "Saturday";
+	$m_days[7] = 31; $m_name[7] = "AUGUST";
+	$m_days[8] = 30; $m_name[8] = "SEPTEMBER";
+	$m_days[9] = 31; $m_name[9] = "OCTOBER";
+	$m_days[10] = 30; $m_name[10] = "NOVEMBER";
+	$m_days[11] = 31; $m_name[11] = "DECEMBER";
+
+	//윤년 확인
+	if( $i_month == 2 ) 
+		if(( $i_year % 4 ) == 0 &&v ( $i_year % 100 ) != 0 || ($i_year % 400) != 0 ) 
+			$m_days[1] = 29;
+			
+	$real_m_days = $m_days[ $i_month - 1 ];
+	$first_day_yoil = date("l", mktime(0,0,0,$i_month , 1, $i_year));
+	
+	$month_count =  $m_name[$i_month - 1];
+
+	echo ("<center><table width=500 height=250 border=1>");
+	echo ("<tr><td colspan=7 align=center><b><font color=green>  $i_year </font> 년 <font color=green> $i_month</font>");
+	echo ("<font color=blue> $month_count  </font></b> <br></td></tr>");
+	echo ("<tr><td><font color=red>일 Sun</font></td><td>월 Mon</td><td>화 Tue</td><td>수 Wed</td><td>목 Thur</td><td>금 Fri</td><td>토 Sat</td>");
+	
+	echo ("</tr><tr>");
+
+	//요일을 맞추기 위해서...이렇게 처리했죠...해당 첫째날이 나타날때까지..<td>를 밀어준다...
+	//-----------------------------------------------------------------------------------------
+	for($i = 0; $i < 7; $i++) {
+		if( $m_weekand[$i] != $first_day_yoil ) {
+			echo ("<td></td>");
+			$count++;
+		}else{
+			break;
+		}	
+	}		//-----------------------------------------------------------------------------------------
+	
+
+	for($i=1; $i <= $real_m_days; $i++) {
+		echo ("<td align=center>");
+
+		//  오늘인지 확인하고 오늘이면 오늘이라는 메세지를 화면에 날짜와 함께 찍는다...
+		//-----------------------------------------------------------------------------------------
+		if(($s_year == $array_today[0]) && ($s_month == $array_today[1]) && ($i == $array_today[2]))
+			echo ("<font color=magenta size=-1>$i</font>");
+		//-----------------------------------------------------------------------------------------
+		else if($count == 0)
+			echo ("<font color=red>$i</font>");
+		else { 	?>
+			<a href="javascript:makeWin('read_calendar.html?mode=write&year=<? echo("$s_year"); ?>&month=<? echo("$s_month"); ?>&day=<? echo("$i"); ?>')">
+					<? echo ("$i"); ?></a>
+<?		}
+
+		//일정이 있는지 확인한다...있다면 이미지를 뿌리도록 한다..내용을 뿌리기엔 넘 많쟎아...^^;
+		if ( get_something($s_year, $s_month, $i) ) {	?>
+			<a href="javascript:makeWin('read_calendar.html?mode=read&year=<? echo("$s_year"); ?>&month=<? echo("$s_month"); ?>&day=<? echo("$i"); ?>')">
+					<img src=../../image/new.gif width=46 height=37 border=0 alt='무슨일일까'></a>
+<?		}		
+
+		echo ("</td>");
+		$count++;
+		
+		if($count == 7) {
+			echo ("</tr><tr>");
+			$count = 0;
+		}
+	}
+	
+	echo ("</table><br><br>");
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+//--------------------------------------------------------------------------------
+//	
+//
+//													여기서 부터 시작입니다...
+//
+
+
+if( $mode == "new" ) {
+	calendar($month,$year);
+}else{
+	$today_date = date("Y m");
+	$array_today_date = explode(" ", $today_date);	
+	calendar($array_today_date[1], $array_today_date[0]);
+}
+
+
+mysql_close( $connect );
+
+echo ("
+<font size=-1> <font color = RED size=-1> 연도</font>와 <font color = RED size=-1>월</font>을 입력하세요.</font>
+<form action=calender.html?mode=new method=post>
+	<input type=text NAME=year SIZE=4>년
+	<input type=text NAME=month SIZE=2>월
+	<input type=submit value=' 입  력 '>
+	<br><hr size=3><br>
+	<font size=-1>소스를 보려면
+	<a href=calendar_source.txt>여기</a> 를 누르세요.</font>
+</form>");
+
+?>
+
+	</td>
+</tr><tr>
+	<td width=600 height=10 colspan=0 align=right valign=middle bgcolor=Black><font size=-1 color=White>추천하고자 하는 사이트가 있다면 멜 부탁드립니다.</font></td>
+</tr>
+</table>
+<!-- ******************************************************************************** -->
+</td><td valign=top>
+<!-- 여기서 부터는 옆자리 메뉴 테이블구성 -->
+<!-- ******************************************************************************** -->
+
+<? require "../../menu.html"; ?>
+
+<!-- ******************************************************************************** -->
+</td></tr>
+</table></div>
+</body>
+</html>

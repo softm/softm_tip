@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal"
+        android:weightSum="10" >
+        
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginTop="0dp"
+        android:layout_weight="@dimen/loginActivityWidthWeight"
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:weightSum="1" >
+
+        <LinearLayout
+            android:id="@+id/body"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.9"
+            android:background="@drawable/shape_login_bg_round_rectangle"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left"
+                android:text="로그인"
+                android:textColor="#FF6567"
+                android:textSize="@dimen/loginTitleFontSize"
+                android:layout_marginTop="13dp" 
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:gravity="center_vertical|left"
+                android:text="사용자 아이디"
+                android:textColor="#656565" />
+
+            <EditText
+                android:id="@+id/et_user_id"
+                style="@style/MP.edittext"
+                android:layout_marginBottom="7dp"
+                android:ems="10"
+                android:hint="아이디"
+                android:inputType="textUri"
+                android:selectAllOnFocus="true"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                 >
+
+                <requestFocus />
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical|left"
+                android:text="비밀번호"
+                android:textColor="#656565" />
+
+            <EditText
+                android:id="@+id/et_user_pw"
+                style="@style/MP.edittext"
+                android:hint="비밀번호"
+                android:inputType="textUri"
+                android:password="true"
+                android:selectAllOnFocus="true"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                />
+<!-- 
+            <ImageButton
+                android:id="@+id/btn_login"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/login_bt_img" />
+ -->
+<!-- 			<Button
+			    android:id="@+id/btn_login"
+			    style="@style/MP.button2"
+			    android:text="로그인"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="25dp"
+                android:layout_width="169dp"
+                android:layout_height="54dp"
+                android:textSize="@dimen/fontSize18"                
+			    /> -->
+		 <Button
+    android:id="@+id/btn_login"
+    style="@style/MP.button2"
+    android:text="     로그인     "
+                android:layout_height="54dp"    
+                android:layout_marginTop="10dp"
+                android:textSize="@dimen/loginButonFontSize"
+             android:layout_gravity="center_horizontal"    
+     />
+        </LinearLayout>
+    </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minHeight="@dimen/listHeight"
+    android:orientation="horizontal"
+    style="@style/MP.tbody"
+>
+    <TextView android:id="@+id/tv_row_1"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:textSize="@dimen/listFontSize"
+              android:paddingBottom="0dp"
+              android:layout_weight="1.2"
+              android:gravity="left|top"
+              android:text="1"
+				android:textColor="@color/listText"
+              />
+    <TextView android:id="@+id/tv_row_2"
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:textSize="@dimen/listFontSize"
+              android:paddingBottom="0dp"
+              android:layout_weight="1"
+              android:gravity="left|top"
+              android:text="2"
+				android:textColor="@color/listText"
+              />
+    
+	<LinearLayout
+	    android:layout_width="0dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="center"
+	    android:layout_weight="0.3"
+	    android:gravity="center_vertical|center_horizontal"
+	    android:orientation="horizontal" >
+
+		<CheckBox
+		    android:id="@+id/chk_row_3"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+    </LinearLayout>
+	<LinearLayout
+	    android:layout_width="0dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="center"
+	    android:layout_weight="0.3"
+	    android:gravity="center_vertical|center_horizontal"
+	    android:orientation="horizontal" >
+
+		<CheckBox
+		    android:id="@+id/chk_row_4"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+    </LinearLayout>
+	<LinearLayout
+	    android:layout_width="0dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="center"
+	    android:layout_weight="0.3"
+	    android:gravity="center_vertical|center_horizontal"
+	    android:orientation="horizontal" >
+
+		<CheckBox
+		    android:id="@+id/chk_row_5"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+    </LinearLayout>
+	<LinearLayout
+	    android:layout_width="0dp"
+	    android:layout_height="match_parent"
+	    android:layout_gravity="center"
+	    android:layout_weight="0.7"
+		android:gravity="left|top"
+	    android:orientation="horizontal" >
+
+    <EditText
+        android:id="@+id/et_row_6"
+        style="@style/MP.edittext"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:gravity="top|left|center_vertical"
+        android:ellipsize="end"
+        android:inputType="textMultiLine"
+        android:maxLength="400"
+        android:singleLine="false"
+        android:lines="5"
+        android:text="1111"
+        android:textStyle="normal"
+        android:editable="true"
+        android:clickable="true"
+        android:scrollbars="vertical"
+        android:paddingTop="5dp"
+        android:layout_margin="5dp"
+        />
+    <TextView android:id="@+id/tv_row_6"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"              
+              android:textSize="@dimen/listFontSize"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+              android:layout_weight="1"
+              android:gravity="top|left|center_vertical"
+              android:text="6"
+				android:textColor="@color/listText"
+				
+              />
+    
+    </LinearLayout>
+    
+</LinearLayout>

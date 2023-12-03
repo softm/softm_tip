@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listPanel"
+    style="@style/Table.Body"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp" >
+
+    <!-- 수용가 -->
+
+    <TextView
+        android:id="@+id/listCell1"
+        style="@style/Table.Row"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="3.5"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:gravity="center_vertical|left"
+        android:paddingLeft="10dp"
+        android:text="수용가" />
+
+    <!-- 당일지침 -->
+
+    <TextView
+        android:id="@+id/listCell2"
+        style="@style/Table.Row"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:gravity="center_vertical|center"
+        android:text="당일지침" />
+
+    <!-- 근거 -->
+
+    <TextView
+        android:id="@+id/listCell3"
+        style="@style/Table.Row"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.5"
+        android:gravity="center_vertical|center"
+        android:paddingBottom="0dp"
+        android:text="완료" />
+
+</LinearLayout>

@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.list').click(function(e) { // 리스트
+        // var url = $(this).attr("data_url");
+        //alert("aa");
+        //alert(  $(this).fadeTo );
+        $(this).fadeTo(200, 0.33,function(e) {
+            $(this).fadeTo(200,1);
+        });
+        e.preventDefault();
+    });
+});
+</script>
+</head>
+<body>
+<a href="#" class="list"><span style="color:red;background-color:blue">softm.net</span></a>
+<a href="#" onclick="alert('');" class="list"><span style="color:red;background-color:yellow;">softm.net</span></a>
+</body>
+</html>

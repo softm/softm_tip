@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<FrameLayout
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent">
+	
+		<SurfaceView
+			android:id="@+id/preview_view"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" />
+	
+		
+		<kr.co.gscaltex.gsnpoint.qr.ViewfinderView
+			android:id="@+id/viewfinder_view"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent" />
+		
+		
+		<kr.co.gscaltex.gsnpoint.qr.RotateView
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent">
+				
+			<LinearLayout
+				android:id="@+id/rotate_view"
+				android:orientation="vertical"
+				android:layout_width="fill_parent"
+				android:layout_height="fill_parent">
+
+				<LinearLayout
+					android:orientation="vertical"
+					android:layout_width="fill_parent"
+					android:layout_height="fill_parent"
+					android:layout_weight="1"
+					android:gravity="center" >
+			
+					<LinearLayout
+						android:layout_width="fill_parent"
+						android:layout_height="45dp"
+						android:gravity="center" >
+
+						<ImageView
+							android:background="@drawable/guide_qrscan_title"
+							android:layout_width="wrap_content" 
+							android:layout_height="wrap_content"
+							android:layout_centerInParent="true" />						
+						
+					</LinearLayout>	
+
+					<ImageView
+						android:background="@drawable/guide_qrscan_box"
+						android:layout_width="260dp" 
+						android:layout_height="285dp"
+						android:layout_centerInParent="true" />
+						
+					<LinearLayout
+						android:layout_width="fill_parent"
+						android:layout_height="12dp" />
+												
+					<ImageButton
+						android:id="@+id/qrcode_history"
+						android:background="@drawable/bt_history"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_gravity="center_horizontal" />					
+
+				</LinearLayout>
+
+				<include
+					layout="@layout/n_main_menu"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content" />
+	
+			</LinearLayout>
+	
+		</kr.co.gscaltex.gsnpoint.qr.RotateView>
+	</FrameLayout>
+</LinearLayout>

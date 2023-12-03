@@ -1,0 +1,59 @@
+<?
+@extract($_ENV   ); // 환경 변수
+@extract($_GET   ); // Get  방식의 Parameter 값
+@extract($_POST  ); // Post 방식의 Parameter 값
+@extract($_SERVER); // Server 변수
+
+echo("/${HTTP_HOST}/");
+preg_match( '/('.$_SERVER['HTTP_HOST'].')((.)*(\/)+)+(dpoll.php)/', $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] );
+    if ( preg_match( "/(".$_SERVER['HTTP_HOST'].")((.)*(\/)+)+(devent.php)/", $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'] ) ) {
+
+    }
+
+$link2 = "http://aaaaaaaaaaaaa";
+
+$a_link2 = ( preg_match( '/http:\/\//i', $link2 ) ) ? '<a href="' . $link2 . '" target="_blank">' : '<a href="http://' . $link2 . '" target="_blank">';
+echo $a_link2 . "AAAAAAAAAAAA</a>";
+$curLine = "aaa=bccc";
+            $line	= preg_split("/=/",$curLine);
+			print_r($line);
+
+?>
+
+<div id="post-view120156630301" class="post-view pcol2 _param(1)">
+							<div style='font-family: "957317_9"; font-size: 9pt;' class="view"><p style="margin-left: 40px;">&nbsp;</p><p><strong><span style="color: rgb(0, 117, 200);">How to fix ‘Function eregi() is deprecated’ in PHP 5.3.0?</span></strong></p><p><a class="con_link" href="http://takien.com/513/how-to-fix-function-eregi-is-deprecated-in-php-5-3-0.php" target="_blank">http://takien.com/513/how-to-fix-function-eregi-is-deprecated-in-php-5-3-0.php</a> </p><p>&nbsp;</p><p><font face="GulimChe">if(!eregi("^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$", $str)) {</font></p><p><font face="GulimChe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; .....</font></p><font face="GulimChe"></font><p><font face="GulimChe">}</font></p><p><font face="GulimChe">===&gt;</font></p><p><font face="GulimChe">if(!preg_match("/^[_\.0-9a-zA-Z-]+@([0-9a-zA-Z][0-9a-zA-Z-]+\.)+[a-zA-Z]{2,6}$/i", $str)) {</font></p><p><font face="GulimChe">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ....<br>}</font></p><h2>The list of functions that are deprecated in PHP 5.3.0:</h2><ul><li>call_user_method() (use call_user_func() instead)</li><li> call_user_method_array() (use call_user_func_array() instead)</li><li> define_syslog_variables()</li><li>dl()</li><li>ereg() (use preg_match() instead)</li><li>ereg_replace() (use preg_replace() instead)</li><li>eregi() (use preg_match() with the ‘i’ modifier instead)</li><li> eregi_replace() (use preg_replace() with the ‘i’ modifier instead)</li><li>set_magic_quotes_runtime() and its alias, magic_quotes_runtime()</li><li>session_register() (use the $_SESSION superglobal instead)</li><li>session_unregister() (use the $_SESSION superglobal instead)</li><li>session_is_registered() (use the $_SESSION superglobal instead)</li><li>set_socket_blocking() (use stream_set_blocking() instead)</li><li>split() (use preg_split() instead)</li><li> spliti() (use preg_split() with the ‘i’ modifier instead)</li><li>sql_regcase()</li><li>mysql_db_query() (use mysql_select_db() and mysql_query() instead)</li><li> mysql_escape_string() (use mysql_real_escape_string() instead)</li><li>Passing locale category names as strings is now deprecated. Use the LC_* family of constants instead.</li><li>The is_dst parameter to mktime(). Use the new timezone handling functions instead.</li></ul><p>Ref:</p><p><a class="con_link" href="http://php.net/manual/en/migration53.deprecated.php" target="_blank">http://php.net/manual/en/migration53.deprecated.php</a></p></div>
+						</div>
+<pre>
+ereg_replace, eregi_replace => preg_replace 
+eregi, eregi => preg_match 
+split, spliti = > explode
+
+ereg, eregi 함수는 정규식 패턴이 아닌 단순 문자열 포함여부 확인으로 사용할 경우 strpos, stripos로 변경
+단 대소문자 구분없이 찾는 stripos 함수는 php5에서 부터 지원 4에서 사용하려면
+if (eregi('where',$syntax)) $syntax .= ' '.$operator.' '.$query;
+-> if (strpos(strtolower($syntax), 'where')!==false) $syntax .= ' '.$operator.' '.$query;
+
+ereg -> preg_match (패턴을 / / 으로 감싼다)
+ereg('\.([^\.]*$)', $this->file_src_name, $extension)
+-> preg_match('/\.([^\.]*$)/', $this->file_src_name, $extension)
+
+eregi -> preg_match (패턴을 / /i 으로 감싼다)
+eregi('\.([^\.]*$)', $this->file_src_name, $extension)
+-> preg_match('/\.([^\.]*$)/i', $this->file_src_name, $extension)
+
+ereg_replace -> preg_replace
+ereg_replace('[^A-Za-z0-9_]', '', $this->file_dst_name_body);
+-> preg_replace('/[^A-Za-z0-9_]/', '', $this->file_dst_name_body);
+
+eregi_replace -> preg_replace
+ereg_replace('[^A-Za-z0-9_]', '', $this->file_dst_name_body);
+-> preg_replace('/[^A-Za-z0-9_]/i', '', $this->file_dst_name_body);
+</pre>$GLOBALS
+$_SERVER
+$_GET
+$_POST
+$_FILES
+$_REQUEST
+$_SESSION
+$_ENV
+$_COOKIE

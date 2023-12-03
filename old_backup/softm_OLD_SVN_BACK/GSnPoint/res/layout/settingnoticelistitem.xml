@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+  	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" 
+		android:layout_height="30dip" 
+ 		android:orientation="horizontal"
+ 		android:gravity="center_vertical"
+ 		android:padding="5dp"
+ 		>
+		<!-- 
+		android:layout_height="fill_parent"  
+		 android:background="@drawable/set_noticelist_bg_"
+		android:layout_height="30dip" 
+		android:background="@drawable/list_bg_off"  --> 
+		
+		
+		
+			<!-- 번호 -->
+			<TextView  
+		 		android:id="@+id/noticedataItem01"
+			    android:layout_width="30dip" 
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="3dip"	
+			    android:text="100"
+			    android:textColor="#888888"
+			    android:gravity="center"
+			    android:textSize="14dip" 
+			    		     
+			    /> 
+			
+			<!-- 제목 -->
+		    <TextView  
+		 		android:id="@+id/noticedataItem02"  
+			    android:layout_width="150dip" 
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="18dip"			  
+			    android:textColor="#888888"
+			    android:textSize="12dip"		
+			    android:text="제목이 출력됩니다."		
+			    android:ellipsize="end"	
+			    android:maxLines="1"	    
+			    />
+			
+			
+			<!-- 등록일 -->   
+ 			<TextView  
+		 		android:id="@+id/noticedataItem03"  
+			    android:layout_width="wrap_content" 
+			    android:layout_height="wrap_content"			    
+				android:layout_marginLeft="20dip"	
+				android:text="2012-02-17"
+			    android:textColor="#888888"
+			    android:textSize="12dip"
+			    android:lines="1" />
+			    
+		
+ 		 
+</LinearLayout>  

@@ -1,0 +1,1 @@
+D:\WEB_APP\MYSQL50\bin\mysqld-nt --console

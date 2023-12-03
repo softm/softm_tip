@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE sqlMapConfig PUBLIC "-//ibatis.apache.org//DTD SQL Map Config 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-config-2.dtd">
+
+<sqlMapConfig>
+  	
+  	<settings useStatementNamespaces="true"/>
+  	
+  	<transactionManager type="JDBC">
+	  	<dataSource type="DBCP">
+	        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
+	        <property name="url" value="jdbc:oracle:thin:@localhost:1521:XE"/>
+	        <property name="username" value="POUSER"/>
+	        <property name="password" value="qwer1234"/>
+	  	</dataSource>
+	</transactionManager>
+
+	
+	<!-- Sql Map -->
+	<sqlMap resource="rara/sqlmap/Common.xml"/>
+  	<sqlMap resource="rara/sqlmap/TB_S07_020DEPT010.xml"/>
+  	<sqlMap resource="rara/sqlmap/TB_S07_020EMPL010.xml"/>
+  	<sqlMap resource="rara/sqlmap/TB_S07_020APRV010.xml"/>
+  	<sqlMap resource="rara/sqlmap/TB_S07_020APRV020.xml"/>
+  	<sqlMap resource="rara/sqlmap/TB_S07_020ADMN010.xml"/>
+  	<sqlMap resource="rara/sqlmap/TB_S07_020CODE010.xml"/>
+  	<sqlMap resource="rara/sqlmap/TB_S07_020WEEK010.xml"/>
+  	
+</sqlMapConfig>

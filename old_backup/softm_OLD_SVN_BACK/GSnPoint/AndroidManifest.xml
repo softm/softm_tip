@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.co.gscaltex.gsnpoint"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk android:minSdkVersion="8" />
+	<supports-screens android:largeScreens="true" android:anyDensity="true"/>
+    <application
+        android:name=".DefaultApplication"
+        android:icon="@drawable/icon"
+        android:label="@string/app_name" >
+        <activity
+            android:label="@string/app_name"
+            android:name=".GSnPointActivity" 
+            android:theme="@android:style/Theme.NoTitleBar" >
+            <intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Login" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:windowSoftInputMode="adjustPan" 
+        			android:screenOrientation="portrait"/>
+        <activity android:name=".card.CardMainView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:windowSoftInputMode="adjustPan" 
+        			android:screenOrientation="portrait"/>
+        <activity android:name=".setting.SettingMainView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:windowSoftInputMode="adjustPan" 
+        			android:screenOrientation="portrait"/>
+        <activity android:name=".setting.SettingLogoutView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+        <activity android:name=".setting.SettingPwsetView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+        <activity android:name=".setting.SettingPwsetDetailView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+         <activity android:name=".setting.SettingPwsetAgainView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+         <activity android:name=".setting.SettingPwsetCheckView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+         <activity android:name=".setting.SettingMainImageView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+         <activity android:name=".setting.SettingNotice" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+         <activity android:name=".setting.SettingNoticeDetailView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+          <activity android:name=".point.PointPresent" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+           <activity android:name=".point.Point" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+           <activity android:name=".point.PointAffiliate" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden|adjustPan" />
+             <activity android:name=".point.PointPresentPopup" android:theme="@android:style/Theme.Translucent.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+          <activity android:name=".setting.AgreementTermView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>  
+  			<activity android:name=".setting.AgreementView" android:theme="@android:style/Theme.NoTitleBar" 
+  			android:screenOrientation="portrait"/>     
+          <activity android:name=".guide.GuideMainView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+          <activity android:name=".guide.GuidePointCard" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+          <activity android:name=".setting.SettingMemberUpdateView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>
+          <activity android:name=".store.StoreMapView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/> 
+        <activity android:name=".store.StoreMapDetail" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>   
+          <activity android:name=".store.StoreRepresentView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/>   
+          <activity android:name=".card.CardRegView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/> 
+        	<activity android:name=".card.CardFirstResisterView" android:theme="@android:style/Theme.NoTitleBar" 
+        			android:screenOrientation="portrait"/> 		
+     	<activity android:name=".plusapp.PlusAppPopupView" android:theme="@android:style/Theme.Translucent.NoTitleBar" 
+     			android:screenOrientation="portrait" /> 
+     	<activity android:name=".card.BarcodeActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" 
+     			android:screenOrientation="landscape" /> 	
+
+	<activity android:name=".qr.QRCodeGroupActivity" android:theme="@android:style/Theme.NoTitleBar" 
+			android:screenOrientation="portrait" />
+	<activity android:name=".qr.QRCodeResultActivity" android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar"
+			android:screenOrientation="portrait"/>
+	<activity android:name=".qr.QRCodeListActivity" android:launchMode="singleTop" android:screenOrientation="portrait"/>
+	<activity android:name=".qr.CaptureActivity" android:launchMode="singleTop" android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+			android:screenOrientation="landscape"/>	<uses-library android:name="com.google.android.maps" android:required="true"/>                          
+    
+    </application>
+
+<uses-feature android:name="android.hardware.camera"></uses-feature>
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+<uses-permission android:name="android.permission.CALL_PHONE"></uses-permission>
+<uses-permission android:name="android.permission.CALL_PHONE" />
+<uses-permission android:name="android.permission.CAMERA"></uses-permission>
+<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+</manifest>

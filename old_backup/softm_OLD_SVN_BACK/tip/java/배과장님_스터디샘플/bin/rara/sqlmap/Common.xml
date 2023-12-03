@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+    
+<sqlMap namespace="Common">
+
+	<select id="findTableInfo" resultClass="java.util.HashMap">
+		SELECT * FROM TAB
+	</select>
+
+	<select id="findUserInfo" resultClass="java.util.HashMap">
+		SELECT * FROM USER_USERS
+	</select>
+	
+	<select id="findColumnInfo" parameterClass="String" resultClass="java.util.HashMap">
+		SELECT COLUMN_NAME
+		  FROM USER_TAB_COLS
+		 WHERE TABLE_NAME = #value#
+		ORDER BY COLUMN_ID
+	</select>
+	
+	<select id="findColumnComments" resultClass="java.util.HashMap">
+		SELECT DISTINCT A.COLUMN_NAME,  NVL(B.COMMENTS,A.COLUMN_NAME) COMMENTS
+		  FROM user_tab_cols A LEFT OUTER JOIN USER_COL_COMMENTS B
+		    ON A.TABLE_NAME = B.TABLE_NAME AND A.COLUMN_NAME = B.COLUMN_NAME
+	</select>
+	
+</sqlMap>
+

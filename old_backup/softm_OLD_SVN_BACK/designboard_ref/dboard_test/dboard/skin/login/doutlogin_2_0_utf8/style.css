@@ -1,0 +1,20 @@
+BODY {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+TD {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+SELECT {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+INPUT {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+DIV {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+FORM {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+TEXTAREA {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+CENTER {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+OPTION {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+PRE {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+BLOCKQUOTE {FONT-SIZE: 9pt; FONT-FAMILY: 굴림}
+
+A:link    {color:333333;text-decoration:none;}
+A:visited {color:333333;text-decoration:none;}
+A:active  {color:333333;text-decoration:none;}
+A:hover  {color:BF0909;text-decoration:underline}
+
+.head {BORDER-RIGHT: black 1px solid; BORDER-TOP: black 1px solid; FONT-SIZE: 9pt; BORDER-LEFT: black 1px solid; COLOR: black; BORDER-BOTTOM: black 1px solid; HEIGHT: 19px; BACKGROUND-COLOR: white}
+.textarea_01 {  background: #F9F9F9; border: 1px #B4B4B4 solid; font-size: 12px; color: 58595B; font-style: normal; line-height: 125%; font-family: "돋움", "돋움체"}
+.login_text_01 {  font-family: "굴림"; font-size: 11px; color: 333333; text-decoration: none; line-height: 18px}

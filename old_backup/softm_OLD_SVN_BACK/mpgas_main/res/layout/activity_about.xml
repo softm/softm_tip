@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Frame.Container" >
+
+    <com.entropykorea.gas.main.activity.ui.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        style="@style/Frame.Ractangle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical|center"
+            android:orientation="horizontal"
+             >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/logo144x144" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                 >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:text="목포도시가스\n현장지원 시스템"
+                    android:textColor="@android:color/white"
+                    android:textSize="23sp" />
+
+                <TextView
+                    android:id="@+id/tv_main_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:text="@string/app_version"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp" />
+                </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+             >
+
+            <!-- 검침 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"
+                android:weightSum="5" >
+
+                <TextView
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="검침" />
+
+                <TextView
+                    android:id="@+id/tv_gum_version"
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:text="미설치" />
+            </LinearLayout>
+
+            <!-- 민원 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"
+                android:weightSum="5" >
+
+                <TextView
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="민원" />
+
+                <TextView
+                    android:id="@+id/tv_as_version"
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2" 
+                    android:text="미설치"/>
+            </LinearLayout>
+
+            <!-- 안전점검 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"
+                android:weightSum="5" >
+
+                <TextView
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="안전점검" />
+
+                <TextView
+                    android:id="@+id/tv_chk_version"
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2"
+                    android:text="미설치" />
+            </LinearLayout>
+
+            <!-- 계량기교체 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"
+                android:weightSum="5" >
+
+                <TextView
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="계량기교체" />
+
+                <TextView
+                    android:id="@+id/tv_chg_version"
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2"
+                    android:text="미설치" />
+            </LinearLayout>
+
+            <!-- 체납 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:orientation="horizontal"
+                android:weightSum="5" >
+
+                <TextView
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="3"
+                    android:gravity="center"
+                    android:text="체납" />
+
+                <TextView
+                    android:id="@+id/tv_che_version"
+                    style="@style/Cell"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2"
+                    android:text="미설치" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

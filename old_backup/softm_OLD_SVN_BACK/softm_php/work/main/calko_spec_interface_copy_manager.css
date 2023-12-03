@@ -1,0 +1,93 @@
+    .bs { border-bottom:1px solid gray; }
+    .rs { border-right :1px solid gray; }
+    .ls { border-left  :1px solid gray; }
+
+    .ld { border-left  :1px dotted gray;}
+    .bd { border-bottom:1px dotted gray;}
+    .rd { border-right :1px dotted gray;}
+
+    /* list table */
+    .tbl          { border:1px solid gray;margin-left:3px;padding:1px 1px 1px 1px }
+    .tbl *        { font-size:8pt;font-family:'Arial';}
+
+    .tbl td       { height:20px;}
+    .tbl td.L1    { color:#000000; font-weight:bold; padding-left:3px; }
+    .tbl td.D1    { color:#000000; padding-left:3px }
+
+    .tbl td select    { color:#000000;background-color:#FFFFFF;width:97%;height:20px }
+    .tbl td input.date { color:#000000;background-color:#FFFFFF;width:70%;height:13px;}
+
+    .tbl td input[type="text"]{ color:#000000;background-color:#FFFFFF;width:70%;height:13px;border:0}
+
+
+
+    .tbl th.title1{text-align:left;background-color:#336699;font-size:12px;color:#FFFFFF;height:20px;}
+    .tbl th.title2{text-align:left;background-color:DarkCyan;font-size:12px;color:#FFFFFF;height:20px;}
+
+    .a_tbl          { border:1px solid black;width:900px;margin-left:0px;} /*table-layout:fixed*/
+
+    .a_tbl *        { font-size:8pt;font-family:'Arial';}
+
+    .a_tbl td       { height:20px;}
+    .a_tbl td.L1    { color:#000000; font-weight:normal; padding-left:3px; }
+    .a_tbl td.D1    { color:#000000;background-color:red }
+
+    .a_tbl td.i1    { color:#000000;font-weight:bold;padding-left:3px;}
+    .a_tbl td.i2    { color:#000000;padding-left:3px;}
+    .a_tbl td.i3    { color:#000000;padding-left:3px;}
+    .a_tbl td.i4    { color:#000000;padding-left:3px;}
+    .a_tbl td.i5    { color:#000000;padding-left:3px;}
+    .a_tbl td.i6    { color:#000000;padding-left:3px;}
+
+
+    .a_tbl td.bs2 { border-bottom:2px solid black; }
+    .a_tbl td.bs { border-bottom:1px solid black; }
+    .a_tbl td.rs { border-right :1px solid black; }
+    .a_tbl td.ls { border-left  :1px solid black; }
+
+    .a_tbl td.ld { border-left  :1px dotted black;}
+    .a_tbl td.bd { border-bottom:1px dotted black;}
+    .a_tbl td.rd { border-right :1px dotted black;}
+
+    .a_tbl td input.input_basic {color:#000000;background-color:#FFFFFF;width:96%;height:13px;border:1px solid black;}
+    .a_tbl td input.input_crc   {color:#002B2B;background-color:#FFFFFF;width:96%;height:13px;border:1px solid black;}
+
+    .a_tbl td select.select_basic{ color:#000000;background-color:#FFFFFF;width:98%;height:20px;}
+    .a_tbl td select.select_crc  { color:#002B2B;background-color:#FFFFFF;width:98%;height:20px;}
+    
+    .a_tbl td.i4 select { width:217px}
+
+    .a_tbl td span            { color:#000000;background-color:#FFFFFF;width:98%;height:20px;}
+
+    .a_tbl    { border-top:0px;text-align:center;}
+    .a_tbl *  { font-size:8pt;font-family:'Arial';}
+    .a_tbl thead.source th { border-right:1px solid black;border-bottom:0px;background-color:#5C93C9;color:#fff }
+    .a_tbl thead.target th { border-right:1px solid black;border-bottom:0px;background-color:DarkCyan;color:#fff }
+
+    .a_tbl td { border-right:1px solid black;border-bottom:0px;border-top:1px solid black;height:20px;text-align:left;}
+    .a_tbl tr+td { border-top:1px solid yellow;}
+
+    .header_area{border:0px;border-top:1px solid black;width:905px;vertical-align:top}
+    .scroll_area{border:0px;border-top:1px solid black;border-right:1px solid black;width:904px;height:80px;overflow:scroll;overflow-x:hidden;background-color:#FFFFFF;vertical-align:top}
+
+    #area_list2 .scroll_area{border:0px;border-top:1px solid black;border-right:1px solid black;width:904px;height:80px;overflow:scroll;overflow-x:hidden;background-color:#FFFFFF;vertical-align:top}
+    #area_list3 .scroll_area{border:0px;border-top:1px solid black;border-right:1px solid black;width:904px;height:120px;overflow:scroll;overflow-x:hidden;background-color:#FFFFFF;vertical-align:top}
+
+    #source_tbl {width:100%;border-collapse:collapse;table-layout:fixed}
+    #target_tbl {width:100%;border-collapse:collapse;table-layout:fixed}
+
+    #target_tbl_select td input { background-color:transparent;cursor:pointer}
+
+.bgtransparent{
+    background-color:transparent;
+}
+
+.border0{
+    border:0px
+}
+.basic_panel {
+background-color:#FFFFFF;
+}
+.basic_table {
+width:100%;
+}

@@ -1,0 +1,38 @@
+좌로 밀거나 우로 슬라이드(드래그) 밀면 기능이 호출 되도록 해 보자.
+
+일단 얘를 선언하고
+GestureDetector mGestureDetector;
+
+onCreate에다가 얘를 넣자.
+
+public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mGestureDetector = new GestureDetector(this, new GestureDetector.SimpleOnGestureListener(){
+            public boolean onFling(MotionEvent e1, MotionEvent e2,
+              float velocityX, float velocityY) {
+             if(Math.abs(velocityX) > 1000 && Math.abs(velocityY) < 500){
+
+              if(velocityX < 0){
+               loadCalcList();
+               } else if(velocityX > 0){
+               loadCalcList();
+              }
+             }
+             return false;
+            }
+        });
+}
+
+얘도 선언을 해 놔야 터치이벤트 들어 왔을때 발동 된다.
+
+public boolean dispatchTouchEvent(MotionEvent ev) {
+
+        if(mGestureDetector.onTouchEvent(ev)){
+         return true;
+        }
+        return super.dispatchTouchEvent(ev);
+ }
+
+이 방식은 버튼에다가 클릭 리스너 처럼 간단하게 다는 방식이고
+정식으로(?) 구현 하려면 제스쳐리스너 implement하고 onFling에다가 기능을 구현하면 된다.
+이건 좀 길다. 다음 포스팅에 할까 생각 중 ㅋ

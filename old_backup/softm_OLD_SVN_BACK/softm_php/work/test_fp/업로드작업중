@@ -1,0 +1,74 @@
+            if ( $upFile[size] > 0 ) {
+//              $this->real_nm[$this->item_cnt] = getFileName ($saveFileName); // 실제 저장 파일명
+            } else {
+
+                if ( $upFile[error] && $upFile[error] != 4 ) {
+//                echo '$upFile[error] : ' . is_uploaded_file($upFile) . '<BR>';
+//                echo '$upFile[error] : ' . $upFile[error] . '<BR>';
+//                echo '$upFile[size ] : ' . $upFile[size ] . '<BR>';
+                    throw Exception("서버 파일 최대 크기를 초과 하였거나.\\n업로드 설정에 문제가 발생하였습니다.\\n[ 서버 관리자에게 문의하세요. ]");
+                }
+            }
+            $this->item_cnt++; // 추가된 파일 객체 수 증가 (암것도 안들어간 file도 포함됨 )
+            
+            
+            
+            $this->real_nm[$this->item_cnt] = getFileName ($saveFileName); // 실제 저장 파일명
+                $file = $upFile[name];
+
+                $this->path[$this->item_cnt] = $saveDir                    ; // 저장 경로
+
+                // magic_quotes_gpc Off
+                if ( get_magic_quotes_gpc() != 1 ) {
+                    //$this->name[$this->item_cnt] = iconv('UTF-8', 'EUC-KR', addslashes(getFileName     ($file))); // 파일 명
+                    $this->name[$this->item_cnt] = addslashes(getFileName    ($file)); // 파일 명
+                } else {
+                    //$this->name[$this->item_cnt] = iconv('UTF-8', 'EUC-KR', getFileName    ($file)); // 파일 명
+                    $this->name[$this->item_cnt] = getFileName   ($file); // 파일 명
+                }
+                //echo 'size : ' . $upFile[size] . '<br>';
+
+                $this->ext [$this->item_cnt] = getFileExtraName($saveFileName); // 확장 명
+                $this->size[$this->item_cnt] = (int)$upFile[size]                 ; // 파일 크기 (byte)
+                $this->tmp [$this->item_cnt] = $upFile[tmp_name ]             ; // 템프 파일 경로
+                //echo 'size : ' . $this->size[$this->item_cnt] . '<br>';
+
+                $megaSize   = (int) $upFile[size] / 1048576;
+//            echo '<font color=red>' . $megaSize . '</font><BR>';
+//            echo '<font color=red>' . $limitAmount . '</font><BR>';
+
+                if ( $megaSize > $limitAmount ) {
+                    $this->error[$this->item_cnt][] = "관리자에의해 파일 크기가 제한 되었습니다.";
+                    @unlink  ( $this->tmp[$this->item_cnt]);
+                }
+
+                if ( $this->restrictedCheck($restricted, $this->ext [$this->item_cnt] ) ) {
+                    $this->error[$this->item_cnt][] = "업로드 금지된 확장자.";
+                    @unlink  ( $this->tmp[$this->item_cnt]);
+                }
+
+//            $this->upLoadInfor($this->item_cnt);
+
+
+$upFile->restrictedCheck(ALLOW_UPLOAD_IMAGE_EXT, getFileExtraName($file1Nm)
+
+ $upFile->add($file1,DATA_DIR . "\\test\\" , ($file1[size] > 0 ?  $file1Nm :''), ALLOW_UPLOAD_IMAGE_EXT, 15);
+
+    $test_file  = $file1Nm?$file1Nm:'';
+
+    if ( $_FILES['test_file'  ][size] > 0 ) $del_test_file  = 'Y';
+echo DATA_DIR . '/test' , "<BR";
+    $_fname = sprintf('%08d', $prod_no);
+    $file1Ext = getFileExtraName($file1Nm);
+//    $upFile->addUploadFile ($_FILES['test_file'], DATA_DIR . '/test' , $file1[size] > 0 ?  $_fname . ($_fext?'.'.$_fext:''):'', ALLOW_UPLOAD_IMAGE_EXT, 15);
+    $upFile->name[$idx]
+
+    $upFile->Upload(); // 업로드 시작
+
+    $tags = explode(',', "xmp, script, table, tr, th, td, thead, tbody, tfoot, html, head, title, meta, body, div, span");
+    $attr = explode(',', "style,src");
+    $myFilter = new InputFilter($tags,$attr,1,0,1);
+
+    if ( $myFilter->process($head_title) ) {
+
+    }

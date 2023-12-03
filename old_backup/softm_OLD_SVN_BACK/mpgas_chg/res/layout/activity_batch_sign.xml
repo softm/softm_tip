@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBgColor"
+    android:orientation="vertical"
+    tools:context=".BatchSignActivity" >
+	 
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="@dimen/mainMarginLeft"
+	    android:layout_marginRight="@dimen/mainMarginRight"
+	    android:layout_marginTop="10dp"
+	    android:orientation="horizontal" >
+	
+	    <TextView
+	        android:id="@+id/tv_info"
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:gravity="left"
+	        android:paddingBottom="0dp"
+android:textColor="@color/headerText"	        
+	        android:text="옥암동 1023 하당부영1차아파트 107-1402"
+	        android:textSize="@dimen/fontSize17" />
+	</LinearLayout>
+	
+	<LinearLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_marginLeft="@dimen/mainMarginLeft"
+	    android:layout_marginRight="@dimen/mainMarginRight"
+	    android:layout_marginTop="32dp"
+	    android:layout_marginBottom="7dp"
+	    android:orientation="horizontal"
+	    >
+	    <TextView
+	        android:layout_width="wrap_content"
+	        android:layout_height="match_parent"
+	        android:layout_weight="1"
+	        android:gravity="center"
+	        android:paddingBottom="0dp"
+	        android:text="일괄서명"
+	        android:textSize="@dimen/fontSize21"
+android:textColor="@color/headerText"	        
+	         />
+	</LinearLayout>
+		
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="205dp"
+         >
+        <LinearLayout
+            android:layout_width="285dp"
+            android:layout_height="205dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+            android:background="#55e4e4e4"
+             >	    
+		    <TextView
+		        android:id="@+id/tv_placeholder"
+		        android:layout_width="match_parent"
+		        android:layout_height="match_parent"
+		        android:gravity="center"
+		        android:paddingBottom="0dp"
+		        android:text="이름 정자로 기입바랍니다."
+		        android:textSize="@dimen/fontSize18"
+           android:background="#e6e6e6"
+           android:textColor="#333333"		        
+		         />
+	    </LinearLayout>
+	    
+        <LinearLayout
+            android:layout_width="285dp"
+            android:layout_height="205dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:layout_gravity="center"
+             >
+<!--
+		        <EditText
+		            android:id="@+id/et_tel1"
+		            android:layout_width="match_parent"
+		            android:layout_height="match_parent"
+		            android:layout_marginRight="7dp"
+		            android:layout_weight="2"
+		            android:background="#00000000"
+		            android:ellipsize="end"
+		            android:inputType="textPhonetic"
+		            android:singleLine="true"
+		            android:textColor="@color/black"
+		            android:textStyle="normal"
+		            >
+		        </EditText>
+		        -->
+<com.entropykorea.gas.lib.sign.SignView
+            android:id="@+id/sign_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+	    </LinearLayout>        
+    </FrameLayout>		
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+            <ImageButton
+                android:id="@+id/ib_eraser"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#a0000000"
+                android:src="@drawable/b_eraser" />
+        </LinearLayout>
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="11dp"
+            android:layout_marginLeft="@dimen/mainMarginLeft"
+            android:layout_marginRight="@dimen/mainMarginRight"
+            android:layout_marginTop="27dp"
+            android:background="@drawable/shape_line1" >
+        </View>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="27dp"
+            android:layout_marginBottom="27dp"
+            android:gravity="center"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/ib_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="25dp"
+                android:background="#a0000000"
+                android:src="@drawable/b_close" />
+
+            <ImageButton
+                android:id="@+id/ib_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#a0000000"
+                android:src="@drawable/b_delete"
+                android:layout_marginRight="25dp" 
+                />
+
+            <ImageButton
+                android:id="@+id/ib_finish"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="15dp"
+                android:background="#a0000000"
+                android:src="@drawable/b_finish" />
+        </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linear"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical" 
+    android:background="@drawable/registration_card_list01">
+
+    <RelativeLayout
+		android:layout_width="fill_parent" 
+		android:layout_height="140dip"	
+		android:layout_gravity="center"
+		>
+
+		<kr.co.gscaltex.gsnpoint.card.Barcode
+		    android:id="@+id/barcode"
+		    android:layout_width="400dip"
+		    android:layout_height="40dip" 
+		    android:layout_centerInParent="true"/>
+
+		<TextView
+			android:id="@+id/cvcCode"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_alignParentRight="true"
+			android:layout_above="@id/barcode"
+			 
+			android:layout_marginRight="38dip"
+			android:textSize="14dip"
+			android:textColor="#FF7200" 
+			android:text="721"/>
+		<TextView
+			android:id="@+id/cvctext"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_toLeftOf="@id/cvcCode"
+			android:layout_above="@id/barcode"	
+			android:textSize="14dip"
+			android:textColor="#FF7200" 
+			android:text="CVC  "/>
+		
+		
+		<TextView
+			android:id="@+id/cardNumber"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_below="@id/barcode"
+			android:layout_marginLeft="34dip"
+			android:text="1019150000001537"
+			android:textSize="18dip"
+			android:textColor="#000" />
+
+	</RelativeLayout>
+
+</LinearLayout>

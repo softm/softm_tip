@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/mainBgColor"
+    android:orientation="vertical"
+    tools:context=".MainActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/mainMarginBottom"
+        android:layout_marginLeft="@dimen/mainMarginLeft"
+        android:layout_marginRight="@dimen/mainMarginRight"
+        android:layout_marginTop="@dimen/mainMarginTop"
+        android:background="@drawable/shape_bg_round_rectangle"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_marginTop="30dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/ll_master"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="15dp"
+                android:layout_toRightOf="@+id/spn_cd"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/iv_yyyy_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:src="@drawable/btn_plus" />
+
+                    <ImageButton
+                        android:id="@+id/iv_mm_up"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:background="#00000000"
+                        android:src="@drawable/btn_plus" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal"
+                    android:focusable="true" 
+                    >
+
+                    <EditText
+                        android:id="@+id/et_yyyy"
+                        android:layout_width="70dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/input_img"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/black"
+                        android:focusable="false" 
+                        >
+                    </EditText>
+
+                    <EditText
+                        android:id="@+id/et_mm"
+                        android:layout_width="70dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="12dp"
+                        android:background="@drawable/input_img"
+                        android:enabled="false"
+                        android:gravity="center"
+                        android:inputType="numberDecimal"
+                        android:textColor="@color/black"
+                        android:focusable="false"                        
+                         />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="0dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_marginTop="0dp"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/iv_yyyy_dn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="#00000000"
+                        android:src="@drawable/btn_minus" />
+
+                    <ImageButton
+                        android:id="@+id/iv_mm_dn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dp"
+                        android:background="#00000000"
+                        android:src="@drawable/btn_minus" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.entropykorea.gas.lib.SpinnerCd
+                android:id="@+id/spn_cd"
+                android:layout_width="110dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:popupBackground="@drawable/dropdown_panel"
+                android:prompt="@string/label_spn_checkup_cd" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="11dp"
+            android:layout_marginBottom="27dp"
+            android:layout_marginTop="27dp"
+            android:background="@drawable/shape_line1" />
+
+        <ImageButton
+            android:id="@+id/ib_receive"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="12dp"
+            android:background="#a0000000"
+            android:src="@drawable/b_receive2" />
+    </LinearLayout>
+
+</LinearLayout>

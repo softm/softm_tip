@@ -1,0 +1,82 @@
+기업    : COMPANY
+본사    : COMPANY
+번호    : NUMBER
+번호    : CODE
+이름    : NM
+대표자  : CEO
+
+한글    : KR
+영어    : EN
+한자    : HJ
+
+업종    : BIZ
+분야    : FIELD
+분류    : CLASSIFIED
+우편    : ZIP_CODE
+
+설립    : ESTABLISH
+주소    : ADDR
+홈페이지: HOMEPAGE
+종업원  : WORKER
+수      : CNT
+전화    : TEL
+팩스    : FAX
+
+자본    : CAPITAL
+매출    : SALES
+예상    : EXPECT
+소개    : INTRO
+
+경상이익 : ORDINARY_INCOM
+주생산품 : MAIN_PRODUCT
+
+상담    : CONSULT
+국내     : INTERNAL
+국외     : EXTERNAL
+희망    : HOPE
+형태    : TYPE
+기한    : LIMIT
+담당자  : WORKER
+부서    : DEPT
+직급    : POSITION
+가능    : POSSIBLE
+기타    : ETC
+의견     :OPINION
+질문    : QUESTION
+
+협력    : COOPERATION
+조달    : RAISE
+공급    : SUPPLY
+
+대응    : ACTION
+방안    : PLAN
+기술자  : ENGINEER
+키워드  : KEYWORD
+경력    : CAREER
+요약    : SUMMARY
+기술    : TECH
+기관    : INSTITUTION, ORGAN
+면허    : LICENSE
+저술    : WRITING
+수상    : AWARDED
+연락    : CONTACT
+방법    : METHOD
+지도    : ADVISER
+비고    : NOTE
+과제    : TASK
+자신    : SELF
+홍보    : PR
+노출    : OPEN
+초청    : INVITE
+급여    : PAY
+제휴    : ALLIANCE
+활용    : USE
+계약    : CONTRACT
+기간    : TERM
+통역    : TRANSLATION
+지역    : ZONE
+근무    : WORK
+일      : WORK
+조건    : CONDITION
+탈퇴	: SECESSION
+거래    : TRADE

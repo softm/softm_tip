@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="send">Send</string>
+    <string name="not_connected">장치에 연결할 수 없습니다</string>
+    <string name="bt_not_enabled_leaving">Bluetooth was not enabled. Leaving BI-300 Setting.</string>
+    <string name="title_connecting">장치 연결 중입니다</string>
+    <string name="title_connected_to">바코드를 스캔 하십시요</string>
+    <string name="title_not_connected">not connected</string>
+    <string name="title_error">Error occured</string>
+</resources>

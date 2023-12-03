@@ -1,0 +1,212 @@
+body { 
+       background-color:#FFFFFF ; margin:0px ;
+       font-size   : 9pt;
+       color       : #555555;
+       line-height : 160%;
+       font-family : 굴림, 굴림체, Verdana; 
+
+	   scrollbar-face-color       : #f4f4f4;
+       scrollbar-highlight-color  : #FFFFFF;
+       scrollbar-3dlight-color    : #b4b4b4;
+       scrollbar-shadow-color     : #b4b4b4;
+       scrollbar-darkshadow-color : #FFFFFF;
+       scrollbar-track-color      : #FFFFFF; 
+       scrollbar-arrow-color      : #FFFFFF; }
+
+td { font-size: 9pt; color:#555555; line-height:13pt; font-family:Verdana,굴림;}
+
+
+A:link { color:#000000; text-decoration:none; line-height:12pt; font-family:Verdana,굴림,굴림체; }
+A:visited { color:#000000; text-decoration:none; line-height:12pt; font-family:Verdana,굴림,굴림체; }
+A:active { color:#000000; text-decoration:none; line-height:12pt; font-family:Verdana,굴림,굴림체; }
+A:hover { color:#9F5C21; text-decoration:underline; line-height:12pt; font-family:Verdana,굴림,굴림체; }
+
+
+
+
+A.bottom_text:link { color:#555555; text-decoration:none; line-height:12pt; font-size: 8pt; font-family:Verdana,굴림,굴림체 }
+A.bottom_text:visited { color:#555555; text-decoration:none; line-height:12pt; font-size: 8pt; font-family:Verdana,굴림,굴림체}
+A.bottom_text:active { color:#555555; text-decoration:none; line-height:12pt; font-size: 8pt; font-family:Verdana,굴림,굴림체}
+A.bottom_text:hover { color:#0066CB; text-decoration:none; line-height:12pt; font-size: 8pt; font-family:Verdana,굴림,굴림체}
+
+
+A.mail:link { color:#555555; text-decoration:none; line-height:12pt; font-size: 8pt; font-family:Verdana,굴림,굴림체 }
+A.mail:visited { color:#555555; text-decoration:none; line-height:12pt; font-size: 8pt; font-family:Verdana,굴림,굴림체}
+A.mail:active { color:#555555; text-decoration:none; line-height:12pt; font-size: 8pt; font-family:Verdana,굴림,굴림체}
+A.mail:hover { color:#0EA9DC; text-decoration:none; line-height:12pt; font-size: 8pt; font-family:Verdana,굴림,굴림체}
+
+
+A.com:link { color:#000000; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdan,굴림,굴림체 }
+A.com:visited { color:#000000; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+A.com:active { color:#000000; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+A.com:hover { color:#FFFFFF; text-decoration:underline; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+
+
+A.pro:link { color:#000000; text-decoration:none;}
+A.pro:visited { color:#000000; text-decoration:none;}
+A.pro:active { color:#000000; text-decoration:none;}
+A.pro:hover { color:#AC47B1; text-decoration:underline;}
+
+
+A.pre:link { color:#555555; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체 }
+A.pre:visited { color:#555555; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+A.pre:active { color:#555555; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+A.pre:hover { color:#A555E7; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+
+
+A.data:link { color:#555555; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체 }
+A.data:visited { color:#555555; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+A.data:active { color:#555555; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+A.data:hover { color:#00B618; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+
+
+A.open:link { color:#00A6DE; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체 }
+A.open:visited { color:#00A6DE; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+A.open:active { color:#00A6DE; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+A.open:hover { color:#FF6699; text-decoration:none; line-height:12pt; font-size: 9pt; font-family:Verdana,굴림,굴림체}
+
+
+td.eng_font { font-family:arial; font-size:9pt; }
+
+
+.bottom { font-size:7pt; color:#555555; line-height:10pt; font-family:verdana, 굴림,굴림체 }
+
+
+.box{ border:0.5pt;
+      border-style: solid;
+      border-color: #666666;
+      background-color: #FFFFFF;
+      font-size:9pt; 
+      font-family:Verdana,굴림;}
+
+
+.box02{ border:0.5pt;
+        border-style: solid;
+        border-color: #999999;
+        background-color: #FFFFFF;
+ 	font-size:9pt; 
+	color:#555555; 
+	font-family:Verdana,굴림;}
+
+
+
+#menu_1i { BORDER-RIGHT: medium none; 
+           BORDER-TOP: medium none; 
+           Z-INDEX: 10; 
+           VISIBILITY: hidden; 
+           OVERFLOW: hidden; 
+           BORDER-LEFT: medium none; 
+           WIDTH: 143px; 
+           BORDER-BOTTOM: medium none; 
+           POSITION: absolute; 
+           TOP: 105px; 
+           HEIGHT: 143px; }
+#menu_2i { BORDER-RIGHT: medium none; 
+           BORDER-TOP: medium none; 
+           Z-INDEX: 10; 
+           VISIBILITY: hidden; 
+           OVERFLOW: hidden; 
+           BORDER-LEFT: medium none; 
+           WIDTH: 121px; 
+           BORDER-BOTTOM: 
+           medium none; 
+           POSITION: absolute; 
+           TOP: 105px; 
+           HEIGHT: 182px; }
+#menu_3i { BORDER-RIGHT: medium none; 
+           BORDER-TOP: medium none; 
+           Z-INDEX: 10; 
+           VISIBILITY: hidden; 
+           OVERFLOW: hidden; 
+           BORDER-LEFT: medium none; 
+           WIDTH: 123px; 
+           BORDER-BOTTOM: medium none; 
+           POSITION: absolute; 
+           TOP: 105px; 
+           HEIGHT: 94px; }
+#menu_4i { BORDER-RIGHT: medium none; 
+           BORDER-TOP: medium none; 
+           Z-INDEX: 10; 
+           VISIBILITY: hidden; 
+           OVERFLOW: hidden; 
+           BORDER-LEFT: medium none; 
+           WIDTH: 109px; 
+           BORDER-BOTTOM: medium none; 
+           POSITION: absolute; 
+           TOP: 105px; 
+           HEIGHT: 76px; }
+#menu_5i { BORDER-RIGHT: medium none; 
+           BORDER-TOP: medium none; 
+           Z-INDEX: 10; 
+           VISIBILITY: hidden; 
+      font-family:Verdana,굴림;}
+
+
+.box02{ border:0.5pt;
+        border-style: solid;
+        border-color: #999999;
+        background-color: #FFFFFF;
+ 	font-size:9pt; 
+	color:#555555; 
+	font-family:Verdana,굴림;}
+
+
+.inputBox{ border:0.5pt;
+           border-style:solid;
+           font-family:Verdana,굴림; 
+           font-size:9pt;
+           color:#666666;
+           background-color:#FFFFFF; }
+
+
+
+#menu_1i { BORDER-RIGHT: medium none; 
+           BORDER-TOP: medium none; 
+           Z-INDEX: 10; 
+           VISIFLOW: hidden; 
+           BORDER-LEFT: medium none; 
+           WIDTH: 131px; 
+           BORDER-BOTTOM: medium none; 
+           POSITION: absolute; 
+           TOP:105px; 
+           HEIGHT: 76px; }
+#menu_6i { BORDER-RIGHT: medium none; 
+           BORDER-TOP: medium none; 
+           Z-INDEX: 10; 
+           VISIBILITY: hidden; 
+           OVERFLOW: hidden; 
+           BORDER-LEFT: medium none; 
+           WIDTH: 130px; 
+           BORDER-BOTTOM: medium none; 
+           POSITION: absolute; 
+           TOP: 105px; 
+           HEIGHT: 95px; }
+
+
+/* 입력박스 에서 쓰기금지 일 경우 배경색을 회색으로 채운다.*/
+
+.readonlybox {
+	border: 1px solid #a6a6a6; 
+	height:18; 
+	font-size:9pt;
+    background-color : #F4F4F4;
+}
+
+
+/*텍스트 박스를 일반 텍스트 같이 표현*/
+
+.byte {
+   border:0pt;
+   font-size:9pt;
+   color:#000000;
+   background-color:transparent; 
+   font-family:굴림,verdana;
+}
+
+
+.pa {
+	padding-left : 10;padding-right:10;
+
+}
+
+.textarea { Background-Color:#FFFFFF; Border:1px Solid #D3D3D3; Color:#666666; Font-size:12px; Font-family:돋움,돋움체,Verdana;}

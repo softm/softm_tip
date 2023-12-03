@@ -1,0 +1,130 @@
+<style>
+*{font-size:9pt}
+td{text-align:left}
+.t_1 { width:70}
+.c_1 { width:330}
+.c_2 { width:130}
+</style>
+<button onclick='alert(document.getElementById("c_file_name"));'></button>
+
+<fieldset style='width:400;background-color:fafafa;padding:5 5 5 5'>
+    <LEGEND align="center">파일업로드</LEGEND>
+    <fieldset style='background-color:fafafa;width:400'>
+    <LEGEND>현재파일</LEGEND>
+    <table style='100%' border="0" cellspacing="5" cellpadding="0" id='c'>
+        <tr>
+        <td class='t_1'>파일 이름 :</td>
+        <td class='c_1' colspan=3 id='c_file_name'>&nbsp;</td>
+        </tr>
+
+        <tr>
+        <td class='t_1'>파일 크기 :</td>
+        <td class='c_2' id='c_file_size'></td>
+        <td class='t_1'>보낸 크기 :</td>
+        <td class='c_2' id='c_send_size'></td>
+        </tr>
+
+        <tr>
+        <td class='t_1'>남은 시간 :</td>
+        <td class='c_2' id='c_remind_time'></td>
+        <td class='t_1' id='c_send_speed'>전송 속도 :</td>
+        <td class='c_2'>
+        </td>
+        </tr>
+
+        <tr>
+        <td class='t_1'>전송 상태:</td>
+        <td class='c_1' colspan=3>
+        <table width="90%" border="0" cellspacing="1" cellpadding="0" bgcolor="cccccc" style='display:inline'>
+            <tr> 
+            <td id='c_progress' bgcolor="dddddd" width="0%" height="8"></td>
+            <td bgcolor="#FFFFFF" width="1" height="11"></td>
+            </tr>
+        </table>
+        <span style='position:relative;top:-2;left:-150;backgorud-color:#FFFFFF'>0%</span>
+        </td>
+        </tr>
+    </table>
+    </fieldset>
+
+    <fieldset style='background-color:fafafa;width:400' id='i_list'>
+    <LEGEND>업로드 리스트</LEGEND>
+    <table style='100%' border="0" cellspacing="5" cellpadding="0" id='i'>
+        <tr>
+        <td class='t_1'>파일 크기 :</td>
+        <td class='c_2' id='i_file_size'></td>
+        <td class='t_1'>보낸 크기 :</td>
+        <td class='c_2' id='i_send_size'></td>
+        </tr>
+
+        <tr>
+        <td class='t_1'>남은 시간 :</td>
+        <td class='c_2' id='i_remind_time'></td>
+        <td class='t_1'>남은 갯수 :</td>
+        <td class='c_2' id='i_remind_count'>
+        </td>
+        </tr>
+
+        <tr>
+        <td class='t_1'>전체 진행 :</td>
+        <td class='c_1' colspan=3>
+        <table width="90%" border="0" cellspacing="1" cellpadding="0" bgcolor="cccccc" style='display:inline'>
+            <tr> 
+            <td id='i_progress' bgcolor="dddddd" width="0%" height="8"></td>
+            <td bgcolor="#FFFFFF" width="1" height="11"></td>
+            </tr>
+        </table>
+        <span style='position:relative;top:-2;left:-150;backgorud-color:#FFFFFF'>0%</span>
+        </td>
+        </tr>
+    </table>
+    </fieldset>
+</fieldset>
+
+
+
+
+
+
+
+
+<fieldset>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+  <tr> 
+    <td background="../images/join_bg02.gif" width="17"></td>
+    <td> 
+      <table width="100%" border="0" cellspacing="1" cellpadding="2" bgcolor="CCCCCC" class="text_01">
+        <tr> 
+          <td bgcolor="fafafa" align="right" height="327"> 
+            <table width="90%" border="0" cellspacing="0" cellpadding="0" align="center" class="text_01">
+              <tr> 
+                <td>&nbsp;</td>
+              </tr>
+              <tr> 
+                <td> 
+                  <table width="100%" border="0" cellspacing="1" cellpadding="0" bgcolor="cccccc">
+                    <tr> 
+                      
+                      <td bgcolor="#FFFFFF" width="1" height="11"></td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+              <tr> 
+                <td align="center">&nbsp; </td>
+              </tr>
+              <tr> 
+                <td align="center"><span id='infor_1'>현재</span> <span class="text_04" id='percent'>0%</span> <span id='infor_2'>발송</span>.</td>
+              </tr>
+            </table>
+            <br>
+            <br>
+          </td>
+        </tr>
+      </table>
+    </td>
+    <td background="../images/join_bg03.gif" width="17"></td>
+  </tr>
+</table>
+</fieldset>
+</span>

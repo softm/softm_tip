@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Frame.Container"
+    android:layout_height="match_parent" >
+
+    <com.entropykorea.gas.gum.activity.ui.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- 주소 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:baselineAligned="true"
+        android:padding="12dp"
+        android:visibility="gone" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="left|center_vertical" >
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="left"
+                android:text="수용가\n주소"
+                android:textColor="@color/White"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/btn_street_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/street_address_toggle"
+            android:textOff=""
+            android:textOn="" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- 고객명 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:layout_marginTop="10dp"
+                android:background="@color/Background" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="고객명"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@color/TableRow2"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical|center"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" >
+
+                    <EditText
+                        android:id="@+id/et_cust_nm"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/input_img"
+                        android:hint="고객명"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:maxLength="50"
+                        android:selectAllOnFocus="true"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="normal" />
+
+                    <TextView
+                        android:id="@+id/tv_cust_nm"
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.7"
+                        android:clickable="true"
+                        android:gravity="center_vertical|left"
+                        android:paddingLeft="5dp"
+                        android:text=""
+                        android:textColor="@color/White"
+                        android:textSize="16dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 자택 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:layout_marginTop="10dp"
+                android:background="@color/Background"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="자택"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/TableRow2"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical|center"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" >
+
+                    <EditText
+                        android:id="@+id/et_tel_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/input_img"
+                        android:hint="자택"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="30"
+                        android:selectAllOnFocus="true"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="normal" >
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|center"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" >
+
+                    <RadioButton
+                        android:id="@+id/rb_tel_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_img"
+                        android:text=" 주사용"
+                        android:textColor="@color/White" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 이동 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="이동"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/TableRow2"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical|center"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" >
+
+                    <EditText
+                        android:id="@+id/et_hp_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/input_img"
+                        android:hint="이동"
+                        android:imeOptions="actionNext"
+                        android:inputType="phone"
+                        android:maxLength="30"
+                        android:selectAllOnFocus="true"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="normal" >
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|center"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" >
+
+                    <RadioButton
+                        android:id="@+id/rb_hp_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_img"
+                        android:text=" 주사용"
+                        android:textColor="@color/White" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 회사 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background"
+                android:orientation="horizontal" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="회사"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <LinearLayout
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="5"
+                    android:background="@color/TableRow2"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center_vertical|center"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" >
+
+                    <EditText
+                        android:id="@+id/et_work_tel_no"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/input_img"
+                        android:hint="회사"
+                        android:imeOptions="actionDone"
+                        android:inputType="phone"
+                        android:maxLength="30"
+                        android:selectAllOnFocus="true"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="normal" >
+                    </EditText>
+                </LinearLayout>
+
+                <LinearLayout
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|center"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" >
+
+                    <RadioButton
+                        android:id="@+id/rb_work_tel_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@drawable/radio_img"
+                        android:text=" 주사용"
+                        android:textColor="@color/White" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 저장 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="true"
+                android:gravity="right" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginRight="8dp"
+                    android:layout_weight="4"
+                    android:baselineAligned="true"
+                    android:gravity="left|top" >
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btn_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="#00000000"
+                    android:src="@drawable/b_customer" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

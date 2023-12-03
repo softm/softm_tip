@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent" >
+
+        <com.entropykorea.gas.as.common.base.TopBar
+            android:id="@+id/baseTopBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+             />
+
+        <FrameLayout
+            android:id="@+id/layBaseBody"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignWithParentIfMissing="true"
+            android:layout_below="@id/baseTopBar"
+            android:background="@android:color/white" >
+        </FrameLayout>
+    </RelativeLayout>
+
+</merge>

@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>test</title>
+
+<style type="text/css">
+fieldset.fieldsetA { width: 70%; padding: 10px; border: 1px solid #E9EDF8; }
+div.nl { padding: 2px; }
+div.nonl { float: left; padding-left: 2px; padding-right: 2px; padding-bottom: 2px; }
+div.nonlinit { clear: both; margin-top: 5px; margin-bottom: 5px; }
+div.codes { background-color: #000000; color: #8D8D73; font-size: 8pt; padding: 2px; }
+</style>
+
+<script type="text/javascript" src="./FileButton.js"></script>
+<script type="text/javascript">
+var myFileButton = new FileButton("imageswap", "imagesrc");
+window.onload = function () {
+	//myFileButton.run();
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="codes">
+<code>
+&lt;script type=&quot;text/javascript&quot; src=&quot;./FileButton.js&quot;&gt;&lt;/script&gt;<br />
+&lt;script type=&quot;text/javascript&quot;&gt;<br />
+var myFileButton = new FileButton(&quot;imageswap&quot;, &quot;imagesrc&quot;);<br />
+window.onload = function () {<br />
+&nbsp;&nbsp;&nbsp;&nbsp;//myFileButton.run();<br />
+}<br />
+&lt;/script&gt;<br />
+</code>
+</div>
+
+<br /><br />
+
+<input type="button" value="input type=&quot;file&quot; element all swap By user attribute configuration imageswap=&quot;true&quot;, imagesrc=&quot;local or url&quot;" onclick="myFileButton.run()" />
+
+<form name="F" method="post" enctype="multipart/form-data" action="http://bermann.phple.com/js/FileButton/FileButton.php">
+
+<fieldset class="fieldsetA">
+	<legend># normal</legend>
+	<div class="nl">
+		<div class="nonl">normal-1 before</div>
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="./images/button-1.gif" /></div>
+		<div class="nonl">after (float: left; ㅋ)</div>
+		<div class="nonlinit"></div>
+	</div>
+	<div class="nl">
+		<div class="nonl">normal-2</div>
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="./images/button-2.gif" /></div>
+		<div class="nonlinit"></div>
+	</div>
+</fieldset>
+
+<fieldset class="fieldsetA">
+	<legend># error</legend>
+	<div class="nl">
+		<div class="nonl">error-1</div>
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="./images/button.gif" /></div>
+		<div class="nonl codes"><code>imagesrc 어트리뷰트의 속성이 잘못된 이미지 주소라 변환하지 않음</code></div>
+		<div class="nonlinit"></div>
+	</div>
+	<div class="nl">
+		<div class="nonl">error-2</div>
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="rue" imagesrc="./images/button-2.gif" /></div>
+		<div class="nonl codes"><code>imageswap=&quot;rue&quot; (true 가 아니므로 변환하지 않음)</code></div>
+		<div class="nonlinit"></div>
+	</div>
+</fieldset>
+
+<fieldset class="fieldsetA">
+	<legend># event</legend>
+	<div class="nl">
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="./images/button-3-off.gif" style="cursor: pointer;" onmouseover="this.parentNode.style.backgroundImage='url(./images/button-3-on.gif)';" onmouseout="this.parentNode.style.backgroundImage='url(./images/button-3-off.gif)';" /></div>
+		<div class="nonl codes"><code>&lt;input type=&quot;file&quot; name=&quot;userfile[]&quot; imageswap=&quot;true&quot; imagesrc=&quot;./images/button-3-off.gif&quot; style=&quot;cursor: pointer;&quot; onmouseover=&quot;this.parentNode.style.backgroundImage='url(./images/button-3-on.gif)';&quot; onmouseout=&quot;this.parentNode.style.backgroundImage='url(./images/button-3-off.gif)';&quot; /&gt;</code></div>
+		<div class="nonlinit"></div>
+	</div>
+</fieldset>
+
+<fieldset class="fieldsetA">
+	<legend># swap before window.onload</legend>
+	<div class="nl">
+		<div class="nonl">
+			<script type="text/javascript">
+				myFileButton.write('<input type="file" name="userfile[]" imageswap="true" imagesrc="./images/button-5.gif" onclick="alert(this.getAttribute(\'imageswap\'))" />');
+			</script>
+		</div>
+		<div class="nonl codes"><code>myFileButton.write('&lt;input type=&quot;file&quot; name=&quot;userfile[]&quot; imageswap=&quot;true&quot; imagesrc=&quot;./images/button-5.gif&quot; onclick=&quot;alert(this.getAttribute(￦'imageswap￦'))&quot; /&gt;');</code></div>
+		<div class="nonlinit"></div>
+	</div>
+</fieldset>
+
+<fieldset class="fieldsetA">
+	<legend># event & swap before window.onload</legend>
+	<div class="nonl"><input type="text" name="filevalue" style="width: 156px; height: 46px; font-size: 46px;" readonly /></div>
+	<div class="nonl">
+		<script type="text/javascript">
+			myFileButton.write('<input type="file" name="userfile[]" imageswap="true" imagesrc="./images/button-4.png" onmousedown="this.parentNode.style.backgroundPosition=\'2px 2px\';" onmouseup="this.parentNode.style.backgroundPosition=\'0px 0px\';" onchange="this.form.filevalue.value=this.value;" />');
+		</script>
+	</div>
+	<div class="nonl codes"><code>myFileButton.write('&lt;input type=&quot;file&quot; name=&quot;userfile[]&quot; imageswap=&quot;true&quot; imagesrc=&quot;./images/button-4.png&quot; onmousedown=&quot;this.parentNode.style.backgroundPosition=￦'2px 2px￦';&quot; onmouseup=&quot;this.parentNode.style.backgroundPosition=￦'0px 0px￦';&quot; onchange=&quot;this.form.filevalue.value=this.value;&quot; /&gt;');</code></div>
+</fieldset>
+
+<fieldset class="fieldsetA">
+	<legend># etc & URLImage load</legend>
+	<div class="nl">
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="http://phpschool.com/gnuboard4/data/cheditor/0901/btn_search.gif" /></div>
+		<div class="nonl">no local image-1</div>
+		<div class="nonlinit"></div>
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="http://phpschool.com/gnuboard4/data/cheditor/0901/btn_pocket_save.gif" /></div>
+		<div class="nonl">no local image-2</div>
+		<div class="nonlinit"></div>
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="http://phpschool.com/gnuboard4/data/cheditor/0901/btn_filesearch.gif" /></div>
+		<div class="nonl">no local image-3</div>
+		<div class="nonlinit"></div>
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="http://phpschool.com/gnuboard4/data/member/do/dobermann.gif" /></div>
+		<div class="nonl">no local image-4</div>
+		<div class="nonlinit"></div>
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="http://phpschool.com/images/search_button.gif" /></div>
+		<div class="nonl">no local image-5</div>
+		<div class="nonlinit"></div>
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="http://phpschool.com/gnuboard4/data/cheditor/0901/aero_glass_button.gif" /></div>
+		<div class="nonl">no local image-6</div>
+		<div class="nonlinit"></div>
+
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="http://phpschool.com/gnuboard4/data/cheditor/0901/sh.jpg" /></div>
+		<div class="nonl">파일버튼을 소희로 대체.... ..?? 누구지?</div>
+		<div class="nonlinit"></div>
+
+		<div class="nonl"><input type="file" name="userfile[]" imageswap="true" imagesrc="http://phpschool.com/gnuboard4/data/cheditor/0901/emily_by_crehe29.jpg" /></div>
+		<div class="nonl">파일버튼을 더 큰이미지로 대체</div>
+		<div class="nonlinit"></div>
+	</div>
+</fieldset>
+
+<input type="submit" value="SUBMIT" style="font-size: 30pt;" onclick="this.disabled=true;" />
+
+</form>
+
+</body>
+</html>

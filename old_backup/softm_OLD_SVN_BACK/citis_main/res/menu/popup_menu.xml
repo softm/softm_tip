@@ -1,0 +1,30 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.entropykorea.gas.gum.MainActivity" >
+
+    <item
+        android:id="@+id/menu_action_1"
+        android:showAsAction="never"
+        android:title="상세보기"/>
+    <item
+        android:id="@+id/menu_action_2"
+        android:showAsAction="never"
+        android:title="검측요청"/>
+    <item
+        android:id="@+id/menu_action_3"
+        android:showAsAction="never"
+        android:title="검측결과"/>
+    <item
+        android:id="@+id/menu_action_4"
+        android:showAsAction="never"
+        android:title="검측결과통보"/>
+    <item
+        android:id="@+id/menu_action_5"
+        android:showAsAction="never"
+        android:title="부적합 보고서"/>
+    <item
+        android:id="@+id/menu_action_6"
+        android:showAsAction="never"
+        android:title="시정조치 보고서"/>
+
+</menu>

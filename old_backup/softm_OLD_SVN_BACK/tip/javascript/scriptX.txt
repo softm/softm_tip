@@ -1,0 +1,97 @@
+<script type="text/javascript">
+// ScriptX 프린트
+function ScriptX_print() {
+ with (ScriptX) {
+  printing.header = ''; // 머릿말 설정
+  printing.footer = ''; // 꼬릿말 설정
+  printing.portrait = true;  // 출력방향 설정 : false 면 가로인쇄, true 면 세로 인쇄
+  printing.leftMargin = 0;  // 왼쪽 여백 설정
+  printing.topMargin = 0;  // 위 여백 설정
+  printing.rightMargin = 0;  // 오른쪽 여백 설정
+  printing.bottomMargin = 0;  // 아래 여백 설정
+
+  // 아래 주석 부분은 프리버젼에선 안되고 라이센스 구매한 버젼만 됨.
+  //printing.SetMarginMeasure(2); // 테두리 여백 사이즈 단위 - 인치
+  //printing.printer = 'HP어쩌구..';  // 프린터 이름
+  //printing.paperSize = 'A4';   // 용지 사이즈
+  //printing.paperSource = 'Manual feed';   // 종이 Feed 방식
+  //printing.collate = true;   //  순서대로 출력하기
+  //printing.copies = 1;   // 인쇄할 매수
+  //printing.SetPageRange(true, 1, 1); // True로 설정하고 1, 3이면 1페이지에서 3페이지까지 출력
+  //printing.Preview(window); // ==> 미리보기
+  printing.Print(true, window); // 출력하기(대화상자 표시여부, 출력할 프레임)
+  // => Print(true) 로 하든 Print(false)로 하든 프리버젼은 무조건 대화상자 표시
+ }
+}
+</script>
+
+<!-- MeadCo ScriptX -->
+<object id="ScriptX" style="display:none"
+  classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814"
+  codebase="/scriptx/smsx.cab#Version=6,3,436,14">
+</object> 
+
+[출처] 웹상에서 scriptX를 이용한 프린트 | 
+
+ 
+
+ 
+
+ 
+
+두번째 설명
+
+ 
+
+웹 페이지 프린트 관련 작업 설명
+리포트 출력 및 브라우져에서 출력을 할경우
+ScriptX(http://www.meadroid.com/)라는 컴포넌트를 사용 합니다.
+
+*사용법
+1. 우선 body 태그 안에 다음의 코드를 추가 합니다.
+<object id=factory style="display:none"
+  classid="clsid:1663ed61-23eb-11d2-b92f-008048fdd814"
+  codebase="http://www.meadroid.com/scriptx/ScriptX.cab#Version=6,1,432,1">
+</object>
+
+2. 다음의 스크립트를 추가 합니다.
+function printPage(){
+ factory.printing.header = "";   //머릿말 설정
+ factory.printing.footer = "";   //꼬릿말 설정
+ factory.printing.portrait = true;  //출력방향 설정: true-가로, false-세로
+ factory.printing.leftMargin = 1.0;  //왼쪽 여백 설정
+ factory.printing.topMargin = 1.0;  //위쪽 여백 설정
+ factory.printing.rightMargin = 1.0;  //오른쪽 여백 설정
+ factory.printing.bottomMargin = 1.0;  //아래쪽 여백 설정
+// factory.printing.printBackground = true; //배경이미지 출력 설정:라이센스 필요
+ factory.printing.Print(false);   //출력하기
+}
+
+3. <body> 시작 태그에 이벤트 삽입 
+<body onload="printPage();">
+
+*장점
+1. 프린트 설정 화면이 안나오고 바로 출력이 된다.
+2. 머릿말과 꼬릿말에 나오는(페이지 타이틀, 페이지 url..) 지저분한 부분이 처리 가능하다
+
+*참고사항
+1. 페이지를 나누고 싶을때 다음의 style 을 사용하여 나눌수 있다.
+   (제공: 천재소녀 이세희 대리)
+
+    <p style="page-break-before:always">
+    설명:프린터중 위의 태그를 만나면 다음 페이지로 넘어간다.
+
+2. 현재 설정된 스타일을 사용할경우 글씨가 흐리거나 테이블 라인이 히미하다.
+   다음의 스타일을 적용한다. 
+   (기존 스타일을 지우고, html 태그의 head 사이에 넣는다, 페이지에 따라 각자 설정바람)
+
+    <style type="text/css">
+    td,body {font:10pt/1.5 돋움; letter-spacing:-0.8px;}
+    </style>
+
+*컴로넌트 설명
+www.meadroid.com 라는 회사의 ScriptX라는 activeX 컴포넌트로 상당히 많은 기능이 있으나
+무료로 사용할수 있는 기능은 header, footer, portrait, leftMargin, topMargin, rightMargin, bottomMargin
+만 사용 가능 하면 그 외의 기능은 라이센스가 필요하다 
+
+[출처] [본문스크랩] ScriptX|

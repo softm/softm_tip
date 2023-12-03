@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:id="@+id/main_viewgroup"	
+	>
+	<!--
+	  <include
+		layout="@layout/mypoint"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+	-->
+<!--  1안 
+     <LinearLayout
+    	android:layout_width="fill_parent"
+    	android:layout_height="wrap_content" 
+    	android:orientation="vertical"
+    	android:background="@drawable/point_saving_bg_test">
+	
+            
+		<ImageButton
+		    android:id="@+id/btn_present"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="22dip"
+		    android:layout_marginRight="10dip"
+		    android:layout_gravity="right"
+		    android:background="@drawable/btn_present_img" />  
+					    				
+		<TextView  
+	 		android:id="@+id/txt_canUsePoint"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="22dip"
+		    android:layout_marginRight="58dip"
+		    android:layout_gravity="right"	
+		    android:numeric="integer"
+		    android:textColor="#FF7200"
+		    android:textSize="20dip" />
+							
+		<TextView  
+	 		android:id="@+id/txt_vanishPoint"
+		    android:layout_width="wrap_content" 
+		    android:layout_height="wrap_content"
+		    android:layout_marginTop="6dip"
+		    android:layout_marginRight="58dip"
+		    android:layout_gravity="right"	
+		    android:textColor="#888888"
+		    android:textSize="16dip" />
+		
+		<LinearLayout
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content" 
+	    	android:layout_marginTop="63dip"
+	    	android:layout_marginLeft="60dip"
+	    	android:orientation="horizontal">
+		    	
+		     <Spinner
+	            android:id="@+id/spn_point_frm_date"
+	            android:layout_width="100dip"
+	            android:layout_height="28dip"
+	            android:layout_marginTop="2dip"
+	            android:layout_gravity="center_vertical"/>
+	
+	         <Spinner android:id="@+id/spn_point_to_date"
+	            android:layout_width="100dip"
+	            android:layout_height="28dip"
+	            android:layout_marginTop="2dip"
+	            android:layout_gravity="center_vertical"/>
+		    <ImageButton
+			    android:id="@+id/btn_present"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginLeft="4dip"
+			    android:layout_gravity="center"
+			    android:background="@drawable/btn_search_img" /> 
+		</LinearLayout>
+
+		<LinearLayout
+	    	android:layout_width="fill_parent"
+	    	android:layout_height="wrap_content" 
+	    	android:orientation="horizontal"
+	    	android:layout_marginTop="50dip"
+	    	android:gravity="center">
+				    
+			<ImageButton
+                android:id="@+id/tab_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/point_saving_tab01_on"
+                android:contentDescription="사용/적립"/>
+            <ImageButton
+                android:id="@+id/tab_02"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/point_saving_tab02_off"
+                android:contentDescription="주유이력"/>
+		</LinearLayout>
+	</LinearLayout>
+	
+      <include
+		layout="@layout/mypointlist"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:layout_weight="1"/>
+      <include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+     -->
+<!--  2안  <ScrollView 
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FFFFFFFF">-->
+		    
+		    
+    <FrameLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+
+		>
+		<ScrollView 
+		    		android:id="@+id/scroll_point"
+				    android:layout_width="fill_parent"
+				    android:layout_height="fill_parent"
+				    android:background="#FFFFFFFF"
+				    android:fillViewport="true">
+		   
+            <LinearLayout
+		    	android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content" 
+		    	android:background="@drawable/point_saving_bg"
+		    	android:orientation="vertical">
+		
+             
+				<ImageButton
+					    android:id="@+id/btn_point_present"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginTop="22dip"
+					    android:layout_marginRight="10dip"
+					    android:layout_gravity="right"
+					    android:background="@drawable/btn_present_img" />  
+					    
+				
+				<TextView  
+			 		android:id="@+id/txt_canUsePoint"
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="22dip"
+				    android:layout_marginRight="58dip"
+				    android:layout_gravity="right"	
+				    android:textColor="#FF7200"
+				    android:textSize="20dip" />
+				
+				
+				<TextView  
+			 		android:id="@+id/txt_vanishPoint"
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="6dip"
+				    android:layout_marginRight="58dip"
+				    android:layout_gravity="right"	
+				    android:textColor="#888888"
+				    android:textSize="16dip" />
+		
+				<LinearLayout
+			    	android:layout_width="fill_parent"
+			    	android:layout_height="wrap_content" 
+			    	android:layout_marginTop="63dip"
+			    	android:layout_marginLeft="54dip"
+			    	android:orientation="horizontal"
+			    	android:id="@+id/help_point_gigan">
+		    	
+				    <TextView  	
+						android:id="@+id/txt_frm_date"
+						android:layout_width="wrap_content" 									
+						android:layout_height="wrap_content"
+						android:background="@drawable/data_picker"
+						android:textColor="#000"
+						
+						android:textSize="12dip"	
+						android:gravity="center_vertical"/>
+				    <TextView  	
+						android:id="@+id/txt_to_date"			
+						android:layout_width="wrap_content" 
+						android:layout_height="wrap_content"
+						android:layout_marginLeft="10dip"
+						android:background="@drawable/data_picker"
+						android:textColor="#000"
+						
+						android:textSize="12dip"	
+						android:gravity="center_vertical"/>
+				     
+				    <ImageButton
+					    android:id="@+id/btn_search"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginLeft="8dip"
+					    android:layout_gravity="center"
+					    android:background="@drawable/btn_search_img" /> 
+				</LinearLayout>
+
+				
+				<LinearLayout
+			    	android:layout_width="fill_parent"
+			    	android:layout_height="wrap_content" 
+			    	android:layout_marginTop="54dip"
+			    	android:orientation="horizontal"
+			    	android:background="@drawable/point_saving_bg_bar" 
+			    	android:gravity="center_vertical|center_horizontal">
+				    
+					<ImageButton
+		                android:id="@+id/tab_01"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                
+		                android:background="@drawable/point_saving_tab01_on"
+		                android:contentDescription="사용/적립"/>
+		            <ImageButton
+		                android:id="@+id/tab_02"
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		              
+		                android:background="@drawable/point_saving_tab02_off"
+		                android:contentDescription="주유이력"/>
+		         </LinearLayout>
+		         
+		          
+		      <ImageView
+			        android:layout_width="fill_parent"
+			        android:layout_height="wrap_content"
+			        android:background="@drawable/point_bar_bg02"
+			        android:contentDescription="리스트 아이템 라인"
+			         android:layout_marginTop="13dip"   
+			    />
+		      
+		     
+		      <FrameLayout
+		
+		android:layout_width = "fill_parent"
+		android:layout_height="fill_parent"
+		android:background="#ffffff"
+		android:layout_weight="1"
+		> 
+			
+		 	 	<ListView
+                    android:id ="@+id/PointListview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                  
+                    android:layout_weight="1"
+                    android:divider="#00000000"
+                    android:dividerHeight="0dip" 
+                    android:fadingEdgeLength="0px" />
+		 	 	
+		 	</FrameLayout>
+		 
+		 	
+		  <!--	    
+		 	
+		 	 	<LinearLayout
+			         android:layout_width="wrap_content"
+			         android:layout_height="wrap_content"
+			         android:orientation="horizontal"
+			         android:layout_gravity="bottom">
+			         <ImageButton
+			             android:id="@+id/btn_more10"
+			             android:layout_width="wrap_content"
+			             android:layout_height="wrap_content"
+			             android:background="@drawable/btn_more10"
+			             android:visibility="visible"/>
+			         <ImageButton
+			             android:id="@+id/btn_top"
+			             android:layout_width="wrap_content"
+			             android:layout_height="wrap_content"
+			             android:background="@drawable/btn_top"
+			             android:visibility="visible"/>
+		     	</LinearLayout>
+				 
+				 -->
+		        
+		 	</LinearLayout>
+		 	
+
+		 </ScrollView>
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+	
+	</FrameLayout>
+	
+		     	
+      
+      <!--  3안 
+      <LinearLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+
+		>
+
+         <ScrollView 
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FFFFFFFF">
+		    
+            <LinearLayout
+		    	android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content" 
+		    	android:background="@drawable/point_saving_bg"
+		    	android:orientation="vertical">
+		
+             
+				<ImageButton
+					    android:id="@+id/btn_point_present"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginTop="22dip"
+					    android:layout_marginRight="10dip"
+					    android:layout_gravity="right"
+					    android:background="@drawable/btn_present_img" />  
+					    
+				
+				<TextView  
+			 		android:id="@+id/txt_canUsePoint"
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="22dip"
+				    android:layout_marginRight="58dip"
+				    android:layout_gravity="right"	
+				    android:text="378,000"
+				    android:textColor="#FF7200"
+				    android:textSize="20dip" />
+				
+				
+				<TextView  
+			 		android:id="@+id/txt_vanishPoint"
+				    android:layout_width="wrap_content" 
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="6dip"
+				    android:layout_marginRight="58dip"
+				    android:layout_gravity="right"	
+				    android:text="448,000"
+				    android:textColor="#888888"
+				    android:textSize="16dip" />
+		
+				<LinearLayout
+			    	android:layout_width="fill_parent"
+			    	android:layout_height="wrap_content" 
+			    	android:layout_marginTop="63dip"
+			    	android:layout_marginLeft="60dip"
+			    	android:orientation="horizontal"
+			    	>
+		    	
+				    
+				    <ImageButton
+					    android:id="@+id/btn_search"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginLeft="4dip"
+					    android:layout_gravity="center"
+					    android:background="@drawable/btn_search_img" /> 
+				</LinearLayout>
+
+				 <include
+		layout="@layout/pointmypointlist"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+		android:layout_weight="1"/>
+		 	</LinearLayout>
+		 </ScrollView>
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+
+	</LinearLayout>
+    
+     -->
+		
+		<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+</LinearLayout>
+</FrameLayout>

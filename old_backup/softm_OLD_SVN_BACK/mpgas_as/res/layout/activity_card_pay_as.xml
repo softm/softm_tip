@@ -1,0 +1,613 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0c2336" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:baselineAligned="false"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/side_bottom_padding"
+        android:paddingLeft="@dimen/side_left_padding"
+        android:paddingRight="@dimen/side_right_padding"
+        android:paddingTop="@dimen/side_top_padding" >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="@dimen/row_one_title_coulmn_padding"
+            android:paddingLeft="@dimen/row_one_title_row_padding" >
+
+            <TextView
+                android:id="@+id/ADDRESS"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:text=""
+                android:textSize="@dimen/fontSize" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TableLayout
+                android:id="@+id/top_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*" >
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0c2336"
+                    android:paddingBottom="1px" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="1px"
+                        android:background="@color/CellHeader"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="결제금액"
+                        android:textSize="@dimen/fontSize" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_span="7"
+                        android:background="#3a4763"
+                        android:paddingRight="@dimen/row_textview_right_padding" >
+
+                        <TextView
+                            android:id="@+id/l2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text="원"
+                            android:textSize="@dimen/fontSize" />
+
+                        <EditText
+                            android:id="@+id/et_pay"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                            android:layout_marginLeft="@dimen/row_textview_left_padding"
+                            android:layout_marginRight="@dimen/row_textview_right_padding"
+                            android:layout_marginTop="@dimen/row_textview_top_padding"
+                            android:layout_toLeftOf="@id/l2"
+                            android:background="@drawable/input"
+                            android:gravity="center_vertical"
+                            android:inputType="number"
+                            android:nextFocusDown="@+id/et_card"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textSize="@dimen/fontSize" />
+                    </RelativeLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0c2336"
+                    android:paddingBottom="1px" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="1px"
+                        android:background="@color/CellHeader"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="카드번호"
+                        android:textSize="@dimen/fontSize" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_span="7"
+                        android:background="#3a4763"
+                        android:paddingRight="@dimen/row_textview_right_padding" >
+
+                        <TextView
+                            android:id="@+id/l3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text="원"
+                            android:textSize="@dimen/fontSize"
+                            android:visibility="invisible" />
+
+                        <EditText
+                            android:id="@+id/et_card"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                            android:layout_marginLeft="@dimen/row_textview_left_padding"
+                            android:layout_marginRight="@dimen/row_textview_right_padding"
+                            android:layout_marginTop="@dimen/row_textview_top_padding"
+                            android:layout_toLeftOf="@id/l3"
+                            android:background="@drawable/input"
+                            android:gravity="center_vertical"
+                            android:inputType="number"
+                            android:maxLength="17"
+                            android:nextFocusDown="@+id/et_mm"
+                            android:numeric="integer"
+                            android:text=""
+                            android:textSize="@dimen/fontSize" />
+                    </RelativeLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0c2336"
+                    android:paddingBottom="1px" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="1px"
+                        android:background="@color/CellHeader"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="유효기간"
+                        android:textSize="@dimen/fontSize" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_span="7"
+                        android:background="#3a4763"
+                        android:baselineAligned="true"
+                        android:gravity="center_vertical" >
+
+                        <EditText
+                            android:id="@+id/et_mm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                            android:layout_marginLeft="@dimen/row_textview_left_padding"
+                            android:layout_marginRight="@dimen/row_textview_right_padding"
+                            android:layout_marginTop="@dimen/row_textview_top_padding"
+                            android:background="@drawable/input"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:nextFocusDown="@+id/et_yy"
+                            android:singleLine="true"
+                            android:textSize="@dimen/fontSize" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:text="/" />
+
+                        <EditText
+                            android:id="@+id/et_yy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                            android:layout_marginLeft="@dimen/row_textview_left_padding"
+                            android:layout_marginRight="@dimen/row_textview_right_padding"
+                            android:layout_marginTop="@dimen/row_textview_top_padding"
+                            android:background="@drawable/input"
+                            android:gravity="center"
+                            android:inputType="number"
+                            android:maxLength="2"
+                            android:nextFocusDown="@+id/et_card_month"
+                            android:singleLine="true"
+                            android:textSize="@dimen/fontSize" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#3a4763"
+                            android:gravity="center_vertical"
+                            android:paddingRight="@dimen/row_textview_right_padding"
+                            android:singleLine="true"
+                            android:text="Month/Year "
+                            android:textSize="@dimen/fontSize" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0c2336"
+                    android:paddingBottom="1px" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/CellHeader"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="할부기간"
+                        android:textSize="@dimen/fontSize" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_span="7"
+                        android:background="#3a4763" >
+
+                        <TextView
+                            android:id="@+id/l4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center_vertical"
+                            android:paddingRight="@dimen/row_textview_right_padding"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textSize="@dimen/fontSize" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:baselineAligned="true"
+                            android:gravity="center_vertical" >
+
+                            <EditText
+                                android:id="@+id/et_card_month"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerVertical="true"
+                                android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                                android:layout_marginLeft="@dimen/row_textview_left_padding"
+                                android:layout_marginRight="@dimen/row_textview_right_padding"
+                                android:layout_marginTop="@dimen/row_textview_top_padding"
+                                android:layout_toLeftOf="@id/l4"
+                                android:background="@drawable/input"
+                                android:gravity="center"
+                                android:inputType="number"
+                                android:maxLength="2"
+                                android:singleLine="true"
+                                android:text=""
+                                android:textSize="@dimen/fontSize" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:gravity="center_vertical"
+                                android:singleLine="true"
+                                android:text="개월"
+                                android:textSize="@dimen/fontSize" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </TableRow>
+            </TableLayout>
+
+            <TableLayout
+                android:id="@+id/cacel_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="1px"
+                android:stretchColumns="*"
+                android:visibility="gone" >
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0c2336"
+                    android:paddingBottom="1px" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="1px"
+                        android:background="@color/CellHeader"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="결제금액"
+                        android:textSize="@dimen/fontSize" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_span="7"
+                        android:background="#3a4763"
+                        android:paddingRight="@dimen/row_textview_right_padding" >
+
+                        <TextView
+                            android:id="@+id/tv_pay"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                            android:layout_marginLeft="@dimen/row_textview_left_padding"
+                            android:layout_marginRight="@dimen/row_textview_right_padding"
+                            android:layout_marginTop="@dimen/row_textview_top_padding"
+                            android:background="#3a4763"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textSize="@dimen/fontSize" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text="원"
+                            android:textSize="@dimen/fontSize" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0c2336"
+                    android:paddingBottom="1px" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="1px"
+                        android:background="@color/CellHeader"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="카드번호"
+                        android:textSize="@dimen/fontSize" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_span="7"
+                        android:background="#3a4763"
+                        android:paddingRight="@dimen/row_textview_right_padding" >
+
+                        <TextView
+                            android:id="@+id/tv_l3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text="원"
+                            android:textSize="@dimen/fontSize"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:id="@+id/tv_card"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerVertical="true"
+                            android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                            android:layout_marginLeft="@dimen/row_textview_left_padding"
+                            android:layout_marginRight="@dimen/row_textview_right_padding"
+                            android:layout_marginTop="@dimen/row_textview_top_padding"
+                            android:layout_toLeftOf="@id/tv_l3"
+                            android:background="#3a4763"
+                            android:gravity="center_vertical"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textSize="@dimen/fontSize" />
+                    </RelativeLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0c2336"
+                    android:paddingBottom="1px" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginRight="1px"
+                        android:background="@color/CellHeader"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="유효기간"
+                        android:textSize="@dimen/fontSize" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_span="7"
+                        android:background="#3a4763"
+                        android:baselineAligned="true"
+                        android:gravity="center_vertical" >
+
+                        <TextView
+                            android:id="@+id/tv_mm"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                            android:layout_marginLeft="@dimen/row_textview_left_padding"
+                            android:layout_marginTop="@dimen/row_textview_top_padding"
+                            android:background="#3a4763"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:textSize="@dimen/fontSize" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="2dp"
+                            android:layout_marginRight="2dp"
+                            android:text="/"
+                            android:textSize="@dimen/fontSize" />
+
+                        <TextView
+                            android:id="@+id/tv_yy"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                            android:layout_marginRight="@dimen/row_textview_right_padding"
+                            android:layout_marginTop="@dimen/row_textview_top_padding"
+                            android:background="#3a4763"
+                            android:gravity="center"
+                            android:singleLine="true"
+                            android:textSize="@dimen/fontSize" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="#3a4763"
+                            android:gravity="center_vertical"
+                            android:paddingRight="@dimen/row_textview_right_padding"
+                            android:singleLine="true"
+                            android:text="Month/Year "
+                            android:textSize="@dimen/fontSize" />
+                    </LinearLayout>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#0c2336"
+                    android:paddingBottom="1px" >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@color/CellHeader"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="할부기간"
+                        android:textSize="@dimen/fontSize" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_span="7"
+                        android:background="#3a4763" >
+
+                        <TextView
+                            android:id="@+id/tv_l4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_alignParentRight="true"
+                            android:gravity="center_vertical"
+                            android:paddingRight="@dimen/row_textview_right_padding"
+                            android:singleLine="true"
+                            android:text=""
+                            android:textSize="@dimen/fontSize" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:baselineAligned="true"
+                            android:gravity="center_vertical" >
+
+                            <TextView
+                                android:id="@+id/tv_card_month"
+                                android:layout_width="wrap_content"
+                                android:layout_height="match_parent"
+                                android:layout_centerVertical="true"
+                                android:layout_marginBottom="@dimen/row_textview_bottom_padding"
+                                android:layout_marginLeft="@dimen/row_textview_left_padding"
+                                android:layout_marginRight="@dimen/row_textview_right_padding"
+                                android:layout_marginTop="@dimen/row_textview_top_padding"
+                                android:layout_toLeftOf="@id/tv_l4"
+                                android:background="#3a4763"
+                                android:gravity="center"
+                                android:singleLine="true"
+                                android:text=""
+                                android:textSize="@dimen/fontSize" />
+                        </LinearLayout>
+                    </RelativeLayout>
+                </TableRow>
+            </TableLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/row_rine_row_padding"
+            android:layout_marginRight="@dimen/row_rine_row_padding"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="서명"
+                android:textSize="@dimen/fontSize"
+                android:textStyle="bold" />
+
+            <com.entropykorea.gas.as.common.object.SignView
+                android:id="@+id/signview"
+                android:layout_width="360dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:background="@android:color/white"
+                android:paddingLeft="@dimen/row_textview_right_padding"
+                android:paddingRight="@dimen/row_textview_right_padding" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginBottom="27dp"
+                android:layout_marginTop="20dp"
+                android:background="#3a4763" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="3" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center" >
+
+                    <ImageButton
+                        android:id="@+id/btn_close"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/b_close" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/btn_delete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/b_delete"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/b_commit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/b_payment_img" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,3 @@
+@CHARSET "UTF-8";
+
+#tbl_list tbody td.col3 {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}

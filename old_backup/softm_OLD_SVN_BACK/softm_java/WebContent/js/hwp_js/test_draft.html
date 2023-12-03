@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+				"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ko" lang="ko">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=euc-kr" />
+<meta http-equiv="Expires" content="Mon, 06 Jan 1990 00:00:01 GMT"> 
+<meta http-equiv="Expires" content="-1"> 
+<meta http-equiv="Pragma" content="no-cache"> 
+<meta http-equiv="Cache-Control" content="no-cache"> 
+<meta name="Date" content="2010.11.22" />
+<meta name="Filename" content="draft.html" />
+<meta name="Description" content="한글기안기 Sample Page" />
+<meta name="Keywords" content="한글기안기" />
+<title>한글기안기</title>
+<style type="text/css">
+body {
+	width: '100%';
+	height: '100%';	
+}
+</style>
+<script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="./js/hwpctrl.js"></script>
+<script type="text/javascript">
+$(window).load(function () {
+	//현제 브라우저 크기에 맞게 기안기 크기를 변경한다.
+	resizeHwpCtrl(HwpCtrl);	
+
+	//브라우저를 resize하는 경우 해당 크기에 맞게 기안기 크기를 변경한다.
+	$(window).bind('resize', function() {
+		resizeHwpCtrl(HwpCtrl);
+	});	
+	
+	/**
+	 * 한글기안기는 기본적으로 클라이언트에 파일 존재해야 한다.
+	 * 각 시스템에서는 temp폴더를 지정하고 basePath에 그 해당 temp 디렉토리 값을 넣는다.
+	 * temp에는 서버로 부터 파일을 전송받는 임시폴더이다.
+	 * 모든 작업 후 SaveAs하여 다시 서버로 파일을 업로드하면 된다.
+	 * temp폴더는 Vista의 경우 Program Files 폴더 접근이 계정마다 다르며, 보호모드화 되기 때문에 C:\ 밑으로 구성하기를 권장하며,
+	 * 아는 경우는 별도의 ActiveX를 통해 Window 계정별로 Home 디렉토리 가져와서 그곳에 temp폴더를 지정하도록 한다.
+	 */
+	
+	//객체를 생성하면서 필요한 정보를 파라미터로 넘긴다
+
+	
+	var file_name = "test"; //오픈할 파일이름
+	var field_name = "test_field"; //쉡 이름
+
+	var hwpObj = new HwpCtrlObject(
+		{
+			hwpCtrl: HwpCtrl, //한글기안기 Object
+			basePath: "C:/Documents and Settings/SNT/바탕 화면/한글기안기/docs/", //한글문서 기본 경로
+			isShowToolBar: true //툴바보기여부
+		}
+	);
+
+	hwpObj.OpenDoc(file_name); //문서를 열람한다
+
+
+	/*
+	편집모드
+	0 : 읽기전용
+	1 : 일반편집모드
+	2 : 양식모드(양식 사용자 모드): Cell과 누름틀 중 양식 모드에서 편집 가능한 속성을 가진 것만 편집 가능
+	*/
+	hwpObj.hwpCtrl.EditMode = 1;
+	//hwpObj.hwpCtrl.EditMode = 2;
+	//hwpObj.hwpCtrl.EditMode = 3;
+	
+	if(hwpObj.hwpCtrl.FieldExist(field_name)){//명시된 쉘이 존재하는지 확인
+		alert(field_name + " 쉘이 문서상에 존재합니다");
+	}else{
+		alert(field_name + " 쉘이 문서상에 존재하지 않습니다");
+	}
+	hwpObj.hwpCtrl.PutFieldText(field_name, "test 입니다"); //명시된 쉘에 문자열 출력
+	
+	
+	/**
+	 * 해당 필드 구성하기
+	 * 한글 양식에 필드를 구성하기 위해서는 표의 셀의 경우, 해당 셀에서 Ctrl+N, K나 표셀 속성 메뉴 클릭 하여, 셀 탭의 필드이름을 정한다.
+	 * 누름틀인 경우는 Ctrl+K, E나 문서마당정보를 메뉴를 사용하여 누름틀의 필드이름을 정한다.
+	 * 정한 필드명은 PutFieldText나 GetFieldText, InsertPicture, MovePos 등 각 필드에 값을 넣고 가져올때 사용되어 진다.
+	 */
+	
+	//기타 한글 API를 사용할 경우.
+	/* 자주 사용되는 API
+	hwpObj.SaveAs("saveas"); //다른이름으로 저장하기 샘플
+	hwpObj.hwpCtrl.createAction("Erase").Run(); //해당 위치의 필드 삭제
+	hwpObj.hwpCtrl.MoveToField(field_name, true, true, false); //해당 위치의 필드로 이동
+	hwpObj.InsertPicture(field_name, "C:/image.gif", true, 3); //명시된 쉘에 이미지 출력
+	hwpObj.hwpCtrl.MovePos(2); //문서 시작으로 위치변경
+	hwpObj.hwpCtrl.GetFieldText(field_name); //해당 필드의 값을 가져온다
+	hwpObj.hwpCtrl.Clear(1);
+	*/
+});
+
+function resizeHwpCtrl(pHwpCtrl) {	
+	pHwpCtrl.width = $("body").width() - 5;
+	pHwpCtrl.height = $("body").height();
+}
+</script>
+</head>
+<body>
+<object classid="CLSID:BD9C32DE-3155-4691-8972-097D53B10052"
+			id="HwpCtrl"
+			align="center"
+			width="1024"
+			height="580">
+</object>
+
+<script type="text/javascript" for="HwpCtrl" event="NotifyMessage(msg, wParam, lParam)" >
+
+if(msg == "FieldClickHereClicked") {
+	var fieldName = HwpCtrl.GetCurFieldName(2);
+	if(fieldName != null && fieldName != "" && fieldName == "seal") {
+		alert(fieldName);
+		HwpCtrl.MovePos(2);
+	}
+	
+}
+
+</script>
+
+</body>
+</html>

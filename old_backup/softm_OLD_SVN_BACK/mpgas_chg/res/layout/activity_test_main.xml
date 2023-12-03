@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@color/mainBgColor" 
+    >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            >
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:text="Prgress Test~" />
+
+            <ImageButton
+                android:id="@+id/btn_camera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+				android:src="@drawable/camera"  
+				style="?android:attr/borderlessButtonStyle"               
+                 />
+
+            <Button
+                android:id="@+id/btn_pic_load"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:text="사진로드" />
+
+            <Button
+                android:id="@+id/btn_pic_del"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:text="사진삭제" />
+
+            <Button
+                android:id="@+id/btn_db_drop"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:text="디비삭제" />
+
+            <ImageView
+                android:id="@+id/img_pic"
+                android:layout_width="59dp"
+                android:layout_height="wrap_content"
+                android:maxHeight="70px"
+                android:maxWidth="70px"
+                android:padding="10px"
+                />
+
+            <Spinner
+                android:id="@+id/spn_cd1"
+                android:layout_width="240dp"
+                android:layout_height="62dp"
+                android:background="@drawable/dropdown_img" />
+
+
+            <Button
+                android:id="@+id/btn_spn_selected"
+                android:layout_width="77dp"
+                android:layout_height="wrap_content"
+                android:text="SpinnerCd.getSelected()" />
+            
+        </LinearLayout>
+<!-- 
+ -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginLeft="@dimen/mainMarginLeft" 
+            android:layout_marginRight="@dimen/mainMarginRight" 
+            android:layout_marginBottom="@dimen/mainMarginBottom" 
+            >
+<!-- 
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" 
+                	    android:fillViewport="true" 
+			>
+  			 android:divider="#00000000"
+ -->
+				 <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="@dimen/listHeight"
+				    android:orientation="horizontal"
+				    android:id="@+id/list_header"
+				>
+				    <TextView android:id="@+id/tv_h_cd"
+				              android:layout_width="fill_parent"
+				              android:layout_height="fill_parent"
+				              android:textSize="@dimen/listFontSize"
+				              android:paddingBottom="0dp"
+				              android:layout_weight="1"
+				              android:gravity="center_vertical|center"
+				              android:text="코드"
+				              />
+				    
+				    <com.entropykorea.gas.lib.SpinnerCd
+				        android:id="@+id/spn_cd2"
+				        android:layout_width="82dp"
+				        android:layout_height="50dp" />
+
+				    <TextView android:id="@+id/tv_h_cd_nm"
+				              android:layout_width="fill_parent"
+				              android:layout_height="fill_parent"
+				              android:textSize="@dimen/listFontSize"
+				              android:paddingBottom="0dp"
+				              android:layout_weight="1"  
+				              android:gravity="center_vertical|center"
+				              android:text="코드명"
+				               />
+				</LinearLayout>
+
+  				<com.entropykorea.gas.lib.ListViewMP
+  				    android:id="@+id/listView1"
+  				    android:layout_width="match_parent"
+  				    android:layout_height="match_parent"
+					android:divider="@color/listDivColor"
+					android:dividerHeight="@dimen/listDividerHeight"
+  				    android:layout_weight="1"
+  				    android:layout_below="@+id/list_header"
+  				    android:listSelector="@drawable/listview_item_selector" 
+  				    android:drawSelectorOnTop="true"
+  				    />
+<!--
+                <kr.co.mokpocitygas.chg.ListViewMP
+                    android:id="@+id/listView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" >
+                </kr.co.mokpocitygas.chg.ListViewMP>
+            </ScrollView>
+  -->
+        </RelativeLayout>	    
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBgColor"
+    android:orientation="vertical"
+    tools:context=".activity.TestReqDocActivity" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="top|center_vertical"
+        >
+
+	    <LinearLayout
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginBottom="@dimen/mainMarginBottom"
+	        android:layout_marginLeft="@dimen/mainMarginLeft"
+	        android:layout_marginRight="@dimen/mainMarginRight"
+	        android:layout_marginTop="@dimen/mainMarginTop"
+	        android:gravity="top|center_vertical"
+	        android:orientation="vertical"
+	        android:weightSum="1" >
+	
+            <ScrollView
+                android:id="@+id/scrollView1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+             	android:fillViewport="true" 
+             	android:layout_weight="0.9"
+			>
+			
+	<TableLayout
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:layout_gravity="center|top"
+	    android:orientation="horizontal" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:background="@color/header2"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/headerHeight"
+            android:layout_marginBottom="1px"
+             >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/MP.th"                
+                android:text="검측요청서"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3.5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                    android:paddingLeft="@dimen/headerPaddingLeft"
+                    android:paddingRight="@dimen/headerPaddingRight"	                 
+                 >
+
+                <EditText
+                    android:id="@+id/et_ispn_rqsts_no"
+        style="@style/MP.edittext"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_vertical"
+        android:ellipsize="end"
+        android:maxLength="20"
+        android:singleLine="true"
+        android:text=""
+        android:textStyle="normal"
+		android:digits="abcdefghijklmnopqrstuvwxyz1234567890 "        
+        android:editable="false"
+        android:enabled="true"   
+                    android:textSize="17sp"
+                    >
+                </EditText>
+            </LinearLayout>
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:background="@color/header2"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/headerHeight"
+            android:layout_marginBottom="1px"
+             >
+
+            <TextView
+                style="@style/MP.th"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="보고서번호" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3.5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/headerPaddingLeft"
+                android:paddingRight="@dimen/headerPaddingRight" >
+
+                <EditText
+                    android:id="@+id/et_rprt_no"
+                    style="@style/MP.edittext"
+                    android:layout_width="match_parent"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="1"
+                    android:digits="abcdefghijklmnopqrstuvwxyz1234567890 "
+                    android:editable="false"
+                    android:ellipsize="end"
+                    android:enabled="true"
+                    android:maxLength="20"
+                    android:singleLine="true"
+                    android:textSize="17sp"
+                    android:textStyle="normal" >
+
+                </EditText>
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:background="@color/header2"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/headerHeight"
+            android:layout_marginBottom="1px"
+             >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/MP.th"                
+                android:text="공종"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/headerPaddingLeft"
+                android:paddingRight="@dimen/headerPaddingRight" >
+
+                <EditText
+                    android:id="@+id/et_dtlcnsttype_nm"
+                    style="@style/MP.edittext"
+                    android:layout_width="145dp"
+                    android:layout_gravity="center_vertical"
+                    android:layout_weight="0.83"
+                    android:editable="false"
+                    android:ellipsize="end"
+                    android:enabled="true"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:singleLine="true"
+                    android:text=""
+                    android:textStyle="normal" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/MP.th"
+                android:text="발행일자"
+		 />
+            
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/headerPaddingLeft"
+                android:paddingRight="@dimen/headerPaddingRight"  
+                >
+
+				<EditText
+				    android:id="@+id/et_iss_dt"
+				    style="@style/MP.edittext"
+				    android:layout_width="match_parent"
+				    android:layout_gravity="center_vertical"
+				    android:editable="false"
+				    android:ellipsize="end"
+				    android:enabled="true"
+				    android:inputType="text"
+				    android:maxLength="10"
+				    android:singleLine="true"
+				    android:text=""
+				    android:textStyle="normal"
+				    />
+
+            </LinearLayout>
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:background="@color/header2"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/headerHeight"
+            android:layout_marginBottom="1px"
+             >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/MP.th"                
+                android:text="제목"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/headerPaddingLeft"
+                android:paddingRight="@dimen/headerPaddingRight"                 
+                 >
+
+				<EditText
+				    android:id="@+id/et_title"
+				    style="@style/MP.edittext"
+				    android:layout_width="match_parent"
+				    android:layout_gravity="center_vertical"
+				    android:editable="false"
+				    android:ellipsize="end"
+				    android:enabled="true"
+				    android:inputType="text"
+				    android:maxLength="10"
+				    android:singleLine="true"
+				    android:text=""
+				    android:textStyle="normal" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/MP.th"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="조치기한" />
+            
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/headerPaddingLeft"
+                android:paddingRight="@dimen/headerPaddingRight"  
+                >
+
+				<EditText
+				    android:id="@+id/et_act_dl"
+				    style="@style/MP.edittext"
+				    android:layout_width="match_parent"
+				    android:layout_gravity="center_vertical"
+				    android:editable="false"
+				    android:ellipsize="end"
+				    android:enabled="true"
+				    android:inputType="text"
+				    android:maxLength="10"
+				    android:singleLine="true"
+				    android:text=""
+				    android:textStyle="normal" />
+
+            </LinearLayout>
+        </TableRow>        
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:background="@color/header2"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/headerHeight"
+            android:layout_marginBottom="1px"
+             >
+
+            <TextView
+                style="@style/MP.th"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="부적합내용" />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow6"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="1px"
+            android:background="@color/header2"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/headerHeight" >
+            
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="150dp"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="3.5"
+                android:clickable="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/headerPaddingLeft"
+                android:paddingRight="@dimen/headerPaddingRight" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingLeft="@dimen/headerPaddingLeft"
+                android:paddingRight="@dimen/headerPaddingRight" >
+
+                <ImageView
+                    android:id="@+id/img_ncr_img_url"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@android:drawable/ic_menu_gallery" />
+
+            </LinearLayout>						
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:paddingLeft="@dimen/headerPaddingLeft"
+                android:paddingRight="@dimen/headerPaddingRight" >
+
+                <EditText
+                    android:id="@+id/et_ncr_dtls"
+                    style="@style/MP.edittext"
+                    android:layout_width="match_parent"
+                    android:layout_height="140dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:ems="10"
+                    android:lines="5"
+                    android:maxLength="400"
+                    android:singleLine="false"
+                    android:textSize="17sp"
+                    android:textStyle="normal"
+                    android:gravity="top" 
+                    />
+
+            </LinearLayout>				
+            </LinearLayout>
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/tableRow7"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="1px"
+            android:background="@color/header2"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/headerHeight" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                style="@style/MP.th"
+                android:text="조치결과"
+		 />
+            
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="3.5"
+                android:clickable="false"
+                android:gravity="center|left"
+                android:orientation="horizontal"
+                    android:paddingLeft="@dimen/headerPaddingLeft"
+                    android:paddingRight="@dimen/headerPaddingRight"	                
+                 >
+					
+		<CheckBox
+		    android:id="@+id/chk_act_rslt_1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+		 					<TextView
+	        			android:id="@+id/tv_act_rslt_1"	               
+		                android:layout_width="wrap_content"
+		                android:layout_height="match_parent"
+		                android:text="재작업"
+	                	style="@style/MP.th.td"                
+		                />
+					
+		<CheckBox
+		    android:id="@+id/chk_act_rslt_2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+		 					<TextView
+	        			android:id="@+id/tv_act_rslt_2"	               
+		                android:layout_width="wrap_content"
+		                android:layout_height="match_parent"
+		                android:text="폐기"
+	                	style="@style/MP.th.td"                
+		                />
+		 					
+		 					
+		<CheckBox
+		    android:id="@+id/chk_act_rslt_3"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+		 					<TextView
+	        			android:id="@+id/tv_act_rslt_3"	               
+		                android:layout_width="wrap_content"
+		                android:layout_height="match_parent"
+		                android:text="수리"
+	                	style="@style/MP.th.td"                
+		                />		 					
+		<CheckBox
+		    android:id="@+id/chk_act_rslt_4"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+		 					<TextView
+	        			android:id="@+id/tv_act_rslt_4"	               
+		                android:layout_width="wrap_content"
+		                android:layout_height="match_parent"
+		                android:text="특채"
+	                	style="@style/MP.th.td"                
+		                />
+		 					
+		<CheckBox
+		    android:id="@+id/chk_act_rslt_5"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+		 					<TextView
+	        			android:id="@+id/tv_act_rslt_5"	               
+		                android:layout_width="wrap_content"
+		                android:layout_height="match_parent"
+		                android:text="기타"
+	                	style="@style/MP.th.td"                
+		                />
+					     </LinearLayout>
+
+                        
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/tableRow8"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="1px"
+            android:background="@color/header2"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/headerHeight" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="150dp"
+                    android:layout_weight="3.5"
+                    android:clickable="false"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingLeft="@dimen/headerPaddingLeft"
+                    android:paddingRight="@dimen/headerPaddingRight" >
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/headerPaddingLeft"
+                        android:paddingRight="@dimen/headerPaddingRight" >
+
+                        <ImageView
+                            android:id="@+id/img_act_rslt_img_url"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                    		android:src="@android:drawable/ic_menu_gallery" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingLeft="@dimen/headerPaddingLeft"
+                        android:paddingRight="@dimen/headerPaddingRight" >
+
+                        <EditText
+                            android:id="@+id/et_act_dtls"
+                            style="@style/MP.edittext"
+                            android:layout_width="match_parent"
+                            android:layout_height="140dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:ems="10"
+                            android:lines="5"
+                            android:maxLength="400"
+                            android:singleLine="false"
+                            android:textSize="17sp"
+                            android:textStyle="normal"
+                    		android:gravity="top"                             
+                             />
+                    </LinearLayout>
+                </LinearLayout>
+
+        </TableRow>
+        
+        <TableRow
+            android:id="@+id/tableRow9"
+            android:layout_width="wrap_content"
+            android:layout_marginBottom="1px"
+            android:background="@color/header2"
+            android:gravity="center_vertical"
+            android:minHeight="@dimen/headerHeight" >
+
+            <TextView
+                style="@style/MP.th"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="조치책임자" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.8"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                    android:paddingLeft="@dimen/headerPaddingLeft"
+                    android:paddingRight="@dimen/headerPaddingRight"	                 
+                 >
+
+				<TextView
+				    android:id="@+id/tv_act_rspn"
+				    style="@style/MP.th.td"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent"
+				    android:text="-" />
+
+            </LinearLayout>
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/MP.th"                
+                android:text="현장소장"
+                />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.7"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                    android:paddingLeft="@dimen/headerPaddingLeft"
+                    android:paddingRight="@dimen/headerPaddingRight"	                 
+                 >
+
+				<TextView
+				    android:id="@+id/tv_site_mngr"
+				    style="@style/MP.th.td"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent"
+				    android:text="-" />
+
+            </LinearLayout>
+            
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.5"
+                style="@style/MP.th"
+                android:text="조치결과확인"
+		 />
+            
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal" >
+					
+		<CheckBox
+		    android:id="@+id/chk_act_rslt_chk_t"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+		 					<TextView
+	        			android:id="@+id/tv_t"	               
+		                android:layout_width="wrap_content"
+		                android:layout_height="match_parent"
+		                android:text="적합"
+	                	style="@style/MP.th.td"                
+		                />
+					
+		<CheckBox
+		    android:id="@+id/chk_act_rslt_chk_f"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_gravity="center_vertical|center_horizontal|center"
+		    android:gravity="center_vertical|center_horizontal|center"
+		    android:text="" />
+		 					<TextView
+	        			android:id="@+id/tv_f"	               
+		                android:layout_width="wrap_content"
+		                android:layout_height="match_parent"
+		                android:text="부적합"
+	                	style="@style/MP.th.td"                
+		                />
+		    
+            </LinearLayout>
+        </TableRow>
+        
+<TableRow
+    android:id="@+id/tableRow10"
+    android:layout_width="wrap_content"
+    android:layout_marginBottom="1px"
+    android:background="@color/header2"
+    android:gravity="center_vertical"
+    android:minHeight="@dimen/headerHeight" >
+
+            <TextView
+                style="@style/MP.th"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="담당감리원" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                    android:paddingLeft="@dimen/headerPaddingLeft"
+                    android:paddingRight="@dimen/headerPaddingRight"	                 
+                 >
+
+				<TextView
+				    android:id="@+id/tv_chrg_sprv"
+				    style="@style/MP.th.td"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent"
+				    android:text="-" />
+
+            </LinearLayout>
+
+            <TextView
+                style="@style/MP.th"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:text="책임감리원" />
+            
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_weight="1"
+                android:clickable="false"
+                android:gravity="center"
+                android:orientation="horizontal" >
+
+				<TextView
+				    android:id="@+id/tv_rspn_sprv"
+				    style="@style/MP.th.td"
+				    android:layout_width="match_parent"
+				    android:layout_height="match_parent"
+				    android:text="-" />
+
+            </LinearLayout>
+        </TableRow>        
+        </TableLayout>
+            </ScrollView>
+        
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right|top"
+                android:orientation="horizontal"
+                android:layout_marginTop="5dp" 
+                >
+			<Button
+		    android:id="@+id/btn_save"
+		    style="@style/MP.button2"
+		    android:text="임시저장"
+		    android:layout_gravity="center_vertical"
+		    android:visibility="gone"
+		    />
+			<Button
+		    android:id="@+id/btn_end"
+		    style="@style/MP.button2"
+		    android:text="확정"
+		    android:layout_gravity="center_vertical"
+		    android:layout_marginLeft="5dp"
+		    android:visibility="gone"
+		    />
+            </LinearLayout>
+	</LinearLayout>
+	</FrameLayout>
+</LinearLayout>

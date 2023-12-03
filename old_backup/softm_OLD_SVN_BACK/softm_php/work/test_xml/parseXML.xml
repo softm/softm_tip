@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<department>
+  <personnel title="인사부">
+    <staff>홍길동</staff>
+    <staff>수상한</staff>
+    <staff>작은별</staff>
+  </personnel>
+  <general title="총부무">
+    <staff>김병장</staff>
+    <staff>김상병</staff>
+    <staff>김일병</staff>
+  </general>
+</department>

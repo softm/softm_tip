@@ -1,0 +1,150 @@
+<html>
+<head>
+<meta name="keywords" content="web,web application,ajax,progress bar, percentage bar,Resources,Free,web design "/>
+<meta name="description" content="Only the Best and Free Resources for Web Application Developers"/>
+<title>Javascript Progress / Percentage Bar with CSS by WebAppers</title> 
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+<link rel=stylesheet href='./progressbar_sample.css' type='text/css'>
+
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function $() {
+    var elements = new Array();
+
+    for (var i = 0; i < arguments.length; i++) {
+
+      var element = arguments[i];
+
+      if (typeof element == 'string') {
+        if (document.getElementById) {
+          element = document.getElementById(element);
+        } else if (document.all) {
+          element = document.all[element];
+        }
+      }
+      elements.push(element);
+    }
+    if (arguments.length == 1 && elements.length > 0) {
+      return elements[0];
+    } else {
+      return elements;
+    }
+}
+
+var UI = {
+/* using
+<span id=ttt style="position:absolute;top:100px;left:100px">
+<script>ProgressBar.display ('element1',10.5,1);</script>
+</span>
+*/
+    /* WebAppers Progress Bar, version 0.2
+    * (c) 2007 Ray Cheung
+    *
+    * WebAppers Progress Bar is freely distributable under the terms of an Creative Commons license.
+    * For details, see the WebAppers web site: http://wwww.Webappers.com/
+    *
+    /*--------------------------------------------------------------------------*/
+    ProgressBar:{
+        initial:-120,
+        imageWidth:240,
+        eachPercent:0,
+        setText:function(id, percent) {
+            $(id+'Text').innerHTML = percent+"%";
+        },
+        display:function( id, percentage,color ) {
+            if (typeof color == "undefined") {
+            color = "1";
+            }
+            this.eachPercent = (this.imageWidth/2)/100;
+            var percentageWidth = this.eachPercent * percentage;
+            var actualWidth = this.initial + percentageWidth   ;
+
+            document.write('<img id="'+id+'" src="./images/percentImage.png" alt="'+percentage+'%" class="percentImage'+color+'" style="background-position: '+actualWidth+'px 0pt;"/> <span id="'+id+'Text">'+percentage+'%</span>');
+        },
+        emptyProgress:function(id) {
+            var newProgress = this.initial+'px';
+            $(id).style.backgroundPosition=newProgress+' 0';
+            this.setText(id,'0');
+        },
+        getProgress:function(id) {
+            var nowWidth = $(id).style.backgroundPosition.split("px");
+            return (Math.floor(100+(nowWidth[0]/this.eachPercent))+'%');
+        },
+        setProgress:function(id, percentage) {
+            var percentageWidth = this.eachPercent * percentage;
+            var newProgress = eval(this.initial)+eval(percentageWidth)+'px';
+            $(id).style.backgroundPosition=newProgress+' 0';
+            this.setText(id,percentage);
+        },
+        plus:function(id, percentage ) {
+            var nowWidth = $(id).style.backgroundPosition.split("px");
+            var nowPercent = Math.floor(100+(nowWidth[0]/this.eachPercent))+eval(percentage);
+            var percentageWidth = this.eachPercent * percentage;
+            var actualWidth = eval(nowWidth[0]) + eval(percentageWidth);
+            var newProgress = actualWidth+'px';
+            //alert(newProgress );
+            if(actualWidth>=0 && percentage <100)
+            {
+                var newProgress = 1+'px';
+                $(id).style.backgroundPosition=newProgress+' 0';
+                this.setText(id,100);
+                alert('full');
+            }
+            else
+            {
+                $(id).style.backgroundPosition=newProgress+' 0';
+                this.setText(id,nowPercent);
+            }
+        },
+        minus:function(id, percentage ) {
+            var nowWidth = $(id).style.backgroundPosition.split("px");
+            var nowPercent = Math.floor(100+(nowWidth[0]/this.eachPercent))-eval(percentage);
+            var percentageWidth = this.eachPercent * percentage;
+            var actualWidth = eval(nowWidth[0]) - eval(percentageWidth);
+            var newProgress = actualWidth+'px';
+            if(actualWidth<=-120)
+            {
+                var newProgress = -120+'px';
+                $(id).style.backgroundPosition=newProgress+' 0';
+                this.setText(id,0);
+                alert('empty');
+            }
+            else
+            {
+                $(id).style.backgroundPosition=newProgress+' 0';
+                this.setText(id,nowPercent);
+            }
+        },
+        fillProgress:function(id, endPercent) {
+            var nowWidth = $(id).style.backgroundPosition.split("px");
+            startPercent = Math.ceil(100+(nowWidth[0]/this.eachPercent))+1;
+            var actualWidth = this.initial + (this.eachPercent * endPercent);
+            if (startPercent <= endPercent && nowWidth[0] <= actualWidth)
+            {
+                this.plus(id,'1');
+                this.setText(id,startPercent);
+                
+                var thisObj = this;
+                setTimeout(function() { thisObj.fillProgress(id,endPercent)},10);
+            }
+        }
+    }
+}
+var ProgressBar = UI.ProgressBar;
+//-->
+</SCRIPT>
+</head>
+<body>
+<span id=ttt style='position:absolute;top:100px;left:100px'>
+<script>ProgressBar.display ('element1',10.5,1);</script>
+</span>
+
+<span class="extra"><a href="#" onClick="ProgressBar.emptyProgress ('element1');return false;"><img src="images/empty.gif" onMouseOver="$('Text1').innerHTML ='Empty Bar'"/></a></span>
+<span class="options"><a href="#" onClick="ProgressBar.plus ('element1','5');return false;"><img src="images/add.gif" onMouseOver="$('Text1').innerHTML ='Add 5%'"/></a></span>
+<span class="options"><a href="#" onClick="ProgressBar.minus ('element1','5');return false;"><img src="images/minus.gif" onMouseOver="$('Text1').innerHTML ='Minus 5%'" /></a></span>
+<span class="options"><a href="#" onClick="ProgressBar.setProgress ('element1','15');return false;"><img src="images/set.gif" onMouseOver="$('Text1').innerHTML ='Set 15%'"/></a></span>
+<span class="options"><a href="#" onClick="ProgressBar.fillProgress ('element1','100');return false;"><img src="images/fill.gif" onMouseOver="$('Text1').innerHTML ='Fill 100%'" ></a></span>
+<span class="getOption"><a href="#" onClick="alert(ProgressBar.getProgress ('element1'));return false;"><img src="images/get.gif" onMouseOver="$('Text1').innerHTML ='Get Current %'"/></a></span>
+<span id="Text1" style="font-weight:bold">Select Options</span>
+</body>
+</html>

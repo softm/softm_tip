@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+    
+<sqlMap namespace="TB_S07_020WEEK010">
+
+	<select id="findAll" resultClass="java.util.HashMap">
+		SELECT * 
+		  FROM TB_S07_020WEEK010
+	</select>
+	
+	<insert id="create" parameterClass="java.util.HashMap">
+		
+		INSERT INTO TB_S07_020WEEK010
+		(
+				SEQ,
+				COMPANY_CODE,
+				YEAR_TP,
+				MONTH,
+				HR_AYTI_JOB_WK_TP,
+				START_DATE,
+				END_DATE,
+				CREATED_OBJECT_TYPE,
+				CREATED_OBJECT_ID,
+				CREATED_PROGRAM_ID,
+				CREATION_TIMESTAMP,
+				LAST_UPDATED_OBJECT_TYPE,
+				LAST_UPDATED_OBJECT_ID,
+				LAST_UPDATE_PROGRAM_ID,
+				LAST_UPDATE_TIMESTAMP 
+		) VALUES (
+				SQ_S07020WEEK010_01.NEXTVAL,
+				#COMPANY_CODE#,
+				#YEAR_TP#,
+				#MONTH#,
+				#HR_AYTI_JOB_WK_TP#,
+				#START_DATE#,
+				#END_DATE#,
+				#CREATED_OBJECT_TYPE#,
+				#CREATED_OBJECT_ID#,
+				#CREATED_PROGRAM_ID#,
+				#CREATION_TIMESTAMP#,
+				#LAST_UPDATED_OBJECT_TYPE#,
+				#LAST_UPDATED_OBJECT_ID#,
+				#LAST_UPDATE_PROGRAM_ID#,
+				#LAST_UPDATE_TIMESTAMP#
+		)
+	
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM TB_S07_020WEEK010
+	</delete>
+	
+</sqlMap>

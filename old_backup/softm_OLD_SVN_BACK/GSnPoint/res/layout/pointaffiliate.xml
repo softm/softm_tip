@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  1안 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+	
+    <LinearLayout
+		android:id="@+id/tab_menu_table"	
+		android:layout_width="fill_parent" 
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:background="@drawable/point_affiliate_bg">
+ 
+		<LinearLayout
+		    android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_marginTop="46dip"
+		    android:layout_marginLeft="98dip">
+	        <TextView 
+	            android:id="@+id/txt_fch_name"
+	            android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:text="센트럴주유소점"
+				android:textSize="13dip"/>
+	        <TextView 
+	            android:id="@+id/txt_tphn_num"
+	            android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dip"
+				android:text="00-000-0000"
+				android:textSize="13dip"/>
+	        <TextView 
+	            android:id="@+id/txt_zip_addr"
+	            android:layout_width="210dip" 
+				android:layout_height="18dip"
+				android:layout_marginTop="6dip"
+				android:text="서울특별시 강남구 대치동 913-18"
+				android:marqueeRepeatLimit="3"
+				android:textSize="13dip"/>
+	        <TextView 
+	            android:id="@+id/txt_service"
+	            android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:layout_marginTop="6dip"
+				android:text="a/o, 조이마트, 세차장"
+				android:textSize="13dip"/>
+
+	        <LinearLayout
+		    android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_marginTop="8dip"
+			
+			>
+				<kr.co.gscaltex.gsnpoint.SpinnerGS
+			        android:id="@+id/spn_startype"
+			        android:layout_width="132dip"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="right"
+			        android:layout_marginRight="14dip"
+			        android:prompt="@string/spinner_star_point" />
+				<ImageButton 
+				    android:id="@+id/btn_eval"
+				    android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:background="@drawable/btn_search2_img"
+					android:layout_marginRight="10dip"/>
+			
+			</LinearLayout>
+			
+	        <EditText 
+	            android:id="@+id/edit_comment"
+	            android:layout_width="210dip" 
+					android:layout_height="56dip"
+					android:layout_marginTop="6dip"
+					android:gravity="top|left"   
+					android:hint="가맹점 평가내용을 한글 40자, 영문 80자까지 작성 가능합니다."
+					 android:inputType="textMultiLine"
+                    android:maxLength="40"
+                    android:lines="3"
+                    android:cursorVisible="false"
+					android:textSize="12dip"/>
+	        
+        </LinearLayout>
+        <LinearLayout
+		    android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:gravity="left"
+			android:layout_marginLeft="18dip"
+			android:layout_marginTop="17dip"
+			
+			>
+				<TextView 
+	            android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:text="총 "
+				android:textSize="14dip"/>
+				<TextView 
+				android:id="@+id/txt_total"
+	            android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"	
+				android:text="0"
+				android:textColor="#FF7200"
+				android:textSize="14dip"/>
+				<TextView 
+	            android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"	
+				android:text="개의 리뷰가 있습니다."
+				android:textSize="14dip"/>
+			
+			</LinearLayout>
+	</LinearLayout>
+  
+	<FrameLayout
+		android:id="@+id/affil_listframe"
+		android:layout_width = "fill_parent"
+		android:layout_height="wrap_content"
+		android:background="#ffffff"
+		android:gravity="center_vertical|center_horizontal"
+		android:layout_marginTop="0dip" 
+		android:layout_weight="1"> 
+
+
+		<ListView
+			android:id ="@+id/affilListview"
+			android:layout_width = "fill_parent"
+			android:layout_height ="wrap_content"
+			android:divider="#d8d9d8"
+			android:background="#ffffff"
+			android:cacheColorHint="#00000000"
+			android:dividerHeight="1px"
+			android:layout_weight="1"/>
+
+		<ProgressBar android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"		
+			android:layout_gravity="center_vertical|center_horizontal"
+		  	android:layout_width="43dp"
+		  	android:layout_height="43dp" 
+			android:visibility="gone"
+		  	/> 
+
+
+	</FrameLayout>
+	
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+</LinearLayout>
+ -->
+<!--  2안-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+
+    <FrameLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		>
+		
+        <ScrollView 
+            android:id="@+id/scroll_affil"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FFFFFFFF"
+		    android:fillViewport="true"
+		    >
+		  
+		    <LinearLayout
+		    	android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content" 
+		    	android:background="@drawable/point_affiliate_bg_android"
+		    	android:orientation="vertical"
+		    	
+		    	>
+		    	
+				<LinearLayout
+		    android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:orientation="vertical"
+			android:layout_marginTop="56dip"
+		    android:layout_marginLeft="98dip">
+	        <TextView 
+	            android:id="@+id/txt_fch_name"
+	            android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:text=""
+				android:textSize="13dip"/>
+	        <TextView 
+	            android:id="@+id/txt_tphn_num"
+	            android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:layout_marginTop="4dip"
+				android:text=""
+				android:textSize="13dip"/>
+	        <TextView 
+	            android:id="@+id/txt_zip_addr"
+	            android:layout_width="210dip" 
+				android:layout_height="18dip"
+				android:layout_marginTop="6dip"
+				android:text=""
+				android:marqueeRepeatLimit="3"
+				android:textSize="13dip"/>
+	        <TextView 
+	            android:id="@+id/txt_service"
+	            android:layout_width="fill_parent" 
+				android:layout_height="wrap_content"
+				android:layout_marginTop="6dip"
+				android:text=""
+				android:textSize="13dip"/>
+
+	        <LinearLayout
+		    android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:layout_marginTop="8dip"
+			
+			>
+				<kr.co.gscaltex.gsnpoint.SpinnerGS
+			        android:id="@+id/spn_startype"
+			        android:layout_width="132dip"
+			        android:layout_height="wrap_content"
+			        android:layout_gravity="right"
+			        android:layout_marginRight="14dip"
+			        android:prompt="@string/spinner_star_point" />
+				<ImageButton 
+				    android:id="@+id/btn_eval"
+				    android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:background="@drawable/btn_search2_img"
+					android:layout_marginRight="10dip"/>
+			
+			</LinearLayout>
+			
+	        <EditText 
+	            android:id="@+id/edit_comment"
+	            android:layout_width="210dip" 
+					android:layout_height="56dip"
+					android:layout_marginTop="6dip"
+					android:gravity="top|left"   
+					android:hint="가맹점 평가내용을 한글 40자, 영문 80자까지 작성 가능합니다."
+					 android:inputType="textMultiLine"
+                    android:maxLength="40"
+                    android:lines="3"
+                    android:cursorVisible="true"
+					android:textSize="12dip"/>
+	        
+        </LinearLayout>
+        <LinearLayout
+		    android:layout_width="fill_parent" 
+			android:layout_height="wrap_content"
+			android:orientation="horizontal"
+			android:gravity="left"
+			android:layout_marginLeft="18dip"
+			android:layout_marginTop="20dip"
+			
+			>
+				<TextView 
+	            android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"
+				android:text="총 "
+				android:textSize="14dip"/>
+				<TextView 
+				android:id="@+id/txt_total"
+	            android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"	
+				android:text="0"
+				android:textColor="#FF7200"
+				android:textSize="14dip"/>
+				<TextView 
+	            android:layout_width="wrap_content" 
+				android:layout_height="wrap_content"	
+				android:text="개의 리뷰가 있습니다."
+				android:textSize="14dip"/>
+			
+			</LinearLayout>
+                
+	        <FrameLayout
+			android:id="@+id/affil_listframe"
+			android:layout_width = "fill_parent"
+			android:layout_height="fill_parent"
+			android:background="#ffffff"
+			android:gravity="center_vertical|center_horizontal"
+			android:layout_marginTop="16dip" 
+			android:layout_weight="1"> 
+			
+				<ListView
+					android:id ="@+id/affilListview"
+					android:layout_width = "fill_parent"
+					android:layout_height ="wrap_content"
+					android:divider="#d8d9d8"
+					android:background="#ffffff"
+					android:cacheColorHint="#00000000"
+					android:dividerHeight="1px"
+					android:layout_weight="1"/>
+
+			</FrameLayout>
+				
+		   </LinearLayout> 
+          </ScrollView>
+
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+
+	</FrameLayout>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

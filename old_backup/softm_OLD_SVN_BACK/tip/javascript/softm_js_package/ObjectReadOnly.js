@@ -1,0 +1,1 @@
+<!--    function ObjectReadOnly ( Obj, bool ) {        if ( bool == "Y" ) {            Obj.readOnly = true;        } else if ( bool == "N" ) {            Obj.readOnly = false;        }    }//-->

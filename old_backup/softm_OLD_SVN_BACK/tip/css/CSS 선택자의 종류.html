@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> CSS 선택자의 종류 </TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</HEAD>
+
+<BODY>
+<style>
+    .a_tbl2    { border-top:0px;text-align:center;}
+    .a_tbl2 *  { font-size:10pt;font-family:'맑은 고딕';}
+    .a_tbl2 th { border-right:1px solid black;background-color:#87AFAC;color:black }
+    .a_tbl2 td { border-right:1px solid black;border-top:1px solid black;height:20px;text-align:left;}
+
+
+</style>
+<H4>3) CSS 선택자의 종류</H4>
+<P>위의 예와 같이 HTML 의 엘리먼트를 선택하는 선택자 뿐만아니라 다양한 형태의&nbsp;CSS Selector가 존재한다. &nbsp;아래는 CSS2기준의 Selector이다.</P>
+<TABLE class=a_tbl2>
+<THEAD>
+<TR>
+<TH>구분</TH>
+<TH>패턴</TH>
+<TH>대상</TH>
+<TH>비고</TH></TR></THEAD>
+<TBODY>
+<TR>
+<TH>universal selector</TH>
+<TD>*</TD>
+<TD>Document 상의 모든 HTML Element를 선택</TD>
+<TD>&nbsp;</TD></TR>
+<TR>
+<TH>Element type Selectors</TH>
+<TD>E</TD>
+<TD>Dcouement 상의 모든 E 엘리먼트 타입을 선택</TD>
+<TD>&nbsp;</TD></TR>
+<TR>
+<TH>Descendant Selectors</TH>
+<TD>E F</TD>
+<TD>E의 하위도드중 F 타입을 선택</TD>
+<TD>&nbsp;</TD></TR>
+<TR>
+<TH>Child Selectors</TH>
+<TD>E &gt; F</TD>
+<TD>E의 자식 노드 중 F 타입을 선택</TD>
+<TD>&nbsp;</TD></TR>
+<TR>
+<TH>Class Selector</TH>
+<TD>.aaa</TD>
+<TD>class 속성이 aaa 인 HTML 엘리먼트 선택</TD>
+<TD>&nbsp;</TD></TR>
+<TR>
+<TH>ID Selector</TH>
+<TD>#bbb</TD>
+<TD>id 속성이 bbb인 HTML 엘리먼트 선택</TD>
+<TD>&nbsp;</TD></TR>
+<TR>
+<TH>Pseudo-element Selector</TH>
+<TD>E:first-child</TD>
+<TD>&nbsp;</TD>
+<TD>&nbsp;</TD></TR>
+<TR>
+<TH>Pseudo-class</TH>
+<TD>E:active,<BR>E:hover,<BR>E:focus</TD>
+<TD>특정 조건하의 모든 엘리먼트를 선택</TD>
+<TD>&nbsp;</TD></TR>
+<TR>
+<TH>Adjacent Selector</TH>
+<TD>E+F</TD>
+<TD>E엘리먼트 다음에 바로 F엘리먼트가 이어지면 선택 &nbsp;&nbsp;&nbsp; 엘리먼트간 간격 조정등에 유용</TD>
+<TD>IE8에서 지원</TD></TR>
+<TR>
+<TH>Attribute Selectors</TH>
+<TD>&nbsp;</TD>
+<TD>&nbsp;&nbsp;&nbsp; E[foo],&nbsp;&nbsp;&nbsp; foo 속성값이 지정된 E엘리먼트 선택&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp; E[foo=“warning”],&nbsp;&nbsp;&nbsp; foo 속성값이 warning인 E엘리먼트&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp; E[foo~=“warning”]&nbsp;&nbsp;&nbsp; foo 속성값에 단어 warning 이 포함된 E엘리먼트&nbsp;&nbsp;&nbsp;<BR>&nbsp;&nbsp;&nbsp; E[lang|=“en”]&nbsp;&nbsp;&nbsp; lang 속성값에 ‘-’으로 구분된 en값이 포함된 E엘리먼트</TD>
+<TD>lang=“en-uk”<BR>lang=“en-us”</TD></TR></TBODY></TABLE>
+</BODY>
+</HTML>

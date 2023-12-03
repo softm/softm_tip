@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onLoad()">
+<mx:Script>
+	<![CDATA[
+        import mx.controls.Alert;
+		private var so:SharedObject;
+		        import flash.net.*;
+        import mx.core.UIComponent;
+        import mx.controls.Alert;	
+        import SharedObjectExample;
+        
+		private function onLoad():void {
+		  var spriteExample : SharedObjectExample = new SharedObjectExample();
+          var ref : UIComponent = new UIComponent();
+          addChild( ref );
+          ref.addChild( spriteExample );
+          
+          			
+            ExternalInterface.addCallback("installEnd", installEndFromJavaScript);
+            			
+			so = SharedObject.getLocal("mbcSo",null,false);
+			if(so.data.installed == undefined) { // 다운로드
+                if (ExternalInterface.available) 
+                {
+                    ExternalInterface.call("fInstall", "");
+                }
+				Alert.show("call fInstall~!");
+			} else {                            // 실행
+                if (ExternalInterface.available) 
+                {
+                    ExternalInterface.call("fExecute", "");
+                }
+				Alert.show("call fExecute!!");                
+			}
+		}
+		
+        private function installEndFromJavaScript(value:String):void{
+			//so = SharedObject.getLocal("mbcSo");
+			//so.clear();
+			//so = SharedObject.getLocal("mbcSo");
+			createSo();
+			if(so.data.installed == undefined) {
+				//createSo();		
+				Alert.show("설치가 완료되어 install변수 저장." + value);
+                if (ExternalInterface.available) 
+                {
+                    ExternalInterface.call("fEndInstall", "");
+                }			
+			} else {
+		
+			}        	
+            Alert.show("javascript call installEnd");
+  		}
+		private function createSo():void
+		{
+			setSo("installed","install");
+			so.flush();
+		}
+		
+		private function setSo(key:String, data:*):void
+		{
+			so.data[key] = data;
+		}
+	]]>
+</mx:Script>
+</mx:Application>

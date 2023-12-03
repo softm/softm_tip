@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="proc_gid">as</string>
+    <string name="app_name">민원</string>
+    <string name="alert_title">알림</string>
+
+    <!-- Common -->
+    <string name="alert">안내</string>
+    <string name="spinner_fee">수량</string>
+    <string name="spinner_seal">봉인종류</string>
+
+    <!-- BackUP & Sync -->
+
+    <!-- buttons -->
+    <string name="ok">확인</string>
+    <string name="cancel">취소</string>
+    <string name="yes">예</string>
+    <string name="no">아니요</string>
+    <string name="close">닫기</string>
+
+    <!-- print msg -->
+    <string name="card_send_alert">결제를 하시겠습니까?</string>
+    <string name="card_cancel_alert">결제를 취소 하시겠습니까?</string>
+    <string name="card_pay_customer_alert">보관용을 출력 하시겠습니까?</string>
+    <string name="card_sign_del_alert">서명파일을 삭제하시겠습니까?</string>
+    
+    <string name="msg_success">전송이 완료 되었습니다.</string>
+    <string name="msg_fail">전송이 실패 하였습니다.</string>
+    <string name="msg_invalid_house">인식된 세대가 없습니다.\n확인 바랍니다.</string>
+    <string name="msg_invalid_barcode">지정된 바코드가 아닙니다.\n확인 바랍니다</string>
+
+</resources>

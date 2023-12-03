@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="SERVER_START">0</string>
+    <string name="CARD_LIST">11</string>
+    <string name="CARD_STOP">12</string>
+    <string name="CARD_REGISTER">13</string>
+
+    
+</resources>

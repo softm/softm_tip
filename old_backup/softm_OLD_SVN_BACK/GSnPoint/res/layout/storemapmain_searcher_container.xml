@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:orientation="vertical"
+>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" >
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/store_storesearch_bg"
+            android:orientation="vertical"
+            android:paddingBottom="0dip"
+            android:paddingLeft="6dip"
+            android:paddingRight="6dip"
+            android:paddingTop="6dip" android:id="@+id/searcher_box">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:gravity="center_horizontal" >
+
+                <kr.co.gscaltex.gsnpoint.SpinnerGS
+                    android:id="@+id/spn_sido"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:prompt="@string/addr_sido" />
+
+                <kr.co.gscaltex.gsnpoint.SpinnerGS
+                    android:id="@+id/spn_gugun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dip"
+                    android:layout_weight="1"
+                    android:prompt="@string/addr_gugun" />
+
+                <kr.co.gscaltex.gsnpoint.SpinnerGS
+                    android:id="@+id/spn_dong"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dip"
+                    android:layout_weight="1"
+                    android:prompt="@string/addr_dong" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dip"
+                android:orientation="horizontal"
+                android:gravity="center" >
+
+                <kr.co.gscaltex.gsnpoint.SpinnerGS
+                    android:id="@+id/spn_category"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:prompt="@string/addr_sido" />
+
+                <!-- <kr.co.gscaltex.gsnpoint.EditTextGS -->
+
+                <EditText
+                    android:id="@+id/edt_search_name"
+                    android:layout_width="120dip"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dip"
+                    android:background="@drawable/gs_editbox_img"
+                    android:hint="@string/addr_search_keyword_hint"
+                    android:singleLine="true"
+                    android:textSize="12sp" />
+
+                <ImageButton
+                    android:id="@+id/img_btn_search"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="5dip"
+                    android:layout_marginRight="36dip"
+                    android:background="@drawable/btn_search_img" />
+            </LinearLayout>
+        </LinearLayout>
+        <ImageButton
+            android:id="@+id/img_btn_searcher_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|right"
+            android:layout_marginRight="11dip"
+            android:background="@drawable/btn_pi_close" android:layout_alignParentRight="true" android:layout_alignBottom="@id/searcher_box"/>        
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/map_preventer"
+	>
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 
+    <string name="msg_del_confirm">삭제하시겠습니까?</string>
+    <string name="msg_finish_confirm">종료하시겠습니까?</string>
+     -->
+    <string name="msg_not_exec_alert">실행 정보가 없습니다.</string>
+    <string name="msg_invalid_house">인식된 세대가 없습니다.\n확인 바랍니다.</string>    
+    <string name="msg_receive_meter_chk_data">점검자료를 수신하세요.</string>    
+    <string name="msg_send_no_data">송신할 자료가 없습니다. 확인바랍니다.</string>    
+    <string name="msg_send_confirm">송신하시겠습니까?</string>    
+    <string name="msg_send_complete">송신이 완료되었습니다.</string>    
+    <string name="msg_send_fail_resend_confirm">송신이 실패하였습니다. 다시 시도하시겠습니까?</string>    
+    <string name="msg_bf_meter_chk_data_delete_confirm">기존 점검자료는 삭제됩니다. 점검자료를 수신하시겠습니까?</string>    
+    <string name="msg_chk_data_receive_confirm">점검자료를 수신하시겠습니까?</string>    
+    <string name="msg_receive_upgrade_confirm">버전업그레이드를 한 후에 수신할 수 있습니다.지금 버전업그레이드를 실행하시겠습니까?</string>    
+    <string name="msg_meter_barcode_confirm">계량기 바코드를 인식하시겠습니까?</string>    
+    
+    <string name="msg_send_complete_not_update">송신이 완료된 대상은 수정할 수 없습니다.</string>    
+    <string name="msg_locked_send">봉인처리가 되었습니다. 지금 송신하겠습니다.</string>    
+    <string name="msg_locked_send_batch">봉인처리가 된 세대가 있습니다. 지금 송신하겠습니다.</string>    
+    <string name="msg_save_finish_confirm">저장하고 완료하시겠습니까?</string>    
+    <string name="msg_all_building_save_confirm">해당 건물의 모든 세대가 적용됩니다. 저장하고 완료하시겠습니까?</string>    
+    <string name="msg_all_building_delete_confirm">해당 건물의 모든 세대가 적용됩니다. 삭제하시겠습니까?</string>
+        
+    <!-- 일괄검침 -->
+    <string name="msg_do_check_checkup_memter">당월 점검지침을 확인하세요.</string>
+    
+    <!-- 수용가 정보  -->
+    <string name="msg_do_input_cust_nm">고객명을 입력해주세요.</string>    
+    <string name="msg_incorrect_tel_no">자택전화번호가 올바르지 않습니다.</string>    
+    <string name="msg_incorrect_hp_no">이동전화번호가 올바르지 않습니다.</string>    
+    <string name="msg_incorrect_work_tel_no">직장전화번호가 올바르지 않습니다.</string>
+    
+    <string name="msg_do_input_tel_no">자택전화번호를 입력해주세요.</string>    
+    <string name="msg_do_input_hp_no">이동전화번호를 입력해주세요.</string>    
+    <string name="msg_do_input_work_tel_no">직장전화번호를 입력해주세요.</string>
+    
+    <string name="msg_must_selected_one_tel_no">주사용 전화번호를 하나 선택하세요.</string>
+    
+    <string name="msg_do_input_not_chk">미점검사유를 선택하세요.</string>
+	<string name="msg_not_chk_confirm">미점검으로 처리하시겠습니까?</string>
+	<string name="msg_reject_confirm">거부처리하시겠습니까?\n\n부적합,제외처리및 사진,서명데이터가 삭제됩니다.</string>
+	<string name="msg_cancel_chk_confirm">미점검처리 또는 점검 내역을 취소하시겠습니까?</string>
+	
+	<string name="msg_recognize_correct_house_no">인식된 세대번호가 일치합니다.</string>
+	<string name="msg_recognize_correct_house_info">수용가정보가 일치하지 않습니다.</string>
+    <string name="msg_meter_code_not_corrent_confirm">계량기 번호가 맞지 않습니다. 점검을 시작하시겠습니까?</string>
+    
+	<string name="msg_do_reject">거부되었습니다.</string>
+	<string name="msg_do_cancel_chk">점검취소되었습니다.</string>        
+	<string name="msg_do_take_picture">사진촬영을 해주세요.</string>        
+    <string name="msg_not_chked">미점검처리 되었습니다.</string>
+    
+    <!-- 점검등록메인 -->
+    <string name="msg_do_check_not_chked">미점검 대상이 있습니다.</string>    
+    <string name="msg_nocfm_delete_confirm">부적합 내역을 모두 삭제하시겠습니까?</string>
+    <string name="msg_do_input_chk_result">점검결과를 입력바랍니다.</string>
+    <string name="msg_non_acessable_because_x">기기없음을 선택하여 점검화면으로 이동이 불가능합니다.</string>
+    <string name="msg_non_acessable_because_none">미점검상태이므로 점검하면으로 이동이 불가능합니다.</string>
+    
+    <!-- 보일러점검 -->
+    <string name="msg_missmatch_pic_count_to_nocfm">부적합 개수와 사진촬영 개수가 맞지 않습니다.</string>
+    
+    <!-- 계량기점검 -->
+	<string name="msg_do_input_12_gm_no_cfm">확인계량기번호를 12자리로 입력하세요.</string>
+    <string name="msg_do_check_checkup_memter2">점검계량기지침을 확인하세요.</string>
+	
+	<!-- 수용가목록 -->
+	<string name="msg_not_signable_send_exist">송신완료된 자료가 있어 일괄 서명이 불가능합니다.</string>
+    <!-- 서명  -->
+    <string name="msg_do_sign">서명해주세요.</string>	
+    <string name="msg_sign_complete_confirm">저장하고 완료하시겠습니까?</string>    
+    <string name="msg_do_sign_complete">완료되었습니다.</string>
+    <string name="msg_check_input_checkup_meter">점검계량기지침이 입력되지 않았습니다.</string>
+    
+    <!-- 일괄서명  -->
+    <string name="msg_dosenot_exists_batch_sign">일괄서명할 수용가가 존재하지 않습니다.</string>
+        
+	<!-- 공통 -->
+	<string name="msg_same_houseinfo_exist">동일한 수용가정보가 여러개 존재합니다.</string>
+</resources>

@@ -1,0 +1,231 @@
+<?php
+function isValidEmail($email){
+    return eregi("^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$", $email);
+}
+class sendMailItem
+{
+    var $host        ;
+    var $port        ;
+    var $tomail      ;
+    var $toname      ;
+    var $frommail    ;
+    var $fromname    ;
+    var $subject     ;
+    var $type        ;
+    var $message     ;
+    function sendMailItem($host,$port,$tomail,$toname,$frommail,$fromname,$subject,$type,$message,$files=array()) {
+        $this->gubun    = 'PHP'    ; // COMMAND : COMMANDLINE SMTP, PHP : PHP MAIL
+        $this->host     = $host    ;
+        $this->port     = $port    ;
+        $this->tomail   = $tomail  ;
+        $this->toname   = $toname  ;
+        $this->frommail = $frommail;
+        $this->fromname = $fromname;
+        $this->subject  = $subject ;
+        $this->type     = $type    ;
+        $this->message  = $message ;
+        $this->files    = $files   ;
+    }
+}
+/*
+$sendMailItem = new sendMailItem("mail.tkek.co.kr",25,
+                                 "jihun.kim@tkek.co.kr","english 되는지 보낸사람이름",
+                                 "jihun.kim@tkek.co.kr","english 되는지 받는사람이름",
+                                 "제목 abcdefg 되는지 iconv","text/html",
+                                 "되는지 xonte.s.s.ds.d.s.d.sx" . "한글" . "d.ds <B>aaa</B><iframe src='http://172.17.160.48?backurl=http://220.95.195.170/calko/calko_write.php?p_esti_no=XX09100005901'></iframe>"
+                                );
+$sendmail_flag = sendMail($sendMailItem);
+if ($sendmail_flag) {
+    echo "메일 보내기 성공";
+} else {
+    echo "메일 보내기 실패";
+}
+*/
+function sendMail($sendMailItem) {
+    if ( $sendMailItem->gubun == 'PHP' ) {
+        //echo 'sendMailByPHPAPI';
+        return sendMailByPHPAPI('UTF-8',
+                         $sendMailItem->toname,$sendMailItem->tomail,
+                         $sendMailItem->fromname,$sendMailItem->frommail,
+                         $sendMailItem->subject,$sendMailItem->message,'1','3',
+                         $sendMailItem->files
+                    );
+    } else {
+        //echo 'sendMailByCommandLine';
+        return sendMailByCommandLine($sendMailItem);
+    }
+}
+function getCharsetString($type,$string) {
+    return "=?UTF-8?B?" .base64_encode($string)."?=";
+}
+function sendMailByPHPAPI($encType,$tName,$tEmail,$fName,$fEmail,$subject,$content,$html,$priority, $fInfo=null) {
+    $content = ($content);
+
+    $subject=getCharsetString($encType,$subject) . "\n";
+
+    $timestamp = time();
+    $_send_exec = true;
+    $mailTo= getCharsetString($encType,$tName) . " <$tEmail>";
+
+    if ( !isValidEmail($tEmail) ) {
+        $_send_exec = false;
+    }
+    if ( $_send_exec ) {
+        // make boundery
+        $boundary = "--------" . uniqid("part");
+        $boundary = "----=b".md5(uniqid(time()));
+        $boundaryEnd = "\n--$boundary--\n";
+
+        // make mail header
+        $_header = "Date: ".date("D, d M Y H:i:s ",$timestamp) . " +0900 (KST)\n";
+      //$_header .= "To: " . $mailTo . "\n";
+        $_header .= "From: \"". getCharsetString($encType,$fName). "\" <$fEmail>\n";
+        $_header .= "Reply-To: \"". getCharsetString($encType,$fName). "\" <$fEmail>\n";
+      //$_header .= "Message-ID: <".str_replace(" ","_",microtime()) ."@dacom.net>\n";
+
+        // BASE64 encoding to mail subject
+        //$_subject = "=?EUC-KR?B?" . base64_encode($subject) . "?="; // jh 켱 ʿ.
+        //$_subject = $subject;
+
+        $l = sizeof($fInfo);
+        //echo "\n" . '$l : ' . $l . "\n";
+        if($l > 0) {
+            $_header .= "MIME-Version: 1.0\n";
+            $_header .= "Content-Type: Multipart/mixed; boundary=\"$boundary\"\n";
+            $_header .= "Content-Transfer-Encoding: 8bit\n";
+            $_header .= "X-Priority: $priority\n";
+            for ( $i=0;$i<$l;$i++) {
+                //echo "file : $i";
+                if ( $i == 0 ) {
+                    // message body
+                    $_message = "--$boundary\n";
+                    if($html == "1") {
+                        $_message .= "Content-Type: text/html; charset=$encType\n";
+                        $_message .= "Content-Transfer-Encoding: base64\n\n";
+                    }else{
+                        $_message .= "Content-Type: text/plain; charset=$encType\n";
+                        $_message .= "Content-Transfer-Encoding: base64\n\n";
+                    }
+                    $_message .= chunk_split(base64_encode($content)) . "\n";
+                    //$_message .= base64_encode($content) . "\n";
+                }
+
+                $attchfname = $fInfo[$i][name]?$fInfo[$i][name]:$fInfo[$i][real_name];
+                $fd = fopen($fInfo[$i][dir]."/".$fInfo[$i][real_name],"r");
+                // file attach
+                $_message .= "--$boundary\n";
+                $_message .= "Content-Type: application/octet-stream; charset=$encType\n";
+                $_message .= "Content-Transfer-Encoding: base64\n";
+                $_message .= "Content-Disposition: attachment; filename=\"" . getCharsetString($encType,$attchfname) . "\"\n\n";
+                $_message .= chunk_split(base64_encode(fread($fd,$fInfo[$i][size])));
+                //$_message .= chunk_split((fread($fd,$fInfo[$i][size])));
+                fclose($fd);
+            }
+            $_message .= $boundaryEnd;
+        } else {
+            if($html == "1") {
+                $_header .= "Content-Type: text/html; charset=$encType\n";
+                $_header .= "Content-Transfer-Encoding: base64\n";
+            }else{
+                $_header .= "Content-Type: text/plain; charset=$encType\n";
+                $_header .= "Content-Transfer-Encoding: base64\n";
+            }
+
+            $_header .= "X-Priority: $priority\n";
+            $_message .= chunk_split(base64_encode($content));
+            //$_message .= base64_encode($content) . "\n";
+        }
+
+        //if(mb_send_mail($tEmail,$_subject,$_message,$_header)) {
+        if(mail($mailTo,$subject,$_message,$_header)) {
+            return 1;
+        } else{
+            return -1;
+        }
+    } else {
+        return -1;
+    }
+}
+
+
+function sendMailByCommandLine($sendMailItem) {
+    $smtp_id = "smtp ̵";
+    $smtp_pwd = "smtp н";
+
+    $host = $sendMailItem->host; // ̰ ڽ Ϳ ִٸ ̰ ٸ SMTP ̿ϴ ̶ ٸ ּҸ ֽø ˴ϴ.
+    $port = $sendMailItem->port;
+
+    $tomail     = $sendMailItem->tomail;
+    $toname   =(iconv("UTF-8", "EUC-KR",$sendMailItem->toname));
+
+    $frommail   =$sendMailItem->frommail;
+    $fromname   =(iconv("UTF-8", "EUC-KR",$sendMailItem->fromname));
+    $subject    = $sendMailItem->subject;
+    $type       = $sendMailItem->type; // ̰ html   ϴ.
+    $message    = $sendMailItem->message;
+    echo $HTTP_HOST;
+    $fp = fsockopen($host, $port, &$errno, &$errstr, 30);
+    $rbyte = 128;
+
+    if($fp) {
+
+        fgets($fp, $rbyte);
+        fputs($fp, "helo localhost\n");
+        //  fputs($fp, "helo $HTTP_HOST\n");
+        fgets($fp, $rbyte);
+
+        // ̺κп   α ˴ϴ.
+/*
+        fputs($fp, "auth login\n");
+        fgets($fp,$rbyte);
+        fputs($fp, base64_encode($smtp_id)."\n");
+        fgets($fp,$rbyte);
+        fputs($fp, base64_encode($smtp_pwd)."\n");
+        fgets($fp,$rbyte);
+*/
+        fputs($fp, "mail from: <$frommail>\n");
+        $returnvalue[0] = fgets($fp, $rbyte);
+        fputs($fp, "rcpt to: $toname <$tomail>\n");
+        $returnvalue[1] = fgets($fp, $rbyte);
+        //echo $returnvalue[1] . '<BR>';
+        fputs($fp, "data\n");
+        fgets($fp, $rbyte);
+        fputs($fp, "Return-Path: $frommail\n");
+        fputs($fp, "From: $fromname <$frommail>\n");
+        $timestamp = time();
+        fputs($fp, "Date: ".date("D, d M Y H:i:s ",$timestamp) . " +0900 (KST)\n");
+
+        fputs($fp, "To: $toname <$tomail>\n");
+        fputs($fp, "Subject: $subject\n");
+        fputs($fp, "Content-Type: $type; charset=utf-8\n");
+        if ( $sendMailItem->files ) {
+            foreach($sendMailItem->files as $k=>$v) {
+                fputs($fp, "attach:" . $v . "\n");
+            }
+            fputs($fp, "\n");
+        }
+        //fputs($fp, "Content-Transfer-Encoding: base64\n");
+
+
+        //$message= chunk_split(base64_encode($message));
+        $message= chunk_split($message);
+        fputs($fp, $message);
+        fputs($fp, "\n.\n");
+        $returnvalue[2] = fgets($fp, $rbyte);
+        fputs($fp, "quit\n");
+        fclose($fp);
+
+        if (ereg("^250", $returnvalue[0])&&ereg("^250", $returnvalue[1])&&ereg("^250", $returnvalue[2])) {
+            $sendmail_flag = true;
+        }
+        //echo '<BR>';
+        //echo '0 : ' . $returnvalue[0] . '<BR>';
+        //echo '1 : ' . $returnvalue[1] . '<BR>';
+        //echo '2 : ' . $returnvalue[2] . '<BR>';
+    } else {
+        //echo 'xxxxxxxxxx';
+    }
+
+    return $sendmail_flag;
+}
+?>

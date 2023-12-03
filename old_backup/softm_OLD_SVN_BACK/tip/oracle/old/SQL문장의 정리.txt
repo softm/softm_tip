@@ -1,0 +1,820 @@
+1. 테이블을 조회하기위한 기능을 제공합니다.
+
+	@문법
+	SELECT {*,COLUMN [ALIAS],....)
+	FROM  TABLE
+	[WHERE CONDITION(S)]
+	[ORDER BY {COLUMN, EXPR} [ASC|DESC] ] ;
+예제)
+1. SELECT *  FROM S_DEPT;
+2. 같은 값을 가지는 행은 출력하지않는다.
+ where구문 뒤의 조건을 만족하는 값을 ORDER BY구문이하의 정열조건을 만족하는 값을 출력한다.
+ 정열은 1,2,3같은 숫자로 행의 순서를 번호를 매겨서 정열을 할수있다.
+SELECT DISTINCT JIHOON FROM S_DEPT WHERE DISTINCT > 10 ORDER BY USRNO asc;
+3.산술연산자
+===> +,-,*,/를 사용하여 연산이 가능하다.
+SELECT USRWEIGHT* USRHEIGHT, USRAGE+1 FROM LIST;
+COLUMN명에 알리아스 별명 붙이기.
+SELECT USRWEIGHT* USRHEIGHT "몸무게,키곱한수치", USRAGE+1 FROM LIST
+실행 결과 =>  	  몸무게,키곱한수치  USRAGE+1
+		------------------- ---------
+        		      12600        31
+	        	      12600        31
+		              12600        31
+		              12600        31
+	        	      12600        31
+		              12600        31
+		              12600        31
+	        	      12600        31
+		              12600        31
+		              13908        25
+4. 문자열의 연결에 사용된다.(||)
+SELECT USRNO||USRNAME AS "USRNO_NAME"  FROM LIST
+별명을 USRNO_NAME으로 표시하고 USRNO_NAME에 값이들어간다.
+5.NVL함수의 사용
+select kindcode, nvl(kindname,0) comm from code;
+==> kindname이라는 열에서 널인것은 0으로 출력을 한다.
+    값은 문자열이든 수치든 들어갈수있다.
+6.비교,논리연산자.
+	=,>,<=,<,>=, AND,OR,NOT
+	BETWEEN...AND...
+	IN(LIST)
+	LIKE
+	IS NULL
+ 어떤 값사이의 결과를 가져올때 사용
+        문법 => ~~~~where 열이름 betwwen A and B
+	SELECT * FROM LIST USRNO BETWEEN 3 AND 5
+ 어떤 값이 존재하는 결과를 가져올때 사용하는 IN 함수
+	문법 => ~~~~where 열이름 IN(arg1,arg2..........argN)
+	SELECT * FROM LIST WHERE USRNO IN(1,3)
+
+	SQL> select name,age,lodging from worker where 
+	  2  (age,lodging)  in(select max(age),lodging from worker group by lodging);
+	=> IN함수의 새로운 사용방법 나는 처음 안거다 뭐 그러니 다 신기하지 임마..
+		NAME                            AGE LODGING
+		------------------------- --------- ---------------
+		ADAH TALBOT                      23 PAAP KING
+		PETER LAWSON                     25 CRANMER
+		ANDREW DYE                       29 ROES HILL
+		ANDREW DYE                       29 ROES HILL
+		VICTORIA LYNN                    32 MULLERS
+		ROLAND BRANDT                    35 MATTS
+		GEORGE OSCAR                     41 ROSE HILL
+		ELBERT TALBOT                    43 WEITBROCHT
+
+		8 개의 행이 선택되었습니다.
+
+ like 무엇무엇 과 같다....
+	문법 => ~~~~where 열이름 like '문자열'
+	%는 Wide card이고 _이거는 문자 하나이지요
+        SELECT * FROM LIST WHERE USRNAME LIKE '김%'
+ is null ~~~이 널이다.
+	문법  => ~~~~where 열이름 is null
+	select  * from list where usrheight  is  null
+	select  * from list where usrheight not is  null
+6번문항에서 한것에다가 NOT연산자를 추가 적으로 사용을 하면  반대되는 결과를 얻을수있습니다.
+Usaging => SELECT * FROM LIST WHERE USRNAME NOT LIKE '김%'
+	   SELECT * FROM LIST WHERE USRNO IN(1,3)
+   	   SELECT * FROM LIST USRNO BETWEEN 3 AND 5
+7.어떤 문자를 구분을 위한 용도로 사용한다.
+   _ <=이것은  한문자와 같은의미로 사용이 되는데 그로인해서 발생할수있는 오류를 미연에 막기위한방법
+          select  * from code where kindname like '%X/_Y%' escape '/' 
+
+8.desc를 이용하여 테이블 내부구조 탐험
+	 DESC[RIBE] [user.]object[.subobject|@db_link] [column]
+9.ED명령어
+방금 실행한 명령어가  BUFFER에 저장이 되어있다..
+그것을 호출하여 편집이 가능하다.
+A[ppend] buffer에 저장되어있는 명령어의 끝에 추가,,
+D[el]  N(1,2,3......N) N번째 라인의 삭제
+I[nput]  buffer의 다음 라인에 추가
+R[un] 또는 /   BUFFER의 SQL문을 실행합니다.
+
+10.
+Save 명령
+문법 => Save 화일명
+설명 :  BUFFER의 내용이 C:\ORAWIN95\BIN 에 화일명.sql로 저장이 된다.
+Get 명령
+문법 => Get 화일명
+	저장된 화일을 불러온다.
+Start 명령
+문법 =>  Start 화일명
+	화일에 저장된 SQL문을 실행한다.
+@Filename
+	문법 => Filename
+	화일에 저장된 SQL문을 실행한다.
+
+
+지금 부터는 함수를 정리합니다.
+Lower,Upper,Initcap,Concat,Substr,Length,Nvl
+Lower(열이름(문자열)) => 지정된 열을 소문자로 변환한다.
+Upper(열이름(문자열)) => 지정된 열을 대문자로 변환한다.
+Initcap(열이름(문자열)) =>지정된 열의 제일 앞글자만이  대문자로 출력이 되도록 변환합니다.
+		=> Select Upper(usrname) from list 
+Concat(열이름1(문자열),열이름2) => 지정된 열을 공백이 없이 연결을 시켜 추력합니다.
+                => Select concat(usrname,usrno) from list 
+Substr(열이름(문자열),시작, 얼마)
+	시작: 선택된 문자열의 몇번째, 부터  얼마: 만큼의 비트수만큼을 선택하겠는가.
+	       => Select substr(usrname,1,3) from list
+SQL> select feature,substr(feature,1,instr(feature,'i',1,1)) from kjh_ne;
+
+FEATURE         SUBSTR(FEATURE,1,INSTR(FEATURE
+--------------- ------------------------------
+Births          Bi
+Bridge          Bri
+Business        Busi
+Classified      Classi
+Comics          Comi
+Doctor Is In
+Editorials      Edi
+Modern Life     Modern Li
+Movies          Movi
+National News   Nati
+Obituaries      Obi
+Sports
+Television      Televi
+Weather
+14 개의 행이 선택되었습니다.
+SOUNDEX함수는 지정한 열의 값과 철자와는 상관이 없이 발음이 유사한것을 찾아내는 함수이다.
+SQL>select FEATURE,'telebision' from kjh_ne where soundex(feature) = soundex('telebision')
+실행결과 =>	FEATURE         'TELEBISIO
+		--------------- ----------
+		Television      telebision
+
+NULL에 대한 이해 !
+select page,suchi, page + suchi,
+page - suchi , page * suchi,page / suchi
+from kjh_ne where  page is null
+	위와 같이 산술연산을 실행하였다. 
+	아래의출력 결과는 널값은 0과다르다느것을 알수있다.
+	널은 아무런 값으로도 간주 되지 않기 때문에 출력결과를 갖지 않는다.
+실행결과 =>
+     PAGE     SUCHI PAGE+SUCHI PAGE-SUCHI PAGE*SUCHI PAGE/SUCHI
+--------- --------- ---------- ---------- ---------- ----------
+                 30
+널인경우에 어떤 값을 할당할수있는 함수인 NVL을 사용합니다..
+select page,suchi, nvl(page,10) + suchi,
+nvl(page,10) - suchi , nvl(page,10) * suchi,nvl(page,10) / suchi
+from kjh_ne where  page is null
+위의 실행문장은 page가 널인 경우에 10을 할당 합니다. 그러면
+10이라는 수치가 할당이 되고 출력결과가 아래와 같이 나타납니다.
+
+PAGE     SUCHI NVL(PAGE,10)+SUCHI NVL(PAGE,10)-SUCHI NVL(PAGE,10)*SUCHI NVL(PAGE,10)/SUCHI
+---- --------- ------------------ ------------------ ------------------ ------------------
+            30                 40                -20                300          .33333333
+Length(열이름) 길이를 반환하는 함수입니다.
+	       =>Select length(usrname) from list 
+Round(열이름(수치),N) 지정된  열의 값을 소수점 N자리에서 반올림하라.
+	       =>select round(11.345455,4) from list
+	   결과 : ROUND(11.345455,4)	
+		  ------------------
+		            11.3455
+Trunc(열이름(수치),N) 지정된  열의 값을 소수점 N자리에서 버려라..
+	       =>select TRUNC(11.345455,4) from list
+	   결과 : TRUNC(11.345455,4)	
+		  ------------------
+		            11.3454
+MOD(Arg1,Arg2)두 수치를 나누어 나머지를 반환하는 함수입니다.
+
+Month_Between(Arg1,Arg2)두인자사이의 차를 달로 반환하는 함수입니다.
+	select DISTINCT months_between(sysdate,usrdate) from list
+ADD_MONTHS(Arg1,Arg2) 인자1에다가 2를 더합니다.
+	select ADD_MONTHS(USRDATE,6) from dual
+
+Next_Day(Arg1,Arg2)인자1에서 지정된날에 해당하는 지정된 다음주요일을 출력합니다.
+	select next_day(sysdate,'Friday') from dual
+Last_Day(Arg1)지정된 인자1의 날짜에 해당하는 달의 마지막날의 반환합니다.
+	select last_day(sysdate) from dual
+문자열, 날짜로의 변환을 위한 함수
+TO_CHAR(date,'날짜 포맷')
+	날짜포맷은 yyyy/mm/dd/hh/mis/ss/hh등이 있다.
+	Select TO_CHAR(sysdate,'mm/yyyy/dd/hh/mi/ssss/cc'),sysdate from dual/
+	Select TO_CHAR(usrheight,'fmB999.00') from list
+	fm을 사용하여 format을 지정을 한다.99999는 숫자와 대치된다.
+	$99999로 지정을한경우에는 나머지 여분의 자리가 $로 채워진다.
+	그밖에도0,'L','MI','PR',EEEE,V,B등을 사용하는 방법이있다.
+
+TO_NUMBER(char)
+	문자를 숫자로 변환하는데 사용하는 함수입니다.
+TO_DATE(char,'fmt')
+	문자를 날짜형식으로 변환하는데 사용하는 함수입니다.
+       =>Select TO_DATE('09071992','mmddYYYY') 날짜 from dual
+
+TRANSLATE() 함수.
+SQL> SELECT TRANSLATE(7671234,234567890,'BCDEFGHIJ') FROM DUAL;
+TRANSLA
+-------
+GFG1BCD
+ ==>     잘살펴보싶시요
+  형식은 TRANSLATE(문자열(값:열이름이겠지요),조건,치환이 이루어질 문자)
+  그래서 맨 앞의 7은 234567890에 있는 순서에 맞추어서 G와 치환이 이루어짐니다.
+
+DECODE() 함수.
+  이함수는 위의 translate함수와 유사한 함수입니다. 위의 함수는 한 문자씩 치환이 이루어지지만.
+  DECODE() 함수는 지정한 문자열자체를 치환합니다. 강력한 함수인것 같은데요!
+  형식은 DECODE(문자열(값:열이름이겠지요),조건1,치환될 문자열1,조건2,치환될 문자열2 .......,else(여기에는 문자열이 지정될수도 있고 
+										 		 특정열이름이 지정되어 앞의 조건이
+ 											  	 만족하지 않는 함수에 대해서는
+												 그행의 값을 그대로 출력할도 있고 
+												 특정열을 지정할수도 있습니다. 있읍니다.)
+	SQL> SELECT DECODE(FEATURE,'Sports','***Games People play***',
+	  2  'Movies','***Entertainment***',feature), section,page
+	  3  from kjh_ne;
+실행결과 =>
+		DECODE(FEATURE,'SPORTS' S      PAGE
+		----------------------- - ---------
+		Births                  F         7
+		Bridge                  B         2
+		Business                E         1
+		Classified              F         8
+		Comics                  C         4
+		Doctor Is In            F         6
+		Editorials              A        12
+		Modern Life             B         1
+		***Entertainment***     B         4
+		National News           A         1
+		Obituaries              F         6
+		***Games People play*** D         1
+		Television              B         7
+		Weather                 C         2
+		바보야
+		천재야                  t         4
+		인간아
+
+		SQL> SELECT DECODE(FEATURE,'Sports','***Games People play***',
+		  2  'Movies','***Entertainment***',section)
+		  3  from kjh_ne;
+		실행결과 =>
+			DECODE(FEATURE,'SPORTS'
+			-----------------------
+			F
+			B
+			E
+			F
+			C
+			F
+			A
+			B
+			***Entertainment***
+			A
+			F
+			***Games People play***
+			B
+			C
+			
+			t
+아우터 조인
+   ==>Select  list.usrkindcode, code.kindname from list,code where list.usrkindcode(+) = code.kindname
+조건에서 더하기 표시를 한쪽의 열에 널값으로하여 공간을 만들어준다 조건에 조건을 
+만족시키기위해 표시하지 못한 + 가 없는 쪽의 값들을 보여준다.
+   정상적으로 조인 조건을 만족하지 못하는 행들을 보기위해 Outer join을 사용한다.
+　 Outer join 연산자는 "(+)"이다.
+ 조인시킬 값이 없는 조인측에 "(+)"를 위치 시킨다.
+ 행인 조건을 만족하지 않을시 해당 행은 질의결과에 나타나지 않는다.
+ 예를 들자면 S_EMP와 S_CUSTOMER 테이블의 equijoin에서 Sweet Rock Sports사는
+ 이 고객에 대해 담당 영업사원이 없기 때문에 결과에 나타나지 않는다.
+ Outer join 연산자를 조인 조건에 사용시 조인조건을 만족하지 않는 행들도 결과에 나타날 수 있다.
+ 그 연산자는 괄호로 묶인 플러스 기호(+)이며 정보가 부족한 조인측에 위치한다.
+ (+)연산자는 한 개 이상의 NULL 행을 생성하고 정보가 충분한 테이블의 한 개 이상의 행들이 이런 NULL 행에 조인된다.
+
+뷰의 생성
+		Create or replace view invasion as 
+		SELECT KJH_we.cITY,kjh_we.TENPERATure,kjh_lo.country
+		FROM KJH_WE,kjh_lo
+테이블과 같이 생성이되며 특정 테이블들의 값을 끌어서 뷰를 생성할수있다.
+이때 테이블의 내용을 변경을하면 뷰테이블의 내용도 따라서  변한다.
+
+rem name: kjh_ne.sql type: start file report
+rem written by : kjh
+set headsep ! 
+ttitle '김지훈의!리포트입니다'
+btitle '지후니가 작성합니다.'
+column city heading '도시명'
+column city format a18
+rem a와 18은 이열이 문자로 되어있다고 알려줍니다.
+rem  표시 너비느 ㄴ데이터 베이스에 정의되 너비와는 상관없이 거의 무제한적으로 지정할수있습니다.
+column city truncated
+/*컬럼이름을 지정하고. 18칸을 지정했습니다. 
+ 그 공간을 초과할경우에는 자료를 절단합니다.*/
+column condition heading '날씨'
+column condition format a18
+column tenperature heading '기온'
+column tenperature format 99
+break on city skip 2 on report
+/*city컬럼이 아래의 sql문장을 보면 정렬 기준으로 설정이 되어있는것을 볼수있다.
+  정렬기준으로 설정한 값을 기준으로 다른 모양이 다른 값이 나올때마다.. 
+  브레이크를 걸고 아래의 문자 즉 평균 값이든 합계든 찍게되는것이다.
+compute avg of tenperature  on city
+ 이둘은   함께 사용을 해야한다. 
+ Order by 까지 셋이구나.
+set linesize 50 
+  /*한행의 최대 크기를 설정합니다. */
+set pagesize 30
+/* 한페이지에 출력될 라인의 수를 지정합니다.
+set newpage  0
+/* 다른 페이지가 시작 될때 뛸 공간 위에서 부터의 공간 
+      Topmargin 
+spool kjh_we.lst
+/*spool 명령을 사용하여 화일을 지정하면 그화일에 이 명령어이후에 실행되어 화면에 표시되어지는 
+모든 자료들이 들어가게 됩니다.  spool off명령을 만나기전까지. 계속해서 말입니다.*/
+select city,condition, tenperature from kjh_we
+order by city;
+spool off
+여기서 스풀 어프 명령을 만납니다. 그러면 종료를 하겠지요!!!
+/
+
+	SELECT column,group_function 
+		FROM table
+			[where condition]
+				[GROUP BY group_by_expression]
+				[HAVING   group_condition]
+				[ORDER BY colunm];
+Group 함수
+      각각의 열단위로 그굽을 형성하여 계산이 이루어질수있는 계산식	
+      * AVG(DISTINCT|ALL|N)       평균
+      * MAX(DISIINCT|ALL|N)       최대
+      * MIN(DISIINCT|ALL|N)       최소 
+      * STDDEV(DISIINCT|ALL|N)    표준편차
+      * SUM(DISIINCT|ALL|N)    	  합
+      * VARIANCE(DISIINCT|ALL|N)  분산
+      * COUNT(열이름)             갯수
+	    Select avg(usrage) "평균나이", max(usrheight) "최장신 키",
+ 	      	              min(usrweight) "최소 몸무게" from  list
+
+	 	 	결과 =>    평균나이 최장신 키 최소 몸무게
+			          --------- --------- -----------
+				       29.4       183          70
+
+      * Group By구문
+            Select usrname "이름" ,avg(usrage) "평균나이", max(usrheight) "최장신 키",
+	   		 min(usrweight) "최소 몸무게", count(usrname) "참가 인원수"
+					from list group by usrname
+
+		결과 =>   이름              평균나이 최장신 키 최소 몸무게 참가 인원수
+			  ---------------- --------- --------- ----------- -----------
+			  park                    30       180          70           9
+			  김지선                  23       178          50           1
+			  김지훈                  24       183          76           1
+
+     * HAVING 구문  -> GROUP BY로 그룹화한것에 대한 조건을 나타내기위한식
+ 	    Select usrname "이름" ,avg(usrage) "평균나이", max(usrheight) "최장신 키",
+	   	 min(usrweight) "최소 몸무게", count(usrname) "참가 인원수"from list 
+					group by usrname HAVING COUNT(USRNAME) >= 9
+
+		결과 =>	  이름              평균나이 최장신 키 최소 몸무게 참가 인원수
+			  ---------------- --------- --------- ----------- -----------
+			  park                    30       180          70           9
+
+   *********************************************************************************
+    * 서브쿼리구문
+		       ********************************
+		       * SELECT ....                  *
+		       * FROM....		      *	
+		       *  WHERE... [EXPR OPERATER]    * 	
+		       * 	{SELECT ...           *  
+		       * 		FROM....      * 
+		       * 		WHERE...};    *
+		       ********************************
+SQL> select * from kjh_ne
+  2  where  section = any(select section from kjh_ne where page = 1);
+
+FEATURE         S      PAGE
+--------------- - ---------
+Editorials      A        12
+National News   A         1
+Bridge          B         2
+Modern Life     B         1
+Television      B         7
+Movies          B         4
+Sports          D         1
+Business        E         1
+
+8 개의 행이 선택되었습니다.
+
+	   SELECT USRNO,USRNAME,USRWEIGHT,USRHEIGHT FROM LIST  
+		WHERE USRNAME = 
+		(SELECT USRNAME FROM LIST WHERE USRNAME LIKE '김지훈')
+
+		결과 =>	 USRNO USRNAME          USRWEIGHT USRHEIGHT
+			------ ---------------- --------- ---------
+			     1 김지훈                  76       183
+
+   *  그룹화한 조건식의 서브쿼리구문
+	SELECT USRNO,USRNAME,USRWEIGHT,USRAGE,USRKINDCODE FROM LIST
+		 WHERE USRKINDCODE IN(SELECT MIN(KINDNAME)
+			      		FROM CODE GROUP BY KINDCODE
+					 HAVING KINDCODE >6  AND KINDCODE <10)
+
+		결과 =>	 USRNAME              USRNO USRHEIGHT
+			 ---------------- --------- ---------
+			 park                     2       180
+			 park                     3       180
+			 park                     4       180
+			 park                     5       180
+			 park                     6       180
+			 park                     7       180
+			 park                     8       180
+			 park                     9       180
+			 park                    10       180
+ * SQL*Plus명령어의 분류
+		환경(Environment)    =>일반적인 SQL문의 행동에 영향을 끼친다.
+		형식(Format)         => 질의 결과의 형식
+		화일 처리(File Manipulation) =>Saves,load,runs등의 화일처리
+ 		실행(Execution)      =>오라클 서버의 SQL버퍼에 SQL,PL/SQL명령어를 보낸다.
+		편집(Edit)           =>버퍼에있는 SQL문장의 수정 
+		상호작용(Interaction)=>사용자,패스워드,프린트,등의 값들을 만드는것을 허가한다.
+		기타(Miscellaneous)  => 기타 등등!!
+ * SQL과 SQL*PLUS의 차이점
+
+     ***************************************************************************************
+     *       SQL                                *          SQL*PLUS			   *	
+     * 오라클 서버와 대화를 한다. 		*	SQL명령어를 해석한다.              * 
+     * SELECT명령어를 데이타베이스에서 사용	*	데이터베이스 명령어를 가질수없다.  *
+     * SQL명령이 버퍼에 저장이 된다.		*	SQL버퍼에 저장이 되지 않는다.      *
+     * 형식을 지정하는데 함수를 사용한다. 	*	데이터형식에대한 명령어를 사용한다.*
+     ***************************************************************************************
+ * 환경명령어 SET => Default Settting은 log.sql파일에 설정됨
+	문법  => Set  system_variable value
+ 	    * SYSTEM_VARIABLE 
+		Array : 데이타베이스의 자료를 불러오는 크기를 설정
+		Colsep: 인쇄시의 열간격의 TEXT를 설정한다.기본값은 단일 공백이다. => " "
+		Echo Off/On :SQL문이 실행이 될때 SQL문이 표시될지 않될지를 설정한다.
+		Feed[Back] On/Off : 질의에 실행에의한 레코드수를 반환하여 화면에 표시하는지여부 설정
+		HEA[DING] (6|N|ON/OFF| : 리포트 출력시 머리말이 출력이 되는지 여부를 결정한다.
+		LIN[ESIZE] {80|N} : 한 라인당 문자의수를 설정합니다.
+		LONG {80|N}	  : LONG 타입의값을 표시하는 최대간격을 설정
+		PAGES[IZE] {24|N} : 출력 페이지당 라인의 수를 설정
+		PAU[SE] {OFF|ON|TEXT} 종료를 스크롤링 제어의 종료를 허가한다.
+				      정지한후 RETURN키를 눌러야한다.
+		TERM[OUT] {OFF|ON} : 출력이 스크린에 보여질지 여부를 결정한다.
+
+	***SHOW 명령어를 사용하여 각각의 환경 명령에대한 속성값을 살펴볼수있다.
+**********************************************************************************************
+리포트의 작성
+COMMAND 화일 => SQL SELECT문이나, SQL*PLUS의 명령어를 포함한다.
+		COLUMN [column option]
+		TTITLE [text|OFF|ON]
+		BTITLE [text|OFF|ON]
+		BREAK [ON report_element]
+		COMPUTE [function OF {colunm} ON {colunm}]
+		
+
+COLUMN 명령어 
+	        COL[UMN]  [{column|alias} [option ...]]
+	* Option
+	CLE[AR]        : 열의 형식을 지운다.
+	FOR[MAT]format : 열에 보여지는 자료를 변화시킨다.
+	HEA[DING] text : 열의 타이틀이름을 설정한다.
+			| =>은 강제로 줄을 바꾸는데 사용된다.
+	JUS[TIFY] {align} :열의 머리말의 정열방식을 정의한다.
+	NOPRI[NT]         :열을 숨신다.
+	NUL[L] text       :특별한 문장을 NULL값으로 표시한다.
+	PRI[NT]		  :열을 보여준다.
+	TRU[NCATED]	  :보여지는 첫라인의 끝에서 문자열을 잘라낸다.
+	WRA[PPED]	  :다음 라인의 문자열의 끝에 덮어 씨운다.
+	WOR[DWRAPPED]	  :WRAPPED와 같다 하지만, 문자가 나누어지는것은 보장하지못한다.
+
+  * FORMAT Model Element
+	An   : 문자나 날짜에대해 보여지는 폭을 설정한다. 
+	9    :  0을 제거하고 숫자만능 받아들인다.
+	0    :  0을 강제로 이끌어낸다.
+	$    :  달러사인을 표시한다.
+	L    :  지역상의 통용되는 화페의 단위를 표시한다.
+	.    :  십진수의 소수점을 나타낸다.
+	,    :  천단위의 구분에 사용한다.
+  
+ * TTITLE 과 BTITLE
+	페이지의 헤더형시과 풋터의 형식을 마추는데 사용된다.
+	SQL> TTI 'Salary|Report'
+ * 변수 옵션 
+	SQL.PNO   =>  PAGE NUMBER
+	SQL.USER  
+
+	페이지수, 타이틀, 사용자이름을 포함하는  사용자 헤더를 만든다.
+	=> TTI LEFT 'PAGE NUMBER : ' FORMAT 999 SQL.PNO - 
+		CENTER 'COMPANY REPORT' RIGHT SQL.USER -
+		SKIP 2
+
+    *****************************************************************************
+    * 레포트 실행을 위한  스크립트 화일만들기					*
+    *	   	    1.SELECT SQL문장을 작성한다.				*
+    * 		    2.SELECT SQL문장을 스크립트 화일에 저장한다.		* 
+    *	 	    3.편집기로 스크립트 화일을 불러온다.			*	
+    *		    4.FORMATTING  명령어를 SELECT 문장앞에 추가 시킨다.		*
+    *	 	    5.SELECT 문장 뒤의 FORMATTING 명령어는 지운다		*
+    *		    6. 스크립트를 저장한다.					*
+    *	 	    7. "START filename" 명령을 이용하여 실행한다.		*	
+    *****************************************************************************				
+	스크립트를 화일에 작성한다.
+	set echo off
+	set pages 30
+	set lines 60
+	set feedback off
+	tti 'employee|report'
+	bti 'confidential'
+	COL usrno   HEA 'job|category' format 999
+	COL usrname HEA 'employee' format A22
+	COL usrage  HEA 'Salary' format $9999
+	break on usrno skip 1 on report
+	compute sum label 'subtotal' of usrage on title
+	compute sum label 'grand total' of usrage on report
+	select  usrno,usrname,usrage from list
+	/
+	SET ECHO ON
+실행결과	
+	Tue Jan 12                                       페이지    
+        	                  employee
+                	           report
+
+	     job
+	category employee               Salary
+	-------- ---------------------- ------
+	       2 park                      $30
+	
+	       3 park                      $30
+
+	       4 park                      $30
+
+	       5 park                      $30
+
+	       6 park                      $30
+
+	       7 park                      $30
+
+	********                        ------
+	                                  $180
+
+* &(앤퍼샌드) 기호를 이용하여 변수 입력 받기
+	=> WHERE, ORDER BY, COLUMN, TABLE 이름, 전체 SELECT 문장에서 사용이 가능합니다.
+
+      Select * from  &ABC
+	결과   =>   abc의 값을 입력하십시오: code
+
+	  	     	KIND KINDNAME
+			---- --------------------
+			1    1001
+			2    1001
+			3    1001
+			4    1001
+			5    3001
+			6    3002
+			7    3003
+			8    3004
+			9    3001
+			10   3001
+			14   3001
+
+    * 같은이름의 변수를 재 사용하기를 원한다면 
+       SELECT USRNAME,USRNO FROM &VA WHERE &&VA >10;
+
+	결과 => va의 값을 입력하십시오: LIST
+		va의 값을 입력하십시오: USRNO
+			구   1: SELECT USRNAME,USRNO FROM &VA WHERE &&VA >10
+			신   1: SELECT USRNAME,USRNO FROM LIST WHERE USRNO >10
+
+	
+			USRNAME              USRNO
+			---------------- ---------
+			김지선                  11
+
+  * 사용자 정의 변수
+     SQL*PLUS에서 미리 사용자 정의 변수를 선언할수있다.
+	DEFINE :  문자형의 데이터 타입으로 사용자 정의 변수 정의
+	DEFINE variable = value => 정의된 변수에 값을 입력한다.
+ 	        SQL>DEFINE JI = 1
+	DEFINE variable         => 변수에 정의된값을 출력한다.
+	DEFINE 			=> 모든 정의된변수와 값을 보여준다.
+	ACCEPT variable [datatype][FORMAT][PROMPT TEXT][HIDE]
+	ACCEPT :  저장되어있는 변수를 읽어온후 값,형식을 변경할수있다..
+		****더블 앤퍼샌드로 정의할경우에 문제가 발생할수있다.****
+
+		SQL>ACCEPT ABC PROMPT 'PROVIDE THE DEPARTMENT NAME:'
+  	 	    	결과  =>PROVIDE THE DEPARTMENT NAME:ASC
+		SQL>ACCEPT  JI NUMBER PROMPT '값입력 : '
+	 	  	실행결과 => 값입력 : 55555  <= 입력을합니다.
+		SQL>DEFINE JI
+			결과 =>	DEFINE JI              =     55555 (NUMBER)
+* 스크립트에서의 실행
+17PROMPT.SQL로 작성한다.
+		SET ECHO OFF
+		ACCEPT ABC PROMPT '테이블의 이름을 입력하시요! : '
+		SELECT USRNO,USRNAME,USRAGE FROM &ABC
+		/
+		SET ECHO ON
+
+SQL> @17PROMPT
+	테이블의 이름을 입력하시요! : LIST
+	구   1: SELECT USRNO,USRNAME,USRAGE FROM &ABC
+	신   1: SELECT USRNO,USRNAME,USRAGE FROM LIST
+	
+	    USRNO USRNAME             USRAGE
+	--------- ---------------- ---------
+	        2 park                    30
+	        3 park                    30
+	        4 park                    30
+        	5 park                    30
+	        6 park                    30
+	        7 park                    30
+        	8 park                    30
+	        9 park                    30
+	       10 park                    30
+        	1 김지훈                  24
+	       11 김지선                  23
+
+	11 개의 행이 선택되었습니다.
+	입력한 문자는 11 문자에서 잘렸습니다.
+
+  * UNDEFINE 명령어
+	정의된 변수는 UNDEFINE명령어를 사용하여 그것을 클리어 할때까지,
+	당신이 SQL*PLUS를 종료할때까지, 변수의 값은 남아있다.
+   * 실제 예
+	SQL> DEFINE
+		DEFINE _O_VERSION      = "Oracle7 Server Release 7.3.4.0.0 - Production
+		With the distributed option
+		PL/SQL Release 2.3.4.0.0 - Production" (CHAR)
+		DEFINE _O_RELEASE      = "703040000" (CHAR)
+		DEFINE ABC             = "LIST" (CHAR)
+	SQL> UNDEFINE ABC
+	SQL> DEFINE
+		DEFINE _O_VERSION      = "Oracle7 Server Release 7.3.4.0.0 - Production
+		With the distributed option
+		PL/SQL Release 2.3.4.0.0 - Production" (CHAR)
+		DEFINE _O_RELEASE      = "703040000" (CHAR)
+*********************ABC변수가 삭제 되어있는것을 알수있다.******************************
+
+* 스크립트화일에 SELECT문장을 이용한후 실행문장으로 직접 변수의 값을 대입할수있다.
+* SQL 명령어를 실행 함으로써 데이터베이스를 만들수있다. 
+시스템 개발 사이클
+데이터베이스 개발은 다섯개의 단계로 구성되어진다.
+			분석및설계 ,디자인, 문서화,변형,생산
+Data Models
+	Entity    =>정보를 알기위해 중요한것
+		 고객,판매를 대표할수있는것들
+	Attribute =>묘사하거나, 자격이 주어지는것에대한것
+	RekationShip	=>   두개체의 관계를 나타낸다.
+
+
+식별기호  => UID(#) :  Unique IDentifier
+	     Primary marked with "#"(기본키)
+	     
+             Mandatory위임키 => (*)
+	     Option   선택키 => (o)
+형태	 =>  일대다 대응, 일대일 대응, 다대다 대응
+
+데이타 구조
+	테이블(table) : 데이터를 저장한다.
+	뷰	      : 하나이상의 테이블로부터의 데이터 부분집합
+	시컨스	      : 일반적인 기본키값
+	인덱스	      : 쿼리의 성능을 향상시킨다.		
+
+*  테이블의 생성
+		CREATE TABLE [SCHEMA]TABLE
+			(column datatype [default expr] [column_constraint],
+			..........[table_constraint]);
+
+ * 데이터 타입
+ 
+		Varchar2 	 : 가변 길이 문자	 최대(2 GB)
+		char		 : 고정길이 문자 	 최대(255 byte)	 
+		number		 : 부동소수점수		 최대(-84~127 byte)
+		date    	 : 날짜형 값		
+ 		long	 	 : 2 GB의 길이를 갖는 값 최대(2 GB)
+		Raw and Long Raw : 가변길이의 2진 데이터 최대(255 byte, 2 GB)
+
+강제화(Constraint) TYPE 
+	NOT NULL       : 널값을 가질수없다.	
+	UNIQUE	       : 열과 열이 결합할때 테이블의 모든 행에서 유일한 값이어야한다.
+	PRIMARY KEY    : 테이블의 행을 구변할수있는 유일한것
+	FOREIGN KEY	
+	CHECK 	       : 참이어야만하는 특별한 상태
+
+형식  	COLUMN [CONSTRAINT CONSTRAINT NAME] CONSTRAINT TYPE
+	
+	예) CREATE TABLE friend(phone VARCHAR2(15)  NOT NULL)
+	    CREATE TABLE friend(last_name VARCHAR2(25) constraint friend_last_nn  NOT NULL)	
+	create table s_dept   		=>s_dept라는 테이블을 생성을 합니다.
+	(id     number(7)		=>id필드는 숫자형으로 7자리
+	constraint s_dept_id_pk primary key,	=>기본키이며 인덱스는 s_dept_id_pk
+	name varchar2(25)		=>name 필드는 가변 문자열 25자리이며		
+	constraint s_dept_name_nn not null, =>널이 들어가면안되고 인덱스는 s_dept_name_nn이다.
+	region_id number(7)		    =>region_id는 숫자형 7자리 이며
+	constraint s_dept_region_id_fk references
+	s_region(id),	=>s_region 테이블의 id필드와 외래키로써 참조되지며 s_dept_region_id_fk라는 인덱스를 가진다.
+	constraint s_dept_name_region_id_uk unique(name,region_id));
+		=> name,region_id필드는 유일한 값만이 들어가야한다.
+
+서브 쿼리를 이용하 테이블의 생성
+	Create Table tablename[column(,column....)] as subquery;
+	SQL>create table emp_41 As select * from code;
+		테이블이 생성되었습니다.
+	SQL>desc emp_41
+	이름                            Null?    유형
+	------------------------------- -------- ----
+	KINDCODE                                 VARCHAR2(4)
+	KINDNAME                                 VARCHAR2(20)
+질의 데이터 사전
+	네개의 보기 그룹
+		USER   사용자 자신의 객체
+		ALL    접근 권한을 가진 사용자의 객체
+		DBA    모든 데이터베이스 객체
+		V$     서버 실행
+	다른 보기		
+	DICTIONARY       : 모든 데이타 DICRIONARY 테이블의 보기,표시
+	TABLE_PRIVILEGES : 소유자나 권한이있는 사람에게 객체에대한 권을 부여한다.
+	IND		 : USER_INDEXES와 유사하다.
+	당신은 SQL SELECT 문장의 문제로써  데이타  DICTIONARY를 질의 할수있다.
+
+		SQL>SELECT  *  FROM DICTIONARY;
+		SQL>SELECT  *  FROM USER_OBJECTS;
+
+   SQL>SELECT * FROM DICTIONARY WHERE LOWER(COMMENTS) LIKE '%grant%';
+
+	ALL_COL_PRIVS	Grants on columns for which the user is the grantor, 
+	ALL_COL_PRIVS_MADE	Grants on columns for which the user is owner
+	ALL_COL_PRIVS_RECD	Grants on columns for which the user, PUBLIC 
+	ALL_TAB_PRIVS	Grants on objects for which the user is the grantor, 
+	ALL_TAB_PRIVS_MADE	User's grants and grants on user's objects
+	ALL_TAB_PRIVS_RECD	Grants on objects for which the user, PUBLIC
+	USER_AUDIT_STATEMENT	Audit trail records concerning  grant, revoke
+	USER_COL_PRIVS	Grants on columns for which the user is the owner, 
+	USER_COL_PRIVS_MADE	All grants on columns of objects owned by 
+
+   SQL> SELECT  DISTINCT OBJECT_TYPE  FROM USER_OBJECTS;
+
+			OBJECT_TYPE
+			-------------
+			INDEX
+			PROCEDURE	
+			SYNONYM
+			TABLE
+			VIEW
+
+   SQL>SELECT CONSTRAINT_NAME, CONSTRAINT_TYPE, SEARCH_CONDITION, R_CONSTRAINT_NAME
+ 	FROM USER_CONSTRAINTS
+
+데이터베이스 객체 정보를 보기위한 쿼리
+	DICTIONARY
+	DICT_COLUMS
+	USER_OBJECTS
+	USER_CONSTRAINTS
+	USER_CONS_COLUMNS
+
+
+
+환경설정 명령어
+SET   = > 
+	set feedback 10
+		의 미 :  select 문장을 사용해서 검색을 할경우  10개 이상의 자료가 검색이 되어야만
+			  몇개의 행이 출력되었는지를 표시한다. 그 이하의 행이 선택이 되면.. 아무런 
+			  메시지도 출력하지 않는다.  
+        set pause on/off
+                   on을 할경우에는 화면을 넘어가는 페이지가 발생을 하면  화면이 일시 정지를해서 그 화면의
+		   진행을 계속할것인지 아니면, 검색을 종료할것인지를 물어온다..
+        이렇게 해도 되는데요 신기하네요!!
+        set pause '더 보여주세요'
+	 그러면 '더 보여주세요'라는 문장이 출력되면서 다음 화면을 보여줄지의 여부를 결정하는 대화상자가 출력이 된다.
+
+EXIST 함수를 사용한다.
+SQL>  SELECT SKILL.SKILL FROM SKILL WHERE NOT EXISTS
+  2   (SELECT 'X' FROM WORKERSKILL WHERE SKILL.SKILL = WORKERSKILL.SKILL);
+
+		SKILL
+		-------------------------
+		GRAVE DIGGER
+
+===>  workerskill 테이블의 skill필드에 존재하지않는 skill테이블의 skill필드값들을보여주기위한 쿼리
+     select skill.skill 을 조건이 skill.skill 과 workerskill.skill의 값이 같은것이 존재하는것의을 찾는다.
+     근데  not Exists이므로 반대의 결과를 발생시킨다.
+
+이문장을 쿼리에서 찾아서 주목하라..
+	NOT EXISTS        FROM WORKERSKILL 
+          WORKERSKILL로 부터 존재하지않는것을 찾는다.
+
+UNION 함수, INTERSECT, MINUS 
+이 함수의 특징은 합하거나 빼거나하는 쿼리를 수행함에있어 
+필드의 형태가 같아야만 수행이 가능하다.
+의 함수의 쓰임은  
+UNION는 합하는것이고 
+INTERSECT는 공통된것 교차하는것에 대해서 쿼리를수행한다.
+MINUS는 A - B 집합에서 이것은 B 에 존재하는값이 A에 존재하면 A에서 
+빼라. 어렵게 말한것 같은데 A의 값들중에 B에 존재하는것을 제외시키면 간단한 문제입니다.
+
+SQL> select lodging from longtime union select name from prospect;
+이것은 LODGING이라는 필드와 NAME이라는 필드를 결합하느 쿼리인데
+데이터형이 같으므로 아무런 문제없이 실행됩니다.
+			LODGING
+			-------------------------
+			ADAH TALBOT
+			CRANMER
+			DORY KENSON
+			ELBERT TALBOT
+			GEORGE PHEPPS
+			JED HOPKINS
+			MATTS
+			PAPA KING
+			PAT LAVAY
+			ROSE HILL
+			TED BUCHER
+			WEITBROCHT
+			WILFRED LOWELL
+			14 개의 행이 선택되었습니다.

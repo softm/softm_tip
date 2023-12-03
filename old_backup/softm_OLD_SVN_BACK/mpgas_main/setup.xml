@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<setup>
+    <info>
+        <name>mpgas_main</name>
+        <version>1.0.0</version>
+        <url>http://110.8.124.30:4001/mobile/mpgas_main_1.0.0.apk</url>
+    </info>
+    <info>
+        <name>mpgas_gum</name>
+        <version>1.0.0</version>
+        <url>http://110.8.124.30:4001/mobile/mpgas_gum_1.0.0.apk</url>
+    </info>
+    <info>
+        <name>mpgas_as</name>
+        <version>1.0.0</version>
+        <url>http://110.8.124.30:4001/mobile/mpgas_as_1.0.0.apk</url>
+    </info>
+    <info>
+        <name>mpgas_chk</name>
+        <version>1.0.0</version>
+        <url>http://110.8.124.30:4001/mobile/mpgas_chk_1.0.0.apk</url>
+    </info>
+    <info>
+        <name>mpgas_chg</name>
+        <version>1.0.0</version>
+        <url>http://110.8.124.30:4001/mobile/mpgas_chg_1.0.0.apk</url>
+    </info>
+    <info>
+        <name>mpgas_che</name>
+        <version>1.0.0</version>
+        <url>http://110.8.124.30:4001/mobile/mpgas_che_1.0.0.apk</url>
+    </info>
+</setup>
+

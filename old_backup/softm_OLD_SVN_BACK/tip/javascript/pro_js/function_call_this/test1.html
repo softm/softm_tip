@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  <script type="text/javascript">
+  <!--
+	function hello(thing) {  
+		console.log(this + " says hello " + thing);
+	}
+	hello.call("Yehuda", "world") //=> Yehuda says hello world
+
+	function hello2(thing) {  
+//	"use strict";
+	  console.log("Hello " + thing);
+	}
+
+	// this:
+	hello2("world")
+
+	// desugars to:
+	hello2.call(window, "world");  
+
+	// desugars to:
+	hello2.call(undefined, "world");  
+
+
+var person = {  
+  name: "Brendan Eich",
+  hello: function(thing) {
+    console.log(this + " says hello " + thing);
+  }
+}
+
+// this:
+person.hello("world")
+
+// desugars to this:
+person.hello.call(person, "world");  
+
+function hello2(thing) {  
+  console.log(this + " says hello " + thing);
+}
+
+person = { name: "Brendan Eich" }  
+person.hello2 = hello2;
+
+person.hello2("world") // still desugars to person.hello.call(person, "world")
+
+hello2("world") // "[object DOMWindow]world"  
+
+
+///////////////////////////////////////////
+
+var person = {  
+  name: "Brendan Eich",
+  hello: function(thing) {
+    console.log(this.name + " says hello " + thing);
+  }
+}
+
+var boundHello = function(thing) { return person.hello.call(person, thing); }
+
+boundHello("world"); 
+
+
+var bind = function(func, thisValue) {  
+  return function() {
+    return func.apply(thisValue, arguments);
+  }
+}
+
+var boundHello = bind(person.hello, person);  
+boundHello("world") // "Brendan Eich says hello world"  
+
+var boundHello = person.hello.bind(person);  
+boundHello("world") // "Brendan Eich says hello world"  
+
+
+//var person = {  
+//  name: "Alex Russell",
+//  hello: function() { console.log(this.name + " says hello world"); }
+//}
+//
+//$("#some-div").click(person.hello.bind(person));
+// when the div is clicked, "Alex Russell says hello world" is printed
+
+
+  //-->
+  </script>
+ </body>
+</html>

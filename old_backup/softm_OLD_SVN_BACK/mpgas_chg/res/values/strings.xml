@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="proc_gid">chg</string>    
+    <string name="label_spn_non_seal">-미봉인-</string>
+</resources>

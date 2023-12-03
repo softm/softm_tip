@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Frame.Container"
+    android:layout_width="wrap_content"
+    android:layout_height="match_parent" >
+
+    <com.entropykorea.gas.gum.activity.ui.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <!-- 주소 -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="0dp"
+        android:baselineAligned="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="12dp" >
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="4"
+            android:gravity="left|center_vertical" >
+
+            <TextView
+                android:id="@+id/tv_address"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="10dp"
+                android:clickable="true"
+                android:gravity="left"
+                android:text="수용가\n주소"
+                android:textColor="@color/White"
+                android:textSize="17dp" />
+        </LinearLayout>
+
+        <ToggleButton
+            android:id="@+id/btn_street_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/street_address_toggle"
+            android:textOff=""
+            android:textOn="" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:id="@+id/scrollviewchild"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <!-- header -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="구분" />
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="4"
+                    android:gravity="center_vertical|center"
+                    android:text="전월" />
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center_vertical|center"
+                    android:paddingRight="8dp"
+                    android:text="당월" />
+            </LinearLayout>
+
+            <!-- 지침 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="지침"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_bf_mm_meter"
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="4"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|center"
+                    android:text="" />
+
+                <LinearLayout
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|center"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" >
+
+                    <EditText
+                        android:id="@+id/et_meter"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/input_img"
+                        android:hint="지침"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:selectAllOnFocus="true"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="16dp"
+                        android:textStyle="normal" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 근거 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="근거"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_bf_mm_meter_cd"
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="4"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|center"
+                    android:text="" />
+
+                <LinearLayout
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|center"
+                    android:paddingBottom="4dp"
+                    android:paddingLeft="8dp"
+                    android:paddingRight="8dp"
+                    android:paddingTop="4dp" >
+
+                    <Spinner
+                        android:id="@+id/sp_meter_cd"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center_vertical"
+                        android:background="@drawable/dropdown_img"
+                        android:clickable="true" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 사용량 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="사용량"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_bf_mm_use_amt"
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="4"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|center"
+                    android:text="" />
+
+                <TextView
+                    android:id="@+id/tv_use_amt"
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|center"
+                    android:paddingRight="8dp"
+                    android:text="" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone" >
+
+                <!-- 보정지침 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/Background"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        style="@style/Table.Header"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="2.7"
+                        android:gravity="center_vertical|center"
+                        android:paddingLeft="5dp"
+                        android:text="보정지침"
+                        android:textColor="@color/LightGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bf_mm_adj_meter"
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:text="" />
+
+                    <LinearLayout
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp" >
+
+                        <EditText
+                            android:id="@+id/et_adj_meter"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/input_img"
+                            android:hint="보정지침"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 비보정지침 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/Background" >
+
+                    <TextView
+                        style="@style/Table.Header"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="2.7"
+                        android:gravity="center_vertical|center"
+                        android:paddingLeft="5dp"
+                        android:text="비보정지침"
+                        android:textColor="@color/LightGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bf_mm_un_adj_meter"
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:text="" />
+
+                    <LinearLayout
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp" >
+
+                        <EditText
+                            android:id="@+id/et_un_adj_meter"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/input_img"
+                            android:hint="비보정지침"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 온도 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/Background" >
+
+                    <TextView
+                        style="@style/Table.Header"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="2.7"
+                        android:gravity="center_vertical|center"
+                        android:paddingLeft="5dp"
+                        android:text="온도"
+                        android:textColor="@color/LightGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bf_mm_temper"
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:text="" />
+
+                    <LinearLayout
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp" >
+
+                        <EditText
+                            android:id="@+id/et_temper"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/input_img"
+                            android:hint="온도"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 압력 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/Background" >
+
+                    <TextView
+                        style="@style/Table.Header"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="2.7"
+                        android:gravity="center_vertical|center"
+                        android:paddingLeft="5dp"
+                        android:text="압력"
+                        android:textColor="@color/LightGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bf_mm_pressure"
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:text="" />
+
+                    <LinearLayout
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp" >
+
+                        <EditText
+                            android:id="@+id/et_pressure"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/input_img"
+                            android:hint="압력"
+                            android:imeOptions="actionNext"
+                            android:inputType="number"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 보정계수 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/Background" >
+
+                    <TextView
+                        style="@style/Table.Header"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="2.7"
+                        android:gravity="center_vertical|center"
+                        android:paddingLeft="5dp"
+                        android:text="보정계수"
+                        android:textColor="@color/LightGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bf_mm_rev_factor"
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:text="" />
+
+                    <LinearLayout
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp" >
+
+                        <EditText
+                            android:id="@+id/et_rev_factor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/input_img"
+                            android:hint="보정계수"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 압력계수 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/Background" >
+
+                    <TextView
+                        style="@style/Table.Header"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="2.7"
+                        android:gravity="center_vertical|center"
+                        android:paddingLeft="5dp"
+                        android:text="압력계수"
+                        android:textColor="@color/LightGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bf_mm_comp_factor"
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:text="" />
+
+                    <LinearLayout
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:paddingBottom="4dp"
+                        android:paddingLeft="8dp"
+                        android:paddingRight="8dp"
+                        android:paddingTop="4dp" >
+
+                        <EditText
+                            android:id="@+id/et_comp_factor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/input_img"
+                            android:hint="압력계수"
+                            android:imeOptions="actionDone"
+                            android:inputType="numberDecimal"
+                            android:selectAllOnFocus="true"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="16dp"
+                            android:textStyle="normal" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 오일이상 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/Background" >
+
+                    <TextView
+                        style="@style/Table.Header"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="2.7"
+                        android:gravity="center_vertical|center"
+                        android:paddingLeft="5dp"
+                        android:text="오일이상"
+                        android:textColor="@color/LightGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bf_mm_oil_yn"
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:text="" />
+
+                    <LinearLayout
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center" >
+
+                        <CheckBox
+                            android:id="@+id/cb_oil_err_yn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:text="" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- 밧데리이상 -->
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_marginBottom="1px"
+                    android:background="@color/Background" >
+
+                    <TextView
+                        style="@style/Table.Header"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="2.7"
+                        android:gravity="center_vertical|center"
+                        android:paddingLeft="5dp"
+                        android:text="밧데리이상"
+                        android:textColor="@color/LightGrey"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tv_bf_mm_battery_yn"
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginRight="1px"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center"
+                        android:text="" />
+
+                    <LinearLayout
+                        style="@style/Table.Row"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:background="@color/TableRow2"
+                        android:gravity="center_vertical|center" >
+
+                        <CheckBox
+                            android:id="@+id/cb_battery_err_yn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:focusable="false"
+                            android:text="" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 오일이상/계량기이상 저장 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="0dp"
+                android:baselineAligned="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:padding="12dp" >
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left|center_vertical"
+                    android:orientation="vertical"
+                    android:paddingLeft="5dp" >
+
+                    <!-- 오일이상/계량기이상 -->
+
+                    <CheckBox
+                        android:id="@+id/cb_oil_err_yn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:paddingBottom="7dp"
+                        android:paddingTop="7dp"
+                        android:text=" 오일이상"
+                        android:textColor="@color/Red"
+                        android:visibility="gone" />
+
+                    <CheckBox
+                        android:id="@+id/cb_meter_err_yn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:focusable="false"
+                        android:paddingBottom="7dp"
+                        android:paddingTop="7dp"
+                        android:text=" 계량기이상"
+                        android:textColor="@color/Red"
+                        android:visibility="visible" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:orientation="vertical" >
+
+                    <!-- 저장/취소 버튼 -->
+
+                    <ImageButton
+                        android:id="@+id/btn_save"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/b_save" />
+
+                    <ImageButton
+                        android:id="@+id/btn_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="5dp"
+                        android:background="#00000000"
+                        android:src="@drawable/b_readcancel_img"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 고객명 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background" >
+
+                <TextView
+                    android:id="@+id/tv_cust_nm_title"
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:clickable="true"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="고객명"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_cust_nm"
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="6dp"
+                    android:text="고객명" />
+            </LinearLayout>
+
+            <!-- 연락처 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background" >
+
+                <TextView
+                    android:id="@+id/tv_tel_no_title"
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:clickable="true"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="연락처"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_tel_no"
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="6dp"
+                    android:text="" />
+            </LinearLayout>
+
+            <!-- 체납개월 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="체납개월"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_che_month"
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="6dp"
+                    android:text="" />
+            </LinearLayout>
+
+            <!-- 체납금액 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:background="@color/Background" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="체납금액"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_che_price"
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="6dp"
+                    android:text=""
+                    android:textColor="@color/Red" />
+            </LinearLayout>
+
+            <!-- 계량기번호 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:layout_marginTop="10dp"
+                android:background="@color/Background" >
+
+                <TextView
+                    style="@style/Table.Header"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="1px"
+                    android:layout_weight="2.7"
+                    android:gravity="center_vertical|center"
+                    android:paddingLeft="5dp"
+                    android:text="계량기번호"
+                    android:textColor="@color/LightGrey"
+                    android:textSize="16dp" />
+
+                <TextView
+                    android:id="@+id/tv_gm_no"
+                    style="@style/Table.Row"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="8"
+                    android:background="@color/TableRow2"
+                    android:gravity="center_vertical|left"
+                    android:paddingLeft="6dp"
+                    android:text="" />
+            </LinearLayout>
+            
+            <!-- 빈거 -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginBottom="1px"
+                android:layout_marginTop="10dp"
+                android:background="@color/Background" >
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

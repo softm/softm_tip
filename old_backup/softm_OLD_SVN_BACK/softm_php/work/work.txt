@@ -1,0 +1,205 @@
+# 세션 연동되게하려면
+	kjtnet_member 테이블의 id필드를 50자리로 늘리고 admin 계정을 tbl_member와 동일하게 설정한다.
+
+상담
+    SELECT COUNT(*) FROM tbl_biz_consult WHERE SUBSTR(REG_DATE ,1,10) = SUBSTR(NOW() ,1,10) 
+상담
+    SELECT COUNT(*) FROM tbl_biz_consult WHERE SUBSTR(REG_DATE ,1,10) = SUBSTR(NOW() ,1,10) 
+
+보낸 메일
+회원관련 ui 정보
+	회원가입 http://lioness.kr/sub.php?contents=member&load=member_login
+	아이디 찾기 http://lioness.kr/sub.php?contents=member&load=member_findid
+	회원정보 수정 http://lioness.kr/sub.php?contents=member&load=member_modify
+기술자 - 관리자, 일본이 등록한다.
+
+기술자 매칭
+    - 한국기업이 등록한다.
+        - 1. 관심기술자를 등록해서 상담 데이터생성
+        - 2. 상담데이터 생성하면서 문서 첨부
+        - 3. 상담데이터 생성하면서 기술자 같이 등록
+            
+2012년 4월 13일 금요일 오후 11:50:37
+
+# 아래항목이 작업진행에따라 확인이 필요합니다.
+	서비스 - 자체보유기술자지원신청
+		- 조회
+		- 보기
+		- 수정
+
+	마이페이지 - 기술자매칭 
+		- 조회화면 
+		- 보기화면
+		- 수정화면
+
+	관리자 - 기술자매칭
+		- 조회화면 
+		- 보기화면
+		- 수정화면
+
+오늘 처리해준다고 하신 기술자 페이지 변경분이 확인해주세요.
+----- ----- ----- ----- ----- ----- ----- ----- ----- ----- 
+$FN = $folder_name.'/'.$_FILES['Filedata']['name'];
+move_uploaded_file($_FILES['Filedata']['tmp_name'], iconv('UTF-8','CP949', $FN));
+
+업로드파일명 첫자가 잘리는현상 그리고
+한글파일명 으로 업로드시 파일명이 깨지거나
+파일명이 공백으로 버리는 현상이 php 5.3.8 에서 나타납니다.
+한참 삽질하다가 php.net 버그 리포트를 둘러보다가 버그란 걸 확신하게 되고
+php.net의 스냅샷에 있는 php 5.3.9 로 업글을 함으로써 해결되게 되었습니다.
+
+리포트에 의하면 5.3.7 도 동일증상이 보인다고 합니다만
+저는 5.3.7 해시보안 오류 때문에 5.3.6 사용하다가 5.3.8 으로 바로 업했기때문에
+5.3.7 버전에서는 확인 해보지 못했습니다.
+
+버그 리포트 주소입니다 : https://bugs.php.net/bug.php?id=55510
+스냅샷 바이너리 링크 입니다 : http://windows.php.net/snapshots
+
+
+기술자 등록은 관리자와 일본 기업에서 합니다.
+
+일본 페이지의링크가 
+
+김현태입니다.
+
+일단 기술자 등록(서비스페이지)
+
+마이페이지 기술자등록수정
+
+관리자 기술자 등록 수정을 처리되어야 합니다.
+
+다만 어제 메일에 드린 부분에서 아래의 표에 있는 것을 작업해서 올려야 하는 것인데.
+
+요청하신 마이페이지의 기술자 관련 페이지는 오늘 처리해 놓겠습니다. 나머지도 시간되는대로 오늘 처리할 예정입니다.(member관련)
+
+
+
+김현태입니다.
+
+일단 member 폴더안에
+
+회원가입 : join
+로그인 : login
+정보수정 : modify
+기업회원가입 : member_com
+기업회원정보수정 : member_com_modify로 올렸습니다.
+
+내일 일단 이렇게 작업하면서 올릴께요.
+주말에는 기술자부분은 작업이 되어야 합니다.
+이 부분은 이전에도 계속 말씀드렸던 부분인데...메일 확인해 보시기 바랍니다.
+수고해 주세요.
+
+member_modify 　 회원정보수정
+member_com 　 　 기업회원신청
+member_com_modify 　 기업정보수정
+member_bizcon 　 비즈니스상담
+member_bizmatching 　 비즈니스매칭
+menber_engmatching 　 기술자매칭
+　 　 　 보고서 제출
+member_need 　 기술니즈신청
+member_seedmatching 　 기술시드매칭신청
+member_Interestcom 　 관심기업 리스트 / 상세
+member_Interesteng 　 관심기술자 리스트 / 상세
+member_exit 　 회원탈퇴
+
+http://local-framework.com/sub.php?contents=member&load=member_login
+http://local-framework.com/sub.php?contents=member&load=member_modify
+http://local-framework.com/sub.php?contents=member&load=member_com
+
+
+
+www.lioness.kr /
+http://www.lioness.kr/config --> 관리자 --> admin / andyd
+회원정보        visionpatent    patent778               http://lioness.kr/phpinfo.php
+네임서버경로    ns.kjtnet.biz / 218.145.31.147
+서버환경        linux / mysql
+root    root    kjtnet99
+일반계정        kjtnet  kjtnet99
+DB      kjtnet  kjtnet99        kjtnet
+
+김현태입니다.
+
+할일재단 개발 관련 프로그램 과정에서 스토리보드에 오류가 있어서 수정하였습니다.
+
+이점 참조해 주시기 바랍니다.
+
+
+
+1. 기술매칭
+
+ - 기술매칭 신청과정에서 담당자 정보 등록 누락이 된 부분 추가
+
+
+
+2. 일본어 페이지에서
+
+ - 일본 기업 등록 관련한 내용 일부 수정
+
+
+
+3. 관리자페이지
+
+ - 일본기업 정보에 일문과 한글 번역하는 부분 누락된 것 추가
+
+ - 일본기술자 등록 프로세스의 변경 (기본 정보 등록 후 추가 정보 등록하는 방식으로)
+
+
+
+감사합니다.
+
+
+제가 만들던 환경은
+Visual studio 2008, 닷넷2.0 asp.net에서 작업한것이며
+현재 정확한 소스코드는 가지고 있지 않습니다만
+http://mulsoft.com/site/bbs/board.php?bo_table=mulsoft04&wr_id=51&page=4
+
+여기 블로그를 참조해서 작업하였습니다
+엑셀만드는 부분에서 contextType을 “application/vnd.ms-excel”을 “application/vnd.ms-word”로 해서
+확장자만을 xls에서 doc파일로 저장하니 이상없이 만들어졌었습니다.
+
+아마도 php에서는
+http://www.erury.com/hots/community/skin/board/mw.basic/mw.proc/mw.print.php?bo_table=share91&wr_id=1272
+와 같이 하면 될듯합니다.
+이상입니다.
+
+김현태입니다.
+한일재단 관련 사이트맵입니다.
+
+파일명도 적었습니다.
+
+그리고 맵의 참조는 inc_submenu.php와 sub.php를 참조하시기 바랍니다.
+
+금요일날 기술자 관련 등록정도는 되었으면 합니다.
+
+
+그리고 메뉴에서 추가되어야 하는 페이지는 sub.php에 추가할 예정입니다.
+
+예를 들어 menu02_01에 view따로 있어야 하는 경우 menu02_01_view 이런식으로..
+
+그건 내일 처리할 예정입니다.
+
+수고하세요.
+
+
+** 아, 그리고 계좌 보내주세요.
+
+김현태입니다.
+한일재단 중간보고 관련 내용을 정리해 송부합니다.
+접근 가능한 URL
+http://www.lioness.kr/
+
+관리자 :
+http://www.lioness.kr/
+아이디 : admin / 1111
+
+현재 작업 상황정리합니다.
+1. 국문 페이지와 일문페이지, 관리자 구성작업 완료
+2. 각 페이지의 html 페이지 구성작업 중
+3. 관리자 페이지 html 구성 작업 중
+
+금주 작업
+1. 국문, 일문, 관리자 html 구성작업(전달해 주신 contents위주로 먼저 작업합니다.)
+2. 관리자 페이지 html작업 및 프로그램 작업(현재 로컬에서 일부 작업중입니다.)
+
+이러한 업무에 참고하시기 바랍니다.
+감사합니다.

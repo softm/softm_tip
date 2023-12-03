@@ -1,0 +1,278 @@
+■ 부트스트랩(bootstrap) ( http://twitter.github.com/bootstrap/ )
+    1. 사전적의미
+        부트스트랩 프로그램(bootstrap program)은 전원을 켜거나 재부팅을 할 때 적재되는 프로그램이다.
+        일반적으로 펌웨어라고 알려진 ROM 또는 EEPROM에 저장되어 있다.
+        이 프로그램은 시스템을 모든 측면에서 초기화하며, 운영 체제 커널을 적재하고 실행시킨다.
+
+    2. 실제의미
+        - 크로스 브라우징을 지원해 손쉽게 UI구조를 만들 수 있는 UI Framework이다.
+        - Twiter의 Front End Toolkit
+        - Twiter의 UI 디자이너 Mark Otto와 개발자 Jacob Thornton이 만든 오픈소스 프런트 엔드 툴킷이다.
+
+■ 기능
+    - 웹 사이트를 구축하는 시작점으로 유연한 HTML, CSS, JavaScript 템플릿을 제공.
+    - 자주 사용하는 다양한 UI 컴포넌트와 인터랙션을 포함.
+
+
+■ 격자 시스템 (12-column grid)
+    - 기본 격자 시스템
+    - 격자 레이아웃 시스템 - CSS 프레임워크
+      - Blueprint       ( http://www.blueprintcss.org/              )
+      - 960 grid        ( http://960.gs/                            )
+      - YUI CSS grids   ( http://yuilibrary.com/yui/docs/cssgrids/  )
+
+    - 12개의 격자를 60px로 구성 : 60px*12= 720px
+    - 간격은 20px               : 20px*12= 240px
+    - 총 960px의 크기           :      + = 960px
+<div class="row">
+    <div class="span4">…</div>
+    <div class="span8">…</div>
+</div>
+
+● 유동 격자 시스템
+<div class="row-fluid">
+    <div class="span4">…</div>
+    <div class="span8">…</div>
+</div>
+
+● 열 위치 이동하기 (Offsetting columns)
+열에 "offset*" 클래스를 추가하면 열을 오른쪽으로 이동시켜 배치할 수 있다. 단, 열 위치 이동은 기본 격자 시스템에서만 가능하다.
+<div class="row">
+    <div class="span4">…</div>
+    <div class="span4 offset4">…</div>
+</div>
+
+● 열 내부에 격자 포함하기
+<div class="row">
+    <div class="span6">
+    Level 1 of column
+        <div class="row">
+            <div class="span3">Level 2</div>
+            <div class="span3">Level 2</div>
+        </div>
+    </div>
+</div>
+
+<div class="row-fluid">
+    <div class="span6">
+    Level 1 of column
+        <div class="row-fluid">
+            <div class="span6">Level 2</div>
+            <div class="span6">Level 2</div>
+        </div>
+    </div>
+</div>
+
+
+■ 기기에 따른 격자 크기의 변화
+    구분                    화면 너비       격자 열 너비                격자 열 간격 너비
+    스마트폰                480px 이하      고정되지 않은 가변 폭
+    세로 모드 태블릿 PC     767px 이하      고정되지 않은 가변 폭
+    가로 모드 태블릿 PC     768px 이상      42px                        20px
+    기본                    980px 이상      60px                        20px
+    와이드 모니터           1200px 이상     70px                        30px
+
+■ 기기별 반응형 CSS 클래스
+    클래스                  휴대폰              태블릿 PC           데스크톱
+                            480px 이하          767px 이하          768px 이상
+    .visible-phone          보임                보이지 않음         보이지 않음
+    .visible-tablet         보이지 않음         보임                보이지 않음
+    .visible-desktop        보이지 않음         보이지 않음         보임
+    .hidden-phone           보이지 않음         보임                보임
+    .hidden-tablet          보임                보이지 않음         보임
+    .hidden-desktop         보임                보임                보이지 않음
+
+■ 깔끔하고 정돈된 느낌의 기본 CSS 제공
+    부트스트랩은 기본으로 적용한 CSS를 적용해도 깔끔하고 잘 정돈된 느낌의 버튼과 여러 스타일을 제공한다.
+    다음은 부트스트랩에서 기본으로 제공하는 버튼 디자인이다.
+    btn                 그라데이션이 적용된 회색 기본 버튼
+    btn btn-primary     시각적으로 강조해야 할 필요가 있거나 특별한 행동을 하는 것을 표시하는 버튼
+    btn btn-info        기본 버튼을 대체해서 사용할 수 있는 버튼
+    btn btn-success     성공한 행동이나 긍정적인 행동을 표시하는 버튼
+    btn btn-warning     주의 버튼
+    btn btn-danger      위험이나 부정적인 영향이 있음을 표시하는 버튼
+    btn btn-inverse     특별한 의미 없이 일반적으로 사용할 수 있는 어두운 회색 버튼
+
+■ UI 컴포넌트와 jQuery 플러그인
+    기본 CSS를 사용하는 컴포넌트에는
+    버튼 그룹, 드롭다운 목록, 내비게이션, 탭, 페이지 이동 버튼, 배지, 섬네일 레이아웃, 경고 표시, 닫기 아이콘
+    http://twitter.github.com/bootstrap/components.html
+    http://twitter.github.com/bootstrap/javascript.html
+
+■ LESS (CSS 전처리 도구)
+    상송, 변수 개몀이 없는 css언어를 보완하기 외한 전처리 도구.
+    - 유사한 전처리 도구.
+        - Sass
+        - Stylus
+
+    - 단점.
+        - 컴파일을 해야한다는 불편함.
+
+
+    - LESS 문법
+        LESS 문법은 표준 CSS 문법에 기능만 확장한 문법을 사용한다.
+        - 변수 선언
+            변수를 선언할 때에는 @ 심볼을 이용한다.
+            @mainColor: #0982c1;
+            @siteWidth: 1024px;
+            @borderStyle: dotted;
+
+            body {
+                color: @mainColor;
+                border: 1px @borderStyle @mainColor;
+                max-width: @siteWidth;
+            }
+
+        - 믹스인 함수
+            다음과 같이 클래스 선택자와 유사한 형태로 믹스인 함수를 만들어 활용할 수 있다.
+            /* LESS mixin error with (optional) argument @borderWidth which defaults to 2px if not specified */
+            .error(@borderWidth: 2px) {
+                border: @borderWidth solid #F00;
+                color: #F00;
+            }
+
+            .generic-error {
+                padding: 20px;
+                margin: 4px;
+                .error(); /* Applies styles from mixin error */
+            }
+            .login-error {
+                left: 12px;
+                position: absolute;
+                top: 20px;
+                .error(5px); /* Applies styles from mixin error with argument @borderWidth equal to 5px */
+            }
+
+        - 상속
+            LESS는 클래스 선택자 형태로 믹스인 함수를 정의하기 때문에 일반 클래스 선택자도
+            믹스인 함수처럼 사용할 수 있어서 다음과 같이 상속을 표현할 수 있다.
+            .block {
+                margin: 10px 5px;
+                padding: 2px;
+            }
+
+            p {
+                .block; /* Inherit styles from '.block' */
+                border: 1px solid #EEE;
+            }
+            ul, ol {
+                .block; /* Inherit styles from '.block' */
+                color: #333;
+                text-transform: uppercase;
+            }
+
+        - 연산자
+            연산이 가능한 속성값에는 다음과 같이 간단한 연산자를 사용할 수도 있다.
+            body {
+                margin: (14px/2);
+                top: 50px + 100px;
+                right: 100px - 50px;
+                left: 10 * 10;
+            }
+
+        - 중첩된 선택자
+            다음과 같이 중첩된 선택자를 표현할 수 있다.
+            section {
+                margin: 10px;
+
+                nav {
+                    height: 25px;
+
+                    a {
+                        color: #0982C1;
+
+                        &:hover {
+                            text-decoration: underline;
+                        }
+                    }
+                }
+            }
+            ▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼
+            section {
+                margin: 10px;
+            }
+            section nav {
+                height: 25px;
+            }
+            section nav a {
+                color: #0982C1;
+            }
+            section nav a:hover {
+                text-decoration: underline;
+            }
+
+■ 부트스트랩 LESS
+    http://getbootstrap.com/2.3.2/customize.html#variables
+
+
+■ LESS 컴파일
+    LESS 컴파일은 클라이언트 방식과 서버 방식이 있다.
+
+    - 클라이언트 방식은 less.js 파일을 웹 서버에 두고 다음과 같이 링크하면 된다.
+        <link rel="stylesheet/less" href="http://helloworld.naver.com/bootstrap.less">
+        <script="" src="http://helloworld.naver.com/less.js">
+
+    - 서버 방식은 node.js 패키지 매니저에서 컴파일러를 받아 설치한 후 사용한다.
+        $ npm install –g less
+        $ lessc bootstrap.less > bootstrap.css
+
+■ 반응형 디자인
+    CSS3 미디어쿼리(media query)를 이용하여, 페이지의 레이아웃, 이미지와 타이틀의 크기등을 해당 스크린(크기)에
+    적절하게 바꾸고 유동형 이미지를 이용하는 것.
+
+■ 해상도에따른 명칭
+    가로폭      명칭
+    480px       스마트폰
+    800px       태블릿
+    1024px      넷북
+    1600px      데스크탑
+
+★ 반응형웹 대표 사이트
+    1.대표적인 반응형 웹 사이트를 모아놓은 mediaqueri.es
+    2.EM이 참여한 대표적인 반응형 웹 사이트: http://bostonglobe.com/
+    3.우리나라 최초의 반응형 웹이라고 알려져 있는 다음 사전
+    4.테블릿과 스마트폰에 반응하는 네이버 모바일
+    5.xe기반 네이버 개발자 블로그
+    6.서울시 홈페이지 첫페이지만
+
+■ 반응형 웹 기법들
+    - CSS3 미디어 쿼리 (media query)
+        CSS3 이전에서 ‘print’, ‘screen’ 등 미디어 타입등을 사용하던 것을,
+        CSS3에서는 스크린 폭/높이 등 (예: min-width: 320px) 디바이스관련
+        여러 정보를 이용하여 스타일을 바꿀 수 있게 되었습니다.
+        사실상 반응형 웹이 가능하게 된 큰 이유이기도 합니다.
+
+    - 유동형 그리드 (fluid grids)
+        반응형 웹 이전부터 사용되어 온, 그리드 시스템과 달리, EM등이 제안하는 유동형 그리드는,
+        고정된 px이 아닌 em이나 %를 사용하는 것 입니다. 또한, 반응형 유동형 그리드라고 제안되는 경우, CSS3 미디어쿼리를 이용하여 특정 스크린에 따라서 그리드 시스템을 바꿀 수 있습니다.
+
+    - 유동형 이미지 (fluid/flexible images)
+        유동형 그리드와 마찬가지로, 고정된 px이 아닌 em과 %를 이용하는 접근방법으로,
+        특히 이 경우, max-width를 사용하고, 이를 처리하지 못하는 IE7-의 경우 적절한
+        javascript를 사용하는 것을 의미합니다. ( EM의 유동형 이미지 )
+
+    - 반응형 레이아웃 (responsive layouts)
+        아직 통용되는 단어는 아니지만, 결국 반응형 웹을 완성하기 위해서는 반응형 레이아웃을 구현해야 합니다.
+        그렇지 않다면, 스크린별 레이아웃을, 수많은 if-and-else로 나누어서 브라우져에 보내줘야 하는 일이 발생합니다.
+
+    - 모바일 퍼스트로 유명한 Luke Wroblewski (이하 LukeW)는 반응형 레이아웃을 다섯가지 패턴으로 정리하기도 했습니다
+        (LukeW의 글: 다중기기 레이아웃 패턴들).
+
+    - 반응형 네이게이션/메뉴
+        모바일에서 메뉴를 어떻게 (줄여서) 보여줄것인지도 고민해야 합니다.
+        많은 경우, 내림버턴 등을 이용해서 필요할 때만 보이게 합니다.
+        이에 관해서 Brad Frost가 반응형 네이게이션 패턴들을 정리했습니다.
+
+■ 기기별 해상도 참고
+    http://en.wikipedia.org/wiki/List_of_displays_by_pixel_density#LG
+
+    http://mattkersley.com/responsive/
+
+https://www.google.co.kr/search?hl=ko&q=%EB%B0%98%EC%9D%91%ED%98%95%20%EB%94%94%EC%9E%90%EC%9D%B8&lr=
+
+http://sir.co.kr/bbs/board.php?bo_table=pb_lecture&wr_id=133#vc_about_rwd
+
+Mobile first strategy for CSS designer. : http://naradesign.net/wp/2012/01/18/1742/
+
+※ 참고
+    http://helloworld.naver.com/helloworld/67876

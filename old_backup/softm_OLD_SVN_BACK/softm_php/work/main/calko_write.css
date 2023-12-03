@@ -1,0 +1,56 @@
+    .a_tbl          { border:1px solid black;width:900px;margin-left:10px;} /*table-layout:fixed*/
+
+    .a_tbl *        { font-size:8pt;font-family:'Arial';}
+
+    .a_tbl td       { height:20px;}
+    .a_tbl td.L1    { color:#000000; font-weight:normal; padding-left:3px; }
+    .a_tbl td.D1    { color:#000000;background-color:red }
+
+    .a_tbl td.i1    { color:#000000;font-weight:bold;padding-left:3px;}
+    .a_tbl td.i2    { color:#000000;padding-left:3px;}
+    .a_tbl td.i3    { color:#000000;padding-left:3px;}
+    .a_tbl td.i4    { color:#000000;padding-left:3px;}
+    .a_tbl td.i5    { color:#000000;padding-left:3px;}
+    .a_tbl td.i6    { color:#000000;padding-left:3px;}
+
+
+    .a_tbl td.bs2 { border-bottom:2px solid black; }
+    .a_tbl td.bs { border-bottom:1px solid black; }
+    .a_tbl td.rs { border-right :1px solid black; }
+    .a_tbl td.ls { border-left  :1px solid black; }
+
+    .a_tbl td.ld { border-left  :1px dotted black;}
+    .a_tbl td.bd { border-bottom:1px dotted black;}
+    .a_tbl td.rd { border-right :1px dotted black;}
+
+    .a_tbl td input.input_basic {color:#000000;background-color:#FFFFFF;width:96%;height:13px;border:1px solid black;}
+    .a_tbl td input.input_crc   {color:#002B2B;background-color:#FFFFFF;width:96%;height:13px;border:1px solid black;}
+
+    .a_tbl td select.select_basic{ color:#000000;background-color:#FFFFFF;width:98%;height:20px;}
+    .a_tbl td select.select_crc  { color:#002B2B;background-color:#FFFFFF;width:98%;height:20px;}
+    
+    .a_tbl td.i4 select { width:217px}
+
+    .a_tbl td span            { color:#000000;background-color:#FFFFFF;width:98%;height:20px;}
+
+    #area_write {display:none;}
+
+    .a_tbl2    { border-top:0px;text-align:center;}
+    .a_tbl2 *  { font-size:8pt;font-family:'Arial';}
+    .a_tbl2 th { border-right:1px solid black;background-color:#5C93C9;color:#ffffff;}
+    .a_tbl2 td { border-right:1px solid black;border-top:1px solid black;height:20px;text-align:left;}
+
+    .a_tbl3    { margin-left:10px;display:inline;border-collapse:collapse;border-top:1px;text-align:center;}
+    .a_tbl3 *  { font-size:8pt;font-family:'Arial';}
+    .a_tbl3 th { border:1px solid black;background-color:#5C93C9;color:#ffffff }
+    .a_tbl3 td { border:1px solid black;height:20px;text-align:left;}
+
+	input[readOnly="true"] {background-color:red}
+
+
+
+#car_side {width:110px;}
+#cwt_side {width:110px;}
+#E5095    {width:110px;}
+#E5101    {width:110px;}
+

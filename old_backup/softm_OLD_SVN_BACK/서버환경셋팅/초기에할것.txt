@@ -1,0 +1,195 @@
+# mysql 서비스 등록
+    D:\WEB_APP\MYSQL50\bin\mysqld.exe --remove
+    D:\WEB_APP\MYSQL50\bin\mysqld.exe --install
+    net stop mysql
+    net start mysql
+
+   # other method starting
+    D:\WEB_APP\MYSQL50\bin\mysqld.exe --console
+
+# path에 추가
+K:\WEB_APP\MYSQL50\bin;K:\WEB_APP\Apache2\bin
+D:\WEB_APP\MYSQL50\bin;D:\WEB_APP\Apache2\bin
+
+# WINDOWS/php.ini extension_dir 경로 수정
+extension_dir = "K:\WEB_APP\php52\ext"
+extension_dir = "D:\WEB_APP\php52\ext"
+
+# hosts 수정
+127.0.0.1 local-baksok.com              # local-baksok
+127.0.0.1 local-softm.net               # D:\Project\00.00.my_home\3rd\source
+127.0.0.1 local-softm1.net              # D:\Project\00.00.my_home\1st\source
+127.0.0.1 local-softm2.net              # D:\Project\00.00.my_home\2nd\source
+127.0.0.1 local-softm3.net              # D:\Project\00.00.my_home\3rd\source
+127.0.0.1 local-okmmc.com               # D:\Project\06.11-09.01_okmmc\okmmc_doc
+127.0.0.1 local-flex-okmmc.com          # D:\Project\06.11-09.01_okmmc\flex_okmmc_doc
+127.0.0.1 local-homedirect.co.kr        # D:\Project\09.03_09.06_homedirect.co.kr
+127.0.0.1 local-lab_doc.com             # D:\Project\07.09-lab_doc
+127.0.0.1 local-re24.co.kr              # D:\Project\06.11_06.12_re24.co.kr\source
+127.0.0.1 local-lvino.co.kr             # D:\Project\06.08-06.09_www.lvino.co.kr\source
+127.0.0.1 local-midongfp.co.kr          # D:\Project\04_XX_midongfp.co.kr\source
+127.0.0.1 local-iroon.com               # D:\Project\04.09_04.12_iroon.com\source
+127.0.0.1 local-dothome.co.kr           # D:\Project\04.02-04.03_dothome.co.kr\source
+127.0.0.1 local-designfor.net           # D:\Project\03.09-designfor.net\source
+127.0.0.1 local-designboard.net         # D:\Project\03.09-designboard.net\source
+127.0.0.1 local-iamt.com                # D:\Project\01.03-01.03_iamt\source
+127.0.0.1 local-wiz-doc.com             # 위즈개발건.
+127.0.0.1 local-calko.com               # 티센칼코.
+127.0.0.1 local-have.com                # haveenglish
+127.0.0.1 local-ipac.com                # ipac
+127.0.0.1 local-framework.com           # local-framework
+
+#httpd.conf
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:/Project"
+    ServerName localhost
+</VirtualHost>
+
+# 바로 아래 이부분에 NameVirtualHost를NameVirtualHost를 설정하고 
+NameVirtualHost 127.0.0.1
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "D:/Project"
+    ServerName localhost
+</VirtualHost>
+
+NameVirtualHost 127.0.0.1
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\01.12-baksok.com"
+    ServerName local-baksok.com
+    ServerAlias local-baksok.com
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\00.00.my_home\3rd\source"
+    ServerName local-softm.net
+    ServerAlias local-softm.net
+    AddDefaultCharset euc-kr
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\00.00.my_home\1st\source"
+    ServerName local-softm1.net
+    ServerAlias local-softm1.net
+    AddDefaultCharset euc-kr
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\00.00.my_home\2nd\source"
+    ServerName local-softm2.net
+    ServerAlias local-softm2.net
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\00.00.my_home\3rd\source"
+    ServerName local-softm3.net
+    ServerAlias local-softm3.net
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\06.11-09.01_okmmc\okmmc_doc"
+    ServerName local-okmmc.com
+    ServerAlias local-okmmc.com
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\06.11-09.01_okmmc\flex_okmmc_doc"
+    ServerName local-flex-okmmc.com
+    ServerAlias local-flex-okmmc.com
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\09.03_09.06_homedirect.co.kr"
+    ServerName local-homedirect.co.kr
+    ServerAlias local-homedirect.co.kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\07.09-lab_doc"
+    ServerName local-lab_doc.com
+    ServerAlias local-lab_doc.com
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\06.11_06.12_re24.co.kr\source"
+    ServerName local-re24.co.kr
+    ServerAlias local-re24.co.kr
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\04_XX_midongfp.co.kr\source"
+    ServerName local-midongfp.co.kr
+    ServerAlias local-midongfp.co.kr
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\04.09_04.12_iroon.com\source"
+    ServerName local-iroon.com
+    ServerAlias local-iroon.com
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\04.02-04.03_dothome.co.kr\source"
+    ServerName local-dothome.co.kr
+    ServerAlias local-dothome.co.kr
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\03.09-designfor.net\source"
+    ServerName local-designfor.net
+    ServerAlias local-designfor.net
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\03.09-designboard.net\source"
+    ServerName local-designboard.net
+    ServerAlias local-designboard.net
+    AddDefaultCharset euc-kr
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\01.03-01.03_iamt\source"
+    ServerName local-iamt.com
+    ServerAlias local-iamt.com
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>    
+    DocumentRoot "D:\Project\10.05_wiz_doc\source"
+    ServerName local-wiz-doc.com
+    ServerAlias local-wiz-doc.com
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>    
+    DocumentRoot "D:\Project\09_07_calko.co.kr\source"
+    ServerName local-calko.com
+    ServerAlias local-calko.com
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    DocumentRoot "D:\Project\12.03_FrameWork\source"
+    ServerName local-framework.com
+    ServerAlias local-framework.com
+</VirtualHost>
+
+# PHP4
+#LoadModule php4_module "D:/WEB_APP/php/sapi/php4apache2.dll"
+#AddType application/x-httpd-php .php .html .htm .php3 .inc .phtml
+
+#PHPIniDir "D:/WEB_APP/php532"
+#LoadModule php5_module "D:/WEB_APP/php532/php5apache2.dll"
+#AddType application/x-httpd-php .php .html .htm .php3 .php4 .php5 .inc .phtml
+##PHPIniDir "C:\WEB_APP\php-5.2.11-Win32"
+
+
+PHPIniDir "D:/WEB_APP/php52"
+LoadModule php5_module "D:/WEB_APP/php52/php5apache2.dll"
+AddType application/x-httpd-php .php .html .htm .php3 .php4 .php5 .inc .phtml
+

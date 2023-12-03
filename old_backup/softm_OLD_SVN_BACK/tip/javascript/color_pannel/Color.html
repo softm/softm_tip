@@ -1,0 +1,151 @@
+
+<HTML>
+<HEAD>
+<TITLE>Palette</TITLE>
+<style>
+<!-- default -->
+    A:link	{text-decoration:none; color: 793F2C}
+	A:visited{text-decoration:none; color:793F2C}
+	A:hover {text-decoration:none; color:A07365}
+	TD {font-size:9pt; color:#7D7A54}
+    .red {font-size:9pt; color:#735050}
+    .green {font-size:9pt; color:#737150}
+	font {font-size:9pt}
+	.8 {font-size:8pt;color:#996B6B}
+    .8:link	  {text-decoration:none; color: 972400}
+	.8:visited{text-decoration:none; color:972400} 
+	.8:hover  {text-decoration:none; color:A95071} 
+	.g{font-size:9pt color:#909790}
+	.11 {font-size:10pt}
+	body {font-size: 9pt; line-height: 15px}
+
+<!-- menu -->
+    .member {font-size: 9pt; line-height: 15px; color:000000}
+    .me:link	{text-decoration:none; color: BCCF9D}
+	.me:visited{text-decoration:none; color:BCCF9D}
+	.me:hover {text-decoration:none; color:A5B58A}
+    .sme:link	{text-decoration:none; color: 7D7A54}
+	.sme:visited{text-decoration:none; color:7D7A54}
+	.sme:hover {text-decoration:none; color:BE9402}
+
+
+<!-- sub menu -->
+    .sub:link	{text-decoration:none; color: 575757}
+	.sub:visited{text-decoration:none; color:575757}
+	.sub:hover {text-decoration:none; color:301A61}
+
+<!-- box -->
+    .box {border:1px solid #B88B8B;color:#333333; font-size:11px;}
+    .box2 {border:1px solid #B88B8B;color:#333333; font-size:11px;}
+
+<!-- 인덱스화면 구성방법 over -->
+    .org :link	{text-decoration:none; color: DE8428}
+	.org:visited{text-decoration:none; color:575757}
+	.org:hover {text-decoration:none; color:301A61}
+
+<!-- index_screen_way (인덱스화면/구성방법) -->
+    .way1{font-size:12px; color:#464646}
+    .way2{font-size:12px; color:#DE8428}
+
+<!-- index_screen_composition (인덱스화면/화면구성) -->
+    .com:link	{text-decoration:none; color: 793F2C}
+	.com:visited{text-decoration:none; color:793F2C}
+	.com:hover  {text-decoration:none; color:A95071}
+    .co       {font-size:9pt; color:#996B6B}
+
+<!--  -->
+    .ff:link	{text-decoration:none; color: 888888}
+	.ff:visited{text-decoration:none; color:840000}
+	.ff:hover  {text-decoration:none; color:840000}
+    .fff       {font-size:9pt; color:#ffffff}
+</style>
+<SCRIPT language=javascript src="selcolor_ie.js"></SCRIPT>
+</HEAD>
+
+<BODY bgColor=gainsboro marginwidth=0 marginheight=0 topmargin=0 leftmargin=0 onload='init()'>
+
+<DIV onmousedown='clickp1("H_RGB","D2");return false;' id=P1 
+style="Z-INDEX: 10; VISIBILITY: visible; WIDTH: 8px; POSITION: absolute; HEIGHT: 8px"><IMG 
+src="color_images/sel.gif" border=0></DIV>
+<DIV  id=D2 
+style="Z-INDEX: 10; LEFT: -1px; VISIBILITY: visible; POSITION: absolute; TOP: 118px"><IMG 
+src="color_images/sel2.gif" border=0></DIV>
+<DIV  id=D4 onclick='clickS4("RGBH","t0");return false;' 
+style="Z-INDEX: 10; LEFT: 270px; VISIBILITY: visible; POSITION: absolute; TOP: 25px"><IMG 
+src="color_images/trans.gif" border=0><BR><FONT style="font-size:12px">투명</FONT></DIV>
+<DIV onmousedown='clickS3("D3","t0");return false;' id=D3 
+style="Z-INDEX: 10; LEFT: 322px; VISIBILITY: visible; POSITION: absolute; TOP: 123px"><IMG 
+src="color_images/sel3.gif" border=0></DIV>
+<DIV onmousedown='clickS3("D3","t0");return false;' id=s3 
+style="Z-INDEX: 5; LEFT: 312px; VISIBILITY: visible; POSITION: absolute; TOP: 125px">
+    <FORM name=colorTable action="javascript:return false">
+    <TABLE 
+    style="BORDER-RIGHT: black 1px solid; PADDING-RIGHT: 0px; BORDER-TOP: black 1px solid; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px; BORDER-LEFT: black 1px solid; PADDING-TOP: 0px; BORDER-BOTTOM: black 1px solid" 
+    cellSpacing=0 cellPadding=0 border=0>
+      <SCRIPT>makeColorTable("s3");</SCRIPT>
+      <TR>
+        <TD   width=8 bgColor=black height=6></TD>
+      </TR>
+    </TABLE>
+    </FORM>
+</DIV>
+<DIV onClick='reflection();' id=viewCol 
+style="LEFT: 334px; WIDTH: 106px; POSITION: absolute; TOP: 27px; HEIGHT: 84px; BACKGROUND-COLOR: #ffffff">
+<FONT COLOR="">영역을 클릭하세요</FONT>
+</DIV>
+<TABLE border=0>
+  <TR>
+    <TD><FONT size=2><div id='color_mesage'>◎ 색상을 선택해주세요!</div></FONT> </TD></TR>
+  <TR>
+    <TD vAlign=top width=325><IMG onmousemove='dragimg("RGB","P1");return false;' height=73 
+      src="color_images/setcolor.gif"  border=0></TD>
+    <TD vAlign=top align=left width=121 rowSpan=2>&nbsp;</TD></TR>
+  <TR>
+    <TD align=left width=325 height=18><FONT size=2>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN id=RGB></SPAN></FONT>
+    </TD>
+  </TR>
+  <TR>
+    <TD width=325>
+      <TABLE>
+        <TR>
+          <TD><IMG   height=120  onmousemove='clickS2("H_RGB","D2");return false;' onmousedown='dragimgS2("H_RGB","D2");return false;' src="color_images/palmore.jpg" width=291 border=0 id=colortbl name=colortbl></TD>
+          <TD align=right width=20 >&nbsp;</TD>
+        </TR>
+        <tr>
+            <td><FONT size=2>&nbsp;&nbsp;&nbsp;&nbsp;<SPAN id="H_RGB"></SPAN></FONT></td>
+        </tr>
+       </TABLE>
+    </TD>
+    <TD vAlign=top width=132>
+      <DIV>
+      <FORM name=RGBH action="javascript:return false">
+      <TABLE border=0>
+        <TR>
+          <TD align=right><FONT size=2>Red:</FONT></TD>
+          <TD><INPUT size=3 value=255 name=redCol></TD></TR>
+        <TR>
+          <TD align=right><FONT size=2>Green:</FONT></TD>
+          <TD><INPUT size=3 value=255 name=greenCol></TD></TR>
+        <TR>
+          <TD align=right><FONT size=2>Blue:</FONT></TD>
+          <TD><INPUT size=3 value=255 name=blueCol></TD></TR>
+        <TR>
+          <TD align=right><FONT size=2>Html:</FONT></TD>
+          <TD><INPUT size=7 value=#FFFFFF name=htmlCode></TD></TR>
+      </TABLE>
+      </FORM>
+      </DIV>
+     </TD>
+  </TR>
+
+  <TR>
+    <TD colspan="2" align=center width=350 height=18>
+    <a href='#'  onClick='confirm();return false;'>
+    <img src="color_images/login_bt.gif" border='0'>
+    </a>
+    </TD>
+  </TR>
+</TABLE>
+</DIV>
+</BODY>
+</HTML>

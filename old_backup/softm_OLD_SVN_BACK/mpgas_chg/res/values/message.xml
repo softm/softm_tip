@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 
+    <string name="msg_del_confirm">삭제하시겠습니까?</string>
+    <string name="msg_finish_confirm">종료하시겠습니까?</string>
+     -->
+    <string name="msg_not_exec_alert">실행 정보가 없습니다.</string>
+    <string name="msg_invalid_house">인식된 세대가 없습니다.\n확인 바랍니다.</string>    
+    <string name="msg_receive_meter_chg_data">계량기교체자료를 수신하세요.</string>    
+    <string name="msg_send_no_data">송신할 자료가 없습니다. 확인바랍니다.</string>    
+    <string name="msg_send_confirm">송신하시겠습니까?</string>    
+    <string name="msg_send_complete">송신이 완료되었습니다.</string>    
+    <string name="msg_send_fail_resend_confirm">송신이 실패하였습니다. 다시 시도하시겠습니까?</string>    
+    <string name="msg_expire_meter_chg">계량기교체기간이 지난 데이터입니다. 확인 바랍니다.</string>    
+    <string name="msg_bf_meter_chg_data_delete_confirm">기존 계량기교체자료는 삭제됩니다. 계량기교체자료를 수신하시겠습니까?</string>    
+    <string name="msg_meter_chg_data_receive_confirm">계량기교체자료를 수신하시겠습니까?</string>    
+    <string name="msg_receive_upgrade_confirm">버전업그레이드를 한 후에 수신할 수 있습니다.지금 버전업그레이드를 실행하시겠습니까?</string>    
+    <string name="msg_chg_data_cancel_confirm">교체내용을 취소하시겠습니까?</string>    
+    <string name="msg_meter_barcode_confirm">계량기 바코드를 인식하시겠습니까?</string>    
+    <string name="msg_meter_code_not_corrent_confirm">계량기 번호가 맞지 않습니다. 교체를 시작하시겠습니까?</string>    
+    <string name="msg_send_complete_not_update">송신이 완료된 대상은 수정할 수 없습니다.</string>    
+    <string name="msg_locked_send">봉인처리가 되었습니다. 지금 송신하겠습니다.</string>    
+    <string name="msg_locked_send_batch">봉인처리가 된 세대가 있습니다. 지금 송신하겠습니다.</string>    
+    <string name="msg_save_finish_confirm">저장하고 완료하시겠습니까?</string>    
+    <string name="msg_all_building_save_confirm">해당 건물의 모든 세대가 적용됩니다. 저장하고 완료하시겠습니까?</string>    
+    <string name="msg_all_building_delete_confirm">해당 건물의 모든 세대가 적용됩니다. 삭제하시겠습니까?</string>
+        
+    <string name="msg_not_register_chg_info">교체정보가 없는 세대가 있습니다. 교체정보를 먼저 등록하시기 바랍니다.</string>
+    
+    <!-- 수용가 정보  -->
+    <string name="msg_do_input_cust_nm">고객명을 입력해주세요.</string>    
+    <string name="msg_incorrect_tel_no">자택전화번호가 올바르지 않습니다.</string>    
+    <string name="msg_incorrect_hp_no">이동전화번호가 올바르지 않습니다.</string>    
+    <string name="msg_incorrect_work_tel_no">직장전화번호가 올바르지 않습니다.</string>
+    
+    <string name="msg_do_input_tel_no">자택전화번호를 입력해주세요.</string>    
+    <string name="msg_do_input_hp_no">이동전화번호를 입력해주세요.</string>    
+    <string name="msg_do_input_work_tel_no">직장전화번호를 입력해주세요.</string>
+    
+    <string name="msg_must_selected_one_tel_no">주사용 전화번호를 하나 선택하세요.</string>
+    <!-- 
+    <string name="msg_clear_chg_info">설치계량기 교체정보가 초기화되었습니다.</string>
+     -->
+	
+	<!-- 수용가목록 -->
+	<string name="msg_not_signable_send_exist">송신완료된 자료가 있어 일괄 서명이 불가능합니다.</string>
+	
+	<!-- 계량기교체 -->
+	<string name="msg_do_input_12_af_gm_no">설치계량기번호를 12자리로 입력하세요.</string>
+	<string name="msg_do_input_af_gm_no">설치계량기번호를 입력하세요.</string>
+	<string name="msg_do_input_chg_remove_meter">철거계량기 지침을 입력하세요.</string>
+	<string name="msg_do_input_chg_install_meter">설치계량기 지침을 입력하세요.</string>
+    <string name="msg_select_af_install_loc_cd">설치장소를 선택하세요.</string>	
+    <string name="msg_select_af_model">모델(등급)을 선택하세요.</string>	
+    <string name="msg_select_af_type_cd">타입를 선택하세요.</string>	
+    <string name="msg_select_af_maker_cd">제조사를 선택하세요.</string>	
+    <string name="msg_select_af_kind_cd">형식을 선택하세요.</string>	
+    <string name="msg_take_picture">사진을 촬영해주세요.</string>	
+    
+    <!-- 서명  -->
+    <string name="msg_do_sign">서명해주세요.</string>	
+    <string name="msg_sign_complete_confirm">저장하고 완료하시겠습니까?</string>    
+    <string name="msg_do_sign_complete">완료되었습니다.</string>    
+    
+    <!-- 일괄서명  -->
+    <string name="msg_dosenot_exists_batch_sign">일괄서명할 수용가가 존재하지 않습니다.</string>    
+</resources>

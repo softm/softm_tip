@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+
+    <FrameLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		>
+		
+        <ScrollView 
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FFFFFFFF"
+		    >
+		    
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/set_noticelist_bg_"
+                  android:orientation="vertical" >             
+
+                <ListView
+                    android:id ="@+id/noticeListview"
+                    android:layout_width="300dip"
+                    android:layout_height="162dip"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="54dip"                 
+                    android:divider="#00000000"
+                    android:dividerHeight="1dip" />
+
+                <!--
+                <LinearLayout
+			    	android:layout_width="fill_parent"
+			    	android:layout_height="wrap_content" 
+			    	android:layout_marginTop="32dip"
+			    	android:layout_marginLeft="20dip"  
+			    	android:orientation="horizontal">
+	                <ImageView
+	                    android:id="@+id/imageView1"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"                                               
+	                    android:src="@drawable/set_noticelist_text01" />
+			    	
+	                <ImageView
+	                    android:id="@+id/imageView2"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="96dip"              
+	                    android:src="@drawable/set_noticelist_text02" />
+	                <ImageView
+	                    android:id="@+id/imageView3"
+	                    android:layout_width="wrap_content"
+	                    android:layout_height="wrap_content"
+	                    android:layout_marginLeft="100dip"               
+	                    android:src="@drawable/set_noticelist_text03" />
+                </LinearLayout>
+                
+			    <ListView
+			        android:id="@id/android:list"
+			        android:layout_width="300dip"
+			        android:layout_height="200dp" 
+			        android:layout_marginTop="10dip"  
+			        android:divider="#d8d9d8"
+			        android:dividerHeight="2dip"
+			        android:layout_gravity="center"/>
+                -->
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dip"
+                    android:gravity="center"
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/prev_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="12dip"
+                        android:background="@drawable/btn_paging_prev_img" />
+
+                    <TextView
+                         android:id="@+id/cur_page"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="#FFFF6C00"
+                        android:textSize="18dp"
+                        android:text="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:text=" / " />
+
+                    <TextView
+                         android:id="@+id/total_page"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:text="1" />
+
+                    <ImageButton
+                        android:id="@+id/next_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="12dip"
+                        android:background="@drawable/btn_paging_next_img" />
+                </LinearLayout>
+            </LinearLayout>
+
+            </ScrollView>
+
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+
+	</FrameLayout>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

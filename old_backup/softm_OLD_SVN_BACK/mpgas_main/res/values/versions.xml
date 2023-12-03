@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">도시가스</string>
+    <string name="app_version">1.0.2</string>
+
+    <string name="db_user_version">1</string>
+
+</resources>
+
+<!-- 
+
+	1.0.2 20150115 port 4002 to 4000
+	1.0.1 20150109 port 4000 to 4002 
+
+ -->

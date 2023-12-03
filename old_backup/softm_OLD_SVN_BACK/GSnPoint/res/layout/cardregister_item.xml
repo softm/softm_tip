@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+	android:background="#FFFFFF"
+     >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="53dp"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+<!--  
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="13dp"
+            android:src="@drawable/card_text_card_number" />
+-->
+		<TextView 
+		    android:id="@+id/txt_issueName"
+		    android:layout_width="56dip"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="GS리테일"
+            android:textColor="#000"
+            android:textSize="12dip"
+            android:layout_marginLeft="13dp"/>
+        <EditText
+            android:id="@+id/edt_cardnumber"
+            android:layout_width="wrap_content"            
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="10dp"
+            android:layout_weight="1"
+            android:background="@drawable/gs_editbox_img"
+            android:gravity="center"
+            android:textSize="12sp" android:text="**** - **** - **** - ****"
+            android:focusable="false"
+            />
+
+        <ImageView
+            android:id="@+id/img_btn_stop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="13dp"            
+            android:background="@drawable/btn_stop"/>
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="@drawable/card_bar_bg02" android:layout_marginLeft="13dp" android:layout_marginRight="13dp"/>
+
+</LinearLayout>

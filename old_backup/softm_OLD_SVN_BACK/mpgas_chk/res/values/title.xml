@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_test">테스트</string>
+    <string name="title_chk_main"       >점검메인      </string>
+    <string name="title_bldg_list"      >건물목록      </string>
+    <string name="title_house_list"     >수용가목록    </string>
+    <string name="title_batch_readmeter">일괄검침      </string>
+    <string name="title_house_inf"      >수용가정보    </string>
+    <string name="title_chk_reg_main"   >점검등록메인  </string>
+    <string name="title_mng_boiler_chk" >보일러점검</string>
+    <string name="title_mng_burner_chk" >연소기점검</string>
+    <string name="title_mng_pipe_chk"   >배관점검  </string>
+    <string name="title_mng_gm_chk"     >계량기점검</string>
+    <string name="title_mng_breaker_chk">차단기점검</string>
+    <string name="title_chk_cpl"        >점검완료      </string>
+    <string name="title_chk_target_rcv" >점검대상수신  </string>
+</resources>

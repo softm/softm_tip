@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cross-domain-policy>
+<allow-access-from domain="*.fos.tkeasia.com" to-ports="80,8080"/>
+<allow-access-from domain="krdev.fos.tkeasia.com" to-ports="80,8080"/>
+</cross-domain-policy>

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+      package="com.webview.hotdeal"
+      android:versionCode="5"
+      android:versionName="1.5">
+    <uses-sdk android:minSdkVersion="7" 
+        android:largeHeap="true"/>
+    
+    <!-- GCM 관련 퍼미션 -->
+	<permission android:name="com.webview.hotdeal.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+	<uses-permission android:name="com.webview.hotdeal.permission.C2D_MESSAGE" />
+	<!-- GCM 받기 -->
+	<uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+	<!-- GCM을 받으려면 구글 계정 필요 -->
+	<uses-permission android:name="android.permission.GET_ACCOUNTS" />
+	<!-- 메시지 받을 때 wake up 하기 위해 -->
+	<uses-permission android:name="android.permission.WAKE_LOCK" />
+	
+	
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+	
+	<!-- 네트워크 접속 권한 -->
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.VIBRATE" />
+	
+    <uses-permission android:name="com.android.launcher.permission.INSTALL_SHORTCUT" />
+    <uses-permission android:name="com.android.launcher.permission.UNINSTALL_SHORTCUT"/>
+
+    <application android:icon="@drawable/block1" android:label="벽돌이야기">
+        <activity android:name="com.webview.hotdeal.Web_View"
+                  android:label="벽돌이야기"
+                  android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
+                  android:largeHeap="true">
+            
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            	
+            </intent-filter>
+
+            </activity>
+			
+          <activity android:name="com.webview.hotdeal.Intro"
+            android:theme="@android:style/Theme.NoTitleBar">
+          </activity>
+
+         <activity android:name="com.webview.hotdeal.PopUp"
+            android:theme="@android:style/Theme.NoTitleBar">
+          </activity>
+          
+                    
+          <activity android:name="com.webview.hotdeal.SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            android:configChanges="orientation|screenSize">
+          </activity>
+         
+          <activity android:name="com.webview.hotdeal.Estimate"
+            android:theme="@android:style/Theme.NoTitleBar"></activity>
+          
+            <!-- GCM 리시버 -->
+		<receiver
+			android:name="com.google.android.gcm.GCMBroadcastReceiver"
+			android:permission="com.google.android.c2dm.permission.SEND" >
+			<intent-filter>
+				<action android:name="com.google.android.c2dm.intent.RECEIVE" />
+				<action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+				<category android:name="com.webview.hotdeal" /> <!-- 젤리빈 부터는 category 빼도 된다 -->
+			</intent-filter>
+		</receiver>
+
+		<!-- GCM 리시버에서 돌리는 서비스 -->
+		<service android:name="com.webview.hotdeal.GCMIntentService" /><!-- 서비스명 변경하면 안됨 -->
+		
+	<uses-library
+        android:name="com.google.android.maps" />	
+    </application>
+    
+      
+        
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RESTART_PACKAGES" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+	
+	<uses-permission android:name="android.permission.ACCESS_GPS" />
+	<uses-permission android:name="android.permission.ACCESS_ASSISTED_GPS" />
+	<uses-permission android:name="android.permission.ACCESS_LOCATION" />
+
+</manifest>
+

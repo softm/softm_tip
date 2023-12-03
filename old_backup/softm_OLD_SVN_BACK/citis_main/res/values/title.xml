@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_test">테스트</string>
+    <string name="title_main"          >건설사업관리 시스템(검측/자료관리)</string>
+    <string name="title_login"         >건설사업관리 시스템(로그인)</string>
+    <string name="title_test_chk_main" >건설사업관리 시스템(검측체크 메인)</string>
+    <string name="title_test_chk_list" >건설사업관리 시스템(검측체크 목록)</string>
+    <string name="title_bld_chkup_wrt" >건설사업관리 시스템(시공사점검 작성)</string>
+    <string name="title_test_req_doc"  >건설사업관리 시스템(검측요청문서 작성)</string>
+    <string name="title_test_rslt_reg" >건설사업관리 시스템(검측결과등록)</string>
+    <string name="title_test_rslt_noti">건설사업관리 시스템(검측결과통보)</string>
+    
+    <string name="title_ncr_rprt"      >건설사업관리 시스템(부적합 보고서)</string>
+    <string name="title_car_rprt"      >건설사업관리 시스템(시정조치요구서)</string>
+    
+    <string name="title_csr_bsl"       >건설사업관리 시스템(공사기준)</string>
+    <string name="title_drw_mng"       >건설사업관리 시스템(도면관리)</string>
+    <string name="title_photo_mng"     >건설사업관리 시스템(사진관리)</string>
+    <string name="title_photo_mng_dtl" >건설사업관리 시스템(사진관리)</string>
+    
+    <string name="title_sample_list">샘플목록</string>
+    <string name="title_testing">테스트</string>
+</resources>

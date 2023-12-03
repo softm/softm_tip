@@ -1,0 +1,370 @@
+[제목] 한번의 커넥션으로 이미지 모두 전송하는 방법
+
+(BASE64로 인코딩한 이미지 data를 직접 HTML 문서에 추가하는 방법)
+
+- 작성자 : san2(at)linuxchannel.net
+- 작성일 : 2002.05.07
+- 수  준 : 초중급
+- 내  용 : HTML/PHP
+
+http://www.linuxchannel.net/docs/img-src-base64.txt
+
+이 문서는 이미지를 전송하는 과정에서 여러번의 커넥션
+없이 한번으로 모두 전송하는 방법을 소개합니다.
+
+*주의)
+서로의 장단점을 정확히 습득함을 요합니다.
+
+reference : http://www.faqs.org/rfcs/rfc2397.html
+
+1. 배경 및 개요
+2. "data" URL scheme
+3. IMG 태그 형태
+4. 이미지 파일을 모두 BASE64로 인코딩 하기
+  4-1. 커맨드라인에서 작업하기(파이썬 base64.py)
+  4-2. PHP로 인코딩해 보기
+5. 인코딩된 data를 HTML에 추가하기
+  5-1. 단순 HTML만을 사용할 경우
+  5-2. PHP를 사용할 경우
+6. 벤치마크(속도대결)
+7. 결론
+8. 후기
+
+---------------------------------------------------
+
+*문맥상 간혹 경어를 생략했습니다. 양해해 주시길 바랍니다.
+
+
+1. 배경 및 개요
+
+클라이언트(이하 '웹브라우저')가 특정 HTML문서(new document)를
+요청시 맨처음 한번의 커넥션이 이루어지고, 그 다음 HTML문서안에
+<IMG> 태그가 만약 10개 있다면, 이는 추가적으로 10번의
+재커넥션이 이루어질 수 있다는 점에서 초점을 맞추어 봅니다.
+
+일반적으로 속도를 높이기 위해서 서버에서는 KeepAlive 기능을
+사용하지만 상당히 바쁜 서버일 경우는 keepAlive를 off 하는것이
+더 효과적입니다(리소스 문제).
+
+이와같이 이미지를 모두 전송받기 위해서 웹브라우저는 추가적인
+커넥션을 시도하는데, HTTP 상태코드가 302일 경우는 웹브라우저는
+서버에서 이미지를 전송받지 않고 디스크 캐쉬나 메모리캐쉬에서
+이미지를 가져와 출력합니다. 반면 302 코드가 아닐 경우는 직접
+서버에서 이미지를 전송받습니다.
+
+문제는 후자와 같이 직접 이미지를 전송받는 과정에서 여러번의
+커넥션이 이루어지는데, 서버의 부하나 네트워크 장애 등등의
+원인으로 상당히 지연되는 경우를 경험했을 겁니다.
+
+이 문서는 이와 같이 이미지를 전송하는 과정에서 여러번의 커넥션
+없이 한번으로 모두 전송하는 방법을 소개합니다.
+
+  <IMG ... SRC='data:image/gif;base64,R0lGODdhMQAiAPcA.....'>
+
+HTTP 상태코드 302가 많은 경우는 오히려 역효과적임을 주의하시길
+바랍니다.
+
+
+2. data" URL scheme
+
+RFC 2397에 의하면,
+
+  data:[<mediatype>][;base64],<data>
+
+'[' 와 ']'으로 감싸인 부분은 옵션입니다.
+
+"data:"
+일부 어플리케이션에서는 URLs길이 제한이 있으므로 주의함.
+(RFC 1866)
+
+<mediatype>
+data의 media type(옵션).
+만약 이 옵션이 없다면 기본값으로 text/plain;charset=US-ASCII
+을 사용함.
+
+";base64"
+BASE64로 인코딩되어 있다는 의미(역시 옵션).
+이 옵션이 없다면 ASCII, URL 표준 %xx hex 인코딩으로 대체된다.
+
+예: data:,A%20brief%20note
+    <A HREF='data:,A%20brief%20note'>test</A>
+
+<data>
+실제로 BASE64로 인코딩된 data가 위치하거나 URL hex 인코딩된 문자열이
+들어감.
+
+
+그 외 참고사항,
+  dataurl    := "data:" [ mediatype ] [ ";base64" ] "," data
+  mediatype  := [ type "/" subtype ] *( ";" parameter )
+  data       := *urlchar
+  parameter  := attribute "=" value
+
+
+3. IMG 태그 형태
+
+  <IMG ... SRC='data:image/gif;base64,R0lGODdhMQAiAPcA.....'>
+  또는
+  <IMG ... SRC='data:;base64,R0lGODdhMQAiAPcA.....'>
+  또는
+  <IMG ... SRC='data:base64,R0lGODdhMQAiAPcA.....'>
+
+다음의 태그를 긁어서 출력해 보세요..
+
+<IMG BORDER=1 SRC="data:image/gif;base64,
+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
+zxIFBAA7">
+<BR>
+
+뭐가 나오나요?
+
+
+4. 이미지 파일을 모두 BASE64로 인코딩 하기
+
+이미지 파일을 BASE64로 인코딩하면 약간 파일이 커짐에
+주의하도록 합니다(약 30%이상 커짐).
+
+
+4-1. 커맨드라인에서 작업하기(파이썬 base64.py)
+
+다른 툴이 있는지 모르겠지만 필자는 커맨드라인에서
+다음의 파이썬 스크립트를 이용한다.
+
+/usr/lib/python1.5/base64.py
+
+$ alias base64='/usr/lib/python1.5/base64.py'
+
+BASE64로 인코딩하려면 ?
+(옵션이 없거나 -e 옵션 사용)
+
+$ base64 -e foobar.gif > foobar.gif.enc
+
+디코딩하려면?
+(-d 옵션 사용)
+
+$ base64 -e foobar.gif.enc > foobar.gif
+
+다음과 같은 간단한 쉘스크립트를 이용해서 파일끝에 .enc를
+붙여 인코딩 파일을 생성합니다.
+
+-- img2base64.sh -------------------------------
+#!/bin/sh
+#
+fpath=$1
+BASE64='/usr/lib/python1.5/base64.py'
+OIFS=$IFS
+IFS='
+'
+[ ! -d "$fpath" ] && exit 0
+[ ! -s "$BASE64" ] && exit 0
+
+for f in `find $fpath -type f 2>/dev/null` ; do
+  echo $f
+  $BASE64 -e $f > $f.enc
+done
+
+IFS=$OIFS
+exit 0
+------------------------------------------------
+
+사용법 :
+
+$ sh img2base64.sh /path/to/images/directory
+
+
+4-2. PHP로 인코딩해 보기
+
+PHP를 사용할 경우 base64_encode()함수를 사용한다.
+예:
+
+------------------------------------------------
+<?php
+fucntion get_file($file)
+{
+  if($fp = @fopen($file,r)) {
+    $content = fread($fp,filesize($file));
+    fclose($fp);
+  }
+  return $content;
+}
+
+$imgfile = get_file('foobar.gif');
+$imgfile = base64_encode($imgfile);
+
+echo $imgfile;
+echo "\n<BR>\n<IMG SRC='data:base64,$imgfile'>\n";
+?>
+------------------------------------------------
+
+
+5. 인코딩된 data를 HTML에 추가하기
+
+각각의 이미지 파일마다 BASE64로 인코딩된 파일을 생성했다는
+가정입니다.
+
+5-1. 단순 HTML만을 사용할 경우
+
+앞의 IMG 태그 예제와 같이 직접 BASE64로 인코딩하여 그 data를
+IMG 태그안에 손수 집어넣어야 합니다.
+(상당한 중노동이 필요할 듯......^.^)
+
+
+5-2. PHP를 사용할 경우
+
+------------------------------------------------
+<?php
+function get_file($file)
+{
+  if($fp = @fopen($file,r)) {
+    $content = fread($fp,filesize($file));
+    fclose($fp);
+  }
+  return $content;
+}
+
+function img_src($imgfile, $border=0, $argument='')
+{
+  $base64data = get_file('$imgfile.enc'); // encoded img file
+  return "<IMG BORDER=$border $argument SRC='data:base64,$base64data'>";
+}
+
+echo img_src('images/foobar.gif');
+echo "\n<BR>\n";
+echo img_src('images/foobar2.gif',1);
+echo "\n<BR>\n";
+echo img_src('images/foobar3.gif",0,'WIDTH=200 HEIGHT=1');
+echo "\n<BR>\n";
+echo img_src('images/foobar4.gif',0,"ALT='foobar4'");
+?>
+------------------------------------------------
+
+위와 같이 직접 이미지 data를 전송하면 재 커넥션 없이 한번의
+커넥션만 이루어집니다.
+비교적 파일크기가 작고 여러번의 커넥션이 이루어진 홈페이지라면
+상당히 유용할 겁니다.
+용량이 큰 파일일 경우는 오히려 역효과가 날 수 있습니다.
+
+참고로,
+아파치 로그파일에서 이미지 파일에 접근 기록이 없어야
+정상입니다.
+
+다만, 주의할 점은
+웹서버나 다른 어플리케이션에서 BODY의 길이를 제한하면
+에러를 낼 수 있습니다.
+또한 다른 장애(?)도 발생할 수 있습니다.
+
+직접 테스트해 보시고
+장점과 단점을 서로 비교해 보세요.
+
+
+6. 벤치마크(속도대결)
+
+start_time :
+(1)클라이언트에서 문서 요청 -->
+(2)웹서버 처리 -->
+(3)클라이언트에게 전송 -->
+(4)웹브라우저에서 문서 출력
+end_time :
+
+여기에서는, 실제로 웹브라우저가 출력하는데까지의 시간 측정은
+상당히 어려우므로(?) (4)번 과정은 제외하고 (1)-(3)번까지의
+과정을 wget 과 time으로 시간을 측정해 봅니다.
+(wget 이 가져온 결과를 /dev/null로 보냄)
+
+주의할 점은 일반 HTML 문서에는 실제로 링크된 이미지 모두를
+가져오는데 까지 시간을 측정해야 합니다.
+
+- 크고 작은 이미지를 여러개 준비합니다
+  준비한 이미지를 모두 BASE64로 인코딩합니다.
+  (5개 이상으로 자신의 홈페이지 기준).
+
+- 문서1(tmp.html)
+  비교기준이 되는 일반 문서를 작성합니다.
+  예: <IMG SRC='images/foobar.gif'> 와 같은 형식
+
+- 문서2(tmp.php)
+  PHP를 이용해서 한번의 커넥션이 이루어지도록 작성합니다.
+  예: <IMG SRC='data:base64,$base64data'>
+
+- 문서3(tmp.enc.html)
+  인코딩된 data를 직접 HTML 문서에 추가합니다.
+  예: <IMG SRC='data:base64,R0lGODdhMQAiAPcA...>
+  하나하나씩 작성하기 힘드므로 문서2에서의 결과를
+  저장합니다.
+
+다음과 같은 쉘스크립트를 작성해서 테스트해 봅니다.
+가능한 같은 네트워크의 다른 PC에서 테스트해 보세요.
+
+-------------------------------------------------
+#!/bin/sh
+file=$1
+i=0
+time {
+  while [ $i -lt 100 ] ; do
+    wget -q -r -O /dev/null http://www.yourdomain.com/tmp/$file
+    i=$(($i+1))
+  done
+}
+exit 0
+-------------------------------------------------
+$ sh this_script.sh tmp.html
+$ sh this_script.sh tmp.php
+$ sh this_script.sh tmp.enc.html
+
+아마 결과는 그리 만족하지 않을 겁니다. T.T
+
+
+7. 결론
+
+먼저 결론을 내리기 전에 필자는 이 문서를 작성해 놓고 상당히
+고민했습니다.
+이유는, 테스트에 대한 그 객관성이 상당히 결여되어 있고, 또한
+당연한 결과인줄 알면서도 무모하게 도전한(?) 아둔한 생각 때문에
+...
+
+
+굳지 결론을 내리자면,
+
+ 1) 일반적인 홈페이지일 경우 이 방법은 필요없습니다.
+
+ 2) 다만, 웹서버와 웹브라우저 간의 커넥션이 빈번하게 이루어지고
+    비교적 이미지가 자주 바뀌는 경우에 유용.
+
+ 3) 커넥션 수를 줄여서 그 효과를 볼 수 있는 경우.
+
+ 4) 양자를 혼용했을 경우 그 효과를 볼 수 있는 경우.
+
+ 5) 특별하게 따로 이미지 파일을 만들고 싶지 않을 경우(하나의
+    문서로 제공할경우).
+
+
+8. 후기
+
+생략(필자의 습관상 붙이는 단원)
+
+__EOF__

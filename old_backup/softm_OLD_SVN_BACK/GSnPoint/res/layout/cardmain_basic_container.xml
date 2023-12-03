@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/card_possession_bg"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <include
+	        android:id="@+id/login_container"        
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        layout="@layout/carduserinfotop" />
+    	<include
+	        android:id="@+id/logout_container"        
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:visibility="gone"
+	        layout="@layout/carduserinfotop_logout" />
+   
+ 		<RelativeLayout
+	  	    android:id="@+id/barcode_view"
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content"
+			android:layout_marginTop="14dip"
+			android:layout_gravity="center"
+			android:visibility="visible" >
+			<ViewFlipper 
+			    android:id="@+id/viewFlipper"
+                android:layout_width="wrap_content" 
+                android:layout_height="wrap_content"
+                >
+                  
+			</ViewFlipper>
+		</RelativeLayout>
+	  	<LinearLayout
+	  	    android:id="@+id/page_linear"
+	  	    android:layout_width="fill_parent"
+	  	    android:layout_height="wrap_content"
+	  	    android:layout_marginBottom="30dip"
+	  	    android:layout_gravity="bottom"
+	  	    android:gravity="center"
+	  	    android:orientation="horizontal" >
+
+	  	</LinearLayout>
+
+    </FrameLayout>
+   
+    <include
+		layout="@layout/cardtabpage"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+</LinearLayout>

@@ -1,0 +1,113 @@
+■ Java Container - WAS 구동 순서. ( exam spring )
+    - 컨테이너에 URI를 매핑하여 서블릿을 구동하는 형태
+        -> RESTFul 서비스도 동일한 매커니즘을 사용하는것으로 추측됨.
+    ※ http://javaproject.co.kr/web/board.list.do?boardMainNo=1001&sDiv=1&sStr=%5Bspring
+
+■ 동작형태
+    Client(Request) ◀▶ View(jsp) ◀▶ Controller(Servlet Action) ◀▶ Service(Bean Factory) ◀▶ DAO(SQL)
+
+0. http://서버명/test.do 요청
+    0.1. action 맵핑 정보를 이용 .jsp를 호출함.
+
+1. Load web.xml ( WAS 시작시 )
+    1.1. Mapping Service
+        1.1.1 Load ContextLoaderListener(ServletContextListener) - Controller
+             : Context 생성시 동작하므로
+                -> 처음에 서버 기동시 동작하거나.
+                -> 서버 소멸시 동작한다.
+            ※ 참고
+                Dynamic add servlet programmatically. : http://ben-bai.blogspot.kr/2012/03/basic-servlet-practice-dynamic-add.html
+                http://stackoverflow.com/questions/7904577/how-can-i-add-a-servlet-filter-programmatically
+                http://stackoverflow.com/questions/7818365/servlet-mapping-is-it-possible-to-add-servlet-mappings-at-runtime
+
+        1.1.2. Load Service Context (Bean factory mapping : ServiceImpl )
+            -> service-context.xml
+
+            ● web.xml
+                    .
+                    .
+                <!-- The definition of the Root Spring Container shared by all Servlets and Filters -->
+                <context-param>
+                    <param-name>contextConfigLocation</param-name>
+                    <param-value>
+                        /WEB-INF/classes/config/spring/*-context.xml
+                    </param-value>              
+                </context-param>
+               
+                <!-- Creates the Spring Container shared by all Servlets and Filters -->
+                <listener>
+                    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+                </listener>
+                    .
+                    .
+
+                ● service-context.xml
+                    <?xml version="1.0" encoding="UTF-8"?>
+                    <beans xmlns="http://www.springframework.org/schema/beans"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+                        xmlns:tx="http://www.springframework.org/schema/tx"
+                        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+                            http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+                            http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+
+                        <!-- ========================= RESOURCE DEFINITIONS ========================= -->
+                        <bean id="mainService" class="spring.board.service.MainServiceImpl">
+                            <property name="mainDao">
+                                <bean  class="spring.board.dao.MainDaoImpl">
+                                    <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+                                </bean>
+                            </property>
+                        </bean>
+                    </beans>
+
+2. Mapping Servlet & Controller.
+    2.1. .do [url pattern] 호출일 경우 appServlet (org.springframework.web.servlet.DispatcherServlet)
+          > servlet_context.xml
+          > Mapping Action : 어떤 jsp로 dispatcher할것 결정한다.
+        ● web.xml
+                .
+                .
+            <!-- Processes application requests -->
+            <servlet>
+                <servlet-name>appServlet</servlet-name>
+                <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+                <init-param>
+                    <param-name>contextConfigLocation</param-name>
+                    <param-value>
+                        /WEB-INF/classes/config/spring/servlet_context.xml
+                    </param-value>
+                </init-param>
+                <load-on-startup>1</load-on-startup>
+            </servlet>
+
+            <servlet-mapping>
+                <servlet-name>appServlet</servlet-name>
+                <url-pattern>*.do</url-pattern>
+            </servlet-mapping>
+                .
+                .
+
+    2.2. Mapping Servlet Action ( Controller & Resolver ) ( Mapping action )
+        ● servlet_context.xml
+                .
+                .
+            <context:component-scan base-package="spring.board" use-default-filters="false">
+                <context:include-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+            </context:component-scan>
+           
+            <!-- Enables the Spring MVC @Controller programming model -->
+            <mvc:annotation-driven>
+                <mvc:message-converters register-defaults="true">
+                    <bean class = "org.springframework.http.converter.json.MappingJacksonHttpMessageConverter">
+                        <property name="supportedMediaTypes" value = "text/plain;charset=UTF-8" />
+                    </bean>
+                </mvc:message-converters>
+            </mvc:annotation-driven>
+
+            <!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/jsp directory -->
+            <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+                <property name="prefix" value="/WEB-INF/jsp/" />
+                <property name="suffix" value=".jsp" />
+            </bean>
+                .
+                .

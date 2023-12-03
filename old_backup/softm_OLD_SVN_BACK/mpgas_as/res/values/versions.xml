@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">민원</string>
+    <string name="app_version">1.0.6</string>
+
+    <string name="db_user_version">4</string>
+
+</resources>

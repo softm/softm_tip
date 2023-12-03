@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+
+    <FrameLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		>
+		
+        <ScrollView 
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FFFFFFFF"
+		    >
+		    <!-- 
+            <LinearLayout
+		    	android:layout_width="fill_parent"
+		    	android:layout_height="674dp" 
+		    	android:background="@drawable/set_set_bg"
+		    	android:orientation="vertical"
+		    	android:gravity="center"
+		    	>
+		    	 -->
+		    <LinearLayout
+		    	android:layout_width="wrap_content"
+		    	android:layout_height="wrap_content" 
+		    	android:background="@drawable/set_set_bg"
+		    	android:orientation="vertical"
+		    	android:gravity="center"
+		    	>
+		    	<!-- 로그인 정보/자동로그인 설정/비밀번호 설정/메인 화면 이미지 관 -->
+                <ImageButton
+					    android:id="@+id/set_btn01_button"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginTop="20dp"
+					    android:background="@drawable/set_set_btn01_img" />
+                <ImageButton
+					    android:id="@+id/set_btn02_button"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginTop="10dp"
+					    android:layout_marginLeft="100dp"
+					    android:background="@drawable/btn_switch_img" />
+                <ImageButton
+					    android:id="@+id/set_btn03_button"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginTop="8dip"
+					    android:background="@drawable/set_set_btn03_img" />
+                <ImageButton
+					    android:id="@+id/set_btn04_button"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginTop="0dp"
+					    android:background="@drawable/set_set_btn04_img" />
+                
+                <!-- 회원정보 -->
+                <ImageButton
+                    android:id="@+id/set_btn05_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/set_set_btn05_img" />
+                
+                <!-- 버전정보 -->
+                <TextView
+						android:id="@+id/versionLabel"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="30dp"
+						android:layout_marginLeft="100dp"
+						android:text="Ver 1.0"
+						android:textColor="#FFFF6C00"
+						android:textSize="16dp"
+						/>
+                
+                <!-- 공지사항 -->
+                <ImageButton
+					    android:id="@+id/set_btn07_button"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginTop="40dp"
+					    android:layout_marginBottom="30dp"
+					    android:background="@drawable/set_set_btn07_img" />
+
+                
+		    	</LinearLayout>
+		    
+            </ScrollView>
+
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+
+	</FrameLayout>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

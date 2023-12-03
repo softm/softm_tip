@@ -1,0 +1,1 @@
+                  <input type="radio" name="d_poll_item"><?=$item?><br>

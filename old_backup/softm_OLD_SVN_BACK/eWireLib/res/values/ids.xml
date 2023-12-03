@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- dialog -->
+    <item name="ewire_dialog_text" type="id"/>
+    <item name="ewire_dialog_progress" type="id"/>
+    <item name="ewire_dialog_wait_progress" type="id"/>
+    <item name="ewire_dialog_status" type="id"/>
+
+    <!-- button -->
+    <item name="button_ewire_excute" type="id"/>
+    <item name="button_data_import_excute" type="id"/>
+    <item name="button_data_export_excute" type="id"/>
+
+</resources>

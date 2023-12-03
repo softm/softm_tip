@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- mpgas -->
+    <color name="Background">#0c2336</color>
+    <color name="Cell">#3A4763</color>
+    <color name="CellHeader">#283953</color>
+    <color name="TableHeader">#202d47</color>
+    <color name="TableRow1">#283953</color>
+    <color name="TableRow2">#3a4763</color>
+    <color name="TablePressed">#1a61c0</color>
+</resources>

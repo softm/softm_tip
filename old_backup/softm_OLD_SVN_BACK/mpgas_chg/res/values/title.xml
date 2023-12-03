@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="title_test">테스트</string>
+    <string name="title_meter_change_main">계량기교체메인</string>
+    <string name="title_change_target_rcv">교체대상 수신</string>
+    <string name="title_building_list">건물목록</string>
+    <string name="title_house_list">수용가목록</string>
+    <string name="title_house_info">수용가정보</string>
+    <string name="title_meter_change">계량기교체</string>
+    <string name="title_sign">서명</string>
+    <string name="title_batch_sign">일괄서명</string>
+</resources>

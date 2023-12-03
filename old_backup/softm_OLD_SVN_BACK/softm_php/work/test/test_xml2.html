@@ -1,0 +1,146 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</HEAD>
+
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function loadXMLDoc(dname)
+{
+if (window.XMLHttpRequest)
+  {
+  xhttp=new XMLHttpRequest();
+  }
+else
+  {
+    xhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+xhttp.open("GET",dname,false);
+xhttp.send();
+return xhttp.responseXML;
+}
+xmlDoc=loadXMLDoc("./books.xml");
+
+x=xmlDoc.getElementsByTagName("book");
+//[0].attributes;
+document.write(x.length);
+//document.write(x[0].nodeName);
+
+function xml2json(x) {
+        //x.nodeType==1
+        var J = {
+            parseAttr:function(xx,jo){
+                if (xx) {
+                    var ll = xx.length;
+                    //json[id] = new Array();
+                    for (var ii=0; ii<ll;ii++ ) {
+                        if (jo instanceof Array)
+                            jo[jo.length-1][xx[ii].nodeName] = xx[ii].nodeValue;
+                        else
+                            jo[xx[ii].nodeName] = xx[ii].nodeValue;
+
+                      //alert( xx[ii].nodeName );
+                    }
+                }
+                return jo;
+            },
+            parse: function(x) {
+                /* 하위노드가 텍스트인경우 상위노드의 Attribute를 무시함...  */
+                var json = {};
+
+                if (x.nodeType==9) { // document.node
+                    //json = J.parse(x.getElementsByTagName(x.documentElement.tagName));
+                    json = J.parse(x.documentElement);
+                    //console.debug(json);
+                } else if (x.nodeType==1) {   // element node ..
+                    J.removeWhite(x);
+                    for (var n=x.firstChild; n; n=n.nextSibling) {
+                        var d = n.nodeName;
+                        //if ( !json[d] ) json[d] = {};
+                        if (n.nodeType == 3)  // text node
+                           json["#text"] = J.escape(n.nodeValue);
+                        else if (n.nodeType == 4)  // cdata node
+                           json["#cdata"] = J.escape(n.nodeValue);
+                        else if ( json[d] ) {
+                           if (json[d] instanceof Array) {
+                               if (n.firstChild && ( n.firstChild.nodeType == 3 || n.firstChild.nodeType == 4 ) ) {
+                                    json[d][json[d].length] = n.firstChild.nodeValue;
+                               } else {
+                                    json[d][json[d].length] = J.parse(n);
+                               }
+                           } else {
+                               if (n.firstChild && ( n.firstChild.nodeType == 3 || n.firstChild.nodeType == 4 ) ) {
+                                    json[d] = [json[d], n.firstChild.nodeValue];
+                               } else {
+                                    json[d] = [json[d], J.parse(n)];
+                               }
+
+                           }
+                        } else {
+                            //alert ( textChild );
+                           if (n.firstChild && ( n.firstChild.nodeType == 3 || n.firstChild.nodeType == 4 ) ) {
+                                json[d] = n.firstChild.nodeValue;
+                           } else {
+                                json[d] = J.parse(n);
+                           }
+                        }
+
+                        var xx = n.attributes;
+                        if (xx) {
+                            var ll = xx.length;
+                            //json[id] = new Array();
+                            for (var ii=0; ii<ll;ii++ ) {
+                                if (json[d] instanceof Array)
+                                    json[d][json[d].length-1][xx[ii].nodeName] = xx[ii].nodeValue;
+                                else
+                                    json[d][xx[ii].nodeName] = xx[ii].nodeValue;
+
+                              //alert( xx[ii].nodeName );
+                            }
+                        }
+                    }
+                }
+                return json;
+            },
+            escape: function(txt) {
+                return txt.replace(/[\\]/g, "\\\\")
+                       .replace(/[\"]/g, '\\"')
+                       .replace(/[\n]/g, '\\n')
+                       .replace(/[\r]/g, '\\r');
+            },
+          removeWhite: function(e) {
+             e.normalize();
+             for (var n = e.firstChild; n; ) {
+                if (n.nodeType == 3) {  // text node
+                   if (!n.nodeValue.match(/[^ \f\n\r\t\v]/)) { // pure whitespace text node
+                      var nxt = n.nextSibling;
+                      e.removeChild(n);
+                      n = nxt;
+                   }
+                   else
+                      n = n.nextSibling;
+                }
+                else if (n.nodeType == 1) {  // element node
+                   J.removeWhite(n);
+                   n = n.nextSibling;
+                }
+                else                      // any other node
+                   n = n.nextSibling;
+             }
+             return e;
+          }
+        };
+
+        return J.parse(x);
+}
+
+
+console.debug(xml2json(xmlDoc));
+//var jo = xml2json(xmlDoc,true,true);
+//-->
+</SCRIPT>
+</BODY>
+</HTML>

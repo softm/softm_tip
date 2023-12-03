@@ -1,0 +1,43 @@
+/* ------------------
+ styling for the tables 
+   ------------------   */
+
+
+body
+{
+	line-height: 1.6em;
+}
+
+#tbl_list
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+
+	text-align: left;
+	border-collapse: collapse;
+	border: 1px solid #69c;
+}
+#tbl_list th
+{
+	padding: 15px 10px 10px 10px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #039;
+}
+#tbl_list tbody
+{
+	background: #e8edff;
+}
+#tbl_list td
+{
+	padding: 10px;
+	color: #669;
+	border-top: 1px dashed #fff;
+}
+#tbl_list tbody tr:hover td
+{
+	color: #339;
+	background: #d0dafd;
+}
+
+

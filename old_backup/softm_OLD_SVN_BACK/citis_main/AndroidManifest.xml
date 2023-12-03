@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="kr.go.citis.main"
+    android:versionCode="1"
+    android:versionName="@string/app_version"
+    android:installLocation="auto" >
+
+    <uses-sdk
+        android:minSdkVersion="12"
+        android:targetSdkVersion="21" />
+    
+    <application
+    	android:name=".WApplication"        
+        android:allowBackup="true"
+        android:icon="@drawable/logo_icon"
+        android:label="@string/app_name"
+         android:theme="@style/AppTheme"
+         >
+        <!--LoginActivity -->
+        <!--TestingActivity -->
+        <!--NcrRprtActivity -->
+        <!--CarRprtActivity -->
+        <!--CsrBslActivity -->
+        <!--DrwMngActivity -->
+        <!--PhotoMngActivity -->
+        <!--PhotoMngDtlActivity-->
+        <activity
+            android:name=".activity.LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="landscape"
+             >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="kr.go.citis.main.activity.MainActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize"   />        
+        <activity android:name="kr.go.citis.main.activity.SampleListRecyclerViewActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize"   />        
+        <activity android:name="kr.go.citis.lib.activity.SampleActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize"/>
+        
+        <activity android:name="kr.go.citis.main.activity.TestChkMainActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.TestChkListActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.BldChkupWrtActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.TestReqDocActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.TestRsltRegActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+<!--
+-->
+        <activity android:name="kr.go.citis.main.activity.TestRsltNotiActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.NcrRprtActivity"       android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.CarRprtActivity"       android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+<!-- 
+ -->        
+        <activity android:name="kr.go.citis.main.activity.CsrBslActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.DrwMngActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.PhotoMngActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.PhotoMngDtlActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+<!--
+-->
+<!--
+-->
+        <activity android:name="kr.go.citis.main.activity.TestingActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+        <activity android:name="kr.go.citis.main.activity.SetupActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+                
+        <activity android:name="kr.go.citis.main.activity.SampleListActivity"  android:screenOrientation="landscape" android:configChanges="orientation|keyboardHidden|screenSize" android:windowSoftInputMode="stateHidden" />
+    </application>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+	<!-- <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission> -->
+	<!-- <uses-permission android:name="android.permission.CAMERA"></uses-permission> -->
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+	
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+    
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />    	
+</manifest>
+
+

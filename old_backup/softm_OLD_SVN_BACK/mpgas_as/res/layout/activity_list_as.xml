@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Frame.Container" >
+
+    <RelativeLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/row_one_title_layout_height"
+        android:layout_marginTop="@dimen/row_one_title_coulmn_padding"
+        android:layout_marginBottom="@dimen/row_one_title_coulmn_padding"
+        android:layout_marginLeft="@dimen/side_top_padding"
+        android:layout_marginRight="@dimen/side_top_padding" >
+
+        <TextView
+            android:id="@+id/END_YN"
+            android:layout_width="90dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/side_top_padding"
+            android:background="@drawable/dropdown_img"
+            android:singleLine="true"
+            android:text="전체"
+            android:textColor="@android:color/black" />
+
+        <ImageButton
+            android:id="@+id/search"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/b_search" />
+
+        <EditText
+            android:id="@+id/search_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="@dimen/side_top_padding"
+            android:layout_toLeftOf="@id/search"
+            android:layout_toRightOf="@id/END_YN"
+            android:background="@drawable/input_img"
+            android:hint="단지명"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/fontSize"
+            android:textStyle="normal" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/min_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="top"
+        android:layout_weight="1"
+        android:cacheColorHint="#00000000"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="1px"
+        android:listSelector="@android:color/transparent" />
+
+</LinearLayout>

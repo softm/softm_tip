@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" layout="absolute" creationComplete="onLoad()">
+<mx:Script>
+	<![CDATA[
+        import mx.controls.Alert;
+		private var so:SharedObject;
+
+		private function onLoad():void {
+			so = SharedObject.getLocal("mbcSo");
+			so.clear();
+		}
+	]]>
+</mx:Script>
+
+</mx:Application>

@@ -1,0 +1,103 @@
+■ 쿼크 모드(Quirks mode)란? ( wiki : http://ko.wikipedia.org/wiki/%EC%BF%BC%ED%81%AC_%EB%AA%A8%EB%93%9C )
+   쿼크 모드(Quirks mode, 쿽스 모드)는 하위브라우져와의 호환성유지를 위해 지원되는 모드.
+   doctype에의해 렌더링의 기준이 정해지는데 쿼크모드의 경우 하위브라우져와의 호환성을위한 모드이다.
+
+■ 웹브라우저의 레이아웃 엔진
+    1. 호환 모드(quirks mode) 
+      - 하위버전 렌더링 호환성 유지 모드
+      - 비표준 동작들을 에뮬레이터 
+      - 네비게이터4, 인터넷 익스플로러5
+    2. 유사 표준 모드(almost standards mode)
+    3. 표준 모드(standards mode)
+
+
+    - 엄격함을 기준으로
+        - Quirks Mode : 호환모드
+        - Strict Mode : 엄격모드
+
+■ DOC TYPE
+    - 웹페이지의 렌더링 타입을 선언한다.
+
+■ <!DOCTYPE html>
+    - HTML5에서 권장하는 가장간단한 렌더링 방식.
+    - 완전 표준 모드
+    - 인터넷 익스플로러 9 또는 그 이전 버전에서는
+      DOCTYPE 이전에 주석이나 XML 선언부와 같은 엘리먼트들을 기술하면,
+      해당 문서를 호환 모드로 렌더링하게 된다.
+    - 예제
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <meta charset=UTF-8>
+            <title>Hello World!</title>
+          </head>
+          <body>
+          </body>
+        </html>
+
+■ XHTML
+    - Content-Type HTTP 헤더에 application/xhtml+xml MIME 타입을 사용해 XHTML로 제공된다면
+        >> 이런 페이지들은 항상 표준 모드로 렌더링 되기 때문에 DOCTYPE을 기술할 필요가 없다.
+        주의) 인터넷 익스플로러 8에서는 application/xhtml+xml으로 기술된 페이지들을 제대로
+              렌더링하지 않고 알 수 없는 형식으로 판단해 다운로드 다이얼로그(show a download dialog)박스를 보여줄 것이다.
+              인터넷 익스플로러는 XHTML을 버전 9부터 을 정식으로 지원한다.
+
+    - XHTML(XHTML-like) 같은 컨텐트를 text/html MIME 타입을 사용해 제공한다면,
+      웹브라우저는 이를 HTML로 인식하기 때문에, 표준 모드를 사용하기 위해 DOCTYPE을 기술하자.
+
+■ 페이지에 사용된 모드 확인하기.
+    - 파이어폭스(Firefox)
+        컨텍스트 메뉴(context menu)->뷰 페이지(View Page Info)->렌더 모드(Render Mode)를 확인.
+    - 인터넷 익스플로러
+        F12 키를 누른 후, 문서 모드(Document Mode)를 확인.
+
+■ 모드간 차이점
+    호환 모드와 유사 표준모드를 비교하려면,
+    호환 모드 목록(list of quirks)과 유사 표준 모드(almost standards mode)를 참고하자.
+
+
+■ Cross Browsing을 유지하려면 Quirks Mode를 유발하는 DTD를 피할 것.
+    Quirks Mode를 유발하기 때문에 피해야 할 DTD 형식은 아래와 같습니다.
+
+    - DTD를 적지 않는 경우.
+      <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+    - Almost Standard 또는 Standard 모드로 렌더링 되는 DTD는 아래와 같습니다.
+        HTML 4.01 문서라면
+            - <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+            - <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+            - <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+        XHTML 1.0 문서라면
+            - <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+            - <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+■ IE 문서모드를 이해하기
+    □ IE의 렌더링 지정 모드
+        - 브라우저 모드 : 현재 브라우저의 기본 셋팅을 정의
+        - 문서 모드     : 콘텐츠를 랜더링하는 방식을 정의
+    □ 모드 지정방법
+        - F12로 개발자 모드 창 F12 호환성 보기에서 지정.
+        - 레지스트리에서 기본모드 지정
+          :> [HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\Main\FeatureControl\FEATURE_NATIVE_DOCUMENT_MODE]
+
+    □ meta태그를 이용한 설정.
+        1.  Quirks Mode 설정
+            <meta http-equiv="X-UA-Compatible" content="IE=5" />
+
+        2. Internet Explorer 7 Standards 모드
+            <meta http-equiv="X-UA-Compatible" content="IE=7" />
+
+        3. Internet Explorer 8 Standards 모드
+            <meta http-equiv="X-UA-Compatible" content="IE=8" />
+
+        4. 가장 최신 Internet Explorer 버전의 Standards 모드
+            <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+
+        5. Chrome Browser 가 설치된 환경에서 Chrome Frame 을 이용하여 랜더링 지정.
+            <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+
+※ 참고 : https://developer.mozilla.org/ko/docs/%ED%98%B8%ED%99%98_%EB%AA%A8%EB%93%9C%EC%99%80_%ED%91%9C%EC%A4%80_%EB%AA%A8%EB%93%9C
+          https://www.google.co.kr/search?q=quirk+mode&oq=quirk+mode&aqs=chrome..69i57j0l5.5311j0j4&sourceid=chrome&es_sm=122&ie=UTF-8
+          http://naradesign.net/wp/2007/03/27/118/
+          https://hsivonen.fi/doctype/
+          - IE 문서모드를 이해하기 : http://blog.hwm.or.kr/archives/50

@@ -1,0 +1,22 @@
+@charset "utf-8";
+@import url('/css/common.css');
+
+.w_pop {/*width:510px;*/}
+.w_pop_wrap {position:relative;}
+.w_pop_wrap .tit {padding:10px;margin:0 0 10px 0;background:#071936;color:#fff;font-weight:bold;font-size:15px;}
+.w_pop_wrap .join_tb {border-top:1px solid #ccc;border-left:1px solid #ccc;margin:10px;}
+.w_pop_wrap .join_tb table {width:100%;}
+.w_pop_wrap .join_tb table th {text-align:left;padding:6px;color:#000;font-weight:bold;background:#ccc;border-bottom:1px solid #fff;border-right:1px solid #ccc;}
+.w_pop_wrap .join_tb table th span {display:block;padding:0 0 0 15px;}
+.w_pop_wrap .join_tb table th span.ind {background:url(/images/common/bul01.png) 0 50% no-repeat;}
+.w_pop_wrap .join_tb table td {text-align:left;padding:6px;border-bottom:1px solid #ccc;border-right:1px solid #ccc;}
+.w_pop_wrap .join_tb table td input[type="text"],
+.w_pop_wrap .join_tb table td input[type="password"] {width:50%;}
+.w_pop_wrap .join_tb table td select {display:inline-block;margin-left:10px;}
+.w_pop_wrap .join_tb table td select:first-child {margin-left:0;}
+.w_pop_wrap .join_tb table td.is input[type="text"] {width:20%;}
+.w_pop_wrap .join_tb table td.hint select {display:block;margin-bottom:5px;}
+.w_pop_wrap .j_send {padding:10px 0;text-align:center;}
+.w_pop_wrap .j_send a {display:inline-block;width:120px;text-align:center;padding:6px 0;border:1px solid #071936;background:#071936;color:#fff;font-weight:bold;border-radius:5px;}
+.w_pop_wrap .j_clo {position:absolute;top:13px;right:15px;}
+.w_pop_wrap .tit_find {padding:0 0 0 10px;margin:20px 0 10px 10px;font-size:14px;font-weight:bold;color:#071936;}

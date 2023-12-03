@@ -1,0 +1,150 @@
+/*기본*/
+body,td,select,input,div,form,textarea,center,option,pre,blockquote{font-family:Tahoma,Verdana,Arial;font-size:9pt;}
+
+img {border:none}
+
+A:link  {color:black;text-decoration:none}
+A:visited  {color:black;text-decoration:none}
+A:active  {color:black;text-decoration:none}
+A:hover  {color:#EF5900;text-decoration:none}
+
+A.bold {font-weight:bold}
+
+/*글꼴 및 크기(굴림)*/
+.underline {text-decoration:underline}
+
+.gul8  {font-size:9pt}
+.gul9  {font-size:9pt}
+.gul10  {font-size:10pt}
+.gul11  {font-size:11pt}
+.gul12  {font-size:12pt}
+
+.gul8b  {font-size:9pt;font-weight:bold}
+.gul9b  {font-size:9pt;font-weight:bold}
+.gul10b  {font-size:10pt;font-weight:bold}
+.gul10b  {font-size:11pt;font-weight:bold}
+.gul12b  {font-size:12pt;font-weight:bold}
+
+/*글꼴 및 크기(Tahoma)*/
+.tah7 {font-family:Tahoma,Verdana,Arial;font-size:7pt}
+.tah8 {font-family:Tahoma,Verdana,Arial;font-size:8pt}
+.tah9 {font-family:Tahoma,Verdana,Arial;font-size:9pt}
+.tah12 {font-family:Tahoma,Verdana,Arial;font-size:12pt}
+.tah13 {font-family:Tahoma,Verdana,Arial;font-size:13pt}
+.tah14 {font-family:Tahoma,Verdana,Arial;font-size:14pt}
+
+/*글꼴 및 크기(Verdana)*/
+.ver7 {font-family:Verdada,Tahoma,Arial;font-size:7pt}
+.ver8 {font-family:Verdana,Tahoma,Arial;font-size:8pt}
+.ver9 {font-family:Verdana,Tahoma,Arial;font-size:9pt}
+.ver12 {font-family:Verdana,Tahoma,Arial;font-size:12pt}
+.ver13 {font-family:Verdana,Tahoma,Arial;font-size:13pt}
+.ver14 {font-family:Verdana,Tahoma,Arial;font-size:14pt}
+
+/*색상(이름)*/
+.white {color:white}
+.red {color:red}
+.gray {color:gray}
+.magenta {color:magenta}
+.firebrick {color:firebrick}
+.hotpink {color:hotpink}
+.orangered {color:orangered}
+.orange {color:orange}
+.blue {color:blue}
+.royalblue {color:royalblue}
+.steelblue {color:steelblue}
+.skyblue {color:skyblue}
+.green {color:green}
+.yellowgreen {color:yellowgreen}
+.seagreen {color:seagreen}
+.slategray {color:slategray}
+.tan {color:tan}
+.palevioletred {color:palevioletred}
+.indigo {color:indigo}
+.mistyrose {color:mistyrose}
+.navy {color:navy}
+
+/*색상(코드)*/
+.gray1 {color:636363}
+.gray2 {color:dcdcdc}
+.gray3 {color:ececec}
+.gray4 {color:efefef}
+.gray5 {color:f7f7f7}
+.red1 {color:#FF0000}
+.red2 {color:#C00000}
+.red3 {color:#C60000}
+.orange1 {color:#FFCC00}
+.orange2 {color:#FF9900}
+.orange3 {color:#EF5900}
+.yellow1 {color:#FFD222}
+.yellow2 {color:#CACC08}
+.green1 {color:#78A806}
+.blue1 {color:#004AC4}
+.blue2 {color:#0084C4}
+.bluesky {color:#00BEDA}
+
+/*테이블 고정 및 폭, 넓이*/
+.wordwrap {word-break:break-all}
+.w100 {width:100%}
+.h100 {height:100%}
+.w50 {width:50%}
+.h50 {height:50%}
+.w30 {width:30%}
+.h30 {height:30%}
+.w10 {width:10%}
+.h10 {height:10%}
+
+/**************************************************
+*background images & background color
+**************************************************/
+/*black*/
+.bgblack {background:url(images/head_bg.gif)}
+
+/*입력창 및 폼*/
+.input {border:1px solid #efefef}
+.input_kor {border:1px solid #efefef;background-color:#FAFAFA;height:18px;font-family:굴림,굴림체;font-size:9pt;color:black}
+.input_eng {border:1px solid #efefef;background-color:#FAFAFA;height:18px;font-family:Verdana,Tahoma,Arial;font-size:10px;color:black}
+
+.input1 {border:1px solid #dcdcdc}
+.input2 {border:1px solid #f7f7f7}
+.input3 {border:1px solid #efefef}
+
+.button {border:solid 0 #fafafa;font-family:Verdana,Tahoma;font-size:7pt;color:steelblue;background-color:#FAFAFA}
+
+.fixed {table-layout:fixed;}
+
+.line1 {background-color:#f0f0f0; padding:0}
+.line2 {background-color:#f3f3f3; padding:0}
+.title {background-color:f5f5f5; height:16px;}
+
+TH {
+	background-color:#565656;
+	border-width:1px; 
+	border-style:solid; 
+	border-top-color: #474947; 
+	border-right-color: #FFFFFF; 
+	border-bottom-color: #FFFFFF; 
+	border-left-color: #474947;
+	font-family:tahoma;
+	color:white;
+	font-weight:bold;
+	font-size:7pt;
+	}
+
+.TH {
+	background-color:#C5C5C5;
+	border-width:1px; 
+	border-style:solid; 
+	border-top-color: #E1E1E1; 
+	border-right-color: #868686; 
+	border-bottom-color: #868686; 
+	border-left-color: #E1E1E1;
+	font-family:tahoma;
+	color: #5A5A5A;
+	font-weight:bold;
+	font-size:7pt;
+	height:17;
+	line-height:140%;
+	}
+
+

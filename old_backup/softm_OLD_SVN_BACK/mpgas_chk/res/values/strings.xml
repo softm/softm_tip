@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="proc_gid">chk</string>    
+    <string name="label_spn_non_seal">-미봉인-</string>
+    <string name="label_spn_checkup_cd">점검구분</string>
+    
+    <string name="label_spn_boiler">보일러점검</string>
+    <string name="label_spn_burner">연소기점검</string>
+    <string name="label_spn_pipe">배관점검</string>
+    <string name="label_spn_gm">계량기점검</string>
+    <string name="label_spn_breaker">차단기점검</string>
+    
+    <string name="spn_item_visit_y">방문</string>
+    <string name="spn_item_visit_n">미방문</string>
+</resources>

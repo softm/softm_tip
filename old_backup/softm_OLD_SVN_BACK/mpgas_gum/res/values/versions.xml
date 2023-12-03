@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">검침</string>
+    <string name="app_version">1.0.3</string>
+
+    <string name="db_user_version">3</string>
+
+</resources>
+
+<!-- 
+
+	1.0.3 20150122 전년동월 20%에서 50%로 변경 
+	               remove PhoneNumberWatcher 
+	1.0.2 20150119 FIX GUM_CUST LAYOUT (DB:3)
+	               add ClearableEditText BuildingActivity
+	1.0.1 20150116 CHANGE DATA LAYOUT (DB:2)
+	1.0.0 20141229 RELEASE
+
+ -->
+ 

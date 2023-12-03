@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="pref_Server">
+        <item>운영</item>
+        <item>개발</item>
+        <item>로컬</item>
+    </string-array>
+    <string-array name="pref_ServerValues">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+    </string-array>    
+</resources>

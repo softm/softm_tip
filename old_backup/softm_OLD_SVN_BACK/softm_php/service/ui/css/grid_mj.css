@@ -1,0 +1,52 @@
+@CHARSET "UTF-8";
+
+#tbl_list {
+	font-family: dotum;
+	font-size: 12px;
+	text-decoration: none;
+    width:100%;
+}
+
+#tbl_list tr {
+	background: #FFF;
+    63
+}
+
+#tbl_list th {
+	background: none repeat scroll 0 0 #F9F9F9;
+	font-weight: bold;
+	border-top: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	color: #336699;
+	line-height: 16px;
+	padding: 6px 0 7px;
+	text-align: center;
+
+    padding:14px 0;text-align:center;color:#222;font-size:15px;font-weight:bold;border-bottom:1px solid #dbdbdb;background:#fcfcfc;
+
+}
+
+#tbl_list td {
+	border-bottom: 1px solid #DDDDDD;
+	line-height: 16px;
+	padding: 6px 0 7px;
+	text-align: center;
+    padding:10px 0;text-align:center;color:#222;font-size:14px;border-bottom:1px solid #dbdbdb;
+    overflow:hidden; text-overflow:ellipsis;
+}
+
+#tbl_list td.select { background-color:#E8E8FF;color:#000099; }
+
+#tbl_list tr.select {
+	font-size: 19pt;
+	background-color: LightSteelBlue;
+	color: #000000
+}
+
+#tbl_list tfoot td {
+	padding-top:0px;	
+	border:0px;
+	height:0px;
+}
+
+/*#tbl_list tbody td.col3 {width:100px;text-align:center}*/

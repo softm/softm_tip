@@ -1,0 +1,27 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</HEAD>
+
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+  //alert( /abc\-?d/g.test('abcd') );
+  //alert( /[abc]{2}/.test('adbd') );
+  //alert( /[^a-z]{2,}/g.test('I\'m a good man') );
+    alert( /[\b]/g.test('abcd') );
+
+var re = /(\w+)\s(\w+)/; 
+var str = "John Smith"; 
+newstr = str.replace(re, "$2, $1"); 
+var myArray = re.exec(str); 
+alert(myArray[0]);
+
+
+document.write(newstr)
+//-->
+</SCRIPT>
+</BODY>
+</HTML>

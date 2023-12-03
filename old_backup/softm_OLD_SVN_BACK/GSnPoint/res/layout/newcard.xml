@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--  
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:layout_weight="1">
+	>
+	<RelativeLayout
+	    android:id="@+id/title_bg"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    >
+
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center">
+
+		   <LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dip"
+				android:orientation="horizontal">
+				
+			    <LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="10dip"
+				android:orientation="vertical">
+			    <TextView 
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dip"
+					android:textColor="#000"
+					android:text="홈페이지에서 카드를 등록하신 회원님은"/>
+			     <TextView 
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dip"
+					android:textColor="#000"
+					android:text="로그인 후 카드를 확인하실 수 있습니다."/>
+			    </LinearLayout>
+			    
+		    <LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity = "right">
+			    <ImageButton 
+			        android:id="@+id/btn_login"
+			         android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="right"
+					android:layout_marginRight="10dip"
+					android:background="@drawable/btn_login_img"/>
+		    </LinearLayout>
+		</LinearLayout>
+		
+			<LinearLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:gravity="center"
+			    android:orientation="vertical" 
+			    android:layout_marginTop="6dip"
+			    android:background="@drawable/card_first_register_box" >
+
+			    <ImageView 
+			        android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="1dp"
+				    android:background="@drawable/card_text01" />
+			    <ImageView 
+			        android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="15dp"
+				    android:background="@drawable/card_text02" />
+
+				<ImageButton
+				    android:id="@+id/newcard_button"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="20dp"
+				    android:background="@drawable/btn_newcard_img" />
+	
+			</LinearLayout>	 
+		</LinearLayout>	
+	</RelativeLayout>
+
+</FrameLayout>
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+    
+<LinearLayout 
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/card_possession_bg"
+    android:orientation="vertical" >
+
+     <include
+	        android:id="@+id/cardmain_basic_container"        
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        layout="@layout/cardtitle" />
+     
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="fill_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+
+        <LinearLayout
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:gravity="center">
+
+		   <LinearLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="8dip"
+				android:orientation="horizontal">
+				
+			    <LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginLeft="10dip"
+				android:orientation="vertical">
+			    <TextView 
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dip"
+					android:textColor="#000"
+					android:text="홈페이지에서 카드를 등록하신 회원님은"/>
+			     <TextView 
+			        android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:textSize="11dip"
+					android:textColor="#000"
+					android:text="로그인 후 카드를 확인하실 수 있습니다."/>
+			    </LinearLayout>
+			    
+		    <LinearLayout
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_weight="1"
+				android:gravity = "right">
+			    <ImageButton 
+			        android:id="@+id/btn_login"
+			         android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_gravity="right"
+					android:layout_marginRight="10dip"
+					android:background="@drawable/btn_login_img"/>
+		    </LinearLayout>
+		</LinearLayout>
+		
+			<LinearLayout
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:gravity="center"
+			    android:orientation="vertical" 
+			    android:layout_marginTop="6dip"
+			    android:background="@drawable/card_first_register_box" >
+
+			    <ImageView 
+			        android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="1dp"
+				    android:background="@drawable/card_text01" />
+			    <ImageView 
+			        android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="15dp"
+				    android:background="@drawable/card_text02" />
+
+				<ImageButton
+				    android:id="@+id/newcard_button"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:layout_marginTop="20dp"
+				    android:background="@drawable/btn_newcard_img" />
+	
+			</LinearLayout>	 
+		</LinearLayout>
+	   
+    </FrameLayout>
+   
+    <include
+		layout="@layout/cardtabpage"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+    <include
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        layout="@layout/n_main_menu" />
+
+</LinearLayout>
+
+</FrameLayout>

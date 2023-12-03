@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+
+    <FrameLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		>
+		
+        <ScrollView 
+            android:id="@+id/scroll_noticedetail"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FFFFFFFF"
+		    >
+		    
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/set_noticeview_bg_"
+                android:orientation="vertical" >
+
+                <TableLayout
+                    android:layout_width="300dip"
+                    android:layout_height="290dip"
+                    android:layout_marginLeft="16dip"
+                    android:layout_marginTop="12dip"
+                    >
+
+                    <TextView
+                        android:id="@+id/text1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"                      
+                        android:layout_marginTop="16dip" 
+                        android:ellipsize="end"	/>
+
+                    <TextView
+                        android:id="@+id/text2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"                     
+                        android:layout_marginTop="12dip"
+                        android:textColor="#000000" 
+                        android:singleLine="true"
+                        android:ellipsize="end"	/>
+
+                    <TextView
+                        android:id="@+id/text3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                       android:textColor="#0000ff"
+                       android:textSize="16dip"
+                        android:layout_marginTop="12dip"
+                       	/>
+                    <WebView 
+                        android:id="@+id/text4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="160dip"                  
+                        android:layout_marginTop="10dip"/>
+
+                </TableLayout>
+
+                <ImageButton
+                    android:id="@+id/notice_list"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dip"
+                    android:layout_gravity="center"
+                    android:background="@drawable/btn_list_img" />
+            </LinearLayout>
+         </ScrollView>
+
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+	</FrameLayout>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

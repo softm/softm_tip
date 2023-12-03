@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Frame.Container" >
+
+    <com.entropykorea.gas.gum.activity.ui.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         />
+
+    <LinearLayout
+        style="@style/Frame.Ractangle"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="true" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/check_img" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="19dp"
+                android:baselineAligned="false"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false" >
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:background="@drawable/bullet01" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="marquee"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text=" 검침현황"
+                        android:textColor="#a6df68"
+                        android:textSize="24sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/gum_status"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:ellipsize="marquee"
+                    android:gravity="left"
+                    android:text="작업년월:\n생성일자:"
+                    android:textColor="@color/white"
+                    android:textSize="15sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:orientation="horizontal"
+            android:weightSum="4" >
+
+            <TextView
+                style="@style/Cell.Header"
+                android:layout_marginRight="1px"
+                android:layout_weight="1"
+                android:text="총건수" />
+
+            <TextView
+                style="@style/Cell.Header"
+                android:layout_marginRight="1px"
+                android:layout_weight="1"
+                android:text="완료" />
+
+            <TextView
+                style="@style/Cell.Header"
+                android:layout_marginRight="1px"
+                android:layout_weight="1"
+                android:text="미완료" />
+
+            <TextView
+                style="@style/Cell.Header"
+                android:layout_weight="1"
+                android:text="미송신" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp"
+            android:orientation="horizontal"
+            android:weightSum="4" >
+
+            <TextView
+                android:id="@+id/total_count"
+                style="@style/Cell"
+                android:layout_weight="1"
+                android:layout_marginRight="1px"
+                android:gravity="center" />
+
+            <TextView
+                android:id="@+id/end_count"
+                style="@style/Cell"
+                android:layout_marginRight="1px"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/not_end_count"
+                style="@style/Cell"
+                android:layout_marginRight="1px"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/not_send_count"
+                style="@style/Cell"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="27dp"
+            android:baselineAligned="true"
+             >
+
+                <ImageButton
+                    android:id="@+id/btn_send"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/b_send_img" />
+            
+
+                <ImageButton
+                    android:id="@+id/btn_receive"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/b_receive_img" />
+
+                <ImageButton
+                    android:id="@+id/btn_start"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/b_read_img" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

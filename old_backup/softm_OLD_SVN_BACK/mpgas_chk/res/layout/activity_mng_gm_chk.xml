@@ -1,0 +1,281 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBgColor"
+    android:orientation="vertical"
+    tools:context=".MngBoilerChkActivity" >
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/mainMarginLeft"
+            android:layout_marginRight="@dimen/mainMarginRight"
+            android:baselineAligned="false"
+            android:orientation="vertical" >
+
+            <TableLayout
+                android:id="@+id/top_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*" >
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:layout_marginTop="10dp" >
+
+                    <TextView
+                        android:id="@+id/tv_info"
+                        style="@style/MP.top_title"
+                        android:layout_span="2"
+                        android:singleLine="true"
+                        android:text="옥암동 1023 하당부영1차 아파트 107-1402" />
+                </TableRow>
+
+                <TableRow
+                    style="@style/MP.thead"
+                    android:layout_width="match_parent"
+                    android:gravity="center_vertical|center" >
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" >
+
+                    <TextView
+                        style="@style/MP.th"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
+                        android:gravity="center"
+                        android:text="설치계량기번호" />
+
+                    <TextView
+                        android:id="@+id/tv_gm_no"
+                        style="@style/MP.td"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.2"
+                        android:gravity="center_vertical"
+                        android:paddingLeft="5dp"
+                        android:text="103020304929" />
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/mainBgColor" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/tr_1"
+                     >
+
+                    <TextView
+                        style="@style/MP.th"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
+                        android:gravity="center"
+                        android:text="확인계량기번호" />
+
+                    <LinearLayout
+                        style="@style/MP.td"                        
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:background="@color/list1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="5dp" >
+
+                        <EditText
+                            android:id="@+id/et_gm_no_cfm"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginRight="5dp"
+                            android:layout_weight="0.5"
+                            android:background="@drawable/input_img"
+                            android:ellipsize="end"
+                            android:inputType="number"
+                            android:maxLength="12"
+                            android:singleLine="true"
+                            android:textColor="@color/black"
+                            android:textSize="17sp"
+                            android:textStyle="normal"
+                            >
+                        </EditText>
+
+                        <ImageButton
+                            android:id="@+id/ib_b_barcode"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#a0000000"
+                            android:src="@drawable/b_barcode" />
+                    </LinearLayout>
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/mainBgColor" />
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                                         android:id="@+id/tr_2"
+                    >
+
+                    <TextView
+                        style="@style/MP.th"
+                        android:layout_width="0dp"
+                        android:layout_weight="0.8"
+                        android:gravity="center"
+                        android:text="점검계량기지침" />
+                    <LinearLayout
+                        style="@style/MP.td"                           
+                        android:layout_width="0dp"
+                        android:layout_weight="1.2"
+                        android:background="@color/list1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingRight="5dp">
+                        <EditText
+                            android:id="@+id/et_checkup_meter"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:layout_weight="0.5"
+                        android:background="@drawable/input_img"
+                        android:ellipsize="end"
+                        android:inputType="number"
+                        android:maxLength="12"
+                        android:singleLine="true"
+                        android:textColor="@color/black"
+                        android:textSize="17sp"
+                        android:textStyle="normal">
+                        </EditText>
+                    </LinearLayout>
+                </TableRow>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="17dp"
+                    android:background="#0c2336" />
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <ImageButton
+                    android:id="@+id/ib_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="5dp"
+                    android:background="#a0000000"
+                    android:src="@drawable/camera" />
+
+                <ImageButton
+                    android:id="@+id/ib_photoview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#a0000000"
+                    android:src="@drawable/photoview" />
+            </LinearLayout>
+
+            <TableLayout
+                android:id="@+id/TableLayout01"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*" >
+
+                <TableRow
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_span="2" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal" >
+
+<!-- 
+                        <TextView
+                            style="@style/MP.sub_title"
+                            android:text="▶ "
+                            android:textColor="@color/white" />
+ -->
+			            <ImageView
+			                style="@style/MP.sub_title"
+			                android:src="@drawable/w_bullet"
+			                android:layout_marginRight="5dp"
+			            />
+                        <TextView
+                            style="@style/MP.sub_title"
+                            android:text="계량기 " />
+
+                        <CheckBox
+                            android:id="@+id/rd_none"
+                            style="@style/MP.h1"
+                            android:text=" 기기없음" />
+                    </LinearLayout>
+                </TableRow>
+            </TableLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical" >
+
+                <com.entropykorea.gas.lib.ListViewMP
+                    android:id="@+id/listView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:divider="@color/listDivColor"
+                    android:dividerHeight="@dimen/listDividerHeight"
+                    android:drawSelectorOnTop="true"
+                    android:listSelector="@drawable/listview_item_selector" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="wrap_content"
+                android:layout_height="11dp"
+                android:layout_marginBottom="27dp"
+                android:layout_marginTop="27dp"
+                android:background="@drawable/shape_line1" >
+            </View>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="27dp"
+                android:layout_span="3" >
+
+                <ImageButton
+                    android:id="@+id/ib_save"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/btn_save" />
+
+                <ImageButton
+                    android:id="@+id/ib_close"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:background="@drawable/btn_close" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

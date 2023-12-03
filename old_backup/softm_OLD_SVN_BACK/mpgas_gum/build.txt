@@ -1,0 +1,25 @@
+
+# Local Setting
+
+- local.properties.origin 을 local.properties 로 copy
+- Android SDK root directory 설정
+
+# Build Steps
+
+- ./res/values/version.xml 의 app_version 변경
+- db version 이 변경되었을 경우 ./res/values/version.xml 의 db_version 변경
+
+- ./src/ ... /common/Constants.java 의 RELEASE true 설정 
+
+( local.properties 디렉토리 설정 )
+
+- ant clean 
+- ant release 
+ (ant clean release) 
+ 
+ android sdk tools r16 의 경우 소스 변경 반영이 안됨!!!!!!! clean release 사용
+ $ANDROID_SDK/tools/lib/anttasks.jar 
+ com.android.ant.InputPath#ignores에서 boolean flag에 !를 실수로 붙여서 생긴 문제
+
+ r17 도 같음 (20120330) -> clean release 사용 
+ 

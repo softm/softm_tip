@@ -1,0 +1,22 @@
+# Microsoft Developer Studio Generated Dependency File, included by test.mak
+
+.\StdAfx.cpp : \
+	".\StdAfx.h"\
+	
+
+.\test.cpp : \
+	".\StdAfx.h"\
+	".\test.h"\
+	".\testDlg.h"\
+	
+
+.\test.rc : \
+	".\res\test.ico"\
+	".\res\test.rc2"\
+	
+
+.\testDlg.cpp : \
+	".\StdAfx.h"\
+	".\test.h"\
+	".\testDlg.h"\
+	

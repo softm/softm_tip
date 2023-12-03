@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.entropykorea.gas.chk"
+    android:versionCode="1"
+    android:versionName="@string/app_version"
+    android:installLocation="auto" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="19" />
+
+    <application
+    	android:name=".WApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo_icon"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme"
+         >
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+        >
+            <intent-filter>
+       			<action android:name="android.intent.action.MAIN" />
+<!-- 
+                <category android:name="android.intent.category.LAUNCHER" />
+-->
+            </intent-filter>
+        </activity>
+        <activity android:name=".activity.ChkMainActivity"        android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.ChkTargetRcvActivity"   android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.BldgListActivity"       android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.HouseListActivity"      android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.BatchReadmeterActivit"  android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.HouseInfActivity"       android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        
+        <activity android:name=".activity.ChkRegMainActivity"     android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.ChkCplActivity"         android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+
+        <activity android:name=".activity.MngBoilerChkActivity"   android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.MngBurnerChkActivity"   android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.MngPipeChkActivity"     android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.MngGmChkActivity"       android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+        <activity android:name=".activity.MngBreakerChkActivity"  android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"   />
+<!-- 
+ -->
+        <activity android:name="com.entropykorea.gas.lib.activity.PicViewerActivity"  android:screenOrientation="portrait" android:configChanges="orientation|keyboardHidden|screenSize"/>
+        
+        <activity android:name="com.dm.zbar.android.scanner.ZBarScannerActivity"
+                  android:screenOrientation="landscape"                 
+		/>
+    </application>
+	<uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"></uses-permission>
+	<uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"></uses-permission>
+	<!-- <uses-permission android:name="android.permission.CALL_PHONE"></uses-permission> -->
+	<!-- <uses-permission android:name="android.permission.CAMERA"></uses-permission> -->
+	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
+	<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+</manifest>

@@ -1,0 +1,9 @@
+# 예제 링크
+    # 테이블을 이용한 자동 프로그램 생성 
+		http://local-framework.com/service/make_test.php
+	
+	http://local-framework.com/service/test.php?sub=member&mode=list
+	
+	http://local-framework.com/service/test.php
+	
+	http://local-framework.com/service/sample.php

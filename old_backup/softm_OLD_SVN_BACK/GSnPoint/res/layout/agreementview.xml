@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+
+    <FrameLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		>
+		 <ScrollView 
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FFFFFFFF"
+		    >		    
+            <LinearLayout
+		    	android:layout_width="fill_parent"
+		    	android:layout_height="674dp" 
+		    	android:background="@drawable/set_mobile_bg04"
+		    	android:orientation="vertical"
+		    	>
+
+                <LinearLayout
+			        android:layout_width="fill_parent" 
+			        android:layout_height="wrap_content"
+			        android:orientation="horizontal"
+			        android:layout_marginLeft="20dp"
+			        android:layout_marginTop="49dp">
+			        
+	                 <CheckBox
+		                android:id="@+id/chk_agreement"                
+		                android:layout_width="wrap_content"
+		                android:layout_height="wrap_content"
+		                android:button="@drawable/gs_checkbox_img"
+		                android:paddingLeft="30dp"/>
+	                 <LinearLayout
+				        android:layout_width="wrap_content" 
+				        android:layout_height="wrap_content"
+				        android:layout_weight="1"
+				       android:layout_marginTop="4dip"
+				        android:gravity="center_vertical|right">
+		                 <ImageButton
+			                android:id="@+id/img_btn_allview"
+			                android:layout_width="wrap_content"
+			                android:layout_height="wrap_content"
+			                android:layout_gravity="right"
+			                android:layout_marginRight="18dip"
+			                android:background="@drawable/btn_allview" />
+		                 </LinearLayout>
+                 </LinearLayout>
+                 
+		    	<LinearLayout
+			        android:layout_width="wrap_content" 
+			        android:layout_height="wrap_content"
+			        android:orientation="horizontal"
+			        android:layout_gravity="center"
+			        android:layout_marginTop="200dip">
+					<ImageButton
+			               android:id="@+id/img_btn_cancel"
+			               android:layout_width="wrap_content"
+			               android:layout_height="wrap_content"
+			               android:background="@drawable/btn_cancel_img"
+			               android:contentDescription="취소"/>
+					<ImageButton
+			               android:id="@+id/img_btn_ok"
+			               android:layout_width="wrap_content"
+			               android:layout_height="wrap_content"
+			               android:background="@drawable/btn_ok_img"
+							android:layout_marginLeft="2dp"  
+			               android:contentDescription="확인" />	        
+   				 </LinearLayout>
+   				 </LinearLayout>
+		</ScrollView>
+
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+	</FrameLayout>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

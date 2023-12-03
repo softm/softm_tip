@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:background="#fff"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<ScrollView
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1">
+
+		<LinearLayout
+			android:background="#fff"
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="fill_parent"
+			>
+<!-- 
+			<ImageView
+				android:id="@+id/qrcode_result_image"
+				android:background="@drawable/qr_logo"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_gravity="center_horizontal"
+				android:layout_marginTop="3dp"
+				android:layout_marginBottom="13dp" />
+ -->
+ 		<ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="13dp"
+            android:layout_marginTop="13dp"
+            android:src="@drawable/guide_qrscan_result_title" />
+            
+			<TableLayout
+				android:id="@+id/qrcode_result_table"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:stretchColumns="0" />
+
+		</LinearLayout>
+
+	</ScrollView>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

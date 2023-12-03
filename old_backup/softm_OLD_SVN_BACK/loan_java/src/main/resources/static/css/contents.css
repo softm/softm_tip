@@ -1,0 +1,46 @@
+@charset "utf-8";
+/* 2017-02-01 */
+
+
+/***************************
+	main bg define
+***************************/
+div.bg_main { background: url('../images/bg_main.jpg') center top; background-size: cover; }
+
+
+
+/***************************
+	login
+***************************/
+
+div.loginPage { width: 100%; max-width: 308px; margin: 0 auto; padding-top: 10%; }
+div.loginPage .logo { padding-bottom: 30px; }
+.loginPage .input_wrap { position: relative; width :100%; margin-top: 25px; }
+.loginPage .input_wrap input { width: 100%; font-size: 18px;}
+.loginPage .input_wrap span.btnX { display: none; position: absolute; top: -5px; right: 0; width: 28px; height: 44px; background: url('../images/btn_delete.png') no-repeat center; background-size: 100%; cursor: pointer;}
+.loginPage .btn_gray_login { margin-top: 10px;}
+.loginPage .btn_blue_login { margin-top: 20px;}
+
+/***************************
+	main
+***************************/
+/* 로그인 유저정보 */
+div.loginArea { position: absolute; top: 5%; right: 5%; color: #ffffff;  }
+div.loginArea span { display: inline-block; vertical-align: middle; margin-left: 10px; }
+div.loginArea span.name { font-size: 20px; font-weight: bold; }
+div.loginArea span.name:after { display:inline-block; content:''; width: 1px; height: 15px; margin-left: 10px; background: rgba(255, 255, 255, .5);  }
+div.loginArea span.team { font-size: 16px; padding-right: 20px;  }
+
+/* 메인페이지 컨텐츠 */
+div.mainPage { width: 100%; margin: 0 auto; position: absolute; top: 25%; left: 0px; }
+div.mainMenu_wrap { margin-top: 8%; }
+ul.mainMenu { width: 100%; max-width: 920px; margin: 0 auto;  text-align: center; color: #ffffff; }
+ul.mainMenu > li { display: inline-block;  width: 19%;  vertical-align: top}
+ul.mainMenu > li > dl > dt.menu_title { max-width: 120px; margin: 0 auto; font-size: 20px; font-weight: bold; vertical-align: baseline}
+ul.mainMenu > li > dl > dt.menu_title .menu_img { width: 100%; max-width: 120px; padding-top: 100%; margin-bottom: 10px; }
+ul.mainMenu > li > dl > dd.menu_content { margin-top: 10px; opacity: 0.7;  word-break: keep-all;}
+ul.mainMenu > li.menu01 > dl > dt.menu_title .menu_img { background: url('../images/main_menu01.png') no-repeat; background-size: 100%; }
+ul.mainMenu > li.menu02 > dl > dt.menu_title .menu_img { background: url('../images/main_menu02.png') no-repeat; background-size: 100%; }
+ul.mainMenu > li.menu03 > dl > dt.menu_title .menu_img { background: url('../images/main_menu03.png') no-repeat; background-size: 100%; }
+ul.mainMenu > li.menu04 > dl > dt.menu_title .menu_img { background: url('../images/main_menu04.png') no-repeat; background-size: 100%; }
+ul.mainMenu > li.menu05 > dl > dt.menu_title .menu_img { background: url('../images/main_menu05.png') no-repeat; background-size: 100%; }

@@ -1,0 +1,474 @@
+* Setup Environment Variable
+    * PATH : C:\WEB_APP\jdk16\bin;
+
+    * JAVA_HOME : C:\WEB_APP\jdk16
+    * CATALINA_HOMEC:\WEB_APP\JWAS\tomcat-553\apache-tomcat-5.5.30
+
+    * CLASSPATH
+        CLASSPATH : .;C:\Program Files\QuickTime\QTSystem\QTJava.zip;C:\WEB_APP\JWAS\apache-tomcat-6.0.20\lib\sqljdbc4.jar;C:\WEB_APP\JWAS\ipac\WEB-INF\classes;C:\WEB_APP\JWAS\bbs\WEB-INF\classes;C:\WEB_APP\JWAS\apache-tomcat-6.0.20\lib\servlet-api.jar;C:\WEB_APP\jax-rs_jar\grizzly-servlet-webserver-1.9.8.jar;C:\WEB_APP\jax-rs_jar\jersey-server-1.1.4.jar;C:\WEB_APP\jax-rs_jar\jersey-core-1.1.4.jar;C:\WEB_APP\jax-rs_jar\jsr311-api-1.1.jar;C:\WEB_APP\jax-rs_jar\asm-3.1.jar;C:\WEB_APP\JWAS\ipac\WEB-INF
+        CLASSPATH : .;C:\Program Files\QuickTime\QTSystem\QTJava.zip;C:\WEB_APP\ref_source\working_jar\sqljdbc4.jar;C:\WEB_APP\JWAS\ipac\build\web\WEB-INF\classes;C:\WEB_APP\JWAS\bbs\WEB-INF\classes;C:\WEB_APP\ref_source\working_jar\servlet-api.jar;C:\WEB_APP\ref_source\working_jar\asm-3.1.jar;C:\WEB_APP\ref_source\working_jar\grizzly-servlet-webserver-1.9.8.jar;C:\WEB_APP\ref_source\working_jar\jersey-server-1.1.4.jar;C:\WEB_APP\ref_source\working_jar\jersey-core-1.1.4.jar;C:\WEB_APP\ref_source\working_jar\jsr311-api-1.1.jar;C:\WEB_APP\ref_source\working_jar\glassfish-persistence-api-b32g.jar;C:\WEB_APP\ref_source\working_jar\log4j-1.2.15.jar
+        C:\WEB_APP\JWAS\java_doc\haveenglish\ROOT\WEB-INF\classes
+        C:\WEB_APP\JWAS\tomcat-553\apache-tomcat-5.5.30\common\lib\servlet-api.jar
+
+    .;C:\Program Files\QuickTime\QTSystem\QTJava.zip;C:\WEB_APP\ref_source\working_jar\sqljdbc4.jar;C:\WEB_APP\JWAS\ipac\web\WEB-INF\classes;C:\WEB_APP\JWAS\bbs\WEB-INF\classes;C:\WEB_APP\ref_source\working_jar\servlet-api.jar;C:\WEB_APP\ref_source\working_jar\asm-3.1.jar;C:\WEB_APP\ref_source\working_jar\grizzly-servlet-webserver-1.9.8.jar;C:\WEB_APP\ref_source\working_jar\jersey-server-1.1.4.jar;C:\WEB_APP\ref_source\working_jar\jersey-core-1.1.4.jar;C:\WEB_APP\ref_source\working_jar\jsr311-api-1.1.jar;C:\WEB_APP\ref_source\working_jar\glassfish-persistence-api-b32g.jar;C:\WEB_APP\ref_source\working_jar\log4j-1.2.15.jar;C:\WEB_APP\ref_source\working_jar\jersey-multipart-1.1.4.1.jar;C:\WEB_APP\ref_source\working_jar\cos.jar;C:\WEB_APP\ref_source\working_jar\jettison-1.0-RC1.jar
+
+    HAVE --> CLASSPATH      : .;C:\Program Files\QuickTime\QTSystem\QTJava.zip;C:\WEB_APP\JWAS\java_doc\haveenglish\ROOT\WEB-INF\classes;C:\WEB_APP\JWAS\tomcat-553\apache-tomcat-5.5.30\common\lib\servlet-api.jar;C:\WEB_APP\JavaWorkSpace\log4sql\log4sql.jar;C:\WEB_APP\JavaWorkSpace\commons-lang-2.5\commons-lang-2.5.jar
+             JAVA_HOME      : C:\WEB_APP\jdk16
+             ANT_HOME       : C:\WEB_APP\JWAS\apache-ant-1.7.1
+             CATALINA_HOME  : C:\WEB_APP\JWAS\tomcat-553\apache-tomcat-5.5.30
+             PATH      : C:\Program Files\ESTsoft\ALZip;C:\WEB_APP\jdk16\bin;%CATALINA_HOME%\bin;%ANT_HOME%\bin;C:\MyProgram\개발용유틸\debugNProfiling\curl;C:\WEB_APP\jdk16\bin\;C:\WEB_APP\ADT\android-sdk;C:\WEB_APP\MYSQL50\bin;C:\WEB_APP\Apache2\bin
+
+    # java 관련
+        변수이름 : JAVA_HOME - 자바의 최상위 위치 설정
+
+        변수값 : C:\Program Files\Java\jdk1.5.0_06;
+
+        변수이름 : CLASSPATH - 자바의 컴파일러가 있는 파일 위치 설정(하는 변수값)
+
+        변수값 : C:\Program Files\Java\jdk1.5.0_06\lib\tools.jar;
+
+        변수이름 : PATH - 컴파일된 파일을 실행시켜주기위한 위치 설정
+
+        변수값 : C:\Program Files\Java\jdk1.5.0_06\bin;
+
+    # Tomcat 관련
+        변수이름 : CATALINA_HOME - 톰캣최상위 위치 설정
+
+        변수값 : C:\apache-tomcat-5.5.15;
+
+        변수이름 : CLASSPATH - 톰캣의 컴파일러가 있는 파일 위치 설정
+
+        변수값 : C:\apache-tomcat-5.5.15\common\lib\servlet-api.jar; (기존의 CLASSPATH에 덧붙임)
+
+        변수이름 : PATH - 톰캣엔진안에서 컴파일된 파일을 실행시켜주기위한 위치 설정
+
+        변수값 : C:\apache-tomcat-5.5.15\bin; (기존의 PATH에 덧붙임)
+
+# Eclipse - 이클립스
+    http://www.eclipse.org  : eclipse class download
+
+    언어팩 설치
+        - Language Packs download (사이트에서 검색하면 나옴)
+
+    # plugin install
+        - 사이트 추가
+            Window - Preferences -
+                                 - Install/Update - Add Site
+                                        - Name / Location : etc.to - http://eclipse.etc.to/updates/
+        - plugin search & install
+            1. Work With : --All Available Sites--
+            2. 아래 Text 입력창에 검색어 입력 ( Ex : Java Development Kit )
+                - 하위 검색된 플러그인 check 후 finish
+                    --> Web& J2EE Development plugin 추가
+
+        - jad plugin ( 이걸 이용하면 link source를 안해도 될듯 )
+            # reference url : http://planmaster.tistory.com/389
+
+            - download
+                1. jad module       : http://www.varaneckas.com/jad
+                2. eclipse plugin   : http://sourceforge.net/projects/jadclipse/
+
+            - install
+                1. jad module       : uncompress C:\WEB_APP\JavaWorkSpace\jad158g.win
+                2. eclipse plugin   : uncompress net.sf.jadclipse_3.3.0.jar to C:\WEB_APP\eclipse_classic\plugins
+
+            - setting
+                Window - Preferences - Java - JadClipse
+                                                - Path to decompiler : C:\WEB_APP\JavaWorkSpace\jad158g.win\jad.exe
+
+    # Enable line number
+        Window - Preferences -
+                            - General - Editors - Text Editors - Show line Numbers [checked]
+
+    # jdk 설정
+        Window - Preferences -
+                            - Java - Build Path - Classpath Variable - "New"
+                                                                        - Name/Path ::> JAVA_HOME / C:\WEB_APP\jdk16
+
+    # link java source & document
+        Window - Preferences - Java - Installed JREs - jre 선택 - "Edit"
+
+            -  '*****\rt.jar' 파일을 선택 - 'Source Attat...' - src.zip 선택 ( link source )
+
+            -  '*****\rt.jar' 파일을 선택 - 'Javadoc location...- 소스파일또는 url입력 ( link doc )
+                                            참고 : http://xrath.com/javase/ko/6/docs/ko/api/ ( 됨 )
+                                                 : C:\WEB_APP\JavaWorkSpace\java_api_doc_archive\jdk-6-docs-ko\api ( 안됨)
+
+        ※ Java Source Attachment , Javadoc Location 설정할경우
+            한글 apidoc의 경로로 설정해서 api를 볼 수 있으려면,
+                Java Source Attachment  항목을 공백으로 해야 된다는 것이다.
+
+    # reloadable setting
+        C:\WEB_APP\JWAS\tomcat-553\apache-tomcat-5.5.30\conf\context.xml
+        <Context reloadable="true">
+        ※ tomcat 6.x 이상이라면 : <Context reloadable="true" privileged="true">
+
+    # UML 플러그인
+        http://www.soyatec.com/euml2/installation/
+
+# WTP ( ☆ 참고 : http://blog.bagesoft.com/639 )
+    1. http://download.eclipse.org/webtools/downloads/
+
+    2. Released 선택
+        아래목록 다운로드
+        EMF v2.6 Runtime Minimum executable code.   emf-runtime-2.6.0.zip or equivalent
+        EMF XSD v2.6 Runtime Minimum executable code.   xsd-runtime-2.6.0.zip or equivalent
+        Graphical Editing Framework (GEF)   GEF-SDK-3.6.0.zip or equivalent
+        Data Tools Platform (DTP) (required only for EJB or JPT development)    dtp-sdk_1.8.0.zip or equivalent
+        --> 압축을해제해서 plugin 디렉토리의 jar파일을 eclipse\plugin 디렉토리로 복사한다.
+
+    3. uncompress dowload file to eclipse plugin directory
+
+
+# maven2 - http://m2eclipse.sonatype.org/sites/m2e
+    Maven을 쓰는 이유?프로젝트 내에서 lib를 관리하다보니 jar파일이 커지는 불편함이 있었고 CVS등을 사용하는데 문제가 있었다.
+    또 jar의 버젼이 바뀌었을 때 새로 업데이트 해야하는 불편함이 있었다.
+    따라서 Maven2를 쓰게 되었는데, pom.xml에 내가 사용할 라이브러리와 버젼을 정의해주면, 로컬로 파일을 다운로드 하게 된다.
+    로컬 다운로드 위치는 로그인한 계정 디렉토리 밑에 .m2/repository에 다운로드 되게 된다.
+
+        .m2 디렉토리가 존재하지 않는다면 디렉토리를 만들어 준다
+        방법 : cmd > mkdir .m2
+
+    배포할 때에는 scope에 설정을 변경해서 runtime시 필요한 것만 배포할 수 있다.
+    (2007 한빛미디어 Spring2.0 프레임워크 강의에서 발최한 내용입니다.)
+
+    eclipse plugin : maven2 - http://m2eclipse.sonatype.org/sites/m2e
+
+    local reposit : C:\Documents and Settings\Administrator\.m2\repository
+    maven         : http://download.java.net/maven/2
+# pom.xml
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>hanlib</groupId>
+  <artifactId>hanlib</artifactId>
+  <version>1.4</version>
+<repositories>
+  <repository>
+   <id>javamaven2</id>
+   <name>Repository for Maven2</name>
+   <url>http://download.java.net/maven/2</url>
+  </repository>
+ </repositories>
+  <dependencies>
+
+ <dependency>
+   <!-- the implementation of JAX-RS -->
+   <groupId>com.sun.jersey</groupId>
+   <artifactId>jersey-server</artifactId>
+   <version>1.4</version>
+  </dependency>
+ <dependency>
+   <!-- the implementation of JAX-RS -->
+   <groupId>com.sun.jersey</groupId>
+   <artifactId>jersey-client</artifactId>
+   <version>1.4</version>
+  </dependency>
+ <dependency>
+   <!-- the implementation of JAX-RS -->
+   <groupId>com.sun.jersey</groupId>
+   <artifactId>jersey-server</artifactId>
+   <version>1.4</version>
+   <classifier>sources</classifier>
+  </dependency>
+  <dependency>
+   <!-- the implementation of JAX-RS -->
+   <groupId>com.sun.jersey</groupId>
+   <artifactId>jersey-server</artifactId>
+   <version>1.4</version>
+   <classifier>javadoc</classifier>
+
+  </dependency>
+    <dependency>
+        <groupId>javax.ws.rs</groupId>
+        <artifactId>jsr311-api</artifactId>
+        <version>1.1.1</version>
+    </dependency>
+
+  	<dependency>
+  		<groupId>commons-lang</groupId>
+  		<artifactId>commons-lang</artifactId>
+  		<version>20030203.000129</version>
+  		<type>jar</type>
+  		<scope>compile</scope>
+  	</dependency>
+  </dependencies>
+</project>
+
+# log4sql
+    1. download
+        1.1.
+            log4sql.jar : http://sourceforge.net/projects/log4sql/files/ or http://log4sql.sourceforge.net/index_kr.html
+        1.2.
+            Download Commons Lang : http://commons.apache.org/lang/download_lang.cgi
+
+        CLASSPATH 추가 : C:\WEB_APP\JavaWorkSpace\log4sql\log4sql.jar
+                         C:\WEB_APP\JavaWorkSpace\commons-lang-2.5\commons-lang-2.5.jar
+
+        .;C:\Program Files\QuickTime\QTSystem\QTJava.zip;C:\WEB_APP\JWAS\java_doc\haveenglish\ROOT\WEB-INF\classes;C:\WEB_APP\JWAS\tomcat-553\apache-tomcat-5.5.30\common\lib\servlet-api.jar;C:\WEB_APP\JavaWorkSpace\log4sql\log4sql.jar;C:\WEB_APP\JavaWorkSpace\commons-lang-2.5\commons-lang-2.5.jar
+
+        DBC TYPE                    Origin Your Driver Class                                ->  log4sql Driver Class
+        [ORACLE DRIVER CLASS]       'oracle.jdbc.drirver.OracleDriver'                      ->  'core.log.jdbc.driver.OracleDriver'
+        [MYSQL DRIVER CLASS]        'com.mysql.jdbc.Driver' or'org.gjt.mm.mysql.Driver'     ->  'core.log.jdbc.driver.MysqlDriver'
+        [SYBASE DRIVER CLASS]       'com.sybase.jdbc2.jdbc.SybDriver'                       ->  'core.log.jdbc.driver.SybaseDriver'
+        [DB2 DRIVER CLASS]          'com.ibm.db2.jcc.DB2Driver'                             ->  'core.log.jdbc.driver.DB2Driver'
+        [INFOMIX DRIVER CLASS]      'com.informix.jdbc.IfxDriver'                           ->  'core.log.jdbc.driver.InfomixDriver'
+        [POSTGRESQL DRIVER CLASS]   'org.postgresql.Driver'                                 ->  'core.log.jdbc.driver.PostgresqlDriver'
+        [MAXDB DRIVER CLASS]        'com.sap.dbtech.jdbc.DriverSapDB'                       ->  'core.log.jdbc.driver.MaxDBDriver'
+        [FRONTBASE DRIVER CLASS]    'com.frontbase.jdbc.FBJDriver'                          ->  'core.log.jdbc.driver.FrontBaseDriver'
+        [HSQL DRIVER CLASS]         'org.hsqldb.jdbcDriver'                                 ->  'core.log.jdbc.driver.HSQLDriver'
+        [POINTBASE DRIVER CLASS]    'com.pointbase.jdbc.jdbcUniversalDriver'                ->  'core.log.jdbc.driver.PointBaseDriver'
+        [MIMER DRIVER CLASS]        'com.mimer.jdbc.Driver'                                 ->  'core.log.jdbc.driver.MimerDriver'
+        [PERVASIVE DRIVER CLASS]    'com.pervasive.jdbc.v2.Driver'                          ->  'core.log.jdbc.driver.PervasiveDriver'
+        [DAFFODILDB DRIVER CLASS]   'in.co.daffodil.db.jdbc.DaffodilDBDriver'               ->  'core.log.jdbc.driver.DaffodiLDBDriver'
+        [JDATASTORE DRIVER CLASS]   'com.borland.datastore.jdbc.DataStoreDriver'            ->  'core.log.jdbc.driver.JdataStoreDriver'
+        [CACHE DRIVER CLASS]        'com.intersys.jdbc.CacheDriver'                         ->  'core.log.jdbc.driver.CacheDriver'
+        [DERBY DRIVER CLASS]        'org.apache.derby.jdbc.ClientDriver'                    ->  'core.log.jdbc.driver.DerbyDriver'
+        [ALTIBASE DRIVER CLASS]     'Altibase.jdbc.driver.AltibaseDriver'                   ->  'core.log.jdbc.driver.AltibaseDriver'
+        [MCKOI DRIVER CLASS]        'com.mckoi.JDBCDriver'                                  ->  'core.log.jdbc.driver.MckoiDriver'
+        [JSQL DRIVER CLASS]         'com.jnetdirect.jsql.JSQLDriver'                        ->  'core.log.jdbc.driver.JsqlDriver'
+        [JTURBO DRIVER CLASS]       'com.newatlanta.jturbo.driver.Driver'                   ->  'core.log.jdbc.driver.JturboDriver'
+        [JTDS DRIVER CLASS]         'net.sourceforge.jtds.jdbc.Driver'                      ->  'core.log.jdbc.driver.JTdsDriver'
+        [INTERCLIENT DRIVER CLASS]  'interbase.interclient.Driver'                          ->  'core.log.jdbc.driver.InterClientDriver'
+        [PURE JAVA DRIVER CLASS]    'org.firebirdsql.jdbc.FBDriver'                         ->  'core.log.jdbc.driver.PureJavaDriver'
+        [JDBC-ODBC DRIVER CLASS]    'sun.jdbc.odbc.JdbcOdbcDriver'                          ->  'core.log.jdbc.driver.JdbcOdbcDriver'
+        [MSSQL 2000 DRIVER CLASS]   'com.microsoft.jdbc.sqlserver.SQLServerDriver'          ->  'core.log.jdbc.driver.MssqlDriver'
+        [MSSQL 2005 DRIVER CLASS]   'com.microsoft.sqlserver.jdbc.SQLServerDriver'          ->  'core.log.jdbc.driver.Mssql20
+
+# class 생성 디렉토리 수정
+    - Java Build Path - source - 하단 - Default output folder 지정
+
+# 확인해볼 사항 및 해야할일
+    - WTP plugin ?
+        -- 이게 jsp까지 같이하는것 같던데.
+    -
+* java source/javadoc/jar download
+    http://download.java.net/maven/
+
+* j2ee 한글 api : http://pllab.kw.ac.kr/j2eeAPIs/api/index.html
+
+* jar파일 찾기
+    ::> http://www.findjar.com/jar/net.java.dev.glassfish/jars/glassfish-persistence-api-b32g.jar.html
+
+    - jar파일 CLASSPATH에 추가 방법
+        시스템에서 사용하는 JVM에서 통합적으로 사용하고 싶다면
+
+        JAVA_HOME/jre/lib/ext 디렉토리에 위치만 하면 간단하게 사용할 수 있습니다.
+
+        jar 파일을 사용할 class와 디렉토리 위치는 전혀 무관합니다.
+
+        만약 JSP에서만 사용하신다면 WAS의 스타트업 스크립트에 적당한 부분을 추가해서 구성하시면 됩니다.
+
+    - import
+        jar file을 extract 하시면 생기는 directory(package)를 프로그램 실행 디렉터리에 위치시키고
+
+        소스에서 import 하시면 됩니다.
+
+        예를 들어 디렉터리 이름이 jardir이라고하며느
+
+        import jardir.*;
+        이렇게 하시면 됩니다.
+        저는 실제로 mysql 드라이버를 이런식으로 사용하고 있습니다.
+
+* TOMCAT CONFIG VARIABLE
+    tomcat install home directory : ${catalina.home}
+
+* manager기능 사용을 위한 설정
+    - ${catalina.home}\tomcat-user.xml
+    - manager Role을 추가해야한다.
+    - http://localhost:8080/manager/html/upload
+
+        <?xml version='1.0' encoding='utf-8'?>
+        <tomcat-users>
+        <!---->
+          <role rolename="manager"/>
+          <role rolename="tomcat"/>
+          <role rolename="admin"/>
+          <role rolename="role1"/>
+          <user username="both" password="tomcat" roles="tomcat,role1"/>
+          <user username="tomcat" password="tomcat" roles="tomcat,manager"/>
+          <user username="role1" password="tomcat" roles="role1"/>
+          <user username="admin" password="admin" roles="admin,manager"/>
+        </tomcat-users>
+
+* context 설정
+    1. documentRoot 디렉토리 생성 :> C:\WEB_APP\JWAS\ipac
+    2. C:\WEB_APP\JWAS\ipac\index.html
+    3. ${catalina.home}\conf\Catalina\localhost\ipac.xml 생성
+        <Context path="" docBase="C:\WEB_APP\JWAS\ipac" debug="0" reloadable="true" crossContext="true"
+                 antiResourceLocking="false" antiJARLocking="false"
+        >
+            <Logger className="org.apache.catalina.logger.FileLogger"
+                prefix="localhost_ipac_log." suffix=".txt"
+                timestamp="true"/>
+        </Context>
+    4. http://localhost:8080/ipac/
+
+    * 참고 : log는 logs디렉토리에 생성된다.
+
+* server.xml ( 서버 설정에 관련된 파일 )
+
+    - Host Name을 변경했을경우
+        예) Host name : softm.net
+            디렉토리명 변경
+                ${catalina.home}\conf\Catalina\localhost\ --> ${catalina.home}\conf\Catalina\softmnet\
+    - 한글문제해결
+        - URIEncoding을 UTF-8로 설정함
+        ${catalina.home}\conf\server.xml
+    <Connector port="8080" protocol="HTTP/1.1"
+            maxThreads="150" minSpareThreads="25" maxSpareThreads="75"
+            enableLookups="false" redirectPort="8443" acceptCount="100"
+            debug="0" connectionTimeout="20000"
+            disableUploadTimeout="true" URIEncoding="UTF-8"/>
+
+    - Virtual host setting
+        <Host name="local-have.com" appBase="C:\WEB_APP\JWAS\java_doc\haveenglish"
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
+        </Host>
+        <Host name="local-ipac.com" appBase="C:\WEB_APP\JWAS\java_doc\ipac"
+            unpackWARs="true" autoDeploy="true"
+            xmlValidation="false" xmlNamespaceAware="false">
+        </Host>
+
+        - C:\WINDOWS.0\system32\drivers\etc\hosts
+            127.0.0.1 local-have.com               # haveenglish
+            127.0.0.1 local-ipac.com               # ipac
+
+# DBCP - JNDI설정
+    0. mssql 드라이버 설정
+        1. mssql 드라이버 다운로드 및 압축해제
+           - .jar파일을 ${catalina.home}\lib로 복사
+        2. 환경변수 CLASSPATH : C:\WEB_APP\JWAS\apache-tomcat-6.0.20\lib\sqljdbc4.jar
+
+    1. context.xml ( ${catalina.home}\conf\Catalina\localhost\ipac.xml )
+        <Context path="" docBase="C:\WEB_APP\JWAS\ipac" debug="1" reloadable="true" crossContext="true"
+                 antiResourceLocking="false" antiJARLocking="false"
+        >
+        <!-- 6.0 deprecate
+        <Logger className="org.apache.catalina.logger.FileLogger"
+                prefix="localhost_ipac_log." suffix=".txt"
+                timestamp="true"/>
+         -->
+        <Resource name="jdbc/ipac" auth="Container"
+                  type="javax.sql.DataSource" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+                  url="jdbc:sqlserver://192.168.11.4:1433;DatabaseName=ipac;"
+                  username="sa" password="1234" maxActive="20" maxIdle="10"
+        maxWait="-1"/>
+
+        </Context>
+
+    2. web.xml ( 설정안해도 되는것 같음 )
+        <resource-ref>
+          <description>DB Connection</description>
+          <res-ref-name>jdbc/ipac</res-ref-name>
+          <res-type>javax.sql.DataSource</res-type>
+          <res-auth>Container</res-auth>
+        </resource-ref>
+
+    3. MSSQL Connection Refuse 시 설정
+        1. SQL Server Configuration Manager
+          - SQL Server 2005 네트워크 구성
+            - SQL Server 2005 네트워크 프로토콜
+              - TCP/IP 탭
+                - IP 주소 탭 --> TCP 동적 포트 1433
+
+        2. 네트워크 방화벽 예외포트 설정 : 1433
+
+
+    4. test jsp sample
+        <%@ page language="java" contentType="text/html; charset=EUC-KR"
+        pageEncoding="EUC-KR"%>
+        <%@ page import = "java.sql.*,
+        javax.naming.*,
+        javax.sql.*" %>
+        <%
+        InitialContext ic = new InitialContext();
+        DataSource ds = (DataSource)ic.lookup("java:comp/env/jdbc/ipac");
+        Connection con = ds.getConnection();
+        con.close();
+        %>
+
+-------------- -------------- -------------- -------------- -------------- -------------- -------------- --------------
+# POST 방식 한글깨짐 방지 방법
+    기본적으로 설치 되어 있는 D:\dev\jakarta-tomcat-5.0.28\webapps\jsp-examples\WEB-INF\classes\filters\ 디렉토리의
+    SetCharacterEncodingFilter.class를 이용하여 ROOT 콘텍스트에 적용해 보자.
+    위의 class를 D:\webapps\ROOT\WEB-INF\class\filters 에 카피한다.(ROOT 컨텍스트의 docBase="D:/webapps/ROOT" 로 설정했을 경우)
+    D:\webapps\ROOT\WEB-INF\class\web.xml 를 아래와 같이 설정을 추가 한다.(UTF-8 환경의 예)
+    (한글 환경일 경우 13라인에 UTF-8대신 EUC-KR 이나 MS-949로 설정)
+
+    <?xml version="1.0" encoding="UTF-8"?>
+    <web-app>
+
+        ...
+
+        <filter>
+            <filter-name>Set Character Encoding</filter-name>
+            <filter-class>
+                filters.SetCharacterEncodingFilter
+            </filter-class>
+            <init-param>
+                <param-name>encoding</param-name>
+                <param-value>UTF-8</param-value>
+            </init-param>
+        </filter>
+
+        <filter-mapping>
+            <filter-name>Set Character Encoding</filter-name>
+            <url-pattern>/*</url-pattern>
+        </filter-mapping>
+
+        ...
+
+    </web-app>
+
+    server.xml의 GET방식 한글처리(URIEncoding="UTF-8")와 POST방식을 위한
+    filter를 이용하면 파라미터의 한글처리는 더 이상 생각할 필요 없음.
+-------------- -------------- -------------- -------------- -------------- -------------- -------------- --------------
+
+
+-------------- -------------- -------------- -------------- -------------- -------------- -------------- --------------
+
+
+* 이클립스 설치 - Web and Java EE 다운로드해야함.
+
+
+
+
+
+찾으러 갈때마다 은근히 해매게 되는거 같아서.. 적어놔야겠어.. 흠흠
+
+WTP all in one 2.0.1 버젼
+http://www.eclipse.org/downloads/download.php?file=/webtools/downloads/drops/R2.0/R-2.0.1-20070926042742/wtp-all-in-one-sdk-R-2.0.1-20070926042742-win32.zip
+
+
+
+
+
+
+
+* ant 설치
+    set ANT_HOME = C:\WEB_APP\apache-ant-1.7.1
+    set PATH = %ANT_HOME%\bin
+
+
+
+* GlassFish란?
+    Sun사에서 개발한 JEE5 플랫품의 최신 기능을 구현한 무상 오픈 소스 응용 서버입니다.
+    전 이것을 가지고 EJB3을 테스트 해야하기 때문에 JEE5 플랫폼을 제공하는 벤더(Tmax, Weblogic. IBM, Red-hat)를 사용하지는 못하기에
+    Sun에서 제공하는 GlassFish를 사용하고자 합니다.
+
+1. (http://glassfish.dev.java.net/) Download
+
+2. glassfish-installer-v2ur2-b04-windows-ml.jar 다운로드
+    C:\WEB_APP>java -Xmx256m -jar glassfish-installer-v2.1.1-b31g-windows-ml.jar
+
+    tomcat이 8080을 사용하므로 setup.xml 수정
+    <property name="instance.port" value="8888"/>
+
+    ant -f setup.xml
+        or
+    ant -f setup-cluster.xml
+
+
+
+

@@ -1,0 +1,21 @@
+#!/bin/bash
+o="$1"
+label=mpgas_as
+version=
+src=../bin/mpgas_as-release.apk
+{
+
+  [ "$1" = "" ] && o=.
+
+  version=`./tools/aapt d badging "$src"|grep "versionName="|cut -d\' -f6`
+
+  [ "$version" = "" ] &&
+    version=0.0.0
+
+  echo $label $version
+  echo "$label"_"$version".apk
+
+  cp "$src" "$o/$label"_"$version.apk"
+
+}
+

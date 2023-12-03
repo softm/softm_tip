@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <com.entropykorea.gas.main.activity.ui.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@drawable/main_back"
+        android:gravity="center" >
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp" >
+
+            <ImageButton
+                android:id="@+id/btn_gum"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="200dp"
+                android:layout_marginTop="120dp"
+                android:background="@drawable/b_arrear" />
+
+            <ImageButton
+                android:id="@+id/btn_che"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="100dp"
+                android:layout_marginTop="60dp"
+                android:background="@drawable/b_read" />
+
+            <ImageButton
+                android:id="@+id/btn_as"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:background="@drawable/b_complain" />
+
+            <ImageButton
+                android:id="@+id/btn_chk"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="102dp"
+                android:layout_marginTop="177dp"
+                android:background="@drawable/b_check" />
+
+            <ImageButton
+                android:id="@+id/btn_chg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="202dp"
+                android:layout_marginTop="118dp"
+                android:background="@drawable/b_change" />
+        </FrameLayout>
+    </LinearLayout>
+
+</LinearLayout>

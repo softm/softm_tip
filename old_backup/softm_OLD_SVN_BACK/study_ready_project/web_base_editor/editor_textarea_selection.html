@@ -1,0 +1,42 @@
+<script>
+ 
+ function makeTagElement( str, opt ){
+ 
+    var temp = ""
+    if( opt == 2 ){
+       temp = "/";
+    }
+    return "<" + temp + str +">"
+ }
+  
+  function insertTag( tag ){
+ 
+    document.frm.textarea.focus();
+    if( document.selection ){
+       sel =   document.selection.createRange();
+       sel.text =  makeTagElement( tag , 1 ) +  
+
+                      sel.text + makeTagElement( tag, 2 );
+    }
+ 
+ }
+ 
+</script>
+ 
+
+<input type="button" value="  b  "  
+
+  style="background-color:#efef6f" onclick="insertTag('b')">
+ 
+
+ <form name="frm">
+ 
+ <textarea name="textarea" rows="8"  id="textarea" 
+
+   style="width:400px;border:solid 1;border-color:#efef6f">
+ 
+ </textarea>
+ </form>
+
+
+

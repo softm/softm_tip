@@ -1,0 +1,34 @@
+    .bs { border-bottom:1px solid gray; }
+    .rs { border-right :1px solid gray; }
+    .ls { border-left  :1px solid gray; }
+
+    .ld { border-left  :1px dotted gray;}
+    .bd { border-bottom:1px dotted gray;}
+    .rd { border-right :1px dotted gray;}
+
+    /* list table */
+    .tbl          { border:1px solid gray;width:600px;margin-left:10px;padding:1px 1px 1px 1px }
+    .tbl *        { font-size:8pt;font-family:'Arial';}
+
+    .tbl td       { height:20px;}
+    .tbl td.L1    { color:#000000; font-weight:bold; padding-left:3px; }
+    .tbl td.D1    { color:#000000; }
+
+    .tbl td input     { color:#000000;background-color:#FFFFFF;width:94%;height:13px;border:0;}
+    .tbl td select    { color:#000000;background-color:#FFFFFF;width:98%;height:20px }
+    .tbl td input.date { color:#000000;background-color:#FFFFFF;width:70%;height:13px;}
+
+
+    /* list table */
+    .tbl2          { border:1px solid gray;width:800px;margin-left:10px;padding:1px 1px 1px 1px }
+    .tbl2 *        { font-size:8pt;font-family:'Arial';}
+
+    .tbl2 td       { height:20px;}
+    .tbl2 td.L1    { color:#000000; font-weight:bold; padding-left:3px; }
+    .tbl2 td.D1    { color:#000000; }
+
+    .tbl2 td input      { color:#000000;background-color:#FFFFFF;width:94%;height:15px;}
+    .tbl2 td select     { color:#000000;background-color:#FFFFFF;width:98%;height:20px;}
+
+    .tbl2 .even_row td {background-color: #c0c0c0    } /* 짝수 */
+    .tbl2 .odd_row  td {background-color: transparent} /* 홀수 */

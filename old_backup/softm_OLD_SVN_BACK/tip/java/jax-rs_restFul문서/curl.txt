@@ -1,0 +1,58 @@
+# Curl을 다운로드하지 않았다면 다운로드한다.
+
+# 명령줄에 다음 명령을 입력하여 새 사용자를 추가한다(포맷팅 때문에 지금과 이후 단계에서 명령은 여러 행으로 표시한다).
+
+      curl -i --data "{\"userid\":\"techtip\",\"username\":
+      \"TechTip User\",\"email\":\"techtip@example.com\",
+      \"password\":\"TEST\"}" -H Content-type:application/json
+      -X PUT
+      http://localhost:8080/Bookmark/resources/users/techtip/
+
+그러면 HTTP GET 요청이 UsersResource 클래스의 getUser 메소드로 디스패치되고, 이는 새 UserResource 개체를 인스턴스화한다. 이 요청은 다시 putUser 메소드에 디스패치된다.
+
+다음과 같은 출력이 나타나야 한다.
+
+      HTTP/1.1 204 No Content
+      X-Powered-By: Servlet/2.5
+      Server: Sun Java System Application Server 9.1_01
+      Date: Thu, 01 Nov 2007 14:31:53 GMT
+
+# 명령줄에 다음 명령을 입력하여 사용자 목록을 가져온다.
+
+      curl -i -X GET
+      http://localhost:8080/Bookmark/resources/users/
+
+그러면 UsersResource 클래스의 getUsersListAsJson 메소드를 호출한다.
+
+다음과 비슷한 출력이 나타난다.
+
+      HTTP/1.1 200 OK
+      X-Powered-By: Servlet/2.5
+      Server: Sun Java System Application Server 9.1_01
+      Content-Type: application/json
+      Transfer-Encoding: chunked
+      Date: Thu, 01 Nov 2007 14:34:07 GMT
+
+      ["http:\/\/localhost:8080\/Bookmark\/resources\/users\
+      /techtip"]
+
+# 명령줄에 다음 명령을 입력하여 사용자의 표현을 가져온다.
+
+      curl -i -X GET
+      http://localhost:8080/Bookmark/resources/users/techtip/
+
+그 결과 작업은 2단계와 비슷하다.
+
+다음과 같은 출력이 나타나야 한다.
+
+      HTTP/1.1 200 OK
+      X-Powered-By: Servlet/2.5
+      Server: Sun Java System Application Server 9.1_01
+      Content-Type: application/json
+      Transfer-Encoding: chunked
+      Date: Thu, 01 Nov 2007 14:35:38 GMT
+
+      {"userid":"techtip","username":"TechTip User",
+      "email":"techtip@example.com","password":"TEST",
+      "bookmarks":"http:\/\/localhost:8080\/Bookmark\/resources
+      \/users\/techtip\/bookmarks"}

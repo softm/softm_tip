@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+       android:id="@+id/gs_helper"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:visibility="visible" android:background="#FF0">
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_gravity="bottom|center_vertical|center_horizontal"
+        android:orientation="vertical" android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/helper_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_vertical|center_horizontal"
+            android:layout_marginBottom="110px"
+            android:src="@drawable/guide_guide01_ex01" />
+
+    </LinearLayout>
+</FrameLayout>
+

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#f6f6f6">
+
+   
+	<FrameLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1">
+
+		<WebView
+		  android:id="@+id/webview_browser" 
+		  android:layout_width="fill_parent"
+		  android:layout_height="fill_parent" /> 
+
+		<ImageView
+			android:id="@+id/loading_image"
+			android:layout_width="fill_parent" 
+		  	android:layout_height="fill_parent"
+		  	android:visibility="invisible" />
+		
+	
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+
+	</FrameLayout>
+	<LinearLayout
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_marginBottom="8dip"
+		android:gravity="center">
+        
+         <ImageButton 
+             	android:id="@+id/btn_ok"
+            	android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_gravity="center"		
+			    android:layout_marginTop="2dip"   
+			    android:background="@drawable/btn_ok_img"/>    
+    </LinearLayout>
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout> 

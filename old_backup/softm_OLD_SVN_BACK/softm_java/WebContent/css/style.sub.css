@@ -1,0 +1,79 @@
+td {font-family: "µ¸¿ò"; color: #656565; font-size: 12px; line-height:15px; letter-spacing: -0.3pt;} 
+
+A:link { color :#21478d; font : 12px µ¸¿ò ;TEXT-DECORATION: none }
+
+A:visited {color :#4c4c4c ; font : 12px µ¸¿ò ;TEXT-DECORATION: none}
+
+A:hover { color :#21478d; font : 12px µ¸¿ò;TEXT-DECORATION:none }
+
+
+BODY 	{ Margin-left:0px; Margin-right:0px; Margin-top:0px; Margin-bottom:0px; 
+
+		  border:0 solid #B3B3B3; scrollbar-face-color:#FFFFFF;
+
+		  scrollbar-shadow-color:#B3B3B3;	scrollbar-highlight-color:#B3B3B3;
+
+		  scrollbar-3dlight-color:#ffffff; scrollbar-darkshadow-color:#ffffff;
+
+		  scrollbar-track-color:#ffffff; scrollbar-arrow-color:#B3B3B3;
+		  
+		  background-image: url(/img/main/all_bg.gif);
+		  }
+
+
+
+a.notice:link { color :#686868; font : 9pt verdana,µ¸¿ò ;TEXT-DECORATION: none }
+
+a.notice:visited {color :#686868 ; font : 9pt verdana,µ¸¿ò ;TEXT-DECORATION: none}
+
+a.notice:hover { color :#00798C; font : 9pt verdana,µ¸¿ò;TEXT-DECORATION:none }
+
+/* input */
+
+.navi {font-family: verdana, "µ¸¿ò"; color: #363636; font-size: 8pt; line-height:19px;} 
+
+.input {
+       font-family: "µ¸¿ò"; 
+	   font-size: 12px; 
+	   color: #5b5a5a; 
+	   height: 18px; 
+	   background-color:#ffffff;
+	   border: #dedede; 
+	   border-style: solid; 
+	   border-top-width: 1px; 
+	   border-right-width: 1px; 
+	   border-bottom-width: 1px; 
+	   border-left-width: 1px
+	   }
+.input_data {
+       font-family: "µ¸¿ò"; 
+	   font-size: 11px; 
+	   color: #555555; 
+	   height: 18px; 
+	   background-color:#ffffff;
+	   border: #ffffff; 
+	   border-style: solid; 
+	   border-top-width: 1px; 
+	   border-right-width: 1px; 
+	   border-bottom-width: 1px; 
+	   border-left-width: 1px
+	   }	   
+
+.area	{ Background-Color:#FFFFFF; Border:1px Solid #D3D3D3; Color:#666666; Font-size:11px; Font-family:µ¸¿ò,µ¸¿òÃ¼,Verdana; Line-height:18px; }
+
+.select{ Background-Color:#FFFFFF; Border:1px Solid #D3D3D3; Color:#666666; Font-size:12px; Font-family:µ¸¿ò,µ¸¿òÃ¼,Verdana; }
+.textarea { Background-Color:#FFFFFF; Border:1px Solid #D3D3D3; Color:#666666; Font-size:12px; Font-family:µ¸¿ò,µ¸¿òÃ¼,Verdana;}
+
+/***  form color ***/
+.head_title{color : #605f5f; font : 24px µ¸¿ò; font-weight: bold}
+.c_title{color : #605f5f; font : 12px µ¸¿ò; }
+.s_tlt{font-weight:bold; font-size:13px; color:#003333;}
+.s_tlt_1{font-weight:bold; font-size:13px; color:#047171;}
+.bbs_list{color : #4d6271; font : 12px verdana,µ¸¿ò; font-weight: bold}
+.bbs_num{color : #4d6271; font : 12px verdana,µ¸¿ò; }
+.paging{color : #888888; font : 12px verdana,µ¸¿ò; }
+.data_title{color : #444343; font : 12px verdana,µ¸¿ò;  font-weight: bold}
+.data_sun{color : #b94409; font : 12px verdana,µ¸¿ò;  font-weight: bold}
+.data_mon{color : #8e8e8e; font : 12px verdana,µ¸¿ò;  font-weight: bold}
+.data_sat{color : #103ca6; font : 12px verdana,µ¸¿ò;  font-weight: bold}
+.top_search{color : #21478d; font : 12px verdana,µ¸¿ò;  font-weight: bold}

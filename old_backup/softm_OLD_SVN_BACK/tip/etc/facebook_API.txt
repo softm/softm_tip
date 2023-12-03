@@ -1,0 +1,20 @@
+﻿※ 참고
+    http://hijigoo.tistory.com/entry/%EC%9B%B9%ED%8E%98%EC%9D%B4%EC%A7%80%EC%97%90-Facebook-API-%EC%97%B0%EB%8F%99%ED%95%98%EA%B8%B0-3%EC%9E%A5-Like-%EB%B2%84%ED%8A%BC-%EB%9D%84%EC%9A%B0%EA%B8%B0
+
+    https://www.google.co.kr/?gfe_rd=cr&ei=lmuNU-HlNsiJ8QetmYCgDA#newwindow=1&q=facebook+api+%EC%98%88%EC%A0%9C&revid=214788344&safe=off
+
+    http://hijigoo.tistory.com/category/%EC%8B%A4%EC%A0%84%20%EC%98%88%EC%A0%9C%20Tutorial
+
+1. Facebook (Create New App)
+    - https://developers.facebook.com/apps
+
+    - Click To "Create New App"
+        - App ID      : 1422179344726962
+        - App Secret  : dba435b955260ab3bd109ab1067d9847
+
+2. like - fb_like.php
+    https://developers.facebook.com/docs/plugins/like-button/
+
+3. share - 
+    https://developers.facebook.com/docs/plugins/share-button/
+

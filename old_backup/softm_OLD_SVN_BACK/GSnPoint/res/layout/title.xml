@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content">
+
+	<RelativeLayout
+	    android:id="@+id/title_bg"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@drawable/title_set_login" >
+
+
+			<ImageButton
+				android:id="@+id/left_button"
+				android:background="@drawable/btn_card_prev"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="7dp"
+				android:layout_marginLeft="7dp" android:layout_centerVertical="true"/>
+			
+			<ImageButton
+				android:id="@+id/help_button"
+				android:background="@drawable/btn_point_help_img"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:layout_centerVertical="true"
+			    android:layout_toRightOf="@id/left_button" android:layout_marginLeft="7dp"/>
+			
+			<ImageButton
+			    android:id="@+id/right_button"
+			    android:layout_width="wrap_content"
+			    android:layout_height="wrap_content"
+			    android:layout_marginTop="7dp"
+			    android:background="@drawable/btn_card_prev" android:layout_gravity="right" android:layout_alignParentRight="true" android:layout_marginRight="7dp" android:layout_centerVertical="true"/>
+
+	</RelativeLayout>
+
+</FrameLayout>

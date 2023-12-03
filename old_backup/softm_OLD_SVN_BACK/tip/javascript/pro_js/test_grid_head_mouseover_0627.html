@@ -1,0 +1,158 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> test_grid_head_mouseover.html </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <script>
+    var resizeRevision = 5;
+  	function fnMouseMove(e) {
+        var e = window.event?event:e;
+        var o = window.event?e.srcElement:e.target;
+  		//console.clear();
+        if( typeof e.offsetX == "undefined" ) {
+        	var element = o;
+        	var CalculatedTotalOffsetLeft = 0;
+        	while(element.offsetParent) {
+	        	CalculatedTotalOffsetLeft += element.offsetLeft;
+	        	element = element.offsetParent;
+        	}
+        	e.offsetX = e.screenX - CalculatedTotalOffsetLeft;
+        }
+  		if ( resizeColObj ) {
+			o.style.cursor= "col-resize";
+  		} else {
+  			if ( o.clientWidth - resizeRevision -1 < e.offsetX  || e.offsetX < resizeRevision ){
+  				o.style.cursor= "col-resize";
+  			} else {
+  				o.style.cursor= "auto";
+  			}	
+  		}
+  		
+  		//console.info(e);
+  		//console.info(e.offsetX + " , " + e.offsetY + " | " + ( o==resizeColObj ) + "/ width : " + o.clientWidth);
+  		if ( resizeColObj ) {
+	  		var resizeW = resizeColWidth + (e.screenX - resizeStartScreenX);
+	  		if ( resizeW != resizeColObj.offsetWidth ) {
+	  			//resizeW -= resizeRevision;
+	  			//console.info("resizeColObj.style.width : " + resizeColObj.offsetWidth )
+	  			//console.info("resizeColObj.offsetWidth : " + resizeColObj.offsetWidth )
+	  			//console.info("e.screenX : " + e.screenX )
+	  			//console.info("resizeStartScreenX : " + resizeStartScreenX)
+	  			//console.info("resizeW : " + resizeW)
+				resizeColObj.style.width =  resizeW + "px";
+	  			//resizeColObj.offsetWidth =  resizeW;
+	  		}
+  		}
+  		try {
+	        e.cancelBubble = true;        
+	        e.stopPropagation();       		
+  		} catch(e)	{
+  		}
+  	}
+	var resizeStartScreenX = 0;
+	var resizeColObj = null;
+	var resizeColWidth = 0;
+  	function fnMouseDown(e) {
+  		console.clear();  
+  		
+        var e = window.event?window.event:e;
+        var o = window.event?e.srcElement:e.target;
+  		//console.info("start :" + e.offsetX + " , " + e.offsetY + " / " + e.screenX);        
+        if( typeof e.offsetX == "undefined" ) {
+        	var element = o;
+        	var CalculatedTotalOffsetLeft = 0;
+        	while(element.offsetParent) {
+	        	CalculatedTotalOffsetLeft += element.offsetLeft;
+	        	element = element.offsetParent;
+        	}
+        	e.offsetX = e.pageX - CalculatedTotalOffsetLeft;
+        }
+  		//console.info(e.offsetX + " , " + e.offsetY + " / " + e.screenX);
+        
+        if ( e.offsetX <= resizeRevision ) {
+            resizeColObj = o.previousSibling.previousSibling;
+            //resizeColObj = o.parentElement.childNodes[o.cellIndex - 1];
+            //resizeColObj = 
+           	//console.info(o);
+			//console.info(o.tagName + " / " + resizeColObj.tagName);
+            //console.info("1 -->" + resizeColObj.offsetWidth);
+        } else {
+            resizeColObj = o;
+            //console.info("2 -->" + resizeColObj.offsetWidth);            
+        }
+        
+        resizeStartScreenX = e.screenX;
+        resizeColWidth = resizeColObj.offsetWidth;
+        
+        try {
+	        e.cancelBubble = true;        
+	        e.stopPropagation();       		
+  		} catch(e)	{
+  		}       
+        //o.style.width = 
+  	}
+  	
+  	function fnMouseUp(e) {
+  		//console.clear();  		
+        var e = window.event?event:e;
+        var o = window.event?e.srcElement:e.target;
+/*        
+  		var resizeW = resizeColObj.offsetWidth + (e.screenX - resizeStartScreenX);
+  		if ( resizeW != resizeColObj.offsetWidth ) {
+  			resizeW -= resizeRevision;
+  			//console.info("resizeColObj.style.width : " + resizeColObj.offsetWidth )
+  			console.info("resizeColObj.offsetWidth : " + resizeColObj.offsetWidth )
+  			console.info("e.screenX : " + e.screenX )
+  			console.info("resizeStartScreenX : " + resizeStartScreenX)
+  			console.info("resizeW : " + resizeW)
+			resizeColObj.style.width =  resizeW + "px";
+  			//resizeColObj.offsetWidth =  resizeW;
+  		}
+*/  		
+  		resizeColObj.style.cursor= "auto";  			
+  		resizeColObj = null;
+  	}
+  //�������� ���� �ؽ�Ʈ ���� ����
+  	document.onselectstart = function(){
+	  return false;
+  	try{
+  	    if(td != ""){
+  	        return false;
+  	    }
+  	}catch(e){ return true; }
+  	}
+  </script>
+ </head>
+
+ <body>
+  <DIV style="overflow:scroll"  onmousemove="fnMouseMove(event)" onmousedown="fnMouseDown(event);"  onmouseup="fnMouseUp(event);">
+  <table border="1" style="border-collapse:collapse">
+      <THEAD>
+      <tr>
+        <td>���1</td>
+        <td>���2</td>
+        <td>���3</td>
+      </tr>
+      </THEAD>
+      <TBODY>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      <tr><td>��1</td><td>��2</td><td>��3</td></tr>
+      </TBODY>
+  </table>
+  </DIV>
+ </body>
+</html>

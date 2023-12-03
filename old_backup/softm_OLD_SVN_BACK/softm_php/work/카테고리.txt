@@ -1,0 +1,197 @@
+# 프로그램시 처리형태 : PROC_TYPE
+    # 기업회원                  -   PROC_TYPE_CM : 1
+    # 비즈니스매칭상담          -   PROC_TYPE_BC : 2
+    # 비즈니스매칭신청          -   PROC_TYPE_BM : 3
+    # 기술자매칭(상담포함)      -   PROC_TYPE_EM : 4
+    # 기술니드신청              -   PROC_TYPE_NC : 5
+    # 기술시드매칭신청          -   PROC_TYPE_SM : 6
+
+# 국가코드 : COUNTRY_TYPE
+    # 한국 : KR
+    # 일본 : JP
+
+# 대응 가능 외국어 : POSSIBLE_LANG
+    # 일본어  -   JP
+    # 영어    -   EN
+    # 없음    -   NO
+
+# 회원구분          MEMBER_TYPE
+    MEMBER_TYPE_NON                             비회원                  00
+    MEMBER_TYPE_STD                             회원                    01
+    MEMBER_TYPE_BIZ                             기업회원                02
+
+# 비즈니스매칭상담          -   STATE_BC
+    STATE_BC_START                             접수                    01
+    STATE_BC_UPDATE_REQUEST                    수정요청중              02
+    STATE_BC_WAIT                              접수대기                03
+    STATE_BC_JKBIZ_WAIT                        JK-BiC등록대기          04
+    STATE_BC_JKBIZ_END                         JK-BiC등록완료          05
+
+# 비즈니스매칭신청          -   STATE_BM
+    STATE_BM_REQUEST                             매칭신청                01
+    STATE_BM_UPDATE_REQUEST                      수정요청중              02
+    STATE_BM_UPDATE_CHECK                        검토중                  03
+    STATE_BM_REQUEST_WAIT                        매칭신청접수중          04
+    STATE_BM_REQUEST_END                         매칭신청완료            05
+    STATE_BM_ING                                 매칭진행중              06
+    STATE_BM_PENDING                             펜딩중                  07
+    STATE_BM_DEALMAKING                          성약                    08
+    STATE_BM_NOT_DEALMAKING                      비성약                  09
+
+# 기술자매칭(상담포함)      -   STATE_EM
+    STATE_EM_REQUEST                             신청                    01
+    STATE_EM_RE_REQUEST                          재신청                  02
+    STATE_EM_NEGOTIATIONS                        교섭                    03
+    STATE_EM_NEGOTIATIONS_BREAK                  매칭(교섭)결렬          04
+    STATE_EM_R_NOMINATION                        역지명                  05
+    STATE_EM_R_NOMINATION_NEGOTIATIONS           역지명교섭              06
+    STATE_EM_R_NOMINATION_NEGOTIATIONS_BREAK     역지명교섭결렬          07
+    STATE_EM_CONSULT_JOIN                        매칭상담회참가          08
+    STATE_EM_FOUNDATION_REVIEW                   재단심의                09
+    STATE_EM_BIZ_REVIEW                          기업심의                10
+    STATE_EM_ADVISER_START                       지도시작                11
+    STATE_EM_ADVISER_END                         지도완료                12
+    STATE_EM_END                                 기술매칭완료            13
+
+# 기술매칭
+    # 니드 :    STATE_NC
+        STATE_NC_REQUEST                        신청중                  01
+        STATE_NC_UPDATE_REQUEST                 수정요청중              02
+        STATE_NC_UPDATE_CHECK                   검토중                  03
+
+    # 시드 :    STATE_SM
+        STATE_SM_REQUEST                        신청중                  01
+        STATE_SM_UPDATE_REQUEST                 수정요청중              02
+        STATE_SM_UPDATE_CHECK                   검토중                  03
+        STATE_SM_REQUEST_END                    매칭신청완료            04
+        STATE_SM_ING                            매칭진행중              05
+        STATE_SM_DEALMAKING                     성약                    06
+        STATE_SM_NOT_DEALMAKING                 비성약                  07
+
+2. 코드방식
+    한국기업                                        : KC201203050001
+    한국비즈니스(모두)                              : KB201203050001
+    한국기술자(모두)                                : KE201203050001
+    한국기술신청                                    : KT201203050001
+    한국기술시드                                    : KS201203050001
+    한국기술니드                                    : KN201203050001
+
+    일본기업(관리자등록, 비즈,기술등록시 기업코드)  : JC201203050001
+    일본비즈니스(모두-협력,조달,공급)               : JB201203050001
+    일본기술자                                      : JE201203050001
+    일본기술                                        : JT201203050001
+    일본기술시드                                    : JS201203050001
+    일본기술니드                                    : JN201203050001
+
+
+# 비즈니스매칭 관련 업체구분(일본업체)  - JP_COMPANY_TYPE
+    # 협력희망일본기업 -   JP_COMPANY_TYPE1 : 1
+    # 일본기업조달정보 -   JP_COMPANY_TYPE2 : 2
+    # 일본기업공급정보 -   JP_COMPANY_TYPE3 : 3
+
+4. 분야별 카테고리 정의
+    비즈니스 형태                           : BIZ_TYPE
+        # 수출     -   BIZ_TYPE1 : 1
+        # 수입     -   BIZ_TYPE2 : 2
+        # 기술제휴 -   BIZ_TYPE3 : 3
+        # 수탁생산 -   BIZ_TYPE4 : 4
+        # 위탁생산 -   BIZ_TYPE5 : 5
+        # 기타     -   BIZ_TYPE6 : 6
+        # 비분류   -   BIZ_TYPE7 : 7
+
+    업종분야                                : BIZ_FIELD
+        # 제조업    -   BIZ_FIELD1 : 1
+        # 비제조업  -   BIZ_FIELD2 : 2
+
+    업종분류                                : BIZ_CLASSIFIED
+
+        # 일반기계, 기계장치   -   BIZ_CLASSIFIED1 : 1
+        # 정밀기기             -   BIZ_CLASSIFIED2 : 2
+        # 금속, 금속제품       -   BIZ_CLASSIFIED3 : 3
+        # 수송용기기           -   BIZ_CLASSIFIED4 : 4
+        # 전기, 전자기기       -   BIZ_CLASSIFIED5 : 5
+        # 정보통신, IT         -   BIZ_CLASSIFIED6 : 6
+        # 환경, 에너지         -   BIZ_CLASSIFIED7 : 7
+        # 화학, 플라스틱, 고무 -   BIZ_CLASSIFIED8 : 8
+        # 기타                 -   BIZ_CLASSIFIED9 : 9
+
+* 기술자, 기술분야 :    TECH_FIELD
+    기술분야 카테고리(1,2,3차 카테고리 정의) - 기술자, 기술분야(별도 테이블 구성)
+        - 참조 : 기술분류.xlsx
+
+* 기술부분 시드, 니즈의 기술분야            : TECH_SN_FIELD
+        # 기계소개     -   TECH_SN_FIELD1 : 1
+        # 정보통신     -   TECH_SN_FIELD2 : 2
+        # 경영 외      -   TECH_SN_FIELD3 : 3
+        # 전기전자     -   TECH_SN_FIELD4 : 4
+        # 섬유화학     -   TECH_SN_FIELD5 : 5
+
+# 지역(1차 카테고리 한국,일본 외 2,3차 카테고리 정의) : 별도 테이블 구성 : AREA_CAT_01, AREA_CAT_02, AREA_CAT_03
+    - 참조 : 지역카테고리.xlsx
+
+# 지도가능분야  : ADVISER_FIELD
+        # 일반기계, 기계장치    -   ADVISER_FIELD1 : 1
+        # 정밀기기              -   ADVISER_FIELD2 : 2
+        # 금속, 금속제품        -   ADVISER_FIELD3 : 3
+        # 수송용기기            -   ADVISER_FIELD4 : 4
+        # 전기, 전자기기        -   ADVISER_FIELD5 : 5
+        # 정보통신, IT          -   ADVISER_FIELD6 : 6
+        # 환경, 에너지          -   ADVISER_FIELD7 : 7
+        # 화학, 플라스틱, 고무  -   ADVISER_FIELD8 : 8
+        # 기타                  -   ADVISER_FIELD9 : 9
+
+* 모든 매칭의 담당자는 담당자 테이블 별도 만들어서 구성
+    - 기업코드, 매칭코드 함께 저장
+
+# 기업구분 : COMPANY_TYPE
+    # 협력기업  -   COMPANY_TYPE_COOPERATION : 1
+    # 조달기업  -   COMPANY_TYPE_RAISE       : 2
+    # 공급기업  -   COMPANY_TYPE_SUPPLY      : 3
+
+# 제휴형태 : ALLIANCE_TYPE
+    # 상주                      -   ALLIANCE_TYPE_1   : 1
+    # 월단위(7일이하 체체)      -   ALLIANCE_TYPE_2   : 2
+    # 월단위(10일~2주 체재)     -   ALLIANCE_TYPE_3   : 3
+    # 월단위(3주 체재)          -   ALLIANCE_TYPE_4   : 4
+    # 기타                      -   ALLIANCE_TYPE_ETC : 5
+
+# 활용형태 : USE_TYPE
+    # 기술(제품 or 설비)개발    -   USE_TYPE_1   : 1
+    # 관리기술                  -   USE_TYPE_2   : 2
+    # 설계기술                  -   USE_TYPE_3   : 3
+    # 제조(가공)기술            -   USE_TYPE_4   : 4
+    # 기타                      -   USE_TYPE_ETC : 5
+
+# 통역필요유무 : TRANSLATION_TYPE
+    # 자체통역                  -   TRANSLATION_TYPE1 : 1
+    # 통역고용                  -   TRANSLATION_TYPE2 : 2
+    # 필요없음                  -   TRANSLATION_TYPE3 : 3
+
+# 복리후생 : BENEFIT_TYPE
+    # 숙소          -   BENEFIT_TYPE_1   : 1
+    # 식사제공      -   BENEFIT_TYPE_2   : 2
+    # 교통비        -   BENEFIT_TYPE_3   : 3
+    # 기타          -   BENEFIT_TYPE_4   : 4
+    # 기타          -   BENEFIT_TYPE_ETC : 5
+
+# 업무분야 : BIZ_ADVISE_TYPE
+    # 생산기술지도  -   BIZ_ADVISE_TYPE1   : 1
+    # 제조기술지도  -   BIZ_ADVISE_TYPE2   : 2
+    # 개발/설계지도 -   BIZ_ADVISE_TYPE3   : 3
+    # 기타지도      -   BIZ_ADVISE_TYPE4   : 4
+
+
+# 거래희망유형 : TECH_TRADE_HOPE_TYPE
+    # 기술매매  -   TECH_TRADE_HOPE_TYPE1   : 1
+    # 라이센스  -   TECH_TRADE_HOPE_TYPE2   : 2
+    # 기술협력  -   TECH_TRADE_HOPE_TYPE3   : 3
+    # 기술지도  -   TECH_TRADE_HOPE_TYPE4   : 4
+    # M&A       -   TECH_TRADE_HOPE_TYPE5   : 5
+    # 기타      -   TECH_TRADE_HOPE_TYPE6   : 6
+
+# 자료 공개 기한 : DATA_OPEN_LIMIT
+    # 1년 이하  -   DATA_OPEN_LIMIT1   : 1
+    # 3년 이하  -   DATA_OPEN_LIMIT2   : 2
+    # 5년 이하  -   DATA_OPEN_LIMIT3   : 3
+    # 무기한    -   DATA_OPEN_LIMITZ   : Z
+

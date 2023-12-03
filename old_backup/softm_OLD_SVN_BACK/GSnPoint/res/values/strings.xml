@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!--
+		Copyright (C) 2008 ZXing authors Licensed under the Apache License,
+		Version 2.0 (the "License"); you may not use this file except in
+		compliance with the License. You may obtain a copy of the License at
+		http://www.apache.org/licenses/LICENSE-2.0 Unless required by
+		applicable law or agreed to in writing, software distributed under the
+		License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR
+		CONDITIONS OF ANY KIND, either express or implied. See the License for
+		the specific language governing permissions and limitations under the
+		License.
+	-->
+<resources>
+    
+	<string name="barcode_name">바코드</string>
+	<string name="button_ok">OK</string>
+	<string name="network_error">네트워크 장애로 해당 웹페이지에 접속 할 수 없습니다.\n잠시후 다시 접속해 주세요.</string>
+	<string name="store_search_hint">매장명으로 검색해 주세요</string>
+	<string name="faq_txt">FAQ에서 도움을 받지 못하셨나요?</string>
+	<string name="app_picker_name">Applications</string>
+	<string name="app_name">GS&amp;POINT</string>
+	<string name="my_card">My 카드</string>
+	<string name="card_reg">카드등록</string>
+	<string name="event_name">이벤트</string>
+	<string name="notice_name">공지사항</string>
+	<string name="settings_name">설정</string>
+	<string name="faq_name">FAQ</string>
+	<string name="point_name">포인트 조회</string>
+	<string name="storevaluelist_name">가맹점 평가</string>
+	<string name="mypointchecklist_name">포인트 상세내역</string>
+	 <string name="search_range">검색기간</string>
+	<string name="login_name">로그인</string>
+	<string name="policy_name">약관동의</string>
+	<string name="service_name">서비스약관</string>
+	<string name="member_name">회의가입</string>
+	<string name="store_name">가맹점  검색</string>
+	<string name="present_name">선물하기</string>
+	<string name="evalue_name">평가하기</string>
+	<string name="download_complete">다운로드 완료되었습니다.</string>
+	<string name="download_fail">다운로드가 실패했습니다.</string>
+	<string name="update_fail">업데이트가 실패했습니다.</string>
+	
+	<string name="spinner_star_point">별점 선택</string>
+	<string name="spinner_email_type">메일종류 선택</string>
+	
+	
+	<string name="addr_sido">도/시</string>
+	<string name="addr_gugun">시/군/구</string>
+	<string name="addr_dong">읍/면/동</string>
+	<string name="si_gun_gu_alert1">도/시를 바르게 입력하세요</string>
+	<string name="si_gun_gu_alert2">시/군/구를 바르게 입력하세요</string>
+	
+	<string name="tmp_menu4">이벤트</string>
+	<string name="tmp_menu5">공지사항</string>
+	<string name="tmp_menu6">FAQ</string>
+	<string name="tmp_menu7">사용내역</string>	
+	<string name="tmp_menu8">쿠폰몰</string>	
+	<string name="tmp_menu9">제휴카드</string>	
+	<string name="top_menu_left">GS&amp;POINT</string>
+	<string name="top_menu_right">제휴신용카드</string>
+	<string name="program_terminate">프로그램을 종료합니다.</string>
+	<string name="alert_str">알림</string>
+	<string name="alert_str_date">날짜를 바르게 입력해주세요</string>
+	<string name="alert_str_month">최대 3개월까지만 조회 가능합니다.</string>
+	<string name="alert_str_searchrange_error1">검색 시작일이 종료일 보다 큽니다.\n확인하여주십시오!</string>
+	<string name="alert_str_searchrange_error2">최근 1년 이내까지만 조회 가능합니다</string>
+	<string name="alert_str_searchrange_error3">범위를 벗어났습니다.</string>
+	<string name="alert_str_passwordset_ok">비밀번호가 정상적으로 설정되었습니다.</string>
+	<string name="alert_str_password_error">비밀번호를 다시한번 확인 후 입력해주세요.</string>
+	<string name="alert_str_friendname_error">포인트 선물 할 친구 이름을 입력해주세요.</string>
+	<string name="alert_str_point_give_error">현재 선물하기 기능을 사용할 수 없습니다.</string>
+	<string name="alert_str_password_error2">숫자를 정확히 입력해 주세요.</string>
+	<string name="alert_str_mobile_agreement">GS&amp;POINT 모바일약관는 회원서비스 제공을 위한 필수 동의 항목입니다.</string>		
+	<string name="alert_str_mobile_agreement_error">사용자정보가 존재하지 않아 요청을 할 수 없습니다</string>
+	<string name="alert_str_card_stop">선택한 카드를 정지하시려면 확인 버튼을 눌러 주세요.</string>	
+	<string name="alert_str_card_stop_ok">카드가 정지되었습니다.</string>				
+	<string name="alert_str_card_step1_kind_select">포인트 카드의 종류를 선택해주세요.</string>				
+	<string name="alert_str_card_step2_cardnumber_input_error">카드번호를 확인하여 주십시요!</string>				
+	<string name="alert_str_card_step3_cvc_input_error">CVC 코드를 확인해주세요.</string>				
+	<string name="alert_str_card_step3_success">카드가 정상적으로 등록되었습니다.</string>				
+	<string name="mypointchecklist_table_date">거래일</string>
+	<string name="mypointchecklist_table_store">가맹점</string>
+	<string name="mypointchecklist_table_commerce">거래금액</string>
+	<string name="mypointchecklist_table_savingemploy">적립/사용</string>
+	<string name="mypoint_friendstype_table">찾을 친구 항목을 선택하세요</string>
+	<string name="mypoint_value_check">포인트 금액을 확인해 주세요</string>
+	<string name="mypoint_present_send_OK">포인트 선물하기가 정상적으로 발송되었습니다</string>
+	<string name="mypoint_present_popup_name_check">이름을 입력해 주세요</string>
+	<string name="mypoint_present_popup_phone_check">핸드폰 번호를 입력해 주세요</string>
+	<string name="mypoint_present_popup_email_check">이메일을 입력해 주세요</string>
+	<string name="mypoint_aff_select_startpoint">평가할 별점을 선택해 주세요</string>
+	<string name="setting_mainimage_set">이미지가 설정되었습니다.</string>
+	<string name="title_qrcode">QR 코드</string>
+	<string name="bookmark_picker_name">Bookmarks</string>
+	<string name="contents_contact">Contact info</string>
+	<string name="contents_email">Email address</string>
+	<string name="contents_location">Geographic coordinates</string>
+	<string name="contents_phone">Phone number</string>
+	<string name="contents_sms">SMS address</string>
+	<string name="contents_text">Plain text</string>
+	<string name="history_clear_text">Clear history</string>
+	<string name="history_email_title">Barcode Scanner history</string>
+	<string name="history_send">Send history</string>
+	<string name="history_title">History</string>
+	<string name="menu_about">About</string>
+	<string name="menu_help">Help</string>
+	<string name="menu_history">History</string>
+	<string name="menu_settings">Settings</string>
+	<string name="menu_share">Share</string>
+	<string name="msg_about">Based on the open source ZXing Barcode Library</string>
+	<string name="msg_buggy">This device has known bugs that cause barcode scanning problems. For more information, visit http://code.google.com/p/zxing/wiki/FrequentlyAskedQuestions</string>
+	<string name="msg_bulk_mode_scanned">Bulk mode: barcode scanned and saved</string>
+	<string name="msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>
+	<string name="msg_default_contents">Contents</string>
+	<string name="msg_default_format">Format</string>
+	<string name="msg_default_meta">Metadata</string>
+	<string name="msg_default_mms_subject">Hi</string>
+	<string name="msg_default_status">Place a barcode inside the viewfinder rectangle to scan it.</string>
+	<string name="msg_default_time">Time</string>
+	<string name="msg_default_type">Type</string>
+	<string name="msg_encode_barcode_failed">Could not generate the requested barcode.</string>
+	<string name="msg_encode_contents_failed">Could not encode a barcode from the data provided.</string>
+	<string name="msg_google_shopper_missing">Google Shopper is not installed</string>
+	<string name="msg_install_google_shopper">Google Shopper combines barcode scanning with online and local prices, reviews and more without opening the browser. Would you like to try it?</string>
+	<string name="msg_intent_failed">Sorry, the requested application could not be launched. The barcode contents may be invalid.</string>
+	<string name="msg_loading_apps">Loading list of applications\u2026</string>
+	<string name="msg_not_our_results">You are leaving this application. The search results you will see are not related to this application.</string>
+	<string name="msg_sbc_book_not_searchable">Sorry, this book is not searchable.</string>
+	<string name="msg_sbc_failed">Sorry, the search encountered a problem.</string>
+	<string name="msg_sbc_no_page_returned">No page returned</string>
+	<string name="msg_sbc_page">Page</string>
+	<string name="msg_sbc_searching_book">Searching book\u2026</string>
+	<string name="msg_sbc_snippet_unavailable">Snippet not available</string>
+	<string name="msg_sbc_unknown_page">Unknown page</string>
+	<string name="msg_share_explanation">You can share data by displaying a barcode on your screen and scanning it with another phone.</string>
+	<string name="msg_share_subject_line">Here\'s the contents of a barcode I scanned</string>
+	<string name="msg_unmount_usb">Sorry, the SD card is not accessible.</string>
+	<string name="preferences_actions_title">When a barcode is found\u2026</string>
+	<string name="preferences_bulk_mode_summary">Scan and save many barcodes continuously</string>
+	<string name="preferences_bulk_mode_title">Bulk scan mode</string>
+	<string name="preferences_copy_to_clipboard_title">Copy to clipboard</string>
+	<string name="preferences_custom_product_search_summary">Use %1$s as a placeholder for the product ID, and %2$f for format</string>
+	<string name="preferences_custom_product_search_title">Custom search URL</string>
+	<string name="preferences_decode_1D_title">Decode 1D barcodes</string>
+	<string name="preferences_decode_Data_Matrix_title">Decode Data Matrix</string>
+	<string name="preferences_decode_QR_title">Decode QR Codes</string>
+	<string name="preferences_front_light_summary">Improves scanning in low light on some phones, but may cause glare. Does not work on all phones.</string>
+	<string name="preferences_front_light_title">Use front light</string>
+	<string name="preferences_general_title">General settings</string>
+	<string name="preferences_name">Settings</string>
+	<string name="preferences_play_beep_title">Beep</string>
+	<string name="preferences_result_title">Result settings</string>
+	<string name="preferences_scanning_title">When scanning for barcodes\u2026</string>
+	<string name="preferences_vibrate_title">Vibrate</string>
+	<string name="result_address_book">Found contact info</string>
+	<string name="result_calendar">Found calendar event</string>
+	<string name="result_email_address">Found email address</string>
+	<string name="result_geo">Found geographic coordinates</string>
+	<string name="result_isbn">Found book</string>
+	<string name="result_product">Found product</string>
+	<string name="result_sms">Found SMS address</string>
+	<string name="result_tel">Found phone number</string>
+	<string name="result_text">Found plain text</string>
+	<string name="result_uri">Found URL</string>
+	<string name="result_wifi">Found Wifi Configuration</string>
+	<string name="sbc_name">Google Book Search</string>
+	<string name="share_name">Share via barcode</string>
+	<string name="title_about">Barcode Scanner v</string>
+	<string name="wa_name">Wifi Connection</string>
+	<string name="zxing_url">http://code.google.com/p/zxing</string>
+	<string name="addr_search_keyword_hint">키워드</string>	
+</resources>

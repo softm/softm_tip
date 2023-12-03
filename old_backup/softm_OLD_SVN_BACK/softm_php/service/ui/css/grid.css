@@ -1,0 +1,130 @@
+@CHARSET "UTF-8";
+
+#tbl_list {
+	font-family: dotum;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+#tbl_list tr {
+	background: #FFF;
+}
+
+#tbl_list th {
+	background: none repeat scroll 0 0 #F9F9F9;
+	font-weight: bold;
+	border-top: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	color: #336699;
+	line-height: 16px;
+	padding: 6px 0 7px;
+	text-align: center;
+}
+
+#tbl_list td {
+	border-bottom: 1px solid #DDDDDD;
+	line-height: 16px;
+	padding: 6px 0 7px;
+	text-align: center;
+}
+
+#tbl_list td.select { background-color:#E8E8FF;color:#000099; }
+
+#tbl_list tr.select {
+	font-size: 19pt;
+	background-color: LightSteelBlue;
+	color: #000000
+}
+
+#tbl_list tfoot td {
+	padding-top:0px;	
+	border:0px;
+	height:0px;
+}
+
+#tbl_list tbody td.col3 {width:100px;text-align:center}
+
+
+.grid_tbl {
+	font-family: dotum;
+	font-size: 12px;
+	text-decoration: none;
+}
+
+.grid_tbl tr {
+	background: #FFF;
+}
+
+.grid_tbl th {
+	background: none repeat scroll 0 0 #F9F9F9;
+	font-weight: bold;
+	border-top: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	color: #336699;
+	line-height: 16px;
+	padding: 6px 0 7px;
+	text-align: center;
+}
+
+.grid_tbl td {
+	border-bottom: 1px solid #DDDDDD;
+	line-height: 16px;
+	padding: 6px 0 7px;
+	text-align: center;
+}
+
+.grid_tbl td.select { background-color:#E8E8FF;color:#000099; }
+
+.grid_tbl tr.select {
+	font-size: 19pt;
+	background-color: LightSteelBlue;
+	color: #000000
+}
+
+.grid_tbl tfoot td {
+	padding-top:20px;	
+	border:0px;
+}
+
+.grid_tbl tbody td.col3 {width:100px;text-align:center}
+        
+/* #tbl_list button {border:1px solid #000066;background-color:#336699;color:white;font-weight:bold;font-size:9pt;
+    font-family:'Arial';cursor:pointer}
+    #tbl_list tbody td {}
+
+    #tbl_list tbody td select {background-color:transparent}
+    #tbl_list tbody td input  {background-color:transparent}
+    #tbl_list tbody td.col0 {background-color:red}
+    #tbl_list tbody td.col1 {background-color:orange}
+
+    #tbl_list tbody td.col0 {width:100px;text-align:center}
+    #tbl_list tbody td.col1 {width:200px;text-align:left}
+    #tbl_list tbody td.col2 {width:200px;text-align:center}
+    #tbl_list tbody td.col3 {width:100px;text-align:center}
+    #tbl_list tbody td.col4 {width:100px;text-align:center}
+    #tbl_list tbody td.col6 {width:100px;text-align:center}
+
+	#tbl_list.change {border:1px solid blue;}
+    #tbl_list tr.select { font-size:19pt;background-color:LightSteelBlue;color:#000000 }
+
+    #tbl_list tbody td.col1 {background-color:#D0D0FF;}
+    #tbl_list tbody td.col2 {background-color:#CACAFF;}
+    #tbl_list tbody td.col3 {background-color:#C4C4FF;}
+
+	#tbl_list th       { height:30px }
+    #tbl_list td       { }
+
+    #tbl_list td.select { background-color:#E8E8FF;color:#000099; }
+
+    #tbl_list td.select textarea { font-weight:bold;border:1px solid gray;background-color:#FFF }
+    #tbl_list td.select select   { font-weight:bold;border:1px solid gray;}
+
+    #tbl_list tr.insert .select{ }
+    #tbl_list td.insert {  }
+
+    #tbl_list tr.update { background-color:#e1ffc4; }
+    #tbl_list td.update { background-color:#c9ff93; font-weight:bold;font-style:italic; }
+
+    #tbl_list tr.delete { font-weight:bold;font-style:oblique ;background-color:#dddddd}
+ */
+ .textOf {overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}

@@ -1,0 +1,40 @@
+<resources>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+	<dimen name="alert_padding">5dp</dimen>
+
+	<!-- base view size, padding -->
+	<dimen name="title_layout_height">47dp</dimen>
+    <dimen name="title_left_padding">17dp</dimen>
+    <dimen name="title_right_padding">5dp</dimen>
+	
+    <!-- activity view size, padding -->
+    <dimen name="side_top_padding">10dp</dimen>
+    <dimen name="side_left_padding">0dp</dimen>
+    <dimen name="side_right_padding">0dp</dimen>
+    <dimen name="side_bottom_padding">27dp</dimen>
+    
+    <dimen name="row_one_title_layout_height">30dp</dimen>
+    <dimen name="row_one_title_coulmn_padding">12dp</dimen>
+    <dimen name="row_one_title_row_padding">12dp</dimen>
+    
+    <dimen name="row_rine_coulmn_padding">10dp</dimen>
+    <dimen name="row_rine_row_padding">17dp</dimen>
+
+    <dimen name="row_edit_padding">7dp</dimen>
+    <dimen name="row_layouto_right_padding">5dp</dimen>
+    <dimen name="row_textview_padding">5dp</dimen>
+    <dimen name="row_textview_top_padding">5dp</dimen>
+    <dimen name="row_textview_bottom_padding">3dp</dimen>
+    <dimen name="row_textview_left_padding">10dp</dimen>
+    <dimen name="row_textview_right_padding">10dp</dimen>
+    <dimen name="row_textview_height">37dp</dimen>
+    
+    <dimen name="row_ceck_box_height">4dp</dimen>
+    <dimen name="row_ceck_text_height">5dp</dimen>
+    
+    <dimen name="btn_row_padding">15dp</dimen>
+    
+    <dimen name="fontSize">17sp</dimen>
+    <dimen name="fontSize2">15sp</dimen>
+</resources>

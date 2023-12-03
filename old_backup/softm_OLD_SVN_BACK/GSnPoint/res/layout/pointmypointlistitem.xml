@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="#FFF">
+   <!--
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/point_bar_bg02"
+        android:contentDescription="리스트 아이템 라인"
+    />  
+    -->
+   
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dip"
+        android:layout_marginBottom="6dip"
+        android:layout_marginLeft="10dp" >
+
+        <TextView
+          android:id="@+id/lst_itm_save_date"
+          android:text="2011.11.22"
+          android:textColor="#B6B6B6"         
+          android:textSize="13dip"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          />
+        <TextView
+          android:id="@+id/lst_itm_split"
+          android:layout_toRightOf="@+id/lst_itm_save_date"
+          android:text="|"
+          android:textColor="#B6B6B6"
+          android:textSize="14dip"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="-1dip"
+          android:layout_marginLeft="2dip"
+        />
+
+        <TextView
+          android:id="@+id/lst_itm_price"
+          android:layout_toRightOf="@+id/lst_itm_split"
+          android:text="250000"
+         android:textColor="#000"
+          android:textSize="14dip"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginLeft="2dip"
+        />
+        <TextView
+          android:id="@+id/lst_itm_price_unit"
+          android:layout_toRightOf="@+id/lst_itm_price"
+          android:text="원"
+          android:textColor="#000"
+          android:textSize="14dip"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:gravity="center_vertical"
+          android:layout_marginLeft="1dp"
+        />
+<!--  android:textColor="#606060"-->
+        <ImageView
+            android:id="@+id/lst_itm_point_sign"
+            android:layout_toRightOf="@+id/lst_itm_price_unit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            
+            android:background="@drawable/bullet_plus"
+            android:contentDescription="부호"
+            android:layout_marginLeft="6dp"
+            android:layout_marginTop="2dip"
+           
+        />
+
+        <TextView
+          android:id="@+id/lst_itm_point_value"
+          android:layout_toRightOf="@+id/lst_itm_point_sign"
+          android:text="60"
+          android:textColor="#519CDD"
+          android:textSize="16dip"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"      
+          android:layout_marginLeft="3dip"
+          android:layout_marginTop="-2dip"
+        />
+
+        <TextView
+          android:id="@+id/lst_itm_point_unit"
+          android:layout_toRightOf="@+id/lst_itm_point_value"
+          android:text="P"
+          android:textColor="#606060"
+          android:textSize="16dip"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"        
+          android:layout_marginLeft="2dip"
+          android:layout_marginTop="-2dip"
+        />
+
+        <TextView
+          android:id="@+id/lst_itm_franch_name"
+          android:text="GS홈쇼핑"
+          android:textColor="#000"
+          android:textSize="15dip"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/lst_itm_save_date"
+          android:layout_marginTop="3dip"
+        />
+
+        <ImageButton
+            android:id="@+id/lst_itm_eval_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_evaluation_img"
+            android:contentDescription="평가하기"
+            android:layout_marginRight="10dip"
+            android:layout_marginTop="3dp"
+            android:layout_marginLeft="13dp"
+            android:layout_alignParentRight="true" 
+            android:layout_centerVertical="true"
+        />        
+    </RelativeLayout>
+     
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/point_bar_bg02"
+        android:contentDescription="리스트 아이템 라인"
+    />
+  
+</LinearLayout>

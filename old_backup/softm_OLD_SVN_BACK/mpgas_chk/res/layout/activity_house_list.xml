@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBgColor"
+    android:orientation="vertical"
+    tools:context=".HouseListActivity" >
+	 
+		 <LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+	        android:layout_marginLeft="@dimen/mainMarginLeft"
+	        android:layout_marginRight="@dimen/mainMarginRight"
+	        android:layout_marginTop="10dp"	        
+		    android:orientation="horizontal"
+		>
+		    <TextView android:id="@+id/tv_house_group_nm"
+	        		  android:layout_width="wrap_content"				        
+		              android:layout_height="match_parent"
+		              android:textSize="@dimen/fontSize21"
+		              android:paddingBottom="0dp"
+		              android:layout_weight="4"
+		              android:gravity="left"
+		              android:text="건물"
+					  android:textColor="@color/headerText"		              
+			/>
+			 <LinearLayout
+	       		android:layout_width="wrap_content"				        
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal"
+		        android:layout_weight="1"
+	            android:layout_gravity="center_vertical"
+	            android:gravity="right"				        
+			>
+	            <ImageButton
+	                android:id="@+id/ib_search_gb"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/street_img"
+	                android:background="#a0000000"	                
+	                 />
+			</LinearLayout>
+		</LinearLayout>
+
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+	        android:layout_marginLeft="@dimen/mainMarginLeft"
+	        android:layout_marginRight="@dimen/mainMarginRight"
+	        android:layout_marginTop="7dp"
+		    android:orientation="horizontal" >
+
+			<com.entropykorea.gas.lib.SpinnerCd
+			    android:id="@+id/spn_cd"
+			    android:layout_width="55dp"
+			    android:layout_height="wrap_content"
+			    android:layout_marginRight="7dp"
+			    android:layout_weight="1.5"
+			    android:popupBackground="@drawable/dropdown_panel"
+			    android:prompt="@string/label_all" />
+
+		     <com.entropykorea.gas.lib.SpinnerCd
+		         android:id="@+id/spn_cd2"
+		         android:layout_width="55dp"
+		         android:layout_height="wrap_content"
+		         android:layout_weight="1.5"
+		         android:layout_gravity="center_vertical"
+		         android:prompt="@string/label_all" 
+		         android:layout_marginRight="7dp"
+		         android:popupBackground="@drawable/dropdown_panel"
+	         />
+			<LinearLayout
+			    android:layout_width="0dp"
+			    android:layout_height="wrap_content"
+			    android:orientation="horizontal"
+                android:layout_weight="5"			
+				android:layout_gravity="center_vertical"
+				android:gravity="right"
+				android:clickable="false"
+			>
+	            <ImageButton
+	                android:id="@+id/ib_batch_chk"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:src="@drawable/s_reading"
+	                android:background="#a0000000"
+	            />
+			</LinearLayout>	            
+		</LinearLayout>
+				
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginBottom="@dimen/mainMarginBottom" 
+            >
+				 <LinearLayout
+				    android:layout_width="match_parent"
+				    android:layout_height="@dimen/listHeight"
+				    android:orientation="horizontal"
+				    android:id="@+id/list_header"
+				    android:layout_marginTop="15dp"
+					style="@style/MP.thead"				    
+				>
+				    <TextView android:id="@+id/tv_h1"
+		         		      android:layout_width="wrap_content"				        
+				              android:layout_height="match_parent"
+				              android:textSize="@dimen/listFontSize"
+				              android:paddingBottom="0dp"
+				              android:layout_weight="4"
+				              android:gravity="center_vertical|left"
+				              android:text="수용가"
+		              android:background="@color/listHeader"		
+							  android:textColor="@color/headerText"
+				              />
+				    <TextView android:id="@+id/tv_h2"
+	         		    	  android:layout_width="wrap_content"
+				              android:layout_height="match_parent"
+				              android:textSize="@dimen/listFontSize"
+				              android:paddingBottom="0dp"
+				              android:layout_weight="1.5"  
+				              android:gravity="center_vertical|center"
+				              android:text="상태"
+		              android:background="@color/listHeader"		
+							  android:textColor="@color/headerText"
+				               />
+				</LinearLayout>
+
+  				<com.entropykorea.gas.lib.ListViewMP
+  				    android:id="@+id/listView1"
+  				    android:layout_width="match_parent"
+  				    android:layout_height="match_parent"
+					android:divider="@color/listDivColor"
+					android:dividerHeight="@dimen/listDividerHeight"
+  				    android:layout_weight="1"
+  				    android:layout_below="@+id/list_header"
+  				    android:listSelector="@drawable/listview_item_selector" 
+  				    android:drawSelectorOnTop="true"
+  				    />
+        </RelativeLayout>	
+</LinearLayout>

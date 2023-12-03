@@ -1,0 +1,937 @@
+1. jQuery Tools 이해
+    jQuery 도구는 웹에서 사용되어지는 가장 중요한 사용자 인터페이스이 집합입니다.
+    Tabs, Accordins, tooltips, overlay, 효과의 노출, scrollables가 있습니다.
+    드라마틱한 사용성의 향상과 사이트에서 직각적인 응답을 얻을 수 있습니다.
+    jQuery는 핵심은 정보의 표현과 가시적인 표현입니다.
+    원하는것 :  독자에게 자신의 콘텐츠를 제시하고 쉽게 시각적인 즐거움을 주는것입니다.
+
+    다른 Javascript UI 라이브러리의 초점은 drag-and-drop, sliders, sortable table 또는 dragging windows
+    특성이 있습니다.
+
+    eamil 클라이언트, task manager, CRM software, image organizer 같은 "rich internet application"(RIAs)를 이미합니다.
+    이런종류의 application은 소규모 그룹 또는 인트라넷에서 매우유용합니다.
+
+    오래된 유닉스의 디자인 철학 "tools, not policy" 매우 웹 디자인에 중요합니다.
+
+2. HTML의 역활
+    jQuery Tools는 HTML개발자에게 가장 중요합니다.
+    현존하는 웹사이트 혹은 새롭게 시작하는 사이트에 이 툴은 향상된것을 제공합니다.
+    이 툴은 html 구조에 경계를 갖지 않습니다.
+    예를들어,tab 은 UL, OL, DL, DIV or TABLE elements로 생셩될수 있습니다.
+    중요한것은 html element로 어떤상황에서 무엇을 하는가를 이해하는것입니다.
+
+3. The role of JavaScript and jQuery
+    - 빠르고 간결한 Javascript library
+    - cross-browser application
+    - 모든 tools에서 flashembed는 별개이다.
+
+    - 처음배울 스킬은 page에서 element를 선택하는것
+
+    // two jquery selectors and a configuration given as an object literal
+    // content id값을 가지는 하위 요소에서 ul태그를 사용하고 class name이 tabs인 요소를 선택한다.
+    // tabs ui tool을 이용해 div element의 panes class name을
+    $("#content ul.tabs").tabs("div.panes > div", {
+
+        // configuration variables
+        current: 'current',
+        effect: 'fade'
+
+    });
+
+    // ready일때 실행
+    $(document).ready(function() {
+
+        // put all your JavaScript wizardy here
+
+    });
+
+    // 바로 실행
+    $(function() {
+
+        // same thing here.
+
+    });
+
+4. css의 역활
+    Cascaded Style Sheet는 사용자 Element를 표현하고 위치시키는 스타일링 산업 표준입니다.
+    그것은 웹개발자에게 놀라운 경험을 할 수 있게하는 강력한 언어 입니다.
+
+    $("ul.tabs").tabs("div.panes > div", {current: 'active'});
+
+    ul.tabs .active {
+        color: '#fff';
+        fontWeight: bold;
+        background-position:0 -40px;
+    }
+
+5. Graphic design and presentation
+
+    1. CSS-based design
+
+    This approach depends primarly on CSS for the presentation. You'll use background colors, border colors and styling, web fonts and have only minimal use of graphics.
+
+        * limited visual control. There are lots of things you can tweak with CSS, but in the end they are limited and you simply cannot do everything with them.
+        * scalable size. Your elements can stretch horizontally and vertically without problems.
+        * maintenable. You can easily change the design just by editing a few lines of code.
+        * lightweight. CSS files are text which means that they can be downloaded much faster than images. CSS files can also be compressed and GZIPped which makes them even faster.
+
+    There are lot's of new features in the latest CSS version such as rounded borders, gradient borders, shadows and opacity, but these are not yet supported by every major browser. Some of the demos on this site uses these CSS3 features. If you are using Firefox 3.5, Safari 4.0 or other CSS3 compatible browser please take a look at the scrollable gallery with tooltips demo and click on the thumbnails. You'll see nice looking drop shadows on the overlay. As you can see you can create stunning looks by only using CSS and the design will also behave well on older browsers.
+
+    2. Image-based design
+
+    In this approach you'll typically use a single background image that is optimized for the purpose.
+
+        * best visual control. Your design will look exactly how you want it to look. No compromises.
+        * fixed size. Your elements' width and height is fixed. You have to optimize the content to fit inside elements and for excessive content you must rely on scripting or scrollbars.
+        * heavy. More kilobytes to download and more requests to the server. Heavy use of images will slow down your pages.
+
+    3. CSS and image-based design
+
+    With this approach you'll use a lot of CSS tricks together with multiple background images.
+
+        * best of both worlds. Scalable elements that look good.
+        * lots of work. You must master CSS and a tight integration with the graphics designer is needed. This approach needs more planning.
+
+    jQuery Tools allows you to use any of above approaches and it does not restrict you to any hard-coded CSS coding or theming frameworks. Our demo area contains examples of all these approaches, but we mainly use the second approach. We typically use a single background image to demonstrate the tool in an appealing manner. We also offer you a lot of different general-use background images that you can use as the basis for your own design.
+
+
+PNG-24 format
+    This website uses a lot of semi-transparent PNG-24 images which are not natively supported by IE6.
+
+ If you are not using IE6 you can see the eye through the PNG24 image. Many sites don't yet take full advantage of this wonderful graphics format.
+Internet Explorer 6.0
+
+Alpha transparency is not natively supported by Internet Explorer 6.0. It is possible to make it work in IE6 by using the IE-proprietary AlphaImageLoader filter but, according to recent studies by Yahoo, this technology should be avoided. The problem with this filter is that it blocks rendering and freezes the browser while the image is being loaded; it increases memory consumption and is applied per element, not per image, so the problem is multiplied.
+
+You'll definitely get the most reliable results by using GIF or JPG images in place of PNG images on IE6. You can override this in your CSS as follows:
+
+#myelement {
+    background-image: url(corner.png);   /* all browsers */
+    _background-image: url(corner.jpg);  /* IE6 only */
+}
+
+The initial underscore is a hack that causes the CSS setting to be applied only to versions of IE older than 7. You may have the patience to do this. I haven't.
+PNG24 and opacity in all versions of IE
+
+If you programmatically change the opacity of a PNG image in all versions of Internet Explorer it will cause ugly black borders around the image as seen on this screenshot:
+
+This bug makes it impossible to make fading animations with PNG images in Internet Explorer. For this reason the Tooltip "slide" effect uses opacity fading in every browser other than in IE. This is the default behaviour but you can of course change this if your tooltip is not decorated with PNG graphics. Take a look at the Tooltip front page and look at the first demo in Firefox and in IE. The tooltip fades in/out in Firefox but uses the sliding effect without opacity changes in IE.
+
+This "black box" bug can also happen in situations where a PNG image is placed on top of a transparent layer. I noticed this happening in this demo.
+
+6. Including the Tools
+    http://cdn.jquerytools.org/1.1.2/jquery.tools.min.js
+
+    This will include the tools on your page with maximum performance.
+    We are offering this high performance content delivery network (CDN) for free. You can use it in production environments. Enjoy!
+
+    If you are using Firebug or similar JavaScript debugger you can easily test which tools are included and what are their versions by running the following command from the console:
+
+7. Initializing the Tools
+
+    After the needed tools are included on the page, you need to initialize them. All tools follow the same pattern. Initialization always starts with a jQuery selector followed by the tool initialization function (constructor) and its configuration object. Here is an example using the scrollable tool:
+
+    // initialize tools.scrollable with configuration variables
+    $("#wrap").scrollable({
+        size: 1,
+        clickable: false,
+        loop: true
+    });
+
+    This will make all elements scroll that are contained within an element whose id is "wrap". Next, comes a tool constructor named scrollable which takes a configuration object as an argument. This object defines the settings for how we want our elements to be scrolled. This example above is mainly the way you initialize tools.
+
+    # Return value
+
+        The constructor will always return the jQuery object that is a collection of the elements that are selected by the selector. This is how all proper jQuery plugins are recommended to behave. Again we use the scollable tool as our example:
+
+        // return elements specified in the selector as a jQuery object
+        var elements = $("div.scrollable").scrollable({size: 3});
+
+        /*
+          now you can continue working with the jQuery object. you can,
+          for example, add new plugins and use built-in jQuery constructs
+        */
+        elements.someOtherPlugin().onClick(function() {
+            // do something when this element is clicked
+        });
+
+8. Making global configurations
+
+    Althought you can change the default settings of the tools by supplyig configuration on the initialization phase you may be using the same configuration settings over and over again. In this case you may want to change the default configuration variables for the tools so that you don't need to specify same setting every time. Here is an example of an global configuration setting
+
+    // all overlays use the "apple" effect by default
+    $.tools.overlay.conf.effect = "apple";
+
+    After this you can simply do this
+
+    // "apple" effect is now our default effect
+    $("a[rel]").overlay();
+
+    Of course you can override these default settings just like before
+
+    // override the global configuration setting
+    $("a[rel]").overlay({effect: 'default'});
+
+    Every tool has a global configuration under $.tools.[TOOL_NAME].conf. For example $.tools.tabs.conf. You can change many global settings simultaneously by using jQuery build-in $.extend method as follows:
+
+    $.extend($.tools.overlay.conf, {
+        effect: 'apple',
+        api: true,
+        speed: 1000
+    });
+
+    The list of various configuration settings can be found on individual tool's documentation page. One important thing about the global configuration is that it provides you a good source of "documentation". Try hitting following command into your Firebug console:
+
+    console.dir($.tools.overlay.conf);
+
+    And you can see following information appearing:
+
+9. Extending the Tools with plugins and effects
+
+    jQuery Tools is the first framework to take full advantage of the jQuery's powerful chaining technology.
+    Here is an example of a chaining pattern
+
+    // initialize few scrollables and add more features to them
+    $("div.scroller").scrollable({size: 4}).infinite().autoscroll({interval: 4000});
+
+     You take a one or more div.scroller elements from a page and make them scrollable. The scrollable tool has only the absolute nessessary features to make things scroll. If you want to have more features you can use plugins. In this example we used infinite  plugin to make an infinite loop for the scrollable items so that there is no end or beginning for the scrollable items - you can scroll back and forward infinitely. The autoscroll plugin makes the items scroll automatically without any user interaction.
+
+    You can have multiple scrollables on the page and they can all be activated with this single line of code. All plugins may have their own set of configuration variables and they can also be set from the global configuration.
+
+    Almost every tool has a few plugins that can be downloaded from the download page. This kind of design pattern makes the overall file size dramatically smaller because you can only use the things you need. It also makes the code more organized and easier to understand. In programming world this pattern is called a decorator pattern which is at the heart of jQuery: "take a bunch of elements from a page and do stuff with them". jQuery Tools takes this seriously and step further than other libraries.
+
+    Every tool has a build-in plugin architecture and you can easily write your own plugins.
+
+    # Effects
+
+    Tabs, tooltip and overlay has an unique "effect framework" which enables you to change the default behaviour of the tool. Here is an example
+
+    // use "apple" effect for the overlays
+    $("a[rel]").overlay({effect: 'apple'});
+
+
+     This configuration makes the overlay use an effect called "apple" which makes the overlay work as you may have seen on Apple's website. The purpose of the effects is to change the default behaviour whereas plugins will enriching or adding new features. In case of the overlay the actual tool provides the basic functionality of overlaying such as initialization, keyboard and mouse interaction and document masking (with expose effect) while effects duty is to only perform the opening and closing actions of the tool. This makes it fairly easy to implement different kind of effects. This design pattern makes the code more organized and makes the overall file size smaller just like plugins do.
+
+    Some tools have many built-in effects and some have only one. You can also get more effects from the download page. You can set the default effect in the global configuration so that you don't have to explicitly supply it to every initial configuration.
+    Writing own effects
+
+    Look for each individual tool's documentation for more information:
+
+        * Writing effects for Tabs
+        * Writing effects for Tooltip
+        * Writing effects for Overlay
+
+    Note: it is possible to define custom configuration variables for your effect by extending the global configuration. Say you have a custom overlay effect with the configuration property explosionSpeed; you can give it a default value as follows:
+
+    $.tools.overlay.conf.explosionSpeed = 500;
+
+    After that the users can either use the default value or override it from the overlay configuration.
+
+10. Application Programming Interface API
+
+    Every tool has a well defined Application Programming Interface (API) that you can work with. This is one of the greatest strengths of this library. You can call tool methods and access their properties. The internal state is hidden and private variables are not accessible by the outer world which is what you would expect from good programming practice. Each tool behaves in a similar manner.
+
+    The main goal for the API design is that there should be easy access to the tools API and at the same time each tool should behave like all other jQuery plugins do.
+    Getting the API upon initialization
+
+    As seen above, when a tool is initialized, the return value is, by default, a jQuery object. This is what jQuery users are accustomed to and it should be respected. However, there must be an easy way of accessing the API upon construction and all tools supports an api property as follows:
+
+    // create one scrollable element and return the API by enabling the "api" property
+    var api = $("#myDiv").scrollable({size: 3, api: true});
+
+    This is a very useful shortcut and provides quick access to the API. After you have the API available, you can start taking advantage of the powerful methods at your disposal. Here are a few examples:
+
+    // we scroll two items forward
+    api.move(2);
+
+    // scroll to the beginning in 2000 milliseconds
+    api.begin(2000)
+
+    // do some custom actions when scrolling occurs
+    api.onSeek(function() {
+
+        // inside callbacks the "this" variable is a reference to the API
+        console.info("current position is: " + this.getIndex())
+    });
+
+    It is natural to have a tool-specific API available when working with a certain widget. There are no redundant methods and typically you won't need, for example, the DOM manipluation methods that jQuery offers. You will want to stick with the methods that relate to the task at hand.
+
+    If you are using jQuery Tools plugins you need to supply the api parameter for the last plugin in the initialization chain. For example
+
+    // when using plugins supply the api parameter for the last plugin
+    var api = $("#my_scrollable").scrollable().circular().mousewheel({api: true});
+
+    Every tool and plugin supports this api paramter.
+
+# Getting the API after initialization
+
+    Another way of grabbing the API is by using the constructor again once the tool has been initialized. Here is an example:
+
+    // grab the scrollable API after it has been initialized
+    var api = $("#myDiv").scrollable();
+
+    If you have multiple scrollable elements on your page and want to access a particular API, you can supply do it in one of the following ways:
+
+    // return the third API from the list of scrollables using a numeric argument.
+    var api = $("div.scrollable").scrollable(2);
+
+    // alternate method is to use a jQuery selector
+    api = $("div.scrollable:eq(2)").scrollable();
+
+    // or like this, it is just a matter of taste
+    api = $("div.scrollable").eq(2).scrollable();
+
+    Note that the index argument is always zero-indexed, i.e., the first scrollable is located at scrollable(0), the second at scrollabe(1), etc.
+
+# Using the API
+
+    After you have the API available, it behaves in a way that a "normal" programmer (or non-jQuery programmer) is accustomed to. There are getters, setters and methods that invoke actions. Invoking methods will always return the API itself so you can perform method chaining. For example:
+
+    // normal API coding that programmers are accustomed to
+    var index = $("#example").tabs().click(1).getIndex();
+
+    Here the click method returns the API so you can continue with other tab methods such as getIndex. All tools support this kind of method chaining, just as you would expect from a jQuery plugin.
+
+    In addition to normal methods, you also have the ability to register callback functions from the API which leads to the development of jQuery Tools plugins, but more about that later. Here is the scrollable tools API for you to study as an example.
+
+# jQuery UI compatibility
+
+    If you are an active user of the jQuery UI library, you may want to get access to the API in a way that is compatible with that library. In jQuery UI, you can grab the API with the data method. This similar mechanism is fully supported by the Tools since its initial version. For example:
+
+    // initialize tabs. a jQuery object is returned
+    var ul = $("ul.tabs").tabs();
+
+    // grab the API using data() method
+    var api = ul.data("tabs");
+
+    You can see that this is a bit more verbose than using the api property but this is still supported for your convenience.
+
+# jQuery UI unified API
+
+    jQuery UI has a so-called "unified API" which uses the following syntax for invoking methods:
+
+    // call select method for tabs
+    $("ul.example").tabs("select", 1);
+
+    API methods are called by supplying the method name as a string followed by method arguments. This kind of syntax is not supported by the Tools. To be honest, I think that this kind API design is fundamentally wrong. It has the following problems:
+
+       1. The syntax is unique to jQuery UI and people outside the UI community are not accustomed to it.
+       2. The syntax is cubersome. For example, if you want to perform method chaining you have to write the following: $("ul.example").tabs("select", 1).tabs("disable", 2);
+       3. The JavaScript engine cannot see typos. writing "selecct" does not produce any errors and makes it hard to debug.
+
+
+11. Using Callback Functions
+
+    These tools have extensive support for callback functions. These callbacks are functions that you supply in the configuration and which are called when something critical happens to the tool, such as an overlay is opened. Callback functions are your way to customize and extend the default behaviour of each tool.
+
+    When you are not happy with the configuration possibilities, you can use callback functions. These functions are just like other configuration variables except that the values are actual functions.
+
+    These tools provide both the onBefore event which occurs before some action is taken and the on event that occurs by the time (or after) an action takes place. You can have custom functionality bound to these events. All tools provide such events and they share a common naming policy. The onBefore event provides you with the possibility of cancelling the action
+
+Callback example
+
+    This example demonstrates the onBeforeClick callback function for tools.tabs.
+
+    $("#example").tabs(".panes > div", {
+
+        // here is a "normal" configuration variable
+        current: 'active,
+
+        // here is a callback function that is called before the tab is clicked
+        onBeforeClick: function(event, tabIndex) {
+
+            // the "this variable is a pointer to the API. You can do a lot with it.
+            var tabPanes = this.getPanes();
+
+            /*
+                By returning false here the default behaviour is cancelled.
+                This time another tab cannot be clicked when "terms" are not accepted
+            */
+            return $(":checkbox[name=terms]").is(":checked");
+        }
+
+    });
+
+    In every callback function the this variable is a reference to the programming API of the tool. In the above example this is a reference to the Tabs API. Again, this is what average programmers are used to and the tools follow this standard programming practice.
+
+# Multiple callback functions
+
+    In the above example, we supplied our callback function in the configuration when the tool was initialized. You can supply callback functions from the the API as well. In fact, you can supply multiple callback functions for the same event this way. For example, you may have multiple onBeforeClick listeners which are all triggered when a tab is clicked. Here is an example of registering callbacks with the API:
+
+    // get handle to the API. We assume that tabs have already been constructed
+    var api = $("#example").tabs();
+
+    // register a callback function
+    api.onBeforeClick(function(e, tabIndex) {
+
+        // .. do your thing ..
+
+    });
+
+    Again, inside the callback function the this variable is a pointer to the programming API.
+
+# The Event object
+
+    Since version 1.1.1. every supplied callback function receives the jQuery.Event object as the first argument for the callback function. This event object standardizes the event processing according to the W3C standards. Here are some things you can do with this object:
+
+    // the event object is the first argument for *all* callbacks in jQuery Tools
+    api.onClick(function(event) {
+
+        // cancel the default action. same as returning false
+        event.preventDefault();
+
+        /* If you have multiple callbacks of the same type this prevents
+            the rest of the callbacks from being executed. */
+        event.stopImmediatePropagation();
+
+        // retrieve the value returned by the previous callback function
+        event.result;
+
+        // The timestamp (in milliseconds) of when the event was created.
+        event.timeStamp;
+
+        /*** the following properties were added in version 1.1.2 ***/
+
+        // mouse position when event was fired
+        var x = event.pageX;
+        var y = event.pageY;
+
+        // whether CTRL, ALT, SHIFT or ESC was being pressed
+        var alt = event.altKey,
+             ctrl = event.ctrlKey,
+             shift = event.shiftMey,
+             esc = event.metaKey;
+
+
+        // the original triggering element
+        var element = e.originalTarget || e.srcElement;
+    });
+
+    Within the scope of jQuery Tools, the preventDefault() is identical to returning false from the callback. This is just a matter of style where the preventDefault() is the modern manner of cancelling.
+
+    You can get the handle to the actual element that fired the event with var element = e.originalTarget || e.srcElement;. For example, you can get a handle to the scrollable navigator item that was clicked inside the onSeek event.
+
+# Removing callbacks
+
+    Sometimes you want to remove your callback function from being used. This can be done with the unbind call. Here is an example:
+
+    // remove *all* user supplied onClick callbacks from the tool
+    api.unbind("onClick");
+
+    If you want to remove only a certain callback, you need to specify the callback for the tool with a custom name. This can be done with the bind function as follows:
+
+    // supply a callback function with a custom name
+    api.bind("onClick.myname", function() {
+
+    });
+
+    Now this particular callback can be removed as follows:
+
+    api.unbind("onClick.myname");
+
+    Since jQuery Tools 1.1.1. The bind and unbind methods are available for every tool.
+
+# Same callback for multiple events
+
+    You can use the bind function to supply the same callback function for different events. For example:
+
+    // bind a custom callback for both onLoad and onClose events of the Overlay tool
+    $("#myTrigger").overlay({api: true}).bind("onLoad onClose", function(event) {
+
+        // know which event is being called by using the <samp>type</samp> property of the event object
+        if (event.type == 'onLoad) {
+
+        }
+
+    });
+ The names of the events are separated by spaces. You can also supply a custom name for each of the callbacks such as onLoad.my onClose.my. You can use the unbind method to remove all callbacks at the same time by calling unbind(). In the case of the previous example you would do so by calling unbind(".my").
+
+    Please note that the event object, unbind and bind methods are for experienced scripters only. An average user will most probably never use them.
+
+# A quick comparison with class-based inheritance
+
+    Some programmers may argue that a better solution would have been to implement "classes" that users can "extend". Trust me, it's not. JavaScript is an inherently functional language, not an object-oriented one. Trying to mimic classical inherintance leads to poor design and makes programs longer and harder to understand. This is especially important in jQuery development because this library itself is highly dependent on callbacks and does not support any kind of inheritance. Functions are an easy, light-weight and effective way of extending behavior. Even newcomers can use them without understanding the anatomy of the JavaScript language.
+
+
+12. Creating jQuery Tools Plugins
+
+    It is possible to implement jQuery plugins that are tightly integrated with jQuery Tools. These plugins would typically alter the default behaviour of the tool or they can add new functionality. jQuery Tools plugins are authored just like normal jQuery plugins with the exception that inside your plugin you'll get a handle to the Tools programming API and possibly supply callback functions. The fact that the tools can have an unlimited number of callback functions registered is the backbone of plugin development. Here is a simple skeleton for a plugin that will track Google Analytics each time a tab is clicked:
+
+    // create jQuery plugin called "analytics"
+    $.fn.analytics = function(tracker) {
+
+        // loop through each tab and enable analytics
+        return this.each(function() {
+
+            // get handle to tabs API.
+            var api = $(this).tabs();
+
+            // setup onClick listener for tabs
+            api.onClick(function(index)  {
+                tracker.trackEvent("tabs", "foo", index);
+            });
+
+        });
+    };
+
+    After you have this plugin included on your page, you can use the plugin in the following manner:
+
+    // initialize tabs and the analytics plugin. the Analytics tracker argument is defined elsewhere
+    $("ul.tabs").tabs("div.panes > div").analytics(tracker);
+
+    If you are a jQuery plugin developer, you can see that this follows the "standard" way of developing plugins. The interesting part is the retrieval of API with the var api = $(this).tabs(); command. Instead of constructing new tabs, it will return the API. This is because tabs were already constructed. In fact our previous setup requires that the tabs are initialized before the analytics plugin, so you cannot write:
+
+    // this is wrong. the analytics plugin does not get access to the tabs API
+    $("ul.tabs").analytics(tracker).tabs("div.panes > div");
+
+    Here is a solid example about developing jQuery plugins. There are many plugins available on the download page. You can take a look at their commented source code to get more understanding about the plugin development.
+
+13. Using the Tools with other plugins and libraries
+
+    jQuery Tools can be used together with other libraries and plugins. Both jQuery and non-jQuery libraries can be included on the page and they should work together. The only thing that may cause problems is that you cannot use jQuery plugins that have the same name. You cannot, for example, use jQuery UI tabs together with jQuery Tools tabs since both are using the same name. But you can use any other UI widget without problems. The same is true for any other jQuery plugin you can find.
+
+    If you are using other JavaScript libraries such as MooTools, Ext JS or Prototype together with the Tools, then you can be even less worried about name conflicts. If your non-jQuery library uses the dollar sign $ as the prefix (or namespace) for the plugin names, then you should look at jQuery's possibility to override the $- function.. jQuery Tools supports the switching of this namespace.
+
+# jQuery Tools have been proven to work with following browsers:
+
+    * Firefox 2.0+
+    * Internet Explorer 6+
+    * Safari 3+
+    * Opera 9+
+    * Chrome 1+
+
+    If you encounter any problem with jQuery Tools and any of these browsers, please report it to the jQuery Tools forum.
+
+15. jQuery Tools and Flowplayer
+
+    You must have noticed that this project is hosted on the Flowplayer website. This is because some of the tools were initially developed for making widgets that work well with video sites. Scrollable was made for building playlists and overlay was made for showing videos over other elements on the page. Little by little those widgets matured to the point where they are now.
+
+    Today Flowplayer and jQuery Tools have nothing specific to do with each other. Flowplayer is a video player and jQuery Tools is a generic user-interface library for the web. Of course, they can be used together because both are well behaving pieces of software. Here is a quick example of how videos can be overlayed on a page:
+
+    // install flowplayer into a container element whose id is "player"
+    var player = $f("player", "http://releases.flowplayer.org/swf/flowplayer-3.1.5.swf");
+
+    // setup button action. it will fire our overlay
+    $("a.overlayLink").overlay({
+
+        // when overlay is opened, load our player
+        onLoad: function() {
+            player.load();
+        },
+
+        // when overlay is closed, unload our player
+        onClose: function() {
+            player.unload();
+        }
+    });
+
+    Flowplayer is Open Source software licensed with the GPL 3 open source license. There are also commercial licenses that allow us to focus full time on the development of tools and the player itself. They also allow us to provide the free content delivery network for the users of jQuery Tools. There is currently no possibility of expressing your satisfaction through making a donation; however, if you are interested on showing videos on your site you could consider purchasing a Flowplayer commercial license.
+
+------------------------- ----------------------------- -------------------------------------
+사용법
+
+1. jQuery( expression, context )
+expression는 String로 표현되고 특정 태그를 찾을때 사용되며, context는 Element나 jQuery으로 인자 값으로 받는다.
+
+  즉, $("input:radio", document.forms[0]); 이와 같이 사용된다.
+
+
+
+ 2. jQuery( html )
+jQuery는 인자값으로 html 태그를 받아 그 태그를 HTML페이지에 추가를 할 수가 있다.
+
+즉,
+$("<div><p>Hello</p></div>").appendTo("body") 사용이 되기도 하고,
+$("<input/>").attr("type", "checkbox");
+
+풀이 하자면
+
+첫 번째는 "body"안에 "<div><p>Hello</p></div>"를 삽입(appendTo()는 특정 태그에 사입할 때 사용 )
+
+두번째는 "input"를 생성하되 "type=checkbox"로 하여 태그를 생성하게 된다. 두번째는 HTML 마지막 부분에 삽입된다.
+
+
+
+3. jQuery( elements )
+DOM element(s) 를 인자로 받아 그 지역의 elements를 설정할 수가 있다.(한개 혹은 다수를 지정할 수가 있다.)
+
+ $(document.body).css( "background", "black" ); -> HTML 배경색을 검정색으로 바꾼다.
+
+ $(myForm.elements).hide() -> myForm의 이름을 가진 form안의 elements을 숨긴다.
+
+ 4. jQuery(callback )
+이것은 인자값을 함수로 지정을 할 수가 있다는 애기로 jQuery를 처음 시작하는 부분에서 많이 접해 봤을 것이다.
+즉,
+"$(document).ready(function(){....};)" 이 부분
+
+특정 이벤트가 발생할 때 그 부분을 함수로 처리 하기 위해서 이다.
+예를 들어 마우스를 클릭시
+경고창을 띄워주고 싶다면 아래와 같이 하면 된다.
+
+                           "$(document).click(function(){
+
+                                   alert("마우스가 눌려짐!!");
+
+                             };)"
+
+
+
+- jQuery Object Accessors
+
+1. each( callback )
+
+ : 해당 오브젝트에서 어떤 함수처리를 하고 싶을 경우 사용된다.  코드를 직접 보면 이해가 쉽게 된다.
+
+    $(document.body).click(function() {
+      $("div").each(function (i) {
+
+        // 클릭 이벤트가 발생 되었을 경우 "div"태그에서만 글 색상을 변경하도록 한다.
+        if (this.style.color != "blue") {
+          this.style.color = "blue";
+        } else {
+          this.style.color = "";
+        }
+      });
+    });
+이 코드를 실행 시키면 클릭 할때마다 색깔이 변경이 된다. 참고로 이 코드는 "body"안의 모든"div"태그를 뜻한다. 특정 "div" 에서만 이벤트가 발생되기를 원하시면 그 태그의 인덱스를 찾아야 할 것이다.
+
+2. size()
+
+ : 해당 오브젝트의 Elements의 수를 알고자 할 때 사용된다.
+
+    $(document.body).click(function () {
+        $(document.body).append($("<div>"));
+        var n = $("div").size();
+        $("span").text("There are " + n + " divs." +
+                     "Click to add more.");
+    }).click(); // trigger the click to start
+
+
+
+3. length()
+해당 오브젝트의 Elements의 수를 알고자 할 때 사용된다. size()와 동일
+$(document.body).click(function () {
+      $(document.body).append($("<div>"));
+      var n = $("div").length;
+      $("span").text("There are " + n + " divs." +
+                     "Click to add more.");
+    }).trigger('click'); // trigger the click to start
+
+
+
+4. eq( position )
+해당 포지션에 위차한 태그를 찾는다.
+한마디로 아파트로 비교하자면 몇호실을 찾는지와 같다. "405호실를 청소해라!"
+
+position의 위치는 0 부터 시작해서 -1까지
+
+ $("p").eq(1).css("color", "red"); // "p"태그에서 1(0 부터 시작하므로 두번째를 의미)번지에 해당하는 "p"를 변경한다.
+
+
+5. get()
+해당 태그의 Elements 들을 Array형태로 리턴한다. 즉, '$("div").get() 하면 모든 div태그 들을 Array 형태로 리턴
+
+    한마디로 하면 DOM의 Elements를 배열로 리턴하는 것이다.
+
+       function disp(divs) {
+          var a = [];
+          for (var i = 0; i < divs.length; i++) {
+               a.push(divs[i].innerHTML);
+          }
+          $("span").text(a.join(" "));
+        }
+
+        disp( $("div").get().reverse() ); // div태그의 값들을 읽어 와서 그 값의 순서를 뒤집는다.
+
+        // 예를 들어
+
+        // <div>1</div><div>2</div><div>3</div> 이 있으면 reverse() 하면 3, 2, 1로 순서가 뒤집히게 된다.
+
+
+6. get( index )
+index에 해당되는 위치의 element을 가져온다. 즉, 단일 element를 가져 오게 되는 것이다.
+$("*", document.body).click(function (e) { // body안의 모든 Elements에서 클릭 이벤트가 발생되면.
+     e.stopPropagation();
+     var domEl = $(this).get(0); // 클릭된 태그의 Elements중 0번지에 해당하는 Element를 가져온다.
+     $("span:first").text("Clicked on - " + domEl.tagName); // 0번지의 태그이름을 출력한다.
+  });
+
+
+
+7. index( subject )
+subject의 인덱스 번호를 찾는다. 인덱스 번호도 0부터 시작된다.
+
+$("div").click(function () {
+       // this is the dom element clicked
+       var index = $("div").index(this); // "div"태그에서 클릭이벤트가 발생 될경우 그 "div"태그의 인덱스 찾아서 리턴한다.
+          $("span").text("That was div index #" + index);
+    });
+
+---------------------- -------------------------- ------------------------------
+jQuery("#nav li.contact")
+jQuery(":visible")
+jQuery(":radio:enabled:checked")
+jQuery("a[title]")
+jQuery("a[title][href='foo']")
+jQuery("a:first[href*='foo']")
+jQuery("#header, #footer")
+jQuery("#header, #footer").filter(":visible")
+
+attr()
+removeAttr()
+addClass()
+hasClass()
+toggleClass()
+removeClass()
+val()
+
+$("input").focus(function(){
+var v = $(this).val();
+$(this).val( v == this.defaultValue ? "" : v);
+}).blur(function(){
+var v = $(this).val();
+$(this).val( !v ? this.defaultValue : v);
+});
+
+add()
+children()
+closest()
+find()
+next()
+nextAll()
+prev()
+prevAll()
+siblings()
+parent()
+parents()
+andSelf()
+end()
+eq()
+filter()
+is()
+not()
+slice()
+
+$("h3").click(function() {
+$(this).next().toggle();
+}).next().hide();
+
+html()
+text()
+append()
+appendTo()
+prepend()
+prependTo()
+after()
+insertAfter()
+before()
+insertBefore()
+wrap()
+wrapAll()
+wrapInner()
+replaceWith()
+replaceAll()
+empty()
+remove()
+clone()
+
+<!DOCTYPE html>
+<html>
+<body>
+<p>Make me bold!</p>
+<script src="jquery.js"></script>
+<script>
+jQuery("p").wrapInner("<b></b>");
+</script>
+</body>
+</html>
+
+css()
+offset()
+offsetParent()
+postion()
+scrollTop()
+scrollLeft()
+height()
+width()
+innerHeight()
+innerWidth()
+outerHeight()
+outerWidth()
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>div{background-color:#ccc; width:100px;
+margin:0 20px; float:left;}</style>
+</head>
+<body>
+<div></div>
+<div></div>
+<div></div>
+<script src=“jquery.js" ></script>
+<script>
+jQuery("div").height(jQuery(document).height());
+</script>
+</body>
+</html>
+
+ready()
+bind()
+one()
+trigger()
+triggerHandler()
+unbind()
+live()
+die()
+hover()
+toggle()
+
+blur()
+change()
+click()
+dbclick()
+error()
+focus()
+keydown()
+keypress()
+keyup()
+mousedown()
+mousenter()
+mouseleave()
+mouseout()
+mouseup()
+resize()
+scroll()
+select()
+submit()
+unload()
+
+<!DOCTYPE html>
+<html>
+<body>
+<p>click me</p>
+<p>click me</p>
+<script src="jquery.js"></script>
+<script>
+jQuery("p").bind("click", function(){
+$(this).after("<p>click me</p>");
+});
+</script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<body>
+<p>click me</p>
+<p>click me</p>
+<script src="jquery.js"></script>
+<script>
+jQuery("p").live("click", function(){
+$(this).after("<p>click me</p>");
+});
+</script>
+</body>
+</html>
+
+show()
+hide()
+toggle()
+slideDown()
+slideUp()
+slideToggle()
+fadeIn()
+fadeOut()
+fadeTo()
+animate()
+stop()
+
+<!DOCTYPE html><html><head>
+<style>
+div{backgroundcolor:#
+bca;width:100px;border:1px solid green;}
+</style>
+</head>
+<body>
+<div id="block">Hello!</div>
+<script
+src="http://ajax.googleapis.com/ajax/libs/jquer
+y/1.3.2/jquery.min.js" ></script>
+<script>
+jQuery("#block").animate({
+width: "70%",
+opacity: 0.4,
+}, 1500);
+</script></body></html>
+
+jQuery.ajax()
+jQuery.get()
+jQuery.getJSON()
+jQuery,getScript()
+jQuery.post()
+load()
+ajaxComplete()
+ajaxError()
+ajaxSend()
+ajaxStart()
+ajaxStop()
+ajaxSuccess()
+jQuery.ajaxSetup()
+serialize()
+serializeArray()
+
+<!DOCTYPE html><html><body>
+<script
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jq
+uery.min.js" ></script>
+<script>
+jQuery.getJSON("http://api.flickr.com/services/feeds/phot
+os_public.gne?tags=jquery&tagmode=all&format=json&jsoncal
+lback=?",
+function(data){
+jQuery.each(data.items, function(i,item){
+jQuery("<img/>")
+.attr("src", item.media.m)
+.appendTo("body");
+if ( i == 30 ) return false;
+});
+});
+</script></body></html>
+
+jQuery.support
+jQuery.boxModel
+jQuery.each(),
+jQuery.extend(),
+jQuery.grep(),
+jQuery.makeArray(),
+jQuery.map(),
+jQuery.inArray(),
+jQuery.merge(),
+jQuery.unique()
+jQuery.isArray(),
+jQuery,isFunction()
+
+jQuery.trim()
+jQuery.param()
+
+// returns "hello"
+jQuery.trim(" hello ");
+//
+returns "name=John&url=ejohn.org"
+jQuery.param({ name: "John",
+url: "ejohn.org" });
+
+<!DOCTYPE html><html><body>
+<p>I hate jQuery!</p>
+<script
+src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min
+.js"></script>
+<script>
+(function($){
+$.fn.loveNotHate = function(){
+$(this).text($(this).text().replace(/hate/g,"love"));
+};
+})(jQuery);
+jQuery("p").loveNotHate();
+</script></body></html>

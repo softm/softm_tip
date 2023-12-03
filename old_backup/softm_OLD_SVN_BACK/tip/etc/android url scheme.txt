@@ -1,0 +1,141 @@
+※ 참고 : http://blog.naver.com/dearjune7?Redirect=Log&logNo=130167702909
+
+    1. 개요 : Custom_Scheme이란것은 스마트 폰의 web에서 해당 app을 실행시키는 것을 말한다.
+     
+    2. 정확히 만들려는게 모야 :
+    1) 입력창과 버튼이 있는 web 페이지를 하나 만들고 모바일 web에서 접속한다. 
+    2) 입력창에 아무 값이나 입력한 후 전송 버튼을 누르면 앱이 실행된다.
+    3) app이 실행되고 web에서 입력했던 값이 app에서 출력된다.
+     
+    3. jsp페이지 생성 : one.jsp, two.jsp
+    안드로이드 프로젝트 수정:  AndroidManifest.xml, csmail.xml csActivity.java
+     
+    4. 사용기술 : jsp, javascript(ajax, jquery), android
+     
+    5. 소스
+    [one.jsp]
+    <script type="text/javascript" src="./jqeury/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+     function checkApplicationInstall() {
+       var id = idCheck﻿(); //생성된 세션값 가져옴.
+       document.checkframe.location = "testurl://aa/?input="+id; 
+       /*
+       iframe에 걸린거... 여기서 앱이 설치 되어 있지 않을 경우 testurl"// 이 안먹힐 거고 창이 닫히지 않는다. */
+      
+       /* 웹 페이지가 닫히지 않을시 어플 다운로드 페이지로 이동 1초 후에 다음 function을 수행 */
+       /* setTimeout(method, delay, optional);
+       (반복호출할 함수명, 반복시간(1초=1000밀리세컨드), 스크립트 언어 타입(javascript, VBScript, JScript)))*/
+       setTimeout("checkApplicationInstall_callback()", 1000);
+     }
+     
+     function checkApplicationInstall_callback() {
+      
+       try {
+        //iframe부분에 해당하는 앱 호출하는 url 실행
+        var s = document.checkframe.document.body.innerHTML;
+         
+       } catch (e) {
+       // 어플리케이션 설치 안 되어 있으면 설치페이지로 연결
+        alert("Custom_Scheme 앱이 설치 되어 있지 않습니다. 설치 페이지로 이동합니다.");
+        location.href = "http://blog.naver.com/dearjune7/memo/130167378345";
+       }
+     }  
+     
+     function idCheck(){
+      var id=$("#test").val();
+      $.ajax({
+       type:"POST"
+       ,url:"two.jsp" //세션 생성페이지 (setAttribute...)
+       ,data:"id="+id
+       ,success:function(){
+        $("#result").html("테스트 성공");
+       }
+      });
+      return id;
+     }
+    </script>   
+    <body>
+    <h3>Custom_Scheme App으로 입력한 데이터 전달</h3>
+     
+     <input type="text" id="test" />
+     <input type="button" value="app으로 전송" onclick="checkApplicationInstall()"/><br/>
+     
+     <!-- html에서 iframe 을 이용하여 앱을 호출하는걸 아이프레임에 넣어놓고 호출시에는 브라우저가 닫히고 앱이 실행되고 아이프레임상에서 오류페이지가 뜰경우 부모 html에 스크립트로 setTimeout 몇초간 줘서 브라우저가  0.5초동안 닫히지 않을시 어플다운로드 페이지로 이동하도록 해서 처리하였습니다. -->
+     
+     <iframe id="checkframe" name﻿="checkframe"  src="check.html" width="1" height="1"></iframe>
+     <div id="result"></div><p>
+     생성된 세션값 : <%=session.getAttribute("id") %> <!--확인용일뿐...-->
+    </body>
+    -------------------------------------------------------------------------------------------
+    [two.jsp]
+    <%
+    String id = request.getParameter("id");
+    System.out.println("넘어온 id :"+id);
+
+    session.setAttribute("id", id);
+
+    request.getSession().getAttribute("id");
+    System.out.println("session id:"+id);
+
+    %>
+    -------------------------------------------------------------------------------------------
+     
+    [AndroidManifest.xml]
+    ...
+    <!-- activity태그 안에 intent-filter추가 -->
+    <intent-filter>
+                    <action android:name="android.intent.action.VIEW" />
+        <!-- url scheme을 사용하기 위한 준비 -->
+                    <category android:name="android.intent.category.DEFAULT" />
+                    <category android:name="android.intent.category.BROWSABLE" />
+                    <!-- 자신만의 url scheme 등록 -->
+                    <!-- scheme은 http같은 프로토콜 부분, host는 www.daum.net 같은 경로부분 -->
+                    <data android:scheme="testurl" android:host="aa"/>
+    </intent-filter>
+    ...
+    -------------------------------------------------------------------------------------------
+    [csmain.xml]
+    <!-- 텍스트 표시 -->
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="웹에서 전송 받은 값 보여주기" />
+    -------------------------------------------------------------------------------------------
+    [csActivity.java]
+    public class reActivity extends Activity {
+     
+     private TextView txtresult; 
+     
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+      super.onCreate(savedInstanceState);
+      setContentView(R.layout.main);
+      txtresult = (TextView)findViewById(R.id.result);
+      
+     }
+     @Override
+     public boolean onCreateOptionsMenu(Menu menu) {
+         
+      //AndroidManifest 읽음.
+      
+      getMenuInflater().inflate(R.menu.main, menu);
+      Intent intent = getIntent();
+      Log.d("getIntent() : "+getIntent(), "  Intent안 ");
+      
+      if(intent.ACTION_VIEW.equals(intent.getAction())){
+       Uri uri = intent.getData(); 
+       Log.d("uri : " + uri ,"  Action_view안 "); //uri : testurl://aa/?input=%E3%84....
+       
+       String input = uri.getQueryParameter("input");
+       //input : jg
+       Log.d("input : " + input , "  input안 "); //uri에서 ?input= 뒤에 받아온 값
+       
+       //앱에서 출력
+       txtresult.setText("받은 값 : " + input);
+       
+      }
+      return true;
+     }
+    }
+    [출처] Custom Scheme 만들기(모바일 웹 -> 앱 실행)|작성자 Alex33

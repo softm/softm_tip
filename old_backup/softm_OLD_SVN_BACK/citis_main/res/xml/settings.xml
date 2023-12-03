@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+ 
+    <PreferenceCategory android:title="설정" >
+<!--
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="isServer"
+            android:summary="운영서버"
+            android:title="운영서버" >
+        </CheckBoxPreference> 
+-->
+<!-- 
+ -->
+        <ListPreference
+            android:key="Server"
+            android:entries="@array/pref_Server"
+            android:summary="서버"
+            android:entryValues="@array/pref_ServerValues"
+            android:defaultValue="2"
+            android:title="서버" />        
+    </PreferenceCategory>
+ 
+</PreferenceScreen>

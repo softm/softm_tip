@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Frame.Container" >
+
+    <com.entropykorea.gas.gum.activity.ui.TitleBar
+        android:id="@+id/titlebar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+         />
+    
+    <!-- Search -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp"
+        android:baselineAligned="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:padding="12dp" >
+
+        <com.entropykorea.gas.gum.activity.ui.ClickSpinner
+            android:id="@+id/sp_type"
+            android:layout_width="80dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="7dp"
+            android:background="@drawable/dropdown_img"
+             />
+
+        <com.entropykorea.gas.gum.activity.ui.ClearableEditText
+            android:id="@+id/et_search"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginRight="7dp"
+            android:layout_weight="1"
+            android:background="@drawable/input_img"
+            android:hint="단지명"
+            android:inputType="text"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="16dp"
+            android:textStyle="normal"
+            android:imeOptions="actionDone" />
+        
+
+        <ImageButton
+            android:id="@+id/btn_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/b_search" />
+    </LinearLayout>
+
+    <!-- Table Header -->
+
+    <LinearLayout
+        style="@style/Table.Header"
+        android:layout_width="match_parent"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp" >
+
+        <LinearLayout
+            style="@style/Table.Header"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="5"
+            android:gravity="left|center_vertical"
+            android:paddingLeft="10dp" >
+
+            <TextView
+                style="@style/Table.Header"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:gravity="center_vertical|center"
+                android:text="건물" />
+
+            <ToggleButton
+                android:id="@+id/btn_street_address"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/street_address_toggle"
+                android:textOff=""
+                android:textOn="" />
+        </LinearLayout>
+
+        <TextView
+            style="@style/Table.Header"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center"
+            android:paddingBottom="0dp"
+            android:text="대상" />
+
+        <TextView
+            style="@style/Table.Header"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center_vertical|center"
+            android:paddingBottom="0dp"
+            android:text="완료" />
+    </LinearLayout>
+
+    <!-- Table Body -->
+
+    <LinearLayout
+        style="@style/Table.Body"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ListView
+            android:id="@+id/lv_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:divider="@color/listDivColor" />
+    </LinearLayout>
+
+</LinearLayout>

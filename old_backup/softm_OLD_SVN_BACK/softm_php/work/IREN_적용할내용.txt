@@ -1,0 +1,36 @@
+<script type="text/j-vascript" src="http://150.59.102.179/i4renapi/api.js.php?key=i4a9360d203e71b3f797f34413113817e26&gipsname=TOKUSHIM&version=XIF1.0&lang=ja" charset="UTF-8"> </script>
+첨부파일입니다.
+
+--------------------------
+
+ip: 218.145.31.147
+
+
+<script type="text/j-vascript" src="http://150.59.102.179/i4renapi/api.js.php?key=i4a9360d203e71b3f797f34413113817e26&gipsname=TOKUSHIM&version=XIF1.0&lang=ja" charset="UTF-8"> </script>
+
+상기 ip에서 상기 script를 첨부 화일의 샘플 프로그램 안에 삼입하여 확인 하시면 될 거 같습니다.
+
+확인 바랍니다. 
+
+
+지훈씨 한일재단은 일단 잘 정리했습니다.
+
+수정사항이나 기타의 내용은 정리해서 드리기로 하구요.
+
+ 
+
+참조하실 사항은
+
+1. 개발완료는 4월말입니다.(디자인은 최대한 빨리 진행하겠습니다.)
+
+2. 중간에 넣어야 하는 API서비스 중 23일 이내에 테스트를 해야하는 페이지가 있습니다.
+
+안 그러면 차단할 수도 있다고 해서 ....확인 하시기 바랍니다.
+
+http://lioness.kr/sub.php?flashmenu=10302 이 페이지에 이전에 드린 도쿠시만 관련 서비스를 일단 붙여봐야 합니다.
+
+첨부파일은 드렸었는데, 재송부하니까 참조해 주시기 바랍니다.
+
+ 
+
+수고해주세요.

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+ 
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
+
+	<RelativeLayout
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:layout_weight="1">
+
+	     <ScrollView 
+	        android:id="@+id/guide_pointcard"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FFFFFFFF"
+		    >
+		<LinearLayout
+			android:orientation="vertical"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:background="@drawable/guide_pointcard_bg">
+
+		    <TextView 
+		        android:id="@+id/txt_cardname"
+		        android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="16dip"
+				android:gravity="center"
+				android:text="GS칼텍스 BONUS 카드"
+				android:textSize="18dip"
+				android:textColor="#000"
+				android:textStyle="bold"/>
+			<RelativeLayout
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="10dip">
+
+			    
+				<kr.co.gscaltex.gsnpoint.card.ui.CoverFlow
+					android:id="@+id/bottom_tab_coverflow"
+					android:layout_width="fill_parent"
+					android:layout_height="wrap_content" />
+
+				<ImageView
+					android:id="@+id/card_img"
+					android:background="@drawable/guide_pointcard01_card"
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:layout_centerInParent="true" />
+			
+			</RelativeLayout>			
+
+			<LinearLayout
+			    android:id="@+id/linearpage"
+				android:gravity="center"
+				android:orientation="horizontal"
+				android:layout_width="fill_parent" 
+				android:layout_height="20dip"
+				android:layout_marginTop="8dip">
+
+			</LinearLayout>
+
+			<LinearLayout
+				android:orientation="vertical"
+				android:layout_width="280dip" 
+				android:layout_height="wrap_content"
+				android:layout_marginTop="24dip"
+				android:layout_marginLeft="24dip">
+							    
+			    <ImageView
+			        android:id="@+id/img_title2"
+			        android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"	
+					android:src="@drawable/guide_pointcard_stitle01"/>
+			    
+			    <WebView 
+                        android:id="@+id/txt_content2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="86dip"                  
+                        android:layout_marginTop="10dip"/>
+			    <!--  
+			    <TextView 
+			        android:id="@+id/txt_content2"
+			        android:layout_width="fill_parent" 
+					android:layout_height="wrap_content"
+					android:layout_marginTop="6dip"
+					android:text=""
+					android:scrollbars="vertical"
+					android:textSize="12dip"/>
+			    -->
+			    <ImageView
+			        android:id="@+id/img_title3"
+			        android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10dip"
+					android:src="@drawable/guide_pointcard_stitle02"/>
+			    <WebView 
+                        android:id="@+id/txt_content3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="86dip"                  
+                        android:layout_marginTop="10dip"/>
+			    <!-- 
+			    <TextView 
+			        android:id="@+id/txt_content3"
+			        android:layout_width="fill_parent" 
+					android:layout_height="wrap_content"
+					android:layout_marginTop="6dip"
+					android:text= " "
+					android:textSize="12dip"/>
+					-->
+			    <ImageView
+			        android:id="@+id/img_title1"
+			        android:layout_width="wrap_content" 
+					android:layout_height="wrap_content"
+					android:layout_marginTop="10dip"
+					android:src="@drawable/guide_pointcard_stitle03"/>
+			    <WebView 
+                        android:id="@+id/txt_content01"
+                        android:layout_width="fill_parent"
+                        android:layout_height="86dip"                  
+                        android:layout_marginTop="10dip"/>
+			     <!--
+			   <TextView 
+			        android:id="@+id/txt_content01"
+			        android:layout_width="fill_parent" 
+					android:layout_height="wrap_content"
+					android:layout_marginTop="6dip"
+					android:text=""
+					android:textSize="12dip"/>	
+					-->   
+			   
+			</LinearLayout>
+				
+		</LinearLayout>
+		</ScrollView>
+		<ProgressBar
+			style="?android:attr/progressBarStyleInverse"
+			android:id="@+id/progress_bar"
+			android:layout_width="64px"
+			android:layout_height="64px"
+			android:layout_centerInParent="true" 
+			/>
+
+	</RelativeLayout>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

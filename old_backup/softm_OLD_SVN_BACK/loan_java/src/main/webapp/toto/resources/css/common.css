@@ -1,0 +1,96 @@
+/* cleantopia 추가*/
+#layer_menu td:hover {
+	background-color: #EAEAEA;
+}
+
+#top_div_title {
+	font-size: 20px;
+	font-weight: bold;
+  	float: left; 
+  	padding: 20px 0 0 0;
+  	color: #FFFFFF;
+}
+
+#top_div_user {
+	font-size: 16px;
+	font-weight: bold;
+  	float: left; 
+  	padding: 20px 0 0 0;
+  	color: #FFFFFF;
+}
+
+#layer_menu span {
+	font-size: 12px;
+}
+
+#layer_search td{
+	vertical-align: middle;
+}
+
+#layer_table table {
+	width: 100%; 
+	border: 1px solid black; 
+	border-collapse: collapse;
+}
+
+#layer_table table tbody tr:hover {
+	background-color: #EAEAEA;
+}
+
+#layer_table th {
+	font-size: 14px;
+	font-weight: bold;
+	vertical-align: middle;
+	text-align: center;	
+	color: #FFFFFF;
+	border-right: 1px solid #dadada;
+}
+
+#layer_table td {
+	font-size: 14px;
+	font-weight: normal;
+	vertical-align: middle;
+	text-align: center;	
+	color: #333333;
+	border-right: 1px solid #dadada;
+}
+
+#layer_detail thead tr {
+	height: 40px;
+	width: 100%;
+}
+
+#layer_detail thead th {
+	font-size: 20px;
+	font-weight: bold;
+	vertical-align: middle;
+	text-align: left;	
+	color: #84C1E6;
+}
+	
+#layer_detail tbody tr {
+	height: 35px;
+	border: 0px solid #dadada;
+}
+
+#layer_detail tbody td {
+	height: 35px;
+	border: 1px solid #dadada;
+	padding-left: 15px;
+}
+
+.trclass {
+	background: #FFFFFF;
+	/*background: #E7E7E7;*/
+}
+
+.trclass2 {
+	background: #F9F9E6;
+}
+
+.img_button {
+	width: 70px;
+	height: 30px;
+	vertical-align: middle;
+	text-align: center;
+}

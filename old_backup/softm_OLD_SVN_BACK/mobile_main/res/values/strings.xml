@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="proc_gid">main</string>
+    <string name="label_all">도시가스</string>
+
+</resources>

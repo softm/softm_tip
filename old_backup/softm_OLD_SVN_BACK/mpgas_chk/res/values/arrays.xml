@@ -1,0 +1,18 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<resources>
+ 
+    <string-array name="array_list">
+        <item>@string/label_all</item>
+        <item>@string/spn_item_visit_y</item>
+        <item>@string/spn_item_visit_n</item>
+    </string-array>
+    
+    
+    <string-array name="array_nocfm_list">
+        <item>적합</item>
+        <item>부적합</item>
+        <item>기기없음</item>
+    </string-array>
+    
+ 
+</resources>

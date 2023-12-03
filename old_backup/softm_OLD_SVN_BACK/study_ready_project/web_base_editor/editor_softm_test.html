@@ -1,0 +1,59 @@
+  
+ 
+ 
+ 
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title> Editor ев╫╨ем. </title>
+<meta name="Generator" content="EditPlus">
+<meta name="Author" content="">
+<meta name="Keywords" content="">
+<meta name="Description" content="">
+<script type="text/javascript">
+<!--
+var cMode = "HTML";
+var $S = function(id) {
+    return document.getElementById(id);
+}
+
+function fModeChange() {
+
+    if ( cMode == 'HTML' ) {
+        $S("edit_area").style.display = "block";
+        $S("txt_area").style.display = "none";
+        $S("edit_area").innerHTML= $S("txt_area").value ;
+        cMode = "TEXT";
+    } else if ( cMode == 'TEXT' ) {
+        $S("txt_area").style.display = "block";
+        $S("edit_area").style.display = "none";
+        $S("txt_area").value = $S("edit_area").innerHTML;
+        cMode = "HTML";
+    }
+    $S("btn_chg_mode").innerHTML = cMode;
+}
+
+window.onload = function() {
+    fModeChange(cMode);
+}
+
+//-->
+</script>
+</head>
+
+<body>
+<button id="btn_chg_mode" onclicK="fModeChange();">html</button>
+
+<div id="edit_area" CONTENTEDITABLE style='background-color:red;width:100px;height:100px'>
+</div>
+
+<textarea id="txt_area">
+</textarea>
+
+</body>
+</html>
+
+
+ 

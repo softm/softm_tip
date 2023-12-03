@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	android:background="#FFF"
+	>
+
+    <FrameLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		>
+
+            <LinearLayout
+		    	android:layout_width="fill_parent"
+		    	android:layout_height="wrap_content" 
+		    	android:background="@drawable/set_login_bg"
+		    	android:orientation="vertical"
+		    	android:gravity="center"
+		    	>
+
+                <!-- 아이디 -->
+                <TextView
+						android:id="@+id/useridLabel"
+						android:layout_width="wrap_content"
+						android:layout_height="wrap_content"
+						android:layout_marginTop="10dp"
+						android:text="KMSLab"
+						android:textColor="#000"
+						android:textSize="16dp"
+						/>
+                
+                <!-- 로그아웃 -->
+                <ImageButton
+					    android:id="@+id/set_logout_button"
+					    android:layout_width="wrap_content"
+					    android:layout_height="wrap_content"
+					    android:layout_marginTop="35dp"
+					    android:layout_marginBottom="200dp"
+					    android:background="@drawable/btn_logout_img" />
+
+                
+		    	</LinearLayout>
+
+
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+
+	</FrameLayout>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

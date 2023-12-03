@@ -1,0 +1,87 @@
+;---------------------------------------------------------------------------------
+; Flash ActionScript 3.0
+;
+; - author : Yoon JS (makerfun@hanmail.net)
+; - version : 1.2
+;---------------------------------------------------------------------------------
+#TITLE=ActionScript 3.0
+#CASE=y
+
+#T=cmtCopyright
+////////////////////////////////////////////////////////////////////////////////
+//
+//  'MyClass' version 1.0.
+//  Copyright 2009 [your name], [your country]
+//  All Rights Reserved.
+//
+// - Description : 
+//	- ^!
+// - Function :
+//	- 
+// - Notice :
+//	- 
+// - Action sequence :
+//	- Constructor() -> 
+//
+////////////////////////////////////////////////////////////////////////////////
+#
+
+; Same kind of method access keyword.
+#T=cmtMethodBig
+//--------------------------------------------------------------------------
+//
+//  ^!
+//
+//--------------------------------------------------------------------------
+#
+
+; Same kind of methods.
+#T=cmtMethodSmall
+//--------------------------------------------------
+//  ^!
+//--------------------------------------------------
+#
+
+; Same kind of properties.
+#T=cmtPrpt
+//----------------------------------
+// 
+//----------------------------------
+#
+
+; Method definition.
+#T=cmtDef
+/**
+* ^!
+* @param
+*	
+* @return
+*	
+*/
+#
+
+; Line
+#t=cmtLine
+/* ^! */
+#t=cmtLine2
+/* ^! */
+/*  */
+#t=cmtLine3
+/* ^! */
+/*  */
+/*  */
+#t=cmtLineStart1
+/* - START: ^! - */
+/* - END:  - */
+#t=cmtLineEnd1
+/* - END:  ^!- */
+#t=cmtLineStart2
+/* -- START: ^! -- */
+/* -- END:  -- */
+#t=cmtLineEnd2
+/* -- END: ^! -- */
+#t=cmtLineStart3
+/* --- START: ^! --- */
+/* --- END:  --- */
+#t=cmtLineEnd3
+/* --- END: ^! --- */

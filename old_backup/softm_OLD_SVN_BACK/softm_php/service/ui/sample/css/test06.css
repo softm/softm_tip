@@ -1,0 +1,35 @@
+/* ------------------
+ styling for the tables 
+   ------------------   */
+
+
+body
+{
+	line-height: 1.6em;
+}
+
+#tbl_list
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+
+	text-align: left;
+	border-collapse: collapse;
+}
+#tbl_list th
+{
+	font-size: 14px;
+	font-weight: normal;
+	padding: 10px 8px;
+	color: #039;
+}
+#tbl_list td
+{
+	padding: 8px;
+	color: #669;
+}
+#tbl_list .odd
+{
+	background: #e8edff; 
+}
+

@@ -1,0 +1,96 @@
+.main {
+	overflow:none;position:absolute;left:0px;top:0px;right:0px;bottom:0px;border:0px solid red;background-color:#FFF;
+}
+.show {	display:block; }
+.hide {	display:none; }
+
+.invisible { visibility:hidden; }
+.visible   { visibility:visible; }
+
+.mo-ui-snackbar {
+    position: fixed;
+    left:0px;
+    bottom: 0px;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: rgba(77,77,77,0.98);
+    color: #fff;
+    padding: 15px;
+}
+
+.snackbar {
+	position: fixed;
+	width: auto;
+	height: 45px;
+	background:  #323232;
+	line-height: 45px;
+	padding-left: 16px;
+	padding-right: 16px;
+	text-align: center;
+	border-radius: 2px;
+	bottom: 15px;
+	left: 15px;
+	display: none;
+	white-space: nowrap;
+}
+
+.mo-ui-snackbar .message {
+	color: #FFFFFF;
+	font-weight: 300;
+	font-size: 18px;
+	user-select: none;
+}
+
+.mo-ui-layer {
+    background: rgba(0,0,0,0.6);
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: -1px;
+    z-index: 9999;
+}
+
+.mo-icon-loading{width:60px;height:60px; margin:auto; margin-top:50%}
+.mo-icon-loading img{width:100%;}
+
+
+.mo-icon-loading {
+    position: relative;
+	/*
+	animation: example 2s linear infinite;
+	*/
+	-webkit-animation-name: example;
+	-moz-animation-name: example;
+	-o-animation-name: example;
+	-ms-animation-name: example;
+	animation-name: example;
+
+	-webkit-animation-duration: 2s;
+	-moz-animation-duration: 2s;
+	-o-animation-duration: 2s;
+	-ms-animation-duration: 2s;
+	animation-duration: 2s;
+
+	-webkit-animation-timing-function: linear;
+	-moz-animation-timing-function: linear;
+	-o-animation-timing-function: linear;
+	-ms-animation-timing-function: linear;
+	animation-timing-function: linear;
+
+	-webkit-animation-iteration-count: infinite;
+	-moz-animation-iteration-count: infinite;
+	-o-animation-iteration-count: infinite;
+	-ms-animation-iteration-count: infinite;
+	animation-iteration-count: infinite;
+
+}
+
+.amount {
+	text-align:right;
+}
+
+.floatRight2 { float: right !important;position:relative;top:-17px; }
+/* 
+.navi_action { left: 310px !important; }
+ */

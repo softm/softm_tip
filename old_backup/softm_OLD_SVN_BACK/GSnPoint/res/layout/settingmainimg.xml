@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent"
+	>
+
+    <FrameLayout
+		android:id="@android:id/tabcontent"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:layout_weight="1"
+		>
+		
+        <ScrollView 
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"
+		    android:background="#FFFFFFFF"
+		    >
+		    
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/set_mainimg_bg_"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="13dip"
+                    android:src="@drawable/set_mainimg_text01" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="90dip"
+                    android:layout_height="90dip"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="40dip"
+                    android:src="@drawable/set_mainimg_photobox" />
+
+                <ImageButton
+                        android:id="@+id/myphoto_set_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dip"
+                        
+                        android:layout_gravity="center"
+                        android:background="@drawable/btn_myphoto_set_img" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    
+                    android:orientation="horizontal" >
+
+                    <ImageButton
+                        android:id="@+id/photo_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dip"
+                        android:layout_marginLeft="11dip"
+                        android:background="@drawable/btn_photo_img" />
+
+                    <ImageButton
+                        android:id="@+id/photo_album_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dip"
+                        android:layout_marginLeft="6dip"
+                        android:background="@drawable/btn_photo_album_img" />
+                </LinearLayout>
+            </LinearLayout>
+		    
+            </ScrollView>
+
+		<ProgressBar
+			android:id="@+id/progress_bar"
+			style="?android:attr/progressBarStyleInverse"
+			android:layout_width="wrap_content" 
+		  	android:layout_height="wrap_content"
+		  	android:layout_gravity="center_vertical|center_horizontal"
+		  	android:visibility="gone" /> 
+
+	</FrameLayout>
+
+	<include
+		layout="@layout/n_main_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+
+</LinearLayout>

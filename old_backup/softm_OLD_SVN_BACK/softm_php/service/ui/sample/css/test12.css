@@ -1,0 +1,55 @@
+/* ------------------
+ styling for the tables 
+   ------------------   */
+
+
+body
+{
+	line-height: 1.6em;
+}
+
+#tbl_list
+{
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+	font-size: 12px;
+
+	text-align: left;
+	border-collapse: collapse;
+}
+#tbl_list thead th.rounded-company
+{
+	background: #b9c9fe url('/img/table-images/left.png') left -1px no-repeat;
+}
+#tbl_list thead th.rounded-q4
+{
+	background: #b9c9fe url('/img/table-images/right.png') right -1px no-repeat;
+}
+#tbl_list th
+{
+	padding: 8px;
+	font-weight: normal;
+	font-size: 13px;
+	color: #039;
+	background: #b9c9fe;
+}
+#tbl_list td
+{
+	padding: 8px;
+	background: #e8edff;
+	border-top: 1px solid #fff;
+	color: #669;
+}
+#tbl_list tfoot td.rounded-foot-left
+{
+	background: #e8edff url('/img/table-images/botleft.png') left bottom no-repeat;
+}
+#tbl_list tfoot td.rounded-foot-right
+{
+	background: #e8edff url('/img/table-images/botright.png') right bottom no-repeat;
+}
+#tbl_list tbody tr:hover td
+{
+	background: #d0dafd;
+}
+
+

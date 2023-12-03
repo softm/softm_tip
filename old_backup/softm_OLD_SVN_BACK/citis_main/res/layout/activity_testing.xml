@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBgColor"
+    android:orientation="vertical"
+    tools:context=".activity.SampleListRecyclerViewActivity" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+	    android:layout_marginTop="@dimen/mainMarginTop"
+	    android:layout_marginBottom="@dimen/mainMarginBottom"
+	    android:layout_marginLeft="@dimen/mainMarginLeft"
+	    android:layout_marginRight="@dimen/mainMarginRight"
+        android:gravity="top|center_vertical"
+        android:orientation="vertical"
+        android:weightSum="1" >
+		<Button
+		    android:id="@+id/btn_get_dpi"
+		    style="@style/MP.button1"
+		    android:text="getDpi"
+		    android:layout_gravity="center_vertical"
+		    />
+		<LinearLayout
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="horizontal" 
+		    >
+	    <EditText
+	        android:id="@+id/et_chk_dt_yyyymm"
+	        style="@style/MP.edittext"
+	        android:layout_width="118dp"
+	        android:layout_gravity="center_vertical"
+	        android:ellipsize="end"
+	        android:inputType="text"
+	        android:maxLength="7"
+	        android:singleLine="true"
+	        android:text=""
+	        android:textStyle="normal"
+	        android:editable="false"
+	        android:enabled="true"        
+	        />
+	
+		<ImageButton
+	        android:id="@+id/ib_cal"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+		android:src="@android:drawable/ic_menu_month"
+	        android:layout_marginLeft="1dp"
+	        android:layout_marginTop="2dp"
+		/>
+		</LinearLayout>
+				<Button
+		    android:id="@+id/btn_progress"
+		    style="@style/MP.button1"
+		    android:text="progressBar"
+		    android:layout_gravity="center_vertical"
+		    />
+				<Button
+		    android:id="@+id/btn_file_open"
+		    style="@style/MP.button1"
+		    android:text="file_open"
+		    android:layout_gravity="center_vertical"
+		    />
+<Button
+		    android:id="@+id/btn_file_upload"
+		    style="@style/MP.button1"
+		    android:text="file_upload"
+		    android:layout_gravity="center_vertical"
+		    />
+	</LinearLayout>
+</LinearLayout>

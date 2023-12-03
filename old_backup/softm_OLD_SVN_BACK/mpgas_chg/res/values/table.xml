@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sql_create_table_code">
+Create  TABLE CODE(
+[TYPE_CD] varchar(20)
+,[CD] varchar(20)
+,[CD_NM] varchar(100)
+,[MGT_CHAR1] varchar(20)
+,[MGT_CHAR2] varchar(20)
+,[MGT_CHAR3] varchar(20)
+,[MGT_CHAR4] varchar(20)
+,[MGT_CHAR5] varchar(20)
+,[MGT_CHAR6] varchar(20)
+,[MGT_NUM1] numeric
+,[MGT_NUM2] numeric
+,[ORD] numeric
+,[USE_YN] char(1)
+,[REMARK] varchar(500)
+,[INS_DT] datetime
+,[INS_USER_CD] varchar(20)
+,[INS_PC] varchar(50)
+,[UPD_DT] datetime
+,[UPD_USER_CD] varchar(20)
+,[UPD_PC] varchar(50)
+, Primary Key(TYPE_CD,CD) 
+) ;
+    </string>
+    <string name="sql_create_table_chg">
+Create  TABLE CHG(
+[JOB_YM] VARCHAR2(6) NOT NULL
+,[HOUSE_NO] VARCHAR2(14) NOT NULL
+,[CUST_NO] VARCHAR2(10) NOT NULL
+,[EQUIP_CD] VARCHAR2(20)
+,[AREA_CD] VARCHAR2(1)
+,[SECTOR_CD] VARCHAR2(3)
+,[COMPLEX_CD] VARCHAR2(7)
+,[BLDG_CD] VARCHAR2(10)
+,[HOUSE_ORD] INTEGER
+,[AREA_NM] VARCHAR2(50)
+,[SECTOR_NM] VARCHAR2(50)
+,[COMPLEX_NM] VARCHAR2(50)
+,[BLDG_NM] VARCHAR2(50)
+,[BLDG_NO] VARCHAR2(50)
+,[ROOM_NO] VARCHAR2(50)
+,[ROAD_NM] VARCHAR2(80)
+,[CUST_NM] VARCHAR2(50)
+,[CO_NM] VARCHAR2(50)
+,[TEL_NO] VARCHAR2(20)
+,[HP_NO] VARCHAR2(20)
+,[WORK_TEL_NO] VARCHAR2(30)
+,[TEL_CD] VARCHAR2(20)
+,[HOUSE_STATUS_CD] VARCHAR2(20)
+,[CLAIM_CUST_YN] CHAR(1)
+,[CLAIM_CONTENT] VARCHAR2(500)
+,[CHE_MONTH_CNT] NUMBER
+,[CHE_PRICE_SUM] NUMBER
+,[GM_ERROR_YN] CHAR(1)
+,[BF_GM_NO] VARCHAR2(20)
+,[BF_MODEL] VARCHAR2(100)
+,[BF_KIND_CD] VARCHAR2(20)
+,[BF_TYPE_CD] VARCHAR2(20)
+,[BF_MAKER_CD] VARCHAR2(20)
+,[BF_INSTALL_LOC_GB_CD] VARCHAR2(20)
+,[BF_MAKE_YY] VARCHAR2(4)
+,[BF_UNION_CNT] INTEGER
+,[BF_SEAL_NO] VARCHAR2(30)
+,[BF_REPAIR_CD] VARCHAR2(20)
+,[BF_SEAL_CD] VARCHAR2(20)
+,[AF_GM_NO] VARCHAR2(20)
+,[AF_MODEL] VARCHAR2(100)
+,[AF_KIND_CD] VARCHAR2(20)
+,[AF_TYPE_CD] VARCHAR2(20)
+,[AF_MAKER_CD] VARCHAR2(20)
+,[AF_INSTALL_LOC_CD] VARCHAR2(20)
+,[AF_MAKE_YY] VARCHAR2(4)
+,[AF_UNION_CNT] INTEGER
+,[AF_SEAL_NO] VARCHAR2(30)
+,[AF_REPAIR_CD] VARCHAR2(20)
+,[AF_SEAL_CD] VARCHAR2(20)
+,[CHG_REMOVE_METER] INTEGER
+,[CHG_INSTALL_METER] INTEGER
+,[CHG_DT] text
+,[CHG_USER_CD] VARCHAR2(20)
+,[END_YN] CHAR(1) DEFAULT \'N\'
+,[SIGN_FILE_NM] VARCHAR2(50)
+,[PHOTO_FILE_NM] VARCHAR2(50)
+,[SEND_YN] CHAR(1) DEFAULT \'N\'
+,[BF_CHG_DT] text
+, Primary Key(JOB_YM,HOUSE_NO,HOUSE_NO,CUST_NO)
+) ;
+    </string>
+    <string name="sql_table_init_code1">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","01",\'코드1\');</string>
+    <string name="sql_table_init_code2">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","02",\'코드2\');</string>
+    <string name="sql_table_init_code3">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","03",\'코드3\');</string>
+    <string name="sql_table_init_code4">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","04",\'코드4\');</string>
+    <string name="sql_table_init_code5">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","05",\'코드5\');</string>
+    <string name="sql_table_init_code6">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","06",\'코드6\');</string>
+    <string name="sql_table_init_code7">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","07",\'코드7\');</string>
+    <string name="sql_table_init_code8">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","08",\'코드8\');</string>
+    <string name="sql_table_init_code9">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","09",\'코드9\');</string>
+    <string name="sql_table_init_code10">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","10",\'코드10\');</string>
+    <string name="sql_table_init_code11">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","11",\'코드11\');</string>
+    <string name="sql_table_init_code12">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","12",\'코드12\');</string>
+    <string name="sql_table_init_code13">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","13",\'코드13\');</string>
+    <string name="sql_table_init_code14">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","14",\'코드14\');</string>
+    <string name="sql_table_init_code15">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","15",\'코드15\');</string>
+    <string name="sql_table_init_code16">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","16",\'코드16\');</string>
+    <string name="sql_table_init_code17">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","17",\'코드17\');</string>
+    <string name="sql_table_init_code18">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","18",\'코드18\');</string>
+    <string name="sql_table_init_code19">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","19",\'코드19\');</string>
+    <string name="sql_table_init_code20">Insert  Into code (TYPE_CD,CD,CD_NM) Values("11","20",\'코드20\');</string>
+
+</resources>

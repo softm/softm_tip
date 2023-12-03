@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- pressed -->
+    <item android:drawable="@drawable/b_receipt_pressed" android:state_pressed="true"/>
+    <!-- focused -->
+    <item android:drawable="@drawable/b_receipt" android:state_focused="true"/>
+    <!-- disabled -->
+    <item android:drawable="@drawable/b_receipt_disabled" android:state_enabled="false"/>
+    <!-- default -->
+    <item android:drawable="@drawable/b_receipt"/>
+
+</selector>

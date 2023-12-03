@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/body"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBgColor"
+    android:orientation="vertical"
+    >    
+<!-- 
+    <TextView
+        android:id="@+id/editText1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:ems="10"
+        android:text="메인페이지로딩중."
+        android:gravity="center_vertical|center"
+         >
+    </TextView>
+    
+ -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+	    android:layout_marginTop="@dimen/mainMarginTop"
+	    android:layout_marginBottom="@dimen/mainMarginBottom"
+	    android:layout_marginLeft="@dimen/mainMarginLeft"
+	    android:layout_marginRight="@dimen/mainMarginRight"
+        android:gravity="top|center_vertical"
+        android:orientation="vertical"
+        android:weightSum="1" >
+		    
+			<RelativeLayout
+			    android:layout_width="match_parent"
+			    android:layout_height="match_parent"
+			    android:orientation="horizontal" >
+
+			    <ImageButton
+			        android:id="@+id/btn_test_main"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_marginLeft="@dimen/mainActivityMarginLeft"
+			        android:layout_marginTop="@dimen/mainActivityMarginTop"
+			        android:background="@drawable/manage_bt_img"
+			        android:visibility="visible" />
+
+			    <ImageButton
+			        android:id="@+id/view1"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignLeft="@+id/btn_test_main"
+			        android:layout_alignRight="@+id/ImageButton01"
+			        android:layout_below="@+id/btn_test_main"
+			        android:layout_marginTop="@dimen/mainActivityMarginTop"
+			        android:background="@drawable/photo_bt_img"
+			        android:clickable="false"
+			        android:visibility="invisible" 
+			        />
+			    <View
+			        android:id="@+id/view11"
+			        android:layout_width="100dp"
+			        android:layout_height="80dp"
+			        android:layout_alignLeft="@+id/view1"
+			        android:layout_alignTop="@+id/view1"
+			        android:layout_alignRight="@+id/view1"
+			        android:layout_alignBottom="@+id/view1"			        
+			        android:background="@drawable/shape_main_rectangle"
+			        android:clickable="false" />
+			    
+			    <ImageButton
+			        android:id="@+id/btn_drw_mng"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignLeft="@+id/view1"
+			        android:layout_below="@+id/view1"
+			        android:layout_marginTop="@dimen/mainActivityMarginTop"
+			        android:background="@drawable/draw_bt_img"
+			        android:visibility="visible" />
+
+			    <ImageButton
+			        android:id="@+id/btn_csr_bsl"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignTop="@+id/btn_test_main"
+			        android:layout_marginLeft="@dimen/mainActivityMarginLeft"
+			        android:layout_toRightOf="@+id/View02"
+			        android:background="@drawable/constru_bt_img"
+			        android:visibility="visible" />
+
+			    <View
+			        android:id="@+id/View02"
+			        android:layout_width="80dp"
+			        android:layout_height="50dp"
+			        android:layout_alignBottom="@+id/btn_test_main"
+			        android:layout_alignTop="@+id/btn_csr_bsl"
+			        android:layout_marginLeft="@dimen/mainActivityMarginLeft"
+			        android:layout_toRightOf="@+id/btn_test_main"
+			        android:background="@drawable/shape_main_rectangle"
+			        android:clickable="false" />
+
+			    <View
+			        android:id="@+id/View01"
+			        android:layout_width="100dp"
+			        android:layout_height="80dp"
+			        android:layout_alignBottom="@+id/btn_drw_mng"
+			        android:layout_alignLeft="@+id/btn_photo_mng"
+			        android:layout_alignRight="@+id/btn_photo_mng"
+			        android:layout_alignTop="@+id/btn_drw_mng"
+			        android:background="@drawable/shape_main_rectangle"
+			        android:clickable="false" />
+
+			    <ImageButton
+			        android:id="@+id/ImageButton01"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignLeft="@+id/btn_test_main"
+			        android:layout_alignTop="@+id/btn_test_main"
+			        android:background="@drawable/draw_bt_img"
+			        android:visibility="invisible" />
+
+			    <ImageButton
+			        android:id="@+id/btn_photo_mng"
+			        android:layout_width="wrap_content"
+			        android:layout_height="wrap_content"
+			        android:layout_alignBottom="@+id/view1"
+			        android:layout_alignTop="@+id/view1"
+			        android:layout_marginLeft="@dimen/mainActivityMarginLeft"
+			        android:layout_toRightOf="@+id/view1"
+			        android:background="@drawable/photo_bt_img"
+			        android:visibility="visible" />
+
+			    <View
+			        android:id="@+id/v_testing"
+			        android:layout_width="50dp"
+			        android:layout_height="80dp"
+			        android:layout_above="@+id/btn_drw_mng"
+			        android:layout_alignRight="@+id/View04"
+			        android:layout_alignTop="@+id/btn_photo_mng"
+			        android:layout_marginLeft="@dimen/mainActivityMarginLeft"
+			        android:layout_toRightOf="@+id/btn_photo_mng"
+			        android:background="@drawable/shape_main_rectangle2"
+			        android:clickable="false" />
+
+			    <View
+			        android:id="@+id/View04"
+			        android:layout_width="50dp"
+			        android:layout_height="50dp"
+			        android:layout_alignBottom="@+id/btn_csr_bsl"
+			        android:layout_alignTop="@+id/btn_csr_bsl"
+			        android:layout_toRightOf="@+id/btn_csr_bsl"
+			        android:background="@drawable/shape_main_rectangle"
+			        android:clickable="false"
+			        android:visibility="invisible" 
+			        />
+
+
+
+			</RelativeLayout>
+
+</LinearLayout>
+</LinearLayout>
+

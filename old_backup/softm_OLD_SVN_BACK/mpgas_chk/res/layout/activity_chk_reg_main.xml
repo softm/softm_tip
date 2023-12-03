@@ -1,0 +1,285 @@
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mainBgColor"
+    android:orientation="vertical"
+    tools:context=".BldgListActivity" >
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/scrollView1"
+         >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/mainMarginLeft"
+            android:layout_marginRight="@dimen/mainMarginRight"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="22dp" >
+
+                <TextView
+                    android:id="@+id/tv_info"
+                    style="@style/MP.top_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_span="4"
+                    android:singleLine="true"
+                    android:text="옥암동 1023 하당부영 1차 아파트 107-1402"
+                    android:textSize="@dimen/fontSize17" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/ib_go_bolier"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/m01_img" />
+                    <!--
+                    <ImageButton
+                        android:id="@+id/ImageButton08"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/s_appropriate" />
+                    -->
+
+                    <com.entropykorea.gas.lib.SpinnerCd
+                        android:id="@+id/spn_cd_boiler"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
+                        android:popupBackground="@drawable/dropdown_panel"
+                        android:prompt="@string/label_all" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/ib_go_burner"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/m02_img" />
+                    <!--
+                    <ImageButton
+                        android:id="@+id/ImageButton10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/s_uncheck" />
+                    -->
+
+                    <com.entropykorea.gas.lib.SpinnerCd
+                        android:id="@+id/spn_cd_burner"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
+                        android:popupBackground="@drawable/dropdown_panel"
+                        android:prompt="@string/label_all" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/ib_go_pipe"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/m03_img" />
+                    <!--
+                    <ImageButton
+                        android:id="@+id/ImageButton11"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/s_inappropriate" />
+                    -->
+
+                    <com.entropykorea.gas.lib.SpinnerCd
+                        android:id="@+id/spn_cd_pipe"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
+                        android:popupBackground="@drawable/dropdown_panel"
+                        android:prompt="@string/label_all" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/ib_go_gm"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/m04_img" />
+
+                    <!--
+                    <ImageButton
+                        android:id="@+id/ImageButton04"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/s_device" />
+                    -->
+
+                    <com.entropykorea.gas.lib.SpinnerCd
+                        android:id="@+id/spn_cd_gm"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
+                        android:popupBackground="@drawable/dropdown_panel"
+                        android:prompt="@string/label_all" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/ib_go_breaker"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/m05_img" />
+                    <!--
+                    <ImageButton
+                        android:id="@+id/ImageButton01"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/s_uncheck" />
+                    -->
+
+                    <com.entropykorea.gas.lib.SpinnerCd
+                        android:id="@+id/spn_cd_breaker"
+                        android:layout_width="80dp"
+                        android:layout_height="30dp"
+                        android:layout_gravity="center"
+                        android:layout_marginBottom="15dp"
+                        android:layout_marginTop="10dp"
+                        android:popupBackground="@drawable/dropdown_panel"
+                        android:prompt="@string/label_all" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical" >
+
+                    <ImageButton
+                        android:id="@+id/ib_go_chk_main"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/m06_img" />
+
+                    <TextView
+                        android:id="@+id/tv_end_yn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:ellipsize="marquee"
+                        android:gravity="center"
+                        android:singleLine="true"
+                        android:text="미완료"
+                        android:textColor="@color/red" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="35dp"
+                android:layout_marginBottom="35dp"
+                android:orientation="vertical" >
+
+                <LinearLayout
+                    android:id="@+id/list_header"
+                    style="@style/MP.thead"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/listHeight"
+                    android:background="@color/listHeader"
+                    android:orientation="horizontal" >
+
+                    <TextView
+                        android:id="@+id/tv_h_cd"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical|center"
+                        android:paddingBottom="0dp"
+                        android:text="전회 부적합 미개선 내역"
+                        android:textColor="@color/headerText"
+                        android:textSize="@dimen/listFontSize" />
+                </LinearLayout>
+
+                <com.entropykorea.gas.lib.ListViewMP
+                    android:id="@+id/listView1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/list_header"
+                    android:layout_weight="1"
+                    android:divider="@color/listDivColor"
+                    android:dividerHeight="@dimen/listDividerHeight"
+                    android:drawSelectorOnTop="true"
+                    android:listSelector="@drawable/listview_item_selector" />
+            </RelativeLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

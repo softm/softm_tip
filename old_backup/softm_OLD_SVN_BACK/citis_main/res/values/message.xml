@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="msg_finish_confirm">종료하시겠습니까?</string>
+    <string name="msg_del_confirm">삭제하시겠습니까?</string>
+    
+    <string name="msg_not_exec_alert">실행 정보가 없습니다.</string>
+    <string name="msg_do_input_ispnrqstsno">검측요청서번호를 입력해주세요.</string>
+    <string name="msg_duplicate_bld_chkup">이미 작성된 체크리스트가 존재합니다.</string>    
+    <string name="msg_complete_confirm">확정하시겠습니까?</string>
+        
+    <string name="msg_do_check_rslt_status">검측결과를 선택해주세요.</string>
+
+    <string name="msg_saved_and_take_picture_camera">카메라촬영버튼을 눌러 사진을 촬영하세요.</string>
+        
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/login_bg">
+    
+   
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dip"
+	    android:layout_marginTop="50dip"
+	    android:paddingLeft="30dip"
+	    android:paddingRight="30dip"
+	    android:gravity="left|center_vertical">
+
+	</LinearLayout>
+	
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	    android:orientation="horizontal"
+	    android:layout_width="fill_parent"
+	    android:layout_height="50dip"
+	    android:layout_marginTop="100dip"
+	    android:layout_marginLeft="30dip"
+	    android:gravity="center_vertical|center_horizontal">
+
+		<EditText
+		    android:id="@+id/txt_name"
+		    android:layout_width="134dp"
+		    android:layout_height="wrap_content"
+		    android:ems="10" />
+
+		<ImageView
+		    android:id="@+id/ui_btn_man"
+		    android:layout_width="wrap_content"
+		    android:layout_height="46dip"
+		    android:layout_marginRight="30dip"
+		    android:src="@drawable/btn_man" />
+		
+	</LinearLayout>	
+	
+	
+</LinearLayout>

@@ -1,0 +1,380 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#0c2336"
+    android:baselineAligned="false"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/side_bottom_padding"
+    android:paddingLeft="@dimen/side_left_padding"
+    android:paddingRight="@dimen/side_right_padding"
+    android:paddingTop="@dimen/side_top_padding" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="@dimen/row_one_title_coulmn_padding"
+        android:paddingLeft="@dimen/row_one_title_row_padding"
+        android:paddingRight="@dimen/row_one_title_row_padding" >
+
+        <TextView
+            android:id="@+id/ADDRESS"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:lines="2"
+            android:text=""
+            android:textColor="@color/White"
+            android:textSize="@dimen/fontSize" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="#0c2336" />
+
+    <LinearLayout
+        android:id="@+id/dateView"
+        android:layout_width="match_parent"
+        android:layout_height="38dp"
+        android:layout_marginBottom="@dimen/btn_row_padding"
+        android:background="#0c2336"
+        android:visibility="visible"
+        android:weightSum="4" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.55"
+            android:padding="@dimen/row_textview_padding" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="지침:"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.4"
+            android:padding="@dimen/row_textview_padding" >
+
+            <EditText
+                android:id="@+id/METER"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/input"
+                android:inputType="number"
+                android:singleLine="true"
+                android:textColor="@color/Black"
+                android:textSize="@dimen/fontSize" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1.05"
+            android:gravity="center_vertical"
+            android:padding="@dimen/row_textview_padding" >
+
+            <ImageButton
+                android:id="@+id/b_cal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/b_cal_img"
+                android:gravity="center" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <TableLayout
+        android:id="@+id/top_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*" >
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0c2336" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_textview_height"
+                android:layout_marginRight="1px"
+                android:background="@color/CellHeader"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="전월지침"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:id="@+id/BF_METER"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1px"
+                android:background="#3a4763"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1px"
+                android:background="@color/CellHeader"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="사 용 량"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:id="@+id/USE_AMOUNT"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#3a4763"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="@dimen/fontSize" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#0c2336" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0c2336" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_textview_height"
+                android:layout_marginRight="1px"
+                android:background="@color/CellHeader"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="기본요금"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:id="@+id/BASE_PRICE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1px"
+                android:background="#3a4763"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1px"
+                android:background="@color/CellHeader"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="당월요금"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:id="@+id/USE_PRICE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#3a4763"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="@dimen/fontSize" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#0c2336" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1px"
+            android:background="#0c2336" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_textview_height"
+                android:layout_marginRight="1px"
+                android:background="@color/CellHeader"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="미납금액"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:id="@+id/CHE_PRICE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1px"
+                android:background="#3a4763"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1px"
+                android:background="@color/CellHeader"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="법적비용"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:id="@+id/LEGAL_PRICE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#3a4763"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="@dimen/fontSize" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1px"
+            android:background="#0c2336" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_textview_height"
+                android:layout_marginRight="1px"
+                android:background="@color/CellHeader"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="위약금"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:id="@+id/PENALTY_PRICE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1px"
+                android:background="#3a4763"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginRight="1px"
+                android:background="@color/CellHeader"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="해제수수료"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:id="@+id/UNSEAL_PRICE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#3a4763"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="@dimen/fontSize" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#0c2336" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/row_textview_height"
+                android:layout_marginRight="1px"
+                android:background="@color/CellHeader"
+                android:gravity="center"
+                android:singleLine="true"
+                android:text="총     액"
+                android:textColor="@color/LightGrey"
+                android:textSize="@dimen/fontSize" />
+
+            <TextView
+                android:id="@+id/TOTAL_PRICE"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_span="3"
+                android:background="#3a4763"
+                android:gravity="center"
+                android:padding="@dimen/row_textview_padding"
+                android:singleLine="true"
+                android:text=""
+                android:textColor="@color/White"
+                android:textSize="@dimen/fontSize" />
+        </TableRow>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="#0c2336" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/btn_row_padding"
+            android:gravity="right"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/b_commit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/b_confirm_img" />
+        </LinearLayout>
+    </TableLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <TextView
+            android:id="@+id/unpaid_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:padding="@dimen/btn_row_padding"
+            android:textColor="@color/White"
+            android:textSize="@dimen/fontSize" />
+    </ScrollView>
+
+</LinearLayout>
