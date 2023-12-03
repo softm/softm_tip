@@ -1,0 +1,918 @@
+소스 사이트 : http://www.androidsnippets.org/snippets/39/
+
+A lar : http://rosaria1113.blog.me/107191937
+
+http://androidhuman.tistory.com/entry/05-%EC%9D%B8%ED%85%90%ED%8A%B8Intent-%EC%9E%85%EB%AC%B8-1-%EC%95%A1%ED%8B%B0%EB%B9%84%ED%8B%B0-%ED%98%B8%EC%B6%9C
+http://androidhuman.tistory.com/category/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%20%EA%B0%9C%EB%B0%9C%20%ED%8C%81
+
+http://clickstart.tistory.com/category/Android/%EA%B8%B0%EB%B3%B8
+
+## 안드로이드 개발환경 구축
+  http://www.google.co.kr/search?hl=ko&lr=lang_ko&newwindow=1&rlz=1B3MOZA_koKR384KR384&tbs=lr%3Alang_1ko&q=%EA%B5%AC%EA%B8%80+%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C+%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD+%EA%B5%AC%EC%B6%95&aq=f&aqi=&aql=&oq=&gs_rfai=
+  http://wiz.pe.kr/640
+  http://developer.android.com/sdk/eclipse-adt.html
+  http://developer.android.com/guide/developing/eclipse-adt.html
+  http://jpub.tistory.com/32
+  http://www.androidpub.com/89895
+  http://www.androidpub.com/?mid=android_dev_info&category=127161&page=2&document_srl=588
+  http://developer.android.com/sdk/installing.html
+
+ [안드로이드 개발클럽](http://www.androidclub.co.kr/bbs/board.php?bo_table=dev_mode_4&wr_id=164)
+
+## 안드로이드 참고주소
+  [Androider](http://tigerwoods.tistory.com/category/Being)
+  http://jjihun.tistory.com/category/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%82%BD%EC%A7%88%EA%B8%B0
+
+  ### 소스 코드 검색
+  http://stackoverflow.com/questions/tagged/tab ( 짤막한 souce sample )
+  http://neodreamer.tistory.com/tag/Android
+  http://www.androidpub.com
+  ** android side : http://www.androidside.com/bbs/board.php?bo_table=B46&wr_id=13562&page=0
+  지훈이네 : http://jjihun.tistory.com/category/%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C%EC%82%BD%EC%A7%88%EA%B8%B0
+
+  화면그리기툴   : http://www.droiddraw.org/
+
+  korea android : http://www.kandroid.org/
+
+## 팁
+  ##### 방향에 상관없이 유지하게하려면
+    AndroidManifest에
+    android:configChanges="keyboard|keyboardHidden|orientation"
+    추가 하시면
+    방향이 바뀌어도 lifecycle에 변화없이 현재 화면을 유지합니다.
+
+    Activity의 생명주기 중 아래의 생명주기가 발생하는 경우는 두 가지 경우에 해당하는
+    것으로 알고 있습니다.
+    onResume()->Running->onPause()
+        ↑                       |
+        └-----------------------┘
+    #case 1 : Activity의 launchMode가 singleTop인 상태에서 Intent를 받는 경우.
+                 (이 경우 onNewIntent()에서 해당 Intent를 받을 수 있음.)
+    #case 2 : 폰이 절전모드에 들어갔다가 나오는 경우.
+    ---
+    일단 위의 생명주기는 사용하신 이유가 정확하기 #case 1에 해당된다는 전제조건에서
+    볼때, 방향전환을 지원하면서 Activity의 전체 생명주기를 거치지 않게 하는 방법은
+    없는 것으로 알고 있습니다.
+    그러므로, 꼭 지원을 해야한다면, onNewIntent()에서 받았던 Intent정보를 적절하게
+    저장해 놓았다가 복구해서 해당 onNewIntent()에서 했던 작업을 다시 수행하는 방법밖에는
+    없을 듯 합니다.
+    이를 위해서는 아래와 같은 Callback 메쏘드를 활용하면 좋을 듯 합니다.
+    ---
+```java
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        // 이곳에서 저장
+    }
+    @Override
+    public void onCreate(Bundle savedInstanceState)  {
+        // savedInstanceState로 부터 복구
+    }
+```
+
+  ##### Tab 구조적인 설명 잘되어있음 : http://tigerwoods.tistory.com/19#recentComments
+
+  ##### 다른 파일에 있는 레이아웃 인클루드하기
+      <include layout="@layout/other"  />
+
+  ##### 탭과 유사함 - ViewFlipper
+
+  ##### Resouce Id 얻기
+        getString(R.string.str_tab_rotate);
+
+  ##### selector 사용하여 상태에따른 drawable 구성
+```java
+        public class ArrowButton extends Activity {
+            public void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+                setContentView(R.layout.widget_arrowbutton);
+            }
+        }
+```
+  - widget_arrowbutton.xml
+```xml  
+            <?xml version="1.0" encoding="utf-8"?>
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:orientation="vertical"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                >
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/arrowback"
+                android:text="Arrow Button"
+                />
+            <Button
+                android:layout_width="150px"
+                android:layout_height="70px"
+                android:background="@drawable/arrowback"
+                android:text="Arrow Button"
+                />
+            <Button
+                android:layout_width="80px"
+                android:layout_height="80px"
+                android:background="@drawable/arrowback"
+                android:text="Arrow Button"
+                />
+            </LinearLayout>
+```
+  - drawable/arrowback.xml ( xml에 이미지를 상태에따라 정의함 )
+```xml  
+            <?xml version="1.0" encoding="utf-8"?>
+            <selector xmlns:android="http://schemas.android.com/apk/res/android">
+                <item android:state_window_focused="false" android:state_enabled="true"
+                    android:drawable="@drawable/arrow_normal" />
+                <item android:state_window_focused="false" android:state_enabled="false"
+                    android:drawable="@drawable/arrow_disable" />
+                <item android:state_pressed="true"
+                    android:drawable="@drawable/arrow_press" />
+                <item android:state_focused="true" android:state_enabled="true"
+                    android:drawable="@drawable/arrow_focus" />
+                <item android:state_enabled="true"
+                    android:drawable="@drawable/arrow_normal" />
+                <item android:state_focused="true"
+                    android:drawable="@drawable/arrow_focus" />
+                <item
+                     android:drawable="@drawable/arrow_normal" />
+            </selector>
+```
+  ##### 스크롤바
+```java
+        public class ScrollBar3 extends Activity {
+            @Override
+            protected void onCreate(Bundle savedInstanceState) {
+                super.onCreate(savedInstanceState);
+
+                setContentView(R.layout.scrollbar3);
+
+                findViewById(R.id.view3).setScrollBarStyle(View.SCROLLBARS_INSIDE_INSET);
+            }
+        }
+```
+  ##### tab Reference
+```java
+        TabHost tabHost = getTabHost(); // The activity TabHost
+
+        LinearLayout ll = (LinearLayout) tabHost.getChildAt(0);
+        TabWidget tw = (TabWidget) ll.getChildAt(0);
+
+        // first tab
+        RelativeLayout rllf = (RelativeLayout) tw.getChildAt(0);
+        TextView lf;
+        lf = (TextView) rllf.getChildAt(1);
+        lf.setTextSize(12);
+        lf.setPadding(0, 0, 0, 2);
+
+        //second tab
+        RelativeLayout rllf2 = (RelativeLayout) tw.getChildAt(1);
+        lf = (TextView) rllf2.getChildAt(1);
+        lf.setTextSize(12);
+        lf.setPadding(0, 0, 0, 2);
+```
+##### process kill
+    아마 네이년을 찾아보면은
+    System.exit(0) 또는 android.os.Process.killProcess(android.os.Process.myPid()); 을 쓰세요^-^/
+    하고 나와있는데..-0- 위의 두개는 현재 실행중인 activity 를 죽이는 것이다.
+    하지만 대부분의 프로그램이 하나의 activity 를 쓰진 않는다.
+    Intent 되어 새로운 activity 를 생성하기 떄문에 뒤에 가려있떤 activity 가 다시 올라오는것이다.
+    (고로 프로세서가 죽지를 않는다)
+    그러면 어떻게 해야되는냐!
+
+    모든 activity 에게 동일한 권한을 주고 프로세스를 한꺼번에 죽이는것이다.
+    사용법은 아주 간단하다는~~ AndroidManifest.xml 파일에
+    <uses-permission android:name="android.permission.RESTART_PACKAGES"></uses-permission>
+    추가하고
+
+    소스파일엔(뭐 버튼정도 되겠쬬?)
+    ActivityManager am = (ActivityManager) getSystemService(ACTIVITY_SERVICE);
+    am.restartPackage(getPackageName());
+    추가해주고 버튼 지그시 눌러주면은 프로세서가 죽는것을 볼수 있다.!!
+    (찾느라..정말 고생햇따는...ㅜㅡㅜ )
+http://www.google.co.kr/search?hl=ko&lr=lang_ko&newwindow=1&rlz=1B3MOZA_koKR384KR384&tbs=lr%3Alang_1ko&q=%EA%B5%AC%EA%B8%80+%EC%95%88%EB%93%9C%EB%A1%9C%EC%9D%B4%EB%93%9C+%EA%B0%9C%EB%B0%9C%ED%99%98%EA%B2%BD+%EA%B5%AC%EC%B6%95&aq=f&aqi=&aql=&oq=&gs_rfai=
+http://wiz.pe.kr/640
+http://developer.android.com/sdk/eclipse-adt.html
+http://developer.android.com/guide/developing/eclipse-adt.html
+http://jpub.tistory.com/32
+http://www.androidpub.com/89895
+http://www.androidpub.com/?mid=android_dev_info&category=127161&page=2&document_srl=588
+http://developer.android.com/sdk/installing.html
+
+
+##### Android 키보드 숫자형으로 시작하게 하기
+```java
+    edittext.setInputType(InputType.TYPE_CLASS_NUMBER);
+```
+##### Android listview 검정화면 없애기
+    android:cacheColorHint="#00000000"
+
+##### Android 화면 고정하기
+    AndroidManifest.xml의 activity 속성중 screenOrientation을 다음과 같이 지정해준다.
+
+    //화면을 세로로 유지
+
+    android:label="@string/app_name"
+    android:screenOrientation="portrait">
+    //화면을 가로로 유지
+
+    android:label="@string/app_name"
+    android:screenOrientation="landscape">
+    자바 소스에서
+    setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+##### Android Handler example
+```java
+    // 시간주고 바로 뜨게 하기 20이 최소 가능 값..
+    new Handler().postDelayed(new Runnable() {
+    public void run() {
+    openOptionsMenu();
+    }
+    }, 20);
+```
+##### Android 소프트 키보드 끄기 및 보이기 및 숨기기
+```java
+    // 키보드 오프시키는 소스..
+    EditText et = (EditText)findViewById(R.id.menu6_e_number);
+    et.setInputType(0); //가상키보드 오프
+
+    1. 보이게 하기
+
+        EditText et = (EditText)findViewById(R.id.moneyEdit);
+        et.setInputType(0); //가상키보드 오프
+
+        et.setOnClickListener(new OnClickListener() {
+        public void onClick(View arg0) {
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(input, 0);
+        }
+        });
+
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.showSoftInput(editText, 0);
+
+    2. 숨기기
+        InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(myEditText.getWindowToken(), 0);
+```
+
+##### Android Edittext Hint, 흐리게 보이기
+    android:hint="ex) 안드로이드"
+
+##### Android EditText 숫자키만 허용하기
+```java
+    DigitsKeyListener digit =
+    new DigitsKeyListener(true, true); // first true : is signed, second one : is decimal
+    digit.setKeyListener( MyDigitKeyListener );
+
+    위와같이 하거나 xml 에서
+
+    android:inputType="number"
+```
+
+##### Android Option menu 실행 소스
+    openOptionsMenu();
+
+##### Android Menu 만들기
+```xml
+    - xml 소스
+    res/menu/menu.menu
+
+    android:id="@+id/adjust"
+    android:title="수정"
+    android:orderInCategory="1" >
+
+
+    android:id="@+id/delete"
+    android:title="삭제"
+    android:orderInCategory="2" >
+```
+```java
+    - 자바 소스
+    // OptionMenu
+    public boolean onCreateOptionsMenu(Menu menu){
+    getMenuInflater().inflate(R.menu.del_adjust, menu);
+    return true;
+    }
+
+    // OptionMenu click event
+    public boolean onOptionsItemSelected(MenuItem item) {
+    switch (item.getItemId()) {
+    case R.id.adjust:
+    finish();
+    return true;
+
+    case R.id.delete:
+    finish();
+    return true;
+    }
+    return false;
+    }
+```
+##### Android Dialog 만들기 (Android.Dialog.Builder())
+    기존에는 Activity에서 showAlert(()를 제공해줬나보다. (예제를 보니...)
+    더 이상 지원하지 않기 때문에 AlertDialog.Builder()를 이용하여 Dialog를 생성하였다.
+
+    * onClickLister() 생성시 반드시 DialogInterface.OnClickListener()라고 클래스를 적어줘야 한다.
+    (Activity에서 button 클릭 이벤트를 처리하기 위해 import한 View 클래스에 OnClickListener 메소드가 있다.)
+
+```java
+    a. Android yes or no - 버튼 2개짜리
+        new AlertDialog.Builder(LoginMainActivity.this)
+        .setTitle("Login Data")
+        .setMessage("rosa : test") //줄였음
+        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int whichButton) {
+        //...할일
+        }
+        })
+        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int whichButton) {
+        //...할일
+        }
+        })
+        .show();
+
+    b. Android ok (or cancel)
+        new AlertDialog.Builder(LoginMainActivity.this)
+        .setTitle("Login Data")
+        .setMessage("rosa : test") //줄였음
+        .setNeutralButton("OK", new DialogInterface.OnClickListener() {
+        public void onClick(DialogInterface dialog, int whichButton) {
+        //...할일
+        }
+        })
+        .show();
+
+    c. Android 다른 layout 출력
+        new AlertDialog.Builder(LoginMainActivity.this)
+        .setTitle("list 예제")
+        .setItems(R.array.listBtnArray, new DialogInterface.OnClickListener() {
+        @Override
+        public void onClick(DialogInterface dialog, int selectedIndex) {
+        String[] list = getResources().getStringArray(R.array.listBtnArray);
+        new AlertDialog.Builder(LoginMainActivity.this)
+        .setTitle("선택한 리스트 아이템")
+        .setMessage(list[selectedIndex])
+        .setNeutralButton("OK", new DialogInterface.OnClickListener(){
+        @Override
+        public void onClick(DialogInterface dialog, int which) {
+        // TODO Auto-generated method stub
+        }
+        });
+        }
+        })
+        .show();
+
+        --
+        value 값으로 array 추가
+
+        One
+        Two
+        Three
+```
+##### Android 뒤로 가기 키
+    onBackPressed();
+
+##### Android 바이브레이터
+```java
+    Vibrator vibe = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+    vibe.vibrate(500);
+    // 퍼미션
+```
+##### Android 밝기 셋팅
+```java
+    Window w = getWindow();
+    WindowManager.LayoutParams lp = getWindow().getAttributes();
+    lp.screenBrightness = 0~1까지의 float 값;
+    w.setAttributes(lp);
+    -1.f를 주면 default 밝기로 세팅됩니다.
+```
+##### Android 화면 꺼지는것 막기
+    현재 Activity가 보여지고 있는 동안은 시간이 지나도
+    화면이 자동으로 꺼지지 않도록 합니다.
+    즉 단말이 슬립상태로 들어가지 않고 계속 화면을 켜놓습니다.
+
+    getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+
+    3. Android toast
+    1-Type
+    Toast.makeText.(this, "토스트 메세지", Toast.LENGTH_SHORT).show();
+
+    2-Type
+    Context context = getApplicationContext();
+    String msg = "";
+    int duration = Toast.LENGTH_SHORT;
+    Toast.makeText(context, b, duration).show();
+
+##### Android View 백그라운드 색 변경
+```java
+    TextView a = null;
+    a.setBackgroundColor(Color.WHITE);
+```
+##### Android timer 이용
+    http://docs.androidside.com/docs/reference/java/util/TimerTask.html
+--------------------------------------------------------------------------------------------------
+    모토로이 볼륨 올리고 내리는 버튼 키값을 알아내서
+    edittext 에 원하는 값을 넣는 방법 볼룸 위아래 버튼을 누르면
+    화면에 벨로시 볼륨 조절하는 창이 나타나는데 완전히 키값을 가로채는 방법
+
+```java
+    et_editText.setOnKeyListener(new OnKeyListener() {
+
+    @Override
+    public boolean onKey(View v, int keyCode, KeyEvent event) {
+    // TODO Auto-generated method stub
+    if(event.getAction() == KeyEvent.ACTION_DOWN){
+    if(keyCode == 24 || keyCode == 25){
+    et_editText.setText("1234567890");
+
+    return true;
+    }
+    }
+    return false;
+    }
+
+    });
+```
+
+##### 전체적으로 필요한 기능
+    // 종료 후 재 부팅시 기능이 죽지않고 유지되게 하는 방법들..
+    http://www.androidpub.com/android_dev_qna/189549
+
+###### 박사마 만드는데 필요한 기능
+    // view에서 페이지 넘기는 기능
+    API Demos에서 Animation에 간단하게 Fade in, Zoom in 효과가 있네요.
+
+    내가 만드는 부분에 필요한 부분들
+    // 강제로 클릭을 발생시키는 이벤트
+
+    dispatchTouchEvent
+    // 좌표관련들..
+    getWidth()랑 getHeight()로 전체 좌표값을 얻어오고 %로 비율 정해서 좌표값 설정하세요
+
+    출처 : Posted by Winchester.K
+
+    \\=> http://winchester.tistory.com/entry/Android-%ED%95%9C-%EC%A4%84%EC%97%90%EC%84%9C-%EB%AA%87-%EC%A4%84%EB%A1%9C-%EB%90%98%EB%8A%94-%ED%95%84%EC%9A%94%ED%95%9C-%EC%9E%A1%EC%BD%94%EB%93%9C%EB%93%A4-%E3%85%8B%E3%85%8B
+
+##### 핸드폰
+```java
+    Intent call_phone = new Intent(Intent.ACTION_VIEW , Uri.parse(url)) ;
+    // 현재의 activity 에 대해 startActivity 호출
+    startActivity(call_phone) ;
+```
+##### Intent
+```java
+				Intent intent = new Intent(WoodN.this, GoogleMap.class);
+				//unescape(String inp)
+				//intent.putExtra("address"    ,url.substring(4));
+				try {
+					intent.putExtra("address"    ,java.net.URLDecoder.decode(url.substring(4),"UTF-8"));
+				} catch (UnsupportedEncodingException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+```
+##### gravity
+    android:gravity="center_vertical|right"
+
+##### Resoure ID 문자열로 리소스 얻기 (getIdentifier)
+```java
+    String uri = "tab_store0";
+    int imageResource = getResources().getIdentifier(uri+(i+1), "id", getPackageName());
+    mButtons[i] = (ImageButton)findViewById(imageResource);
+    mButtons[i].setId(i);
+    mButtons[i].setOnClickListener(this);
+
+    private void showImage() {
+        String uri = "drawable/icon";
+        // int imageResource = R.drawable.icon;
+        int imageResource = getResources().getIdentifier(uri, null, getPackageName());
+        ImageView imageView = (ImageView) findViewById(R.id.myImageView);
+        Drawable image = getResources().getDrawable(imageResource);
+        imageView.setImageDrawable(image);
+    }
+```
+##### xml디자인 인클루드하기
+```xml
+	<include
+		layout="@layout/bottom_menu"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content" />
+```
+##### View setTag, getTag ( http://blog.vizpei.kr/86999387 )
+    [Intro]
+
+    오늘은 별거 아닌 팁 하나 포스팅 해봅니다.
+    정말 별거 없답니다. 아하하...
+
+
+    [Data in View]
+
+    가끔 어플리케이션을 만들다 보면 View안에 어떤 데이터를 집어 넣고 싶을 때가 종종 있습니다.
+    네... 있지요. 그런 경우 그냥 무작정 떠올릴 수 있는 방법은 extends 해버리는 겁니다.
+    OOP의 최대 장점이지요.
+
+    Id, Name, Address 세개의 정보를 View안에 담고 싶다고 한다면
+    아마 다들 아래와 같이 클래스를 만드실 겁니다.
+
+```java
+    public class CustomView extends View {
+
+        private int mId;
+        private String mName;
+        private String mAddr;
+
+        public CustomView(Context context) {
+            super(context);
+        }
+        public CustomView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
+
+        public int getId() { return mId; }
+        public void setId(int id) { mId = id; }
+
+        public String getName() { return mName; }
+        public void setName(String name) { mName = name; }
+
+        public String getAddress() { return mAddr; }
+        public void setAddress(String addr) { mAddr = addr; }
+
+    }
+```
+    별로 복잡하지 않은 구조입니다.
+    달랑 필드 세개에 get / set 메소드 하나씩 달려 있는 모양이지요.
+    사용법은 아래와 같이 그냥 get / set 메소드를 사용 하면 되는 겁니다.
+
+```java
+    CustomView customView = new CustomView(this);
+    customView.setId(1);
+    customView.setName("vizpei");
+    customView.setAddress("somewhere");
+```
+
+    이와 같은 방법은 단순히 get/set 만 하지 않고 뭔가 좀더 복잡한 operation을 하는 경우에
+    아주 유용하게 쓰는, 그냥 평범하게 생각 할 수 있는 customization 이지요.
+
+    [Tag in View]
+
+    android.view.View, 즉 모든 View들의 상위에 있는 View 클래스에는
+    getTag() / setTag() 를 사용하여 View에 Tag를 붙일 수 있습니다.
+    Tag는 Object 타입이라 아무거나 다 들어 갈 수 있지요.
+    그냥 시시한 값 하나 넣을 수도 있지만 복잡한 클래스 인스턴스도 가볍게 넣을 수 있습니다.
+
+    아까 넣고 싶었던 데이터들을 일단 하나의 클래스로 만들어 봤습니다.
+    필드를 private로 만들고 get / set 메소드 만들어도 되지만 그냥 public으로 해버렸습니다.
+    어차피 그냥 데이터 저장용이니까요.
+
+```java
+    private class PersonInfo {
+        public int id;
+        public String name;
+        public String addr;
+    }
+```
+
+    이제 PersonInfo 인스턴스를 만들고 View.setTag()로 집어 넣어주면 땡입니다.
+```java
+    PersonInfo pi = new PersonInfo();
+    pi.id = 1;
+    pi.name = "vizpei";
+    pi.addr = "somewhere";
+
+    View view = new View(this);
+    view.setTag(pi);
+```
+    사용할때는 View.getTag() 로 가져오면 역시 땡이지요.
+```java
+    PersonInfo pi = (PersonInfo) view.getTag();
+```
+    알면 유용하게 쓸 수 있지만, 모르면 맨날 extends만 하고 있을지는 모르는 일입니다.
+
+    [Appendix]
+    뭐 별로 쓴적은 없지만...
+    View.findViewWithTag() 를 사용하면 Tag로 View를 찾을 수 있답니다.
+    View.findViewById()로만 View를 찾을 수 있는건 아니란 것이지요.
+
+    다만 View.findViewWithTag()는 Object.equals() 비교를 하니
+    요것만 주의해서 사용 하시면 될 것 같습니다.
+
+##### 안드로이드 Intent에서 앱 호출하는 방법을 정리 --------------
+    안드로이드 Intent에서 앱을 호출하는 방법을 정리 합니다.
+```java
+    연락처 Intent
+
+        연락처 조회
+
+    intent = new Intent(Intent.ACTION_VIEW,
+
+        Uri.parse("content://contacts/people/" +
+
+                  String.valueOf(contact.getId())));
+
+    startActivity(intent);
+
+        연락처 등록
+
+    intent = new Intent(Intent.ACTION_INSERT,
+
+        Uri.parse("content://contacts/people"));
+
+    startActivity(intent);
+
+        연락처 수정
+
+    intent = new Intent(Intent.ACTION_EDIT,
+
+      Uri.parse("content://contacts/people/" +
+
+                String.valueOf(contact.getId())));
+
+    startActivity(intent);
+
+        연락처 삭제
+
+    intent = new Intent(Intent.ACTION_DELETE,
+
+        Uri.parse("content://contacts/people/" +
+
+                  String.valueOf(contact.getId())));
+
+    startActivity(intent);
+
+    전화 Intent
+
+        권한 설정 (AndroidManifest.xml)
+
+    전화 걸기         : CALL_PHONE = "android.permission.CALL_PHONE"
+
+    긴급 통화         : CALL_PRIVILEGED =
+
+                         "android.permission.CALL_PRIVILEGED"
+
+    폰 상태 읽기      : READ_PHONE_STATE =
+
+                        "android.permission.READ_PHONE_STATE"
+
+    폰 상태 수정      : MODIFY_PHONE_STATE =
+
+                        "android.permission.MODIFY_PHONE_STATE"
+
+    브로드케스팅 수신 : PROCESS_OUTGOING_CALLS =
+
+                        "android.permission.PROCESS_OUTGOING_CALLS"
+
+    전화 걸기 이전    : ACTION_NEW_OUTGOING_CALL =
+
+                        "android.intent.action.NEW_OUTGOING_CALL"
+
+        전화걸기 화면
+
+    Intent intent = new Intent(Intent.ACTION_DIAL,
+
+          Uri.parse("tel:" + TelNumber));
+
+    startActivity(intent);
+
+        전화걸기
+
+    Intent intent = new Intent(Intent.ACTION_CALL,
+
+           Uri.parse("tel:" + TelNumber));
+
+    startActivity(intent);
+
+    SMS Intent
+
+        권한 설정 (AndroidManifest.xml)
+
+    수신 모니터링       : RECEIVE_SMS = "android.permission.RECEIVE_SMS"
+
+    읽기 가능           : READ_SMS = "android.permission.READ_SMS"
+
+    발송 가능           : SEND_SMS = "android.permission.SEND_SMS"
+
+    SMS Provider로 전송 : WRITE_SMS = "android.permission.WRITE_SMS"
+
+                        : BROADCAST_SMS = "android.permission.BROADCAST_SMS"
+
+        SMS 발송 화면
+
+    Intent intent = new Intent(Intent.ACTION_VIEW);
+
+    intent.putExtra("sms_body", "The SMS text");
+
+    intent.setType("vnd.android-dir/mms-sms");
+
+    startActivity(intent);
+
+        SMS 보내기
+
+    Intent intent = new Intent(Intent.ACTION_SENDTO,
+
+           Uri.parse("smsto://" + contact.getHandphone()));
+
+    intent.putExtra("sms_body", "The SMS text");
+
+    intent.setType("vnd.android-dir/mms-sms");
+
+    startActivity(intent);
+
+    이메일 Intent
+
+        이메일 발송 화면
+
+    Intent intent = new Intent(Intent.ACTION_SENDTO,
+
+           Uri.parse("mailto:" + contact.getEmail()));
+
+    startActivity(intent);
+
+    브라우저 Intent
+
+        Browser에서 URL 호출하기
+
+    new Intent(Intent.ACTION_VIEW, Uri.parse("http://www.google.com/"));
+
+    startActivity(intent);
+
+        브라우저에서 검색
+
+    Intent intent = new Intent(Intent.ACT ION_WEB_SEARCH);
+
+    intent.putExtra(SearchManager.QUERY, "검색어");
+
+    startActivity(intent);
+
+    지도 Intent
+
+        지도 보기
+
+    Uri uri = Uri.parse ("geo: 38.00, -35.03");
+
+    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+    startActivity(intent);
+
+    안드로이드 마켓 Intent
+
+        안드로이드 마켓에서 Apps 검색
+
+    Uri uri = Uri.parse("market://search?q=pname:전제_패키지_명");
+
+    //--- 예) market://search?q=pname:com.jopenbusiness.android.smartsearch
+
+    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+    startActivity(intent);
+
+        안드로이드 마켓의 App 상세 화면
+
+    Uri uri = Uri.parse("market://details?id=전제_패키지_명");
+
+    //--- 예) market://details?id=com.jopenbusiness.android.smartsearch
+
+    Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+
+    startActivity(intent);
+
+    갤럭시S의 Intent
+
+        패키지명과 클래스명으로 App 호출
+
+    intent = new Intent(Intent.ACTION_MAIN);
+
+    intent.setComponent(new ComponentName("패키지명", "전체_클래스명"));
+
+    startActivity(intent);
+```
+        전화, SMS
+
+            전화번호부 : com.android.contacts, com.sec.android.app.contacts.PhoneBookTopMenuActivity
+            전화 : com.sec.android.app.dialertab, com.sec.android.app.dialertab.DialerTabActivity
+            최근기록 : com.sec.android.app.dialertab, com.sec.android.app.dialertab.DialerTabDialerActivity
+            메시지 : com.sec.mms, com.sec.mms.Mms
+
+        이메일 : com.android.email, com.android.email.activity.Welcome
+        일정 : com.android.calendar, com.android.calendar.LaunchActivity
+        인터넷 : com.android.browser, com.android.browser.BrowserActivity
+
+        Google의 Android용 앱
+
+            검색 : com.google.android.googlequicksearchbox, com.google.android.googlequicksearchbox.SearchActivity
+            음성 검색 : com.google.android.voicesearch, com.google.android.voicesearch.RecognitionActivity
+            Gmail : com.google.android.gm, com.google.android.gm.ConversationListActivityGmail
+            지도 : com.google.android.apps.maps, com.google.android.maps.MapsActivity
+            위치찾기 : com.google.android.apps.maps, com.google.android.maps.LatitudeActivity
+            YouTube : com.google.android.youtube, com.google.android.youtube.HomeActivity
+            토크 : com.google.android.talk, com.google.android.talk.SigningInActivity
+            Goggles : com.google.android.apps.unveil, com.google.android.apps.unveil.CaptureActivity
+            Google 번역 : com.google.android.apps.translate, com.google.android.apps.translate.HomeActivity
+            Reader : com.google.android.apps.reader, com.google.android.apps.unveil.CaptureActivity
+            Voice : com.google.android.apps.googlevoice, com.google.android.apps.googlevoice.SplashActivity
+            Google 별지도 : com.google.android.stardroid, com.google.android.stardroid.activities.SplashScreenActivity
+
+        카메라 : com.sec.android.app.camera, com.sec.android.app.camera.Camera
+        TV : com.sec.android.app.dmb, com.sec.android.app.dmb.activity.DMBFullScreenView
+
+        Android 관리
+
+            환경 설정 : com.android.settings, com.android.settings.Settings
+            작업 관리자 : com.sec.android.app.controlpanel, com.sec.android.app.controlpanel.activity.JobManagerActivity
+
+        마켓 : com.android.vending, com.android.vending.AssetBrowserActivity
+
+        ■ Android Intent 사용 예 - DISLab.htm
+            http://dislab.hufs.ac.kr/lab/Android/Intent_%EC%82%AC%EC%9A%A9_%EC%98%88?rdfrom=http%3A%2F%2Fdislab.hufs.ac.kr%2Fw%2Findex.php%3Ftitle%3DAndroid%2FIntent_%25EC%2582%25AC%25EC%259A%25A9_%25EC%2598%2588%26redirect%3Dno#Video_.EC.98.81.EC.83.81_.EB.85.B9.ED.99.94
+
+
+##### 프로가드 사용법 가이드
+  - 참고 : 안드로이드_프로가드사용법.mht
+  - http://huewu.blog.me/110099143870
+
+##### Proguride로 apk 만들
+1. ADT를 최신으로 업데이트한다.
+
+2. 프로젝트 폴더 아래 project.properties파일에
+   proguard.config=proguard.cfg <- 추가
+
+3. project 우클릭 Android Tools -> Export Signed Application Package...
+
+4. 항목 입력하고 apk 생성확인.
+
+5. 정상적으로 생성되면 proguard 디렉토리가 생성되고
+   하위에 dump.txt, mapping.txt, seeds.txt, usage.txt 파일이 생성됨
+
+###### 문제가 있다면 -->  Conversion to dalvik format failed with error 1
+  참고 : http://ekaldnah.egloos.com/4021918
+
+  - External로 선언된 jar를 User Library로 사용해야한다.
+
+  1. jar가 External로 등록되어있다면,
+     프로젝트 속성-> Java Build Path->Libraries
+       --> jar파일들을 Remove한다.
+
+  2.
+     Add Library - User Library -> User Libraries...
+     -> New -> 라이브러리 명을 입력하고
+              -> Check : System library(added to the boot class path)
+     -> Add Jars
+     -> 사용할 Jar파일들을 추가한다.
+
+  ###### 프로가드 버전 최신으로 업데이트
+     http://proguard.sourceforge.net/
+
+  ###### 경고가 떳다면
+    1. proguard.cfg에 오류정보를확인하고 조치.
+       -dontwarn com.google.zxing.**
+       -dontwarn kr.co.gscaltex.gsnpoint.qr.**
+
+##### 안드로이드에서 EditText와 같은 뷰를 가진 액티비티가 시작되면 소프트 키보드가 항상 보이는 채로 시작된다.
+
+키보드가 보이지 않는 채로 액티비티를 시작하고 싶다면
+
+Activity를 상속받은 클래스에서 onResume 메서드를 아래와 같이 오버라이딩 한다.
+
+```java
+@Override
+protected void onResume(){
+    super.onResume();
+
+    getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN);
+}
+```
+
+만약 특정 순간(이벤트 처럼) 후에 키보드를 감추거나 보이게 할 때는 아래와 같이 하면 된다.
+```java
+// InputMethodManager를 가져옴
+InputMethodManager imm =
+    (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+// 감출 때
+imm.hideSoftInputFromWindow(ViewName.getWindowToken(), 0);
+
+// 보이게 할 때
+imm.showSoftInput(ViewName, 0);
+```
++ 2012.06.10 추가
+
+애초에 포커스를 EditText로 주지 않는 방법도 있다.
+해당 액티비티의 레이아웃 파일에서 레이아웃에 focusable, focusableInTouchMode 애트리뷰트를 추가하고
+값을 true로 주고 requestFocus 태그를 추가한다.
+
+```xml
+<LinearLayout
+
+        ... 다른 속성들
+
+        android:focusable="true"
+
+        android:focusableInTouchMode="true">
+
+        <requestFocus/>
+
+
+       ...
+
+</LinearLayout>
+```
+이는 포커스를 가질 수 없는 레이아웃에 강제로 포커스를 가지게 하고 포커스를 줌으로써
+EditText가 포커스를 가지지 않게하여 소프트 키보드를 보이지 않게 하는 방법이다.
