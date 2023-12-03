@@ -1,0 +1,34 @@
+★ 프로그램 배포 ★
+
+Visual Studio 6.0 버전이나 Visual Basic 6.0
+프로그램이 없으신 분은 이 버젼을 받으시면 됩니다.
+
+- Visual Studio 6.0에서 제공하는 'Package and Deployment Wizard를
+사용합니다. 프로그램 구동에 있어 추가로 필요한 file 목록은 다음과
+같습니다. 
+
+Asycfilt.dll 
+Comcat.dll 
+Msvbbvm60.dll 
+Oleaut32.dll
+Olepro32.dll
+Riched32.dll 
+Vb6stkit.dll
+Vb6ko.dll
+Comdlg32.ocx
+Mscomctl.ocx
+Richtx32.ocx
+Comct232.ocx
+
+- 현재 이 file들을 하나의 폴더에 넣으시거나
+  Window의 system Directory 아래 Copy 하시면
+  됩니다.
+
+'--------------------------------------------------------------------------------
+' (소스에 사용된 도구모음) 도구상자의 구성요소에 다음 ocx 화일을 추가한다.
+' Microsoft Common Dialog Control 6.0          --> c:\windows\system\comdlg32.ocx
+' Microsoft Rich Textbox Control 6.0           --> c:\windows\system\richtx32.ocx
+' Microsoft Windows Common Controls 6.0        --> c:\windows\system\mscomctl.ocx
+' Microsoft Windows Common Controls-2 5.0(SP2) --> c:\windows\system\comct232.ocx
+
+2000. 6. 15. 유성 올림.. 

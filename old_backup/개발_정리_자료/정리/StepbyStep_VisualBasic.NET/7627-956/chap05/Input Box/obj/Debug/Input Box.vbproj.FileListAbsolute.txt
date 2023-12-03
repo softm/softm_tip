@@ -1,0 +1,10 @@
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\bin\Input Box.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\bin\Input Box.pdb
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\bin\Input Box.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\obj\Debug\Input_Box.Form1.resources
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\obj\Debug\Input Box.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\obj\Debug\Input Box.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Input Box\obj\Debug\Input Box.pdb

@@ -1,0 +1,281 @@
+From: =?utf-8?Q?Windows_Internet_Explorer_10=EC=97=90=EC=84=9C_=EC=A0=80?=
+	=?utf-8?Q?=EC=9E=A5=EB=90=A8?=
+Subject: 
+Date: Mon, 24 Mar 2014 17:16:26 +0900
+MIME-Version: 1.0
+Content-Type: text/html;
+	charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+Content-Location: file://C:\Users\Administrator\AppData\Local\Temp\non9D07.htm
+X-MimeOLE: Produced By Microsoft MimeOLE V6.1.7601.17609
+
+=EF=BB=BF<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML><HEAD><META content=3D"IE=3D5.0000" =
+http-equiv=3D"X-UA-Compatible">
+
+<META content=3D"text/html; charset=3Dutf-8" http-equiv=3DContent-Type>
+<META name=3DGENERATOR content=3D"MSHTML 10.00.9200.16843"></HEAD>
+<BODY>
+<DIV class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80">
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80">log4j=EB=8A=94 </P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80">&nbsp;</P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80">log4j-1.2.9.jar =ED=8C=8C=EC=9D=BC=EC=9D=84 =
+lib=EC=97=90=20
+=EC=9E=84=ED=8F=AC=ED=8A=B8=ED=95=98=EA=B3=A0 </P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80">classes =ED=8F=B4=EB=8D=94=EC=95=84=EB=9E=98=20
+log4j.properties&nbsp;=EB=98=90=EB=8A=94 =
+log4j.xml&nbsp;=ED=8C=8C=EC=9D=BC=EC=9D=84 =EC=84=A4=EC=A0=95=ED=95=B4 =
+=EC=A3=BC=EB=A9=B4 =EB=90=9C=EB=8B=A4.</P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80">&nbsp;</P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#0075c8>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#0075c8>&lt;&lt;log4j.xml&gt;&gt; =3D&gt; =EB=B0=A9=EB=B2=951 =
+=EB=B0=8F </FONT><FONT=20
+color=3D#6e391a>ibatis =
+=EC=BF=BC=EB=A6=AC=EB=A1=9C=EA=B7=B8=EB=B3=B4=EA=B8=B0 =
+=EC=84=A4=EC=A0=95</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#0075c8>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D</FONT></P>
+<DIV class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#0075c8>&lt;?xml version=3D"1.0" =
+encoding=3D"UTF-8"?&gt;<BR>&lt;!DOCTYPE=20
+log4j:configuration SYSTEM "log4j.dtd"&gt;</FONT></DIV>
+<DIV class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#0075c8>&lt;log4j:configuration xmlns:log4j=3D"</FONT><A =
+class=3Dcon_link=20
+href=3D"http://jakarta.apache.org/log4j/" target=3D_blank><FONT=20
+color=3D#0075c8>http://jakarta.apache.org/log4j/</FONT></A><FONT=20
+color=3D#0075c8>"&gt;</FONT></DIV>
+<DIV class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#0075c8>&nbsp;&nbsp;&nbsp; &lt;!-- =EC=BD=98=EC=86=94=EB=A1=9C =
+=EB=B3=B4=EA=B8=B0(=EB=94=94=EB=B2=84=EA=B7=B8)=20
+--&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;appender name=3D"CONSOLE-debug"=20
+class=3D"org.apache.log4j.ConsoleAppender"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;=20
+&lt;layout=20
+class=3D"org.apache.log4j.PatternLayout"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+&lt;param name=3D"ConversionPattern" value=3D"%p - %C{1}&nbsp; :&nbsp; =
+%M&nbsp; %m=20
+%n"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+&lt;/layout&gt;<BR>&nbsp;&nbsp;&nbsp; =
+&lt;/appender&gt;<BR>&nbsp;&nbsp;&nbsp;=20
+<BR>&nbsp;&nbsp;&nbsp; &lt;!-- =EC=BD=98=EC=86=94=EB=A1=9C =
+=EB=B3=B4=EA=B8=B0(=EC=9D=B8=ED=8F=AC) --&gt;<BR>&nbsp;&nbsp;&nbsp;=20
+&lt;appender name=3D"CONSOLE-info"=20
+class=3D"org.apache.log4j.ConsoleAppender"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;=20
+&lt;layout=20
+class=3D"org.apache.log4j.PatternLayout"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+&lt;param name=3D"ConversionPattern" value=3D"%m ---%d=20
+%n"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+&lt;/layout&gt;<BR>&nbsp;&nbsp;&nbsp; =
+&lt;/appender&gt;<BR>&nbsp;&nbsp;&nbsp;=20
+<BR>&nbsp;&nbsp;&nbsp; <FONT color=3D#785c25>&lt;!-- =
+=EC=BD=98=EC=86=94=EB=A1=9C =EB=B3=B4=EA=B8=B0(ibatis)=20
+<BR>&nbsp;&nbsp;&nbsp; &lt;appender name=3D"sql"=20
+class=3D"org.apache.log4j.ConsoleAppender"&gt;<BR>&nbsp; =
+&nbsp;&nbsp;&lt;layout=20
+class=3D"org.apache.log4j.PatternLayout"&gt;<BR>&nbsp;&nbsp;=20
+&nbsp;&nbsp;&nbsp;&lt;param name=3D"ConversionPattern" value=3D"%d [%t] =
+%-5p %c{1} -=20
+%m%n" /&gt;<BR>&nbsp;=20
+&nbsp;&nbsp;&lt;/layout&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=
+=20
+&lt;filter class=3D"org.apache.log4j.varia.StringMatchFilter"&gt;=20
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&lt;param=20
+name=3D"StringToMatch" value=3D"Result" /&gt;=20
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+&lt;param=20
+name=3D"AcceptOnMatch" value=3D"false" /&gt;=20
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;/filter&gt;=20
+<BR>&nbsp;&lt;/appender&gt;<BR>&nbsp;--&gt;<BR>&nbsp;<BR>&nbsp;&lt;!-- =
+=ED=8C=8C=EC=9D=BC=EB=A1=9C=20
+=EB=B3=B4=EA=B8=B0(ibatis) --&gt;<BR>&nbsp;&nbsp;&nbsp; &lt;appender =
+name=3D"sql"=20
+class=3D"org.apache.log4j.DailyRollingFileAppender"&gt;<BR>&nbsp;&nbsp;&n=
+bsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+&lt;param name=3D"file"=20
+value=3D"D:\\project\\maptest\\log\\ibatis.log"/&gt;<BR>&nbsp;&nbsp;&nbsp=
+;&nbsp;&nbsp;&nbsp;&nbsp;=20
+&lt;param name=3D"Append"=20
+value=3D"true"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+&lt;param=20
+name=3D"DatePattern"=20
+value=3D"'.'yyyy-MM-dd"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp=
+;=20
+&lt;layout =
+class=3D"org.apache.log4j.PatternLayout"&gt;<BR>&nbsp;&nbsp;&nbsp;=20
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&lt;param =
+name=3D"ConversionPattern"=20
+value=3D"%d [%t] %-5p %c{1} - %m%n" /&gt;<BR>&nbsp; =
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+&lt;/layout&gt;</FONT></FONT></DIV>
+<DIV class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#785c25><STRONG>&lt;!--&nbsp;=EC=95=84=EB=9E=98 filter=EC=9D=98 =
+=EC=98=B5=EC=85=98=EC=9D=84 =EB=84=A3=EC=9C=BC=EB=A9=B4 =
+ResultSet=EC=9D=98 =EA=B2=B0=EA=B3=BC=EB=A5=BC =
+=EB=A1=9C=EA=B7=B8=EB=A1=9C =EB=BF=8C=EB=A0=A4=EC=A3=BC=EC=A7=80=20
+=EC=95=8A=EB=8A=94=EB=8B=A4. --&gt;</STRONG></FONT></DIV>
+<DIV class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#0075c8><FONT=20
+color=3D#785c25><STRONG>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+&lt;filter=20
+class=3D"org.apache.log4j.varia.StringMatchFilter"&gt;<BR>&nbsp;&nbsp;&nb=
+sp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+&lt;param name=3D"StringToMatch" value=3D"Result"=20
+/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbs=
+p;=20
+&lt;param name=3D"AcceptOnMatch" value=3D"false"=20
+/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+&lt;/filter&gt;</STRONG><BR>&nbsp;&nbsp;&nbsp;=20
+&lt;/appender&gt;<BR>&nbsp;</FONT><BR>&nbsp;&lt;category=20
+name=3D"com.ibatis"&gt;<BR>&nbsp; &nbsp;&nbsp;&lt;priority =
+value=3D"debug"=20
+/&gt;<BR>&nbsp;&nbsp;&lt;/category&gt;</FONT></DIV>
+<DIV class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#0075c8>&nbsp;&nbsp;&lt;category name=3D"java.sql"&gt;<BR>&nbsp; =
+
+&nbsp;&nbsp;&lt;priority value=3D"debug" /&gt;<BR>&nbsp;=20
+&nbsp;&nbsp;&lt;appender-ref ref=3D"sql"=20
+/&gt;<BR>&nbsp;&nbsp;&lt;/category&gt;<BR>&nbsp;&nbsp;&nbsp;=20
+<BR>&nbsp;&nbsp;&nbsp; &lt;logger=20
+name=3D"org.apache"&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+&lt;level=20
+value=3D"WARN"/&gt;<BR>&nbsp;&nbsp;&nbsp; =
+&lt;/logger&gt;<BR>&nbsp;&nbsp;&nbsp;=20
+<BR>&nbsp;&nbsp;&nbsp;=20
+&lt;root&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;level=20
+value=3D"INFO"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+&lt;appender-ref=20
+ref=3D"CONSOLE-debug"/&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+
+<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &lt;!--&lt;appender-ref=20
+ref=3D"LOGFILE-DAILY"/&gt;--&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&=
+nbsp;=20
+&lt;!--&lt;appender-ref=20
+ref=3D"LOGFILE-SIZE"/&gt;--&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;=20
+&lt;!--&lt;appender-ref=20
+ref=3D"CONSOLE-info"/&gt;--&gt;<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&n=
+bsp;=20
+&lt;!--&lt;appender-ref =
+ref=3D"LOGFILE-XML"/&gt;--&gt;<BR>&nbsp;&nbsp;&nbsp;=20
+&lt;/root&gt;<BR>&lt;/log4j:configuration&gt;</FONT></DIV>
+<DIV class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#000000></FONT>&nbsp;</DIV>
+<P>&nbsp;</P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80">&nbsp;</P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#3a32c3>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#3a32c3>&lt;&lt;log4j.properties &gt;&gt; =3D&gt; =
+=EB=B0=A9=EB=B2=952</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#3a32c3>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT color=3D#3a32c3>#root=20
+logger<BR>log4j.rootLogger =3D INFO, stdout1,stdout2</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#3a32c3>#logger level ALL( all=EC=9D=80 =
+=EB=AA=A8=EB=93=A0=EB=A1=9C=EA=B7=B8=EB=A5=BC =EC=B6=9C=EB=A0=A5 ) =
+<BR>log4j.logger.com.ex =3D=20
+ERROR<BR>log4j.logger.org.apache.jsp =3D FATAL</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#3a32c3>#console appender (option 1 =ED=81=B0=EC=86=94=EC=97=90 =
+=EC=B6=9C=EB=A0=A5)<BR>log4j.appender.stdout1 =3D=20
+org.apache.log4j.ConsoleAppender<BR>log4j.appender.stdout1.layout =3D=20
+org.apache.log4j.SimpleLayout</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT color=3D#3a32c3>#file=20
+appender(option 2 =ED=8C=8C=EC=9D=BC=EC=97=90 =
+=EC=B6=9C=EB=A0=A5)<BR>log4j.appender.stdout2 =3D=20
+org.apache.log4j.FileAppender<BR>log4j.appender.stdout2.file =3D=20
+d:\\project\\maptest\\log\\weblog.log<BR>log4j.appender.stdout2.layout =
+=3D=20
+org.apache.log4j.PatternLayout<BR>log4j.appender.stdout2.layout.Conversio=
+nPattern=20
+=3D %d{HH:mm:ss} %t %M %m \n </FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80">&nbsp;</P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#1b496a>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT color=3D#1b496a>=ED=85=8C=EC=8A=A4=ED=8A=B8=20
+=ED=95=98=EA=B8=B0(JUNIT =EC=9D=84 =EC=9D=B4=EC=9A=A9=ED=95=98=EC=97=AC =
+=ED=85=8C=EC=8A=A4=ED=8A=B8 =ED=95=98=EC=98=80=EB=8B=A4.)</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#1b496a>=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=
+=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D=3D</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT color=3D#1b496a>import=20
+junit.framework.*;<BR>import org.apache.log4j.Logger;<BR>//import=20
+org.apache.log4j.BasicConfigurator;</FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT color=3D#1b496a>public=20
+class TestCaseLog extends TestCase{<BR>&nbsp;<BR>&nbsp;static Logger =
+logger =3D=20
+Logger.getLogger(TestCaseLog.class);<BR>&nbsp;<BR>&nbsp;public void=20
+testLog()<BR>&nbsp;{<BR>&nbsp;&nbsp;//BasicConfigurator.configure();</FON=
+T></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT=20
+color=3D#1b496a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+logger.debug("[DEBUG]=20
+Hello log4j."); //no print<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+
+logger.info ("[INFO]&nbsp; Hello log4j.");=20
+//print<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; logger.warn =
+("[WARN]&nbsp;=20
+Hello log4j."); //print<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+logger.error("[ERROR] Hello log4j.");=20
+//print<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; =
+logger.fatal("[FATAL]=20
+Hello log4j."); //print<BR>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;=20
+//loger.log( Level.DEBUG , "debug") =EC=99=80 =
+=EB=8F=99=EC=9D=BC=ED=95=98=EB=8B=A4.<BR>&nbsp;}<BR>}<BR></FONT></P>
+<P class=3Dview style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80"><FONT color=3D#1b496a>--&gt;=20
+=EC=A3=BC=EC=84=9D=EC=B2=98=EB=A6=AC=ED=95=9C =EA=B3=B3=EC=9D=84 =
+=ED=92=80=EA=B3=A0=EB=8F=84 =ED=85=8C=EC=8A=A4=ED=8A=B8=EB=A5=BC =
+=ED=95=B4=EB=B3=B4=EC=9E=90</FONT></P>
+<P class=3Dview=20
+style=3D"FONT-SIZE: 9pt; FONT-FAMILY: =
+=EB=8F=8B=EC=9B=80">&nbsp;</P></DIV></BODY></HTML>

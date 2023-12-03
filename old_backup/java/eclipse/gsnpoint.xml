@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<project default="check" basedir="." name="수정파일백업" >
+	<echo message="${ant.project.name}"/>
+	<tstamp>
+	   <format property="build.time" pattern="MM/dd/yyyy hh:mm aaa" offset="-1" unit="day" locale="en" />
+	   <format property="backup.make.time" pattern="yyyy-MM-dd HH_mm_ss_S"/>
+	</tstamp>
+	<property file="gsnpoint.properties"/>
+	<property name="backup.make.dir" value="${backup.make.time}"/>
+
+<!-- check -->
+	 <target name="check" description="수정파일 검사">
+	   <echo>수정파일 검사</echo>
+	   <fileset dir="${web.dir}" id="src.files" defaultexcludes="true">
+	      <include name="**/*.*"/>
+    	  <exclude name="**/.settings/**"/>
+    	  <exclude name="**/build/**"/>
+		  <date datetime="${build.time}" when="after" />
+	    </fileset>
+		<pathconvert pathsep="${line.separator}"  property="javafiles" refid="src.files"/>	
+		<echo>${javafiles}</echo>
+		<echo>${build.time}</echo> 
+	 </target>
+
+<!-- copy -->
+	 <target name="copy" depends="mkdir, check" description="파일 복사">
+	    <echo>파일 복사</echo>
+		<copy todir="${backup.dir}/${backup.make.dir}" verbose="true" overwrite="false">
+			<fileset refid="src.files"></fileset>
+		</copy>
+	 </target>
+
+<!-- zip -->
+	<target name="zip" description="ZIP" depends="check">
+	    <echo>ZIP</echo>
+		<echo>ZIP PATH : ${backup.dir}/${backup.make.dir}.zip</echo>
+		  <zip destfile="${backup.dir}/${backup.make.dir}.zip">
+			<fileset refid="src.files"></fileset>
+		  </zip>
+	</target>
+
+<!-- ftp_upload -->	
+	<target name="ftp_upload" depends="check" description="수정파일 업로드">
+	    <echo>수정파일 업로드</echo>
+		 <ftp server="${ftp.server}"
+		       port="${ftp.port}"
+		       remotedir="${ftp.remotedir}"
+		       userid="${ftp.userid}"
+		       password="${ftp.password}"
+		       depends="${ftp.depends}"
+		       binary="${ftp.binary}"
+		  >
+		    <fileset refid="src.files">
+		    </fileset>
+		</ftp> 
+	</target>
+
+<!-- mkdir -->
+	<target name="mkdir" description="디렉토리 생성">
+	    <echo>디렉토리 생성</echo>
+		<echo>BACKUP PATH : ${backup.dir}/${backup.make.dir}</echo>
+		<mkdir dir="${backup.dir}/${backup.make.dir}"/>
+	</target>
+</project>

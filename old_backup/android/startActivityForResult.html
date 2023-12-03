@@ -1,0 +1,74 @@
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+<div id="post-view60141449535" class="post-view pcol2 _param(1)">
+							 
+<div style="FONT-FAMILY: '957317_9'; FONT-SIZE: 9pt" class="view">
+<p>오늘은 startActivityForResult 의 사용법을 알아보자.&nbsp;</p>
+<p>&nbsp;</p>
+<p>Activity를 실행하는 방법으로 StartActivityt(Intent intent)를 사용하지만</p>
+<p>&nbsp;</p>
+<p>실행한 Activity가 종료되어 다시 자신이 화면에 보여질때 startActivityForResult 를 사용해보자.</p>
+<p>&nbsp;&nbsp;</p>
+<p>실행 방법은 간단하다.</p>
+<p>&nbsp;</p>
+<p>startActivityForResult (intent , request_code);&nbsp;</p>
+<p>intent는 시작할 Activity를 설정한&nbsp;것이고, 중요한 것은 request_code&nbsp;</p>
+<p>미리 지정한 request_code를 넣어주면&nbsp;</p>
+<p>호출한 액티비티가 종료되어 onActivityResult 가 호출될때 호출에 사용한 request_code가 넘어온다.</p>
+<p>&nbsp;</p>
+<p>간단히 그림으로 설명하자면.. 아래와 같다...ㅋㅋㅋ</p>
+<p>&nbsp;</p>
+<p><img src="./startActivityForResult.png" width="398" height="313" style="cursor: pointer;BORDER-BOTTOM-COLOR: rgb(0,0,0); BORDER-TOP-COLOR: rgb(0,0,0); BORDER-RIGHT-COLOR: rgb(0,0,0); BORDER-LEFT-COLOR: rgb(0,0,0); rwidth: 398px; rheight: 313px" id="20111130_277/0677haha_1322630612164qOxEP_PNG/%B1%D7%B8%B21.png" onclick="popview(this, '90000003_000000000000000E00B5B13F')"></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<p>예제)</p>
+<p>&nbsp;</p>
+<p><span style="COLOR: #ff0000"><u>A_activity.java</u></span></p>
+<p>&nbsp;</p>
+<p>// request_code 정의</p>
+<p>static final int REQUEST_CODE = 1234;</p>
+<p>&nbsp;</p>
+<p>// B_activity 호출</p>
+<p>Intent&nbsp;intent = new Intent(this, B_activity.class);</p>
+<p>startActivityForResult(intent, REQUEST_CODE ); </p>
+<p>&nbsp;</p>
+<p>// B_activity 가 종료되고 A_activity에서 처리할 수 있는 콜백</p>
+<p>@Override<br>&nbsp;public void onActivityResult(int requestCode, int resultCode, Intent intent){<br>&nbsp;&nbsp;super.onActivityResult(requestCode, resultCode, intent);</p>
+<p>&nbsp; switch(requestCode){<br>&nbsp;&nbsp;&nbsp;case REQUEST_CODE: // requestCode가 REQUEST_CODE 인 케이스<br>&nbsp;&nbsp;&nbsp;&nbsp;if(resultCode == RESULT_OK){ //B_activity에서 넘겨진 resultCode가 OK일때만 실행</p>
+<p style="MARGIN-LEFT: 0px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; //&nbsp;<span style="COLOR: #ff0000">호출한 액티비티가 종료되고 처리할 내용 </span><br>&nbsp;&nbsp;&nbsp;&nbsp;}</p>
+<p>&nbsp;&nbsp;}</p>
+<p>&nbsp;</p>
+<p><span style="COLOR: #ff0000"><u>B_activity.java</u></span></p>
+<p><br></p>
+<p>boolean isSuccess = doSomeThing();</p>
+<p>if (isSuccess) {</p>
+<p style="MARGIN-LEFT: 40px">setResult(RESULT_OK);</p>
+<p style="MARGIN-LEFT: 0px">} else {</p>
+<p style="MARGIN-LEFT: 40px">setResult(RESULT_CANCEL);</p>
+<p style="MARGIN-LEFT: 0px">}</p>
+<p style="MARGIN-LEFT: 0px">finish();</p>
+<p><br></p>
+<p><br></p>
+<p>B_activity가 호출이 된 후 종료되기 직전에</p>
+<p>setResult(int resultCode) 나 setResult(int resultCode, Intent intent) 를 호출하여 처리한다.</p>
+<p><br></p>
+<p>전자는 RESULT_OK 인지 RESULT_CANCEL인지만 구별해서 처리해주어도 될때 사용하고</p>
+<p>후자는 데이터를 넘겨주어야 할때 사용하면 된다.</p>
+<p><br></p>
+<p>이후 finish()를 호출하여 B_activity를 종료합니다.<br><br></p>
+<p><br></p>
+<p><br></p>
+<p>B_activity가 종료되고 A_activity가 resume 이 되기 전&nbsp;</p>
+<p>onActivityResult 가 호출이 되는데 이때 파라메터로 넘어오는&nbsp;</p>
+<p><br></p>
+<p>requestCode 가 B_activity를 호출할 때 인텐트에 넣어주었던&nbsp;REQUEST_CODE 이면</p>
+<p>B_activity가 종료되면서 발생한 이벤트라는 것을 알 수 있고</p>
+<p><br></p>
+<p>resultCode 는 B_activity가 finish() 되기 전 setResult로 저장한&nbsp;RESULT_OK 나 RESULT_CANCEL</p>
+<p>의 값으로</p>
+<p>B_activity 에서 수행한 doSomeThing()의 결과값이 성공인지 실패인지를 확인하여 A_activity에서 상황에 맞게 처리를 할 수 있게 됩니다.</p>
+<p><br></p>
+<p>&nbsp;</p>
+<p>백문이 불여일견.. 직접 해봅시다~ㅎ</p>
+<p>&nbsp;</p></div>
+						</div>

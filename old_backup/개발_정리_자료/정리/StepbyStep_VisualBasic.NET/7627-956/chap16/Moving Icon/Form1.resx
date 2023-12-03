@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <xsd:schema id="root" targetNamespace="" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <data name="Timer1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 17</value>
+  </data>
+  <data name="Timer1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="Button2.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="Button1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="PictureBox1.Modifiers" type="System.CodeDom.MemberAttributes, System">
+    <value>Assembly</value>
+  </data>
+  <data name="PictureBox1.Image" mimetype="text/microsoft-urt/binary-serialized/base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAFRTeXN0ZW0uRHJhd2luZywgVmVyc2lvbj0xLjAuMjQxMS4wLCBD
+        dWx0dXJlPW5ldXRyYWwsIFB1YmxpY0tleVRva2VuPWIwM2Y1ZjdmMTFkNTBhM2EFAQAAABVTeXN0ZW0u
+        RHJhd2luZy5CaXRtYXABAAAABERhdGEHAgIAAAAJAwAAAA8DAAAADAIAAAKJUE5HDQoaCgAAAA1JSERS
+        AAAAIAAAACAIBgAAAHN6evQAAAABc1JHQgCuzhzpAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAA
+        gIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAABiklEQVRYR9VXixKDIAzz0/1zNnAtaU2h3HTe
+        vNttk9qEPlLctj+6ygLXFduU27LvW3Uqn+ihtg62KecZo1LK4Tgg0oCrjdh9yGZ8p2zUOSMiwHcRMOAV
+        BFJhfiORK9OgBAT4fYNeff3aOmgEjhwfVxyBvv5tBE4gCGxz3laUpBANSA4LTkHRIe76uC+AHdjf99Hy
+        BFmHtPby1Yy7iXbdCSG5njJsz1mXGBJncL/jM+HMBka1MSEggDkiAiS1M9u9FIcqnX0wB4ogqIjiK9MZ
+        AYG13Xu1XCFQI6E936vZFpjPNZNiFoHsfHAE5sXGCOHgcuI11gJUvasjAHMkJGFkl/XwSvhZJ4zSYIQo
+        FqE4JSJmLPxIPCIREkDHUQS8TaQDURr0tIOSjFHA+wxMqp5VP+qDO1WZWtBh5EOIfTwCnz3nJmRuMnpd
+        qP8FyH8z2xXQiJHpjF8dSJAMPXDIOQG/ewRuOJKRNiKnpvuO5qZF/fsBmwVZ3R9WIiw2Ao++mDz9aiZj
+        Oh2xrOHjdi85ukhS3qXDSQAAAABJRU5ErkJgggs=
+</value>
+  </data>
+  <data name="$this.Name">
+    <value>Form1</value>
+  </data>
+  <resheader name="ResMimeType">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="Version">
+    <value>1.0.0.0</value>
+  </resheader>
+  <resheader name="Reader">
+    <value>System.Resources.ResXResourceReader</value>
+  </resheader>
+  <resheader name="Writer">
+    <value>System.Resources.ResXResourceWriter</value>
+  </resheader>
+</root>

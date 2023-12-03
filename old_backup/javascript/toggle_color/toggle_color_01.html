@@ -1,0 +1,42 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <title>CSS Floats 101</title>
+    <style>
+        .block {
+            width: 200px;
+            height: 200px;
+        }
+        .float { float: left; }
+        .float_r { float: right; }
+        .pink { background: #ee3e64; }
+        .blue { background: #44accf; }
+        .green { background: #b7d84b; }
+        .orange { background: #E2A741; }
+        .gray { background: #c0c0c0; }
+    </style>
+    <script>
+        function togglePink() {
+            var v = $(".pink").get(0).style.visibility;
+                if ( v=="hidden" ) {
+                    v = "visible";
+                    $("#btnToggleGreen").get(0).innerHTML = "show green";
+                } else {
+                    v = "hidden";
+                    $("#btnToggleGreen").get(0).innerHTML = "hide green";
+                }
+            $(".pink").get(0).style.visibility = v; //visible
+        }
+    </script>
+</head>
+<body>
+    <div class="block pink float"></div>
+    <div class="block blue float"></div>
+    <div class="block gray float_r"></div>
+    <div class="block green"></div>
+    <div class="block orange"></div>
+    <button onclick="togglePink()" id="btnToggleGreen">show green</button>
+</body>
+</html>

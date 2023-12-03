@@ -1,0 +1,10 @@
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\bin\Desktop Bounds.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\bin\Desktop Bounds.pdb
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\bin\Desktop Bounds.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\obj\Debug\Desktop_Bounds.Form1.resources
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\obj\Debug\Desktop Bounds.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\obj\Debug\Desktop Bounds.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap15\Desktop Bounds\obj\Debug\Desktop Bounds.pdb

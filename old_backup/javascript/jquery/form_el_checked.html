@@ -1,0 +1,29 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $("#div_result").html( 
+    		       "el_name1.value : " + $('#frm input[name="el_name1"]').value 
+        + "<BR>" + "el_name2.value : " + $('#frm input[name="el_name2"]').value 
+        + "<BR>" + "el_name3_1.value : " + $('#frm input[name="el_name3_1"]').value 
+        + "<BR>" + "el_name3_2.value : " + $('#frm input[name="el_name3_2"]').value 
+        + "<BR>" + "el_name3_3.value : " + $('#frm input[name="el_name3_3"]').value 
+    );
+});
+</script>
+</head>
+<body>
+<form id="frm">
+<input type="text" name="el_name1" value="el_value1">
+<input type="radio" name="el_name2" value="01">
+<input type="radio" name="el_name2" value="02" checked>
+<input type="checkbox" name="el_name3_1" id="el_name3_1" value="01" >
+<input type="checkbox" name="el_name3_2" id="el_name3_2" value="02" checked>
+<input type="checkbox" name="el_name3_3" id="el_name3_3" value="03" checked>
+</form>
+<div id="div_result"></div>
+</body>
+</html>

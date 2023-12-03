@@ -1,0 +1,5 @@
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference
+
+https://developer.mozilla.org/en-US/docs/Web/API/document
+
+http://msdn.microsoft.com/ko-kr/library/windows/apps/hh465755.aspx

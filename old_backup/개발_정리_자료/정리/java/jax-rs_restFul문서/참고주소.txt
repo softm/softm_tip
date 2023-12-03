@@ -1,0 +1,11 @@
+https://jersey.dev.java.net/nonav/apidocs/1.1.4/jersey-test-framework/overview-tree.html
+https://jersey.dev.java.net/nonav/documentation/latest/user-guide.html#d4e466
+http://openframework.or.kr/Wiki.jsp?page=Jeysey_start1#section-Jeysey_start1-JAXRS_EC_95_A0_EB_85_B8_ED_85_8C_EC_9D_B4_EC_85_98
+http://docs.sun.com/app/docs/doc/820-4867/ggrby?l=en&a=view
+http://flyburi.com/460
+http://kunistory.tistory.com/26
+http://wikis.sun.com/display/Jersey/Main
+http://www.tmro.net/2009/03/unit-test-jax-rs-using-java-6-and-junit-4/
+https://jersey.dev.java.net/
+http://www.javapassion.com/handsonlabs/wsrestjaxrs/
+http://stackoverflow.com/questions/909185/jersey-security-and-session-management

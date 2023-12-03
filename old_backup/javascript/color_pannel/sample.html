@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+</HEAD>
+
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+// browser Check
+var DC_is             = null;
+
+function DC_BrowserCheck() {
+    this.ie  = ( document.all     ) ? 1 : 0;
+    this.ns  = document.getElementById && !document.all ? 1 : 0;
+}
+// Browser  체크
+DC_is = new DC_BrowserCheck();
+
+function DC_getObject( objStr, tier ) {
+    var docStr = "";
+    var obj    = null;
+    if ( typeof(tier) == "string" ) {
+        docStr = tier + "." + "document";
+    } else {
+        docStr = "document";
+    }
+
+    if (DC_is.ie) {
+        /* IE */
+        obj = eval( docStr + ".all['" + objStr + "']");
+    } else if ( DC_is.ns ) {
+        /* NS */
+        obj = eval( docStr + ".getElementById('" + objStr + "');");
+    }
+    return obj;
+}
+var palettObj = null;
+function showPalette(chgObj,chgAttr) {
+    var ie  = ( document.all ) ? 1 : 0;
+    if ( ie  ) { // IE
+        var positionX = window.event.clientX + document.body.scrollLeft;
+        var positionY = window.event.clientY + document.body.scrollTop ;
+
+        palettObj = DC_getObject('palette');
+
+        palettObj.style.left = positionX;
+        palettObj.style.top  = positionY;
+        palettObj.style.width = 465;
+        palettObj.style.height= 300;
+
+        var palettWin = palettObj.contentWindow  ; // WINDOW   OBJECT
+        var myObject = new Object();
+        myObject.obj            = chgObj  ;
+        myObject.attribute      = chgAttr ;
+        palettWin.oMyObject     = myObject;
+    }
+}
+//-->
+</SCRIPT>
+
+<iframe id='palette' name='palette' src=Color.html style='position:absolute;width:0;height:0;z-index:2;font-size:9pt;left:-1000px;top:-1000px;' frameborder='0' scrolling='no' allowtransparency='true' marginwidth='0' marginheight='0' hspace='0' vspace='0'></iframe>
+<a href='#' onClick="showPalette(document.testForm.test1,'backgroundColor');return false;">색상지정</a>
+<form name='testForm'>
+    <input type=text name='test1'>
+</form>
+</BODY>
+</HTML>

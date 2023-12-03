@@ -1,0 +1,18 @@
+IP       : 211.62.122.199
+ID       : oracle
+PASSWORD : ora805
+
+1. TNS 리스너가 올라와 있는지 확인
+  ::>    lsnrctl status
+
+2. TNS 리스너가 startup
+  ::>    lsnrctl start
+
+3. DB start 방법
+ 1. $ORA_HOME\bin\svrmgr [Enter]
+ 2. SVRMGR> connect internal ::> DB시작
+    연결되었습니다.
+ 3. SVRMGR> quit
+    Server Manager 완료
+sqlplus로 들어가보면 DB가 살아있는지 여부를 알 수 있습니다.
+listener가 살아있는지 여부가 NetWork에서의 DB연결에 영향을 줍니다.

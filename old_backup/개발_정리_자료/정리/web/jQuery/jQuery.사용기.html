@@ -1,0 +1,289 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> jQuery.사용기 </TITLE>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</HEAD>
+
+<BODY scrolling=no>
+
+<div style='width:100%;height:100%;word-break:break-all;word-wrap:break-word;overflow-x:hidden;overflow-y:no'>
+<pre style='white-space:pre-wrap;'>
+◆ jQuery ( http://docs.jquery.com/Main_Page )
+    ▲ Downloading jQuery
+        ● About The Code
+            The code itself is written rather cleanly in an attempt to self-document.
+            If you've spotted some areas of code that could be improved, please feel free to discuss it
+            on the Development mailing list. All input is gladly appreciated!
+
+            All of the code is available in two formats:
+
+                * Compressed (which allows you to have a significantly smaller file size) and
+                * Uncompressed (good for debugging and to understand what is behind the magic).
+
+            If you're interested in downloading Plugins developed by jQuery contributors, please visit the Plugins page.
+
+            jQuery is provided under the following MIT and GPL licenses.
+
+        ● CDN Hosted jQuery
+            A number of large enterprises provide hosted copies of jQuery on existing CDN networks that are available
+            for public use. Below are links to the CDN-hosted copies of jQuery that you may hotlink to.
+
+            * jQuery CDN (Edgecast via (mt))
+                  o http://code.jquery.com/jquery-1.4.2.min.js Minified version
+                  o http://code.jquery.com/jquery-1.4.2.js Source version
+                  o Please do not link to versions of jQuery on static.jquery.com or dev.jquery.com; hotlinking to these subdomains will be disabled in Q3 of 2010 and your sites will break!
+            * Google Ajax API CDN
+                  o http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js
+                  o Google Ajax CDN Documentation
+            * Microsoft CDN
+                  o http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js
+                  o Ajax CDN Announcement, Microsoft Ajax CDN Documentation
+
+
+    ▲ jQuery: The Basics
+        <FONT FACE="Courier New">
+        <FONT COLOR="#0000ff">&lt;!DOCTYPE </FONT><FONT COLOR="#800080">html</FONT><FONT COLOR="#0000ff">&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;html </FONT><FONT COLOR="#800080">lang</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;en&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;head&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;meta </FONT><FONT COLOR="#ff0000">http-equiv</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;Content-Type&quot; </FONT><FONT COLOR="#ff0000">content</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;text/html; charset=utf-8&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;script </FONT><FONT COLOR="#ff0000">src</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.3/jquery.min.js&quot; </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;text/javascript&quot;</FONT><FONT COLOR="#0000ff">&gt;&lt;/script&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;script </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;text/javascript&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT>
+         <FONT COLOR="#0000ff">$</FONT><FONT COLOR="#800000">(</FONT><FONT COLOR="#ff0000">document</FONT><FONT COLOR="#800000">).</FONT><FONT COLOR="#800080">ready</FONT><FONT COLOR="#800000">(</FONT><FONT COLOR="#0000ff">function</FONT><FONT COLOR="#800000">(){</FONT>
+           <FONT COLOR="#0000ff">$</FONT><FONT COLOR="#800000">(</FONT><FONT COLOR="#ff00ff">&quot;a&quot;</FONT><FONT COLOR="#800000">).click(</FONT><FONT COLOR="#0000ff">function</FONT><FONT COLOR="#800000">(</FONT><FONT COLOR="#ff0000">event</FONT><FONT COLOR="#800000">){</FONT>
+             <FONT COLOR="#800000">alert(</FONT><FONT COLOR="#ff00ff">&quot;As you can see, the link no longer took you to jquery.com&quot;</FONT><FONT COLOR="#800000">);</FONT>
+             <FONT COLOR="#ff0000">event</FONT><FONT COLOR="#800000">.preventDefault();</FONT>
+           <FONT COLOR="#800000">});</FONT>
+         <FONT COLOR="#800000">});</FONT>
+
+        <FONT COLOR="#0000ff">&lt;/script&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;/head&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;body&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;a </FONT><FONT COLOR="#ff0000">href</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;http://jquery.com/&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">jQuery</FONT><FONT COLOR="#0000ff">&lt;/a&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;/body&gt;</FONT>
+        <FONT COLOR="#0000ff">&lt;/html&gt;</FONT>
+        </FONT>
+
+    ▲ Adding and Removing an HTML Class
+        <FONT FACE="Courier New">
+        <FONT COLOR="#0000ff">&lt;style </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;text/css&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT>
+            <FONT COLOR="#800000">a.test { </FONT><FONT COLOR="#0000ff">font-weight: </FONT><FONT COLOR="#ff0000">bold</FONT><FONT COLOR="#800000">; }</FONT>
+        <FONT COLOR="#0000ff">&lt;/style&gt;</FONT>
+        </FONT>
+
+        $("a").addClass("test");
+
+        $("a").removeClass("test");
+
+    ▲ Special Effects
+        $("a").click(function(event){
+            event.preventDefault();
+            $(this).hide("slow");
+        });
+
+    ▲ Callback and Functions
+        $.get('myhtmlpage.html', myCallBack);
+
+        $.get('myhtmlpage.html', function(){
+          myCallBack(param1, param2);
+        });
+
+    ▲ FAQ
+        ● How do I select an item using class or id?
+            $('#myDivId')
+            $('.myCssClass')
+
+            var myDivElement = $('#myDivId');
+
+            var myValue = $('#myDivId').val();    // get the value of an element
+            $('#myDivId').val("hello world");     // set the value of an element
+
+        ● How do I test whether an element has a particular class?
+            - You can use the is() method along with an appropriate selector
+                if ( $('#myDiv').is('.pretty') ) $('#myDiv').show();
+
+            - Note that this method allows you to test for other things as well.
+              For example, you can test whether an element is hidden (by using the custom :hidden selector):
+
+                if ( $('#myDiv').is(':hidden') ) $('#myDiv').show();
+
+            - Note also that hasClass has been added as of version 1.2 to handle the most common use of is():
+
+                $("div").click(function(){
+                  if ( $(this).hasClass("protected") )
+                    $(this)
+                      .animate({ left: -10 })
+                      .animate({ left: 10 })
+                      .animate({ left: -10 })
+                      .animate({ left: 10 })
+                      .animate({ left: 0 });
+                });
+        ● How do I test whether an element exists?
+            - You can use the length property of the jQuery collection returned by your selector:
+                if ( $('#myDiv').length ) $('#myDiv').show();
+
+        ● How do I determine the state of a toggled element?
+            - You can check the state using the :visible or :hidden selectors.
+                var isVisible = $('#myDiv').is(':visible');
+                var isHidden  = $('#myDiv').is(':hidden' );
+
+            If you're simply acting on an element based on its visibility,
+            just include ":visible" or ":hidden" in the selector expression.
+            For example:
+
+        ● How do I select an element by an ID that has characters used in CSS notation?
+            // Does not work
+            $("#some:id")
+
+            // Works!
+            $("#some\\:id")
+
+            // Does not work
+            $("#some.id")
+
+            // Works!
+            $("#some\\.id")
+
+            function jq(myid) {
+            return '#' + myid.replace(/(:|\.)/g,'\\$1');
+            }
+            $( jq('some.id') )
+
+        ● How do I disable/enable an element?
+            // Disable #x
+            $("#x").attr("disabled","disabled");
+            // Enable #x
+            $("#x").removeAttr("disabled");
+
+            You can try an example of enabling/disabling with the following demo:
+
+            <FONT FACE="Courier New">
+            <FONT COLOR="#0000ff">&lt;select </FONT><FONT COLOR="#ff0000">id</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;x&quot; </FONT><FONT COLOR="#ff0000">style</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;width:200px;&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option&gt;</FONT><FONT COLOR="#000000">one</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option&gt;</FONT><FONT COLOR="#000000">two</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#0000ff">&lt;/select&gt;</FONT>
+            <FONT COLOR="#0000ff">&lt;input </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;button&quot; </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;Disable&quot; </FONT><FONT COLOR="#ff0000">onclick</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;$('#x').attr('disabled','disabled')&quot;</FONT><FONT COLOR="#0000ff">/&gt;</FONT>
+            <FONT COLOR="#0000ff">&lt;input </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;button&quot; </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;Enable&quot; </FONT><FONT COLOR="#ff0000">onclick</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;$('#x').removeAttr('disabled')&quot;</FONT><FONT COLOR="#0000ff">/&gt;</FONT>
+            </FONT>
+
+        ● How do I check/uncheck an input?
+             // Check #x
+             $("#c").attr("checked", "checked");
+             // Uncheck #x
+             $("#c").removeAttr("checked");
+            <FONT FACE="Courier New">
+            <FONT COLOR="#0000ff">&lt;label&gt;&lt;input </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;checkbox&quot; </FONT><FONT COLOR="#ff0000">id</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;c&quot;</FONT><FONT COLOR="#0000ff">/&gt;</FONT><FONT COLOR="#000000"> I'll be checked/unchecked.</FONT><FONT COLOR="#0000ff">&lt;/label&gt;</FONT>
+            <FONT COLOR="#0000ff">&lt;input </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;button&quot; </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;Check&quot; </FONT><FONT COLOR="#ff0000">onclick</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">'$(&quot;#c&quot;).attr(&quot;checked&quot;,&quot;checked&quot;)'</FONT><FONT COLOR="#0000ff">/&gt;</FONT>
+            <FONT COLOR="#0000ff">&lt;input </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;button&quot; </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;Uncheck&quot; </FONT><FONT COLOR="#ff0000">onclick</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">'$(&quot;#c&quot;).removeAttr(&quot;checked&quot;)'</FONT><FONT COLOR="#0000ff">/&gt;</FONT>
+            </FONT>
+
+        ● How do I get the text value of a selected option?
+            $("select#myselect").val();
+             // => 1
+            <FONT FACE="Courier New">
+            <FONT COLOR="#0000ff">&lt;select </FONT><FONT COLOR="#ff0000">id</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;myselect&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;1&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">Mr</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;2&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">Mrs</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;3&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">Ms</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;4&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">Dr</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;5&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">haseeb</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#0000ff">&lt;/select&gt;</FONT>
+            </FONT>
+             $("#myselect option:selected").text();
+             // => "Mr"
+            <FONT FACE="Courier New">
+            <FONT COLOR="#0000ff">&lt;select </FONT><FONT COLOR="#ff0000">id</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;myselect&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;1&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">Mr</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;2&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">Mrs</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;3&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">Ms</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;4&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">Dr</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#000000">    </FONT><FONT COLOR="#0000ff">&lt;option </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;5&quot;</FONT><FONT COLOR="#0000ff">&gt;</FONT><FONT COLOR="#000000">Prof</FONT><FONT COLOR="#0000ff">&lt;/option&gt;</FONT>
+            <FONT COLOR="#0000ff">&lt;/select&gt;</FONT>
+            <FONT COLOR="#0000ff">&lt;input </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;button&quot; </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;Get Value&quot; </FONT><FONT COLOR="#ff0000">onclick</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;alert($('#myselect').val())&quot;</FONT><FONT COLOR="#0000ff">/&gt;</FONT>
+            <FONT COLOR="#0000ff">&lt;input </FONT><FONT COLOR="#ff0000">type</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;button&quot; </FONT><FONT COLOR="#ff0000">value</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;Get Text Value&quot; </FONT><FONT COLOR="#ff0000">onclick</FONT><FONT COLOR="#0000ff">=</FONT><FONT COLOR="#ff00ff">&quot;alert($('#myselect option:selected').text())&quot;</FONT><FONT COLOR="#0000ff">/&gt;</FONT>
+            </FONT>
+
+        ● How do I replace text from the 3rd element of a list of 10 items?
+            // This doesn't work
+            $(this).find('li a').eq(2).text().replace('foo','bar');
+
+            // This works
+            var $thirdLink = $(this).find('li a').eq(2);
+            var linkText = $thirdLink.text().replace('foo','bar');
+            $thirdLink.text(linkText);
+
+        ● How do I compress my code?
+            Generally the best way to do it is to use td
+
+            An alternative is to use Douglas Crockford's JSMin. This doesn't compress JavaScript code as small, but generally how you write your code matters less. jQuery also provides a pre-minified version of jQuery for your convenience.
+
+            Packing javascript using Dean Edwards' Packer (specifically using the base64 encode) is not recommended, as the client-side decoding has significant overhead that outweighs the file-size benefits.
+
+            If compressing your JavaScript breaks it, try running the code through JSLint. This will detect minor errors that can cause packed JavaScript to fail where the unpacked version works fine.
+
+        ● How do I submit a bug report?
+
+            You can submit a bug report through the jQuery bug tracker.
+
+            Any information you can provide will help, such as:
+
+                * A detailed bug report,
+                * An online demo page, showing the problem,
+                * A specific piece of code that is affected, or
+                * A pointer to the area in jQuery where the bug occurs.
+
+            The more information a bug report has, the more likely it will be to get fixed. If a long period of time has gone by without an update to your bug, please bring it up for discussion on the jQuery Dev List.
+
+        ● How do I get and use the server response from an AJAX request?
+            The 'A' in AJAX stands for asynchronous.
+            When invoking functions that have asynchronous behavior you must provide a callback function to capture the
+            desired result. This is especially important with AJAX in the browser because when a remote request is made,
+            it is indeterminate when (or even if) the response will be received.
+
+            The following snippet shows an example of making an AJAX call and alerting the response (or error):
+            $.ajax({
+                 url: 'http://www.naver.com',
+                 success: function(response) {
+                    alert(response);
+                 },
+                 error: function(xhr) {
+                    alert('Error!  Status = ' + xhr.status);
+                 }
+             });
+
+        ● Re-binding
+            This method implicates calling the method .bind() on the new added elements, as they are loaded/added. For example:
+            $('a').click(fn);
+            $('#mydiv').load('my.html',function(){
+                $('a').click(fn);
+            });
+
+        ● Use Event Delegation
+            Event  Delegation  is a technique upheld by Event Bubbling.
+            To handle events that bubble this way, you bind to a common container,
+            and passively listen for events from there.
+
+            $('#mydiv').click(function(e){
+               if( $(e.target).is('a') )
+                  fn.call(e.target,e);
+            });
+            $('#mydiv').load('my.html');
+
+        ● jQuery Methods
+            As of jQuery 1.3, you can use the live and die methods for event delegation with a subset of event types.
+
+            Plugins for event delegation
+
+            Intercept, by Ariel Flesler, accepts any valid selector, and also a collection of selector/function.
+
+             $('#mydiv').intercept('click', 'a', fn);
+             $('#mydiv').load('my.html');
+
+            Listen, also by Ariel Flesler, can scale much better than its counterparts, it is able to handle large amounts of selectors with nearly no additional overhead. The downside is, that it only supports 4 kind of selectors.
+
+            $('#mydiv').listen('click', 'a', fn);
+            $('#mydiv').load('my.html');
+</pre>
+</div>
+</BODY>
+</HTML>

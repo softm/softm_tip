@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+ <head>
+  <title> New Document </title>
+  <meta name="Generator" content="EditPlus">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+ </head>
+
+ <body>
+<style>
+    [readonly="readonly"] { background-color:#d7d7d7 }
+</style>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+//해당 Form 내역을 readOnly한다.
+//사용법 : fn_SetReadonly($("#frmSearch"),false/true);
+//      : fn_SetReadonly(sheetOtl,false/true);
+function fn_SetReadonly(jObj,readonly) {
+    //console.info( "jObj", jObj );
+    if ( jObj.IBSheetVersion ) {// sheetOtl.IBSheetVersion
+        jObj.SetEditable(!readonly);
+    } else {
+        jObj.each(function (i) {
+            //console.info($(this),i,readonly);
+            var tNm = $(this).prop("tagName").toLowerCase();
+            //alert(tNm);
+            //console.info(tNm);
+            if ( this.nodeType == 1 ) { //elnode
+                if ( tNm.indexOf('select') == -1 ) {
+                    if ( this.childNodes ) {
+                        //console.info("$(this.childNodes)", $(this.childNodes).find("input,select"));
+                        fn_SetReadonly($(this.childNodes).find("input,select,textarea"),readonly);
+                    }
+                }
+            }
+
+            if ( tNm == 'form' ) return;
+            var type = $(this).attr("type");
+            if ( readonly ) {
+                if ( tNm == 'input' || tNm == 'textarea' ) {
+                    if (  type == 'radio' || type == 'checkbox' || type == 'button' || type == 'image' || type == 'reset'|| type == 'submit'  ) {
+                        $(this).attr("disabled", "disabled");
+                    } else {
+                        $(this).attr("readonly",true);
+                    }
+                } else if ( tNm == 'select' ) {
+                   $(this).attr("disabled", "disabled");
+                } else if ( tNm == 'button' || ( tNm == 'span' && $(this).find("button") ) ) {
+                   if ( tNm == 'button' ) {
+                        $(this.parentNode).hide();
+                   } else {
+                        $(this).hide();
+                   }
+                } else {
+                   $(this).attr("disabled", "disabled");
+                }
+            } else {
+                if ( tNm == 'input' || tNm == 'textarea' ) {
+                    if (  type == 'radio' || type == 'checkbox' || type == 'button' || type == 'image' || type == 'reset'|| type == 'submit'  ) {
+                        $(this).removeAttr("disabled");
+                    } else {
+                        $(this).removeAttr("readonly");
+                    }
+                } else if ( tNm == 'select' ) {
+                    $(this).removeAttr("disabled");
+                } else if ( tNm == 'button' || ( tNm == 'span' && $(this).find("button") ) ) {
+                   if ( tNm == 'button' ) {
+                        $(this.parentNode).show();
+                   } else {
+                        $(this).show();
+                   }
+                } else {
+                    $(this).removeAttr("disabled");
+                }
+            }
+        });
+    }
+}
+
+$(function() {
+    $("b,i,input, select, textarea").dblclick(function(e) {
+        var r = $(this).attr("readonly");
+        var b = $(this).attr("disabled");
+            //alert(r + " / " + b);
+        //alert($(this).get(0).tagName);
+        if (!r && !b) {
+            fn_SetReadonly($(this),true);
+        } else {
+            fn_SetReadonly($(this),false);
+        }
+        //e.stopPropagation(); 
+        //e.preventDefault(); 
+        //e.cancelBubble = true;
+        //e.preventDefault();
+    });
+});
+//
+</script>
+change element readonly & disabled to double click~~!!
+<pre>
+    <b>bbbbb</b>
+    <i>iiiii</i>
+    <input type="text" name="aaaa">
+    <select name="bbbb">
+        <option value="" selected>
+        <option value="">
+    </select>
+    <input type="radio" name="">
+    <input type="checkbox" name="">
+    <textarea name="ccc" rows="" cols="" ></textarea>
+    <input type="reset">
+    <input type="submit">
+    <input type="password" name="">
+    <input type="image" src="">
+    <input type="button" value="" onclick="">
+
+</pre>
+ </body>
+</html>

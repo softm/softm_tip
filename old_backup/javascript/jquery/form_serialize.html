@@ -1,0 +1,24 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    document.writeln( $("#frm").serialize() );
+});
+</script>
+</head>
+<body>
+<form id="frm">
+<input type="text" name="el_name1" value="el_value1">
+<input type="text" name="el_name1" value="한글">
+<input type="radio" name="el_name2" value="01">
+<input type="radio" name="el_name2" value="02" checked>
+<input type="checkbox" name="el_name3" value="01" >
+<input type="checkbox" name="el_name3" value="02" checked>
+<input type="checkbox" name="el_name3" value="03" checked>
+</form>
+
+</body>
+</html>

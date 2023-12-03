@@ -1,0 +1,21 @@
+String[] arrUrl = new String[4];
+arrUrl[0]= "http://www.kixx.co.kr/stipulation/s_100001.html";
+arrUrl[1]= "http://www.kixx.co.kr/stipulation/s_200001.html";
+arrUrl[2]= "http://www.kixx.co.kr/stipulation/s_400001.html";
+arrUrl[3]= "http://www.kixx.co.kr/stipulation/s_300001.html";
+HttpClient httpclient = new DefaultHttpClient();
+HttpGet httpget = new HttpGet(arrUrl[0]);
+ResponseHandler<String> responseHandler = new BasicResponseHandler();
+String responseBody = null;
+try {
+	response.setHeader("Content-Type", "text/html;charset=euc-kr");
+	responseBody = httpclient.execute(httpget, responseHandler);
+	out.println(responseBody);
+	System.out.println();
+} catch (ClientProtocolException e) {
+	e.printStackTrace();
+} catch (IOException e) {
+	e.printStackTrace();
+}
+
+httpclient.getConnectionManager().shutdown();

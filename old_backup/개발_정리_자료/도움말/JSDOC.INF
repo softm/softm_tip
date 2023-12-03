@@ -1,0 +1,111 @@
+[Version]
+signature="$CHICAGO$"
+AdvancedINF=2.5,"You need a new version of advpack.dll"
+
+[SourceDisksNames]
+;1="%JScript V5.5 온라인 설명서%",,1
+1 = %JScript V5.5 온라인 설명서%,Sample,0
+
+[DefaultInstall]
+Copyfiles=JSdocFiles, InfSection
+AddReg=InstallJSdoc
+UpdateInis=AddLink 
+CustomDestination=MyCustomDestination
+
+[DefaultInstall.NT]
+Copyfiles=JSdocFiles, InfSection
+AddReg=InstallJSdoc
+UpdateInis=AddLinkNT 
+CustomDestination=MyCustomDestination
+
+[Uninstall]
+BeginPrompt=BeginPromptSection
+EndPrompt=EndPromptSection
+CustomDestination=UninstallDestination
+DelFiles=JSdocFiles
+Deldirs=RemoveFolder
+DelReg=DelRegSection
+UpdateInis=RemoveLink
+SmartReboot=I
+Cleanup=1
+
+[BeginPromptSection]
+Prompt="%BeginPrompt%"
+ButtonType=YESNO
+Title="JScript V5.5 온라인 설명서"
+
+[EndPromptSection]
+Prompt="%EndPrompt%"
+
+[JSdocFiles]
+JS55.CHM
+JSDOC.INF
+
+[InfSection]
+JSdoc.inf
+
+[AddLinkNT]
+setup.ini, progman.groups,, ""group0="%ShortName%"""          
+setup.ini, group0,, """%icon1name%"",""""""%49002%\Js55.chm""""""
+
+[AddLink]
+setup.ini, progman.groups,, "group0=%ShortName%"          
+setup.ini, group0,, ""%ShortName%""
+setup.ini, group0,, """%icon1name%"",""%49002%\Js55.chm"",,0,"
+
+[RemoveLink]
+setup.ini, progman.groups,, "group0=%ShortName%"          
+setup.ini, group0,, ""%ShortName%""
+setup.ini, group0,, """%icon1name%"" 
+
+[DelRegSection]
+HKCR,inffile\shell\APInst
+HKCR,inffile\shell\APUninst
+HKLM,SOFTWARE\Microsoft\JSdoc
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\JSdoc
+
+[InstallJSdoc]
+HKLM,Software\Microsoft\JSdoc,InstallDir,,%49001%
+
+;inffine.reg
+HKCR,inffile\shell\APInst,,,"Active I&nstall"
+HKCR,inffile\shell\APInst\command,,,"rundll32.exe advpack.dll,LaunchINFSection %1, DefaultInstall"
+HKCR,inffile\shell\APUninst,,,"Active &Uninstall"
+HKCR,inffile\shell\APUninst\command,,,"rundll32.exe advpack.dll,LaunchINFSection %1, UnInstall"
+
+;Register for Uninstall
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\JSdoc,"DisplayName",,"JScript V5.5 온라인 설명서" 
+HKLM,SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\JSdoc,"UninstallString",,"RunDll32 advpack.dll,LaunchINFSection %17%\JSdoc.inf, Uninstall" 
+
+[DestinationDirs]
+JSdocFiles=49000
+InfSection=17
+
+[MyCustomDestination]
+;need to add new LFN stuff here.
+49000,49001,49002,49003=PackageDestination49000,1
+
+[UninstallDestination]
+49000=UninstallDestination49000,5
+
+[PackageDestination49000]
+HKLM,SOFTWARE\Microsoft\JSdoc,InstallDir,%InstallPrompt%,%DefaultDir%
+HKLM,SOFTWARE\Microsoft\JSdoc,InstallDir,%InstallPrompt%,%DefaultDir%
+
+[UninstallDestination49000]
+HKLM,SOFTWARE\Microsoft\JSdoc,InstallDir,%InstallPrompt%,%DefaultDir%
+
+[RemoveFolder]
+%49000%
+
+[Strings]
+AppName="JScript V5.5 온라인 설명서"
+InstallPrompt="JScript V5.5 온라인 설명서를 설치하시겠습니까?"
+DefaultDir="C:\Program Files\Microsoft Windows Script\JSdocs"
+shortname="Microsoft Windows Script"
+icon1name="JScript V5.5 온라인 설명서"
+;prompts
+BeginPrompt="JScript V5.5 온라인 설명서를 제거하시겠습니까?"
+EndPrompt="JScript V5.5 온라인 설명서가 성공적으로 제거되었습니다."
+CDFDesc="JScript CDF 파일"
+LinkName = "JScript V5.5 온라인 설명서"

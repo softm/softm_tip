@@ -1,0 +1,15 @@
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\obj\Debug\Interop.VBIDE.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\obj\Debug\Excel Automation.vbproj.ResolveComReference.cache
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\obj\Debug\Excel_Automation.Form1.resources
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\bin\Excel Automation.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\bin\Excel Automation.pdb
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\bin\Excel Automation.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\bin\Office.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\bin\Microsoft.Office.Interop.Excel.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\bin\Interop.VBIDE.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\obj\Debug\Excel Automation.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\obj\Debug\Excel Automation.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Automation\obj\Debug\Excel Automation.pdb

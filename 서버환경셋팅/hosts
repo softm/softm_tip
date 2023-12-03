@@ -1,0 +1,45 @@
+# Copyright (c) 1993-1999 Microsoft Corp.
+#
+# This is a sample HOSTS file used by Microsoft TCP/IP for Windows.
+#
+# This file contains the mappings of IP addresses to host names. Each
+# entry should be kept on an individual line. The IP address should
+# be placed in the first column followed by the corresponding host name.
+# The IP address and the host name should be separated by at least one
+# space.
+#
+# Additionally, comments (such as these) may be inserted on individual
+# lines or following the machine name denoted by a '#' symbol.
+#
+# For example:
+#
+#      102.54.94.97     rhino.acme.com          # source server
+#       38.25.63.10     x.acme.com              # x client host
+
+127.0.0.1       localhost
+
+#block wga
+127.0.0.1 local-softm1.net              # K:\Project\Project\my_home\1st\source
+127.0.0.1 local-softm2.net              # K:\Project\Project\my_home\2nd\source
+127.0.0.1 local-softm3.net              # K:\Project\Project\my_home\3rd\source
+127.0.0.1 local-okmmc.com               # K:\Project\Project\06.11-09.01_okmmc\okmmc_doc
+127.0.0.1 local-flex-okmmc.com          # K:\Project\Project\06.11-09.01_okmmc\flex_okmmc_doc
+127.0.0.1 local-homedirect.co.kr        # K:\Project\Project\09.03_09.06_homedirect.co.kr
+127.0.0.1 local-lab_doc.com             # K:\Project\Project\07.09-lab_doc
+127.0.0.1 local-re24.co.kr              # K:\Project\Project\06.11_06.12_re24.co.kr\source
+127.0.0.1 local-lvino.co.kr             # K:\Project\Project\06.08-06.09_www.lvino.co.kr\source
+127.0.0.1 local-midongfp.co.kr          # K:\Project\Project\04_XX_midongfp.co.kr\source
+127.0.0.1 local-iroon.com               # K:\Project\Project\04.09_04.12_iroon.com\source
+127.0.0.1 local-dothome.co.kr           # K:\Project\Project\04.02-04.03_dothome.co.kr\source
+127.0.0.1 local-designfor.net           # K:\Project\Project\03.09-designfor.net\source
+127.0.0.1 local-designboard.net         # K:\Project\Project\03.09-designboard.net\source
+127.0.0.1 local-iamt.com                # K:\Project\Project\01.03-01.03_iamt\source
+127.0.0.1 wiz-doc.com                   # 위즈개발건.
+127.0.0.1 local-calko.com               # 티센칼코.
+127.0.0.1 local-have.com                # haveenglish
+127.0.0.1 local-ipac.com                # ipac
+127.0.0.1 local-woodn.com               # ipac
+127.0.0.1 local-baksok.com              # local-baksok.com
+127.0.0.1 local-dboard.com              # local-dboard.com
+127.0.0.1 local-framework.com           # local-framework.com
+127.0.0.1 local-test.com                # local-test.com

@@ -1,0 +1,52 @@
+버리 : http://flyburi.com/460
+Overview of JAX-RS 1.0 Features : http://wikis.sun.com/display/Jersey/Overview+of+JAX-RS+1.0+Features
+The JAX-RS specification :  https://jsr311.dev.java.net/nonav/releases/1.0/spec/index.html
+The JAX-RS API           :  https://jsr311.dev.java.net/nonav/releases/1.0/index.html
+
+필독 --> RESTful Web Services Developer's Guide : http://docs.sun.com/app/docs/doc/820-4867/ggnyk?l=en&a=view
+        --> http://www.javapassion.com/handsonlabs/wsrestjaxrs/
+        
+        http://docs.sun.com/app/docs/doc/820-4867?l=en
+
+jax-rs 파일업로드 참고 : http://technopaper.blogspot.com/2009/03/multiple-file-upload-using-restful-web.html
+
+JAX-RS(Java™ API for RESTful Web Services)는 자바 플랫폼에서 경량화된 REST 방식의 웹 애플리케이션 구현을 지원하는 자바 API이다.
+
+SOAP기반의 SOA 연동은 자바 애플리케이션을 무겁게 한다는 비판과 함께,
+최근 웹 애플리케이션의 경향인 AJAX기반으로 JSON이나 RSS와 같이 간결한 프로토콜을 사용한 연동이 보편화되면서 쉽게 구현할 수 있도록
+Java EE에 JAX-RS 라는 사양이 포함되고 있다. (출처 : http://ko.wikipedia.org/wiki/JAX-RS)
+
+2008년 10월에 JSR 311 1.0 released 되었고 2009년 5월 현재는 JSR 311 1.1 draft 상태이다.
+
+
+Open source 구현체로는
+
+Jersey
+Restlets
+RESTeasy
+CXF
+
+이정도가 있다.
+
+
+JAX-RS 1.0 Features
+
+
+The JAX-RS API may be found online here.
+
+The JAX-RS specification may be found online here.
+
+
+
+javax.ws.rs         High-level interfaces and annotations used to create RESTful service resources.
+javax.ws.rs.core    Low-level interfaces and annotations used to create RESTful service resources.
+javax.ws.rs.ext     APIs that provide extensions to the types supported by the JAX-RS API.
+
+https://jsr311.dev.java.net/nonav/releases/1.0/spec/index.html
+
+
+<Resource name="jdbc/ipac" auth="Container"
+          type="javax.sql.DataSource" driverClassName="com.microsoft.sqlserver.jdbc.SQLServerDriver"
+          url="jdbc:sqlserver://192.168.11.4:1433;DatabaseName=ipac;"
+          username="sa" password="1234" maxActive="20" maxIdle="10"
+maxWait="-1"/>

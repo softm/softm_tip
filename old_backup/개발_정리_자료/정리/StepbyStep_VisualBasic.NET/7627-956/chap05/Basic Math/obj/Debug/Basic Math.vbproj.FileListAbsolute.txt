@@ -1,0 +1,10 @@
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\bin\Basic Math.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\bin\Basic Math.pdb
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\bin\Basic Math.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\obj\Debug\Basic_Math.Form1.resources
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\obj\Debug\Basic Math.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\obj\Debug\Basic Math.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap05\Basic Math\obj\Debug\Basic Math.pdb

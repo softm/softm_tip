@@ -1,0 +1,17 @@
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\Interop.VBIDE.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\Excel Sheet Tasks.vbproj.ResolveComReference.cache
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\bin\Excel Sheet Tasks.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\bin\Excel Sheet Tasks.pdb
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\bin\Excel Sheet Tasks.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\bin\Interop.Microsoft.Office.Interop.Excel.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\bin\Interop.Microsoft.Office.Core.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\bin\Interop.VBIDE.dll
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\Excel_Sheet_Tasks.Form1.resources
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\GenerateResource-ResGen.read.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\GenerateResource-ResGen.write.1.tlog
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\Excel Sheet Tasks.exe
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\Excel Sheet Tasks.xml
+C:\Users\Administrator\Desktop\StepbyStepVisualBasicdotNET[1]\7627-956\chap13\Excel Sheet Tasks\obj\Debug\Excel Sheet Tasks.pdb

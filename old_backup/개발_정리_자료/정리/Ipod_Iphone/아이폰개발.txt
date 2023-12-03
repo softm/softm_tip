@@ -1,0 +1,50 @@
+    http://theeye.pe.kr/entry/review-books-for-development-iphone-application
+
+    1. 아이폰이란?
+
+        iPhone SDK와 개발 환경 구축
+            Get the iPhone SDK and build developing environment.
+            􄕪 Required OS : Mac OS X Leopard v10.5.4 or later.
+                - iPhone Developer Program 가입
+                - AppStore 판매시 Standard 프로그램 구매($99)
+                - iPhone OS,iPhone SDK 다운로드
+
+
+    2. 개발 환경
+
+
+해킨토시 (해킹+맥킨토시의 합성어)
+원래 맥OS용으로 개발,배포되는 iPhone SDK는 맥 컴퓨터에서만 동작하는 어플리케이션 및 개발툴이기 때문에 이를 맥이아닌 컴퓨터에서 사용가능한것이 해킨토시 
+10.5.3버전 이상이 되야 iPhone SDK의 설치 및 개발이 가능,
+ 소스코드는 윈도우의 비쥬얼 베이직, 리눅스의 gcc와 비슷한 맥os의 xcode를 통해 이루어짐. 
+
+
+    MP3 재생, 200만 화소 카메라, 동영상, GPS 등을 지원하고 있고, 4GB와
+    8GB 메모리
+
+
+    iPhone OS 3.0 and SDK 3.0 beta are in beta now.
+    You can choose iPhone SDK 2.2.1 or 3.0 beta, but because
+    iPhone 3.0 is not released now and may be released 2009
+    summer, if you want to sell your apps soon, please choose SDK
+    2.2.1.
+
+
+    2. 아이폰을 통한 어플리케이션 개발
+
+    3. 참고 서적
+
+    4. 교육
+
+iPhone SDK3.0을 기준으로한 최소 사양은
+
+-맥 OS X 레오파드 10.5.7이상
+
+-아이튠스 8.2이상
+
+-인텔 CPU기반 매킨토시 시스템(물론 PowerPC도 약간의 손만 봐주면 능히 할수있습니다. 강좌 1화를 보시면 알수있습니다)
+
+-10기가바이트 이상의 하드디스크 공간
+
+-아이폰 또는 아이팟터치(선택)
+

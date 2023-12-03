@@ -1,0 +1,69 @@
+<!-- saved from url=(0022)http://internet.e-mail -->
+
+<?
+
+//-----------------------------------------------------------------------------------------------------------
+//															  일정 처리 함수( 일정 내용 리턴 )
+
+$connect = mysql_connect ("localhost", "knight75", "");
+mysql_select_db("knight75", $connect);
+
+if( $mode == "read" ) {	
+
+	$SQL = "SELECT comment FROM CALENDAR WHERE year=$year and month=$month and day=$day";
+	$sel = mysql_query( $SQL, $connect );
+
+	
+	//바로 화면 출력 시킨다...배열을 리턴할 방법은 리스트 밖에 없기 때문에..그냥 하자...
+	echo ("	<html><body bgcolor=#000000 ><center>");
+	echo ("<table width=360 border=1 align=center bgcolor=#DFDFDF><tr><td align=center>
+						<font size=-1 color=red>$year - $month - $day</font></td></tr></table><br>");
+	echo ("<table width=360 border bgcolor=#DFDFDF  cellpadding=0 bordercolordark=white bordercolorlight=white>
+			<tr><td>");
+
+	$count = mysql_num_rows($sel);
+	for( $i=0; $i<$count; $i++) {
+		$comment = mysql_result( $sel, $i, "comment" );
+	
+		echo ("<table width=350 border=1 align=center bgcolor=#DFDFDF><tr><td><font size=-1 color=black>$comment</font></td></tr></table><br>");
+	}	
+
+	echo ("</td></tr></table>");
+	echo (" <a href=read_calendar.html?mode=write&year=$year&month=$month&day=$day><font size=-1 color=white>쓰기</font></a>	");
+	echo ("	</center></body></html>");
+
+}else if ($mode == "write" ) {
+
+	echo ("	<html><body bgcolor=#000000 ><center>");
+	echo ("<form action=read_calendar.html?mode=write_reg method=post>
+		<input type=hidden name=year value=$year>
+		<input type=hidden name=month value=$month>
+		<input type=hidden name=day value=$day>
+		
+		<table width=360 border=1 align=center bgcolor=#DFDFDF><tr>
+			<td align=center><font size=-1 color=red>글자를 255자까지만 적을수 있습니다.</font><br>
+			<textarea cols=45 rows=15 name=comment></textarea></td>
+		</tr></table><br>
+		<input type=submit value=' 입  력 '>&nbsp;<input type=Reset value=' 다  시 '>
+		</form></center></body></html>");
+
+}else if ($mode == "write_reg" ) {
+
+	if(!$comment){
+		echo ("<script>  window.alert('저장할 내용이 없습니다.. 다시 시도해주십시요..'); history.go(-1); </script> "); exit;
+	}
+
+	$SQL = "INSERT INTO CALENDAR VALUES (0, $year, $month, $day, '$comment')";
+	$ins = mysql_query( $SQL, $connect );
+	if( !$ins ) {
+		echo ("$SQL");		exit;
+	}
+	
+	echo ("<meta http-equiv='Refresh' content='0; URL=read_calendar.html?mode=read&year=$year&month=$month&day=$day'>");
+
+}
+
+
+?>
+
+

@@ -1,0 +1,153 @@
+jersey doc : http://jersey.java.net/nonav/documentation/latest/chapter_deps.html
+
+열어서 참고해야함 . http://zenoconsulting.wikidot.com/blog:1
+
+1. eclipse WTP & jersey download and setting
+    # eclipse install Web tools platform download
+        - http://www.eclipse.org/webtools/
+
+    # Install WTP
+        - Install New Software
+            Helios - http://download.eclipse.org/releases/helios
+            - Dynamic Project이용을 위해
+                Web, XML, and Java EE Development 모두 선택 후 설치
+
+    # jersey lib download ( http://jersey.java.net/ )
+        - download
+            2010년 12월 6일 월요일 오후 8:35:22 1.4버전 다운로드
+            link : http://download.java.net/maven/2/com/sun/jersey/samples/jersey-samples/1.4/jersey-samples-1.4-project.zip
+        - uncompress to TOMCAT_HOME/lib directory
+            Copy directory : C:\WEB_APP\JWAS\tomcat-553\apache-tomcat-5.5.30\server\lib
+
+    # java-doc
+        - download 
+            link : http://download.java.net/maven/2/org/
+
+            http://download.java.net/maven/2/com/sun/jersey/jersey-core/1.4/jersey-core-1.4-sources.jar
+            http://download.java.net/maven/2/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1-sources.jar
+            http://download.java.net/maven/2/javax/ws/rs/jsr311-api/1.1.1/jsr311-api-1.1.1-javadoc.jar
+            http://download.java.net/maven/2/com/sun/jersey/jersey-json/1.4/jersey-json-1.4-sources.jar
+            http://download.java.net/maven/2/com/sun/jersey/jersey-json/1.4/jersey-json-1.4-javadoc.jar
+            http://download.java.net/maven/2/com/sun/jersey/jersey-client/1.4/jersey-client-1.4-javadoc.jar
+            http://download.java.net/maven/2/com/sun/jersey/jersey-client/1.4/jersey-client-1.4-sources.jar
+            http://download.java.net/maven/2/com/sun/jersey/jersey-server/1.4/jersey-server-1.4-javadoc.jar
+            http://download.java.net/maven/2/com/sun/jersey/jersey-server/1.4/jersey-server-1.4-sources.jar
+            http://download.java.net/maven/2/com/sun/jersey/jersey-core/1.4/jersey-core-1.4-javadoc.jar
+
+            http://download.java.net/maven/2/javax/servlet/jsp/jsp-api/2.2/jsp-api-2.2-javadoc.jar
+            http://download.java.net/maven/2/javax/servlet/jsp/jsp-api/2.2/jsp-api-2.2-sources.jar
+
+            http://tomcat.apache.org/tomcat-5.5-doc/servletapi/
+
+    # common jar
+        http://maven.apache.org/plugins/maven-javadoc-plugin/dependencies.html
+
+2. eclipse new project
+    1. new project
+        Dynamic Web Project
+
+    2. Tomcat Server Configuration
+        Window-Preferences-Servers-Runtime Environments-Add
+            기존설치된 TomcatServer를 설정한다.( 또는 Eclipse환경의 기본 Tomcat을 이용할 수 있다.)
+
+    3. import WEB-INF\lib jersey lib
+
+3. Writing Source Code
+    1. New (Ctrl-N)
+    2. Hello.java
+        package sample.test;
+
+        import javax.swing.JOptionPane;
+        import javax.ws.rs.GET;
+        import javax.ws.rs.Path;
+        import javax.ws.rs.Produces;
+        import javax.ws.rs.core.MediaType;
+
+        // POJO, no interface no extends
+
+        //Sets the path to base URL + /hello
+        @Path("/hello")
+        public class Hello {
+
+            // This method is called if TEXT_PLAIN is request
+        @GET
+        @Produces(MediaType.TEXT_PLAIN) 
+        public String sayPlainTextHello() {
+            //JOptionPane.showMessageDialog(null, "GET CALLED");	
+            return "Hello test~~!!!!!!!!!!!!";
+        } 
+
+        // This method is called if XMLis request
+        @GET
+        @Produces(MediaType.TEXT_XML)
+        public String sayXMLHello() {
+            return "<?xml version=\"1.0\"?>" + "<hello> Hello Jersey" + "</hello>";
+        }
+
+        // This method is called if HTML is request
+        @GET
+        @Produces(MediaType.TEXT_HTML)
+        public String sayHtmlHello() {
+            JOptionPane.showMessageDialog(null, "GET CALLED");	
+            return "<html> " + "<title>" + "Hello Jersey" + "</title>"
+            + "<body><h1>" + "Hello Jersey" + "</body></h1>" + "</html> ";
+            }
+
+        }
+    3. jersey 관련 jar파일을 포함시킨다.
+
+4. configuration
+    1. WEB-INF/web.xml 수정
+        <?xml version="1.0" encoding="UTF-8"?>
+        <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+         <display-name>sample.test</display-name>
+          <servlet>
+            <servlet-name>Jersey REST Service</servlet-name>
+            <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
+            <init-param>
+              <param-name>com.sun.jersey.config.property.packages</param-name>
+              <param-value>sample.test</param-value>
+            </init-param>
+            <load-on-startup>1</load-on-startup>
+          </servlet>
+          <servlet-mapping>
+            <servlet-name>Jersey REST Service</servlet-name>
+            <url-pattern>/rest/*</url-pattern>
+          </servlet-mapping>
+        </web-app>
+    2. WEB-INF/lib에 jersey 관련 jar파일 추가
+    3. Tomcat Server Restart
+    4. Test
+        http://localhost:8080/hanlib/rest/hello
+
+# TestTool
+    0. netbean설치시 포함되었던 테스트 도구
+        K:\TexTa\프로그램_텍스트정리\jax-rs_restFul문서\netbean테스팅도구이용
+        index.html에서
+        14 LINE 을 수정해서 이용하면됨
+            --> var baseURL = "http://localhost:8080/hanlib/||ServletAdaptor||/rest/*";
+
+    1. firefox plugin poster
+    2. curl (http://curl.haxx.se/download.html)
+
+------------------------------
+knowhow
+    HTTP METHOD
+        POST
+        GET
+        PUT
+        DELETE
+
+    @FormParam : Form값이 전송된 경우 Form안의 값들을 꺼내온다.
+    @QueryParam : URI 쿼리 파라미터의 값을 꺼내온다.
+    @PathParam : URI template에 명시되어 있는 값을 꺼내온다.  
+    @CookieParam : 쿠키에 있는 값을 꺼내온다.
+    @HeaderParam : 헤더에 있는 값을 꺼내온다.
+    @Context : Request header나  URI 정도등등의 inject 정보를 사용할 수 있다.
+
+    @POST
+    @Consumes("application/x-www-form-urlencoded")
+    public void post(@FormParam("name") String name){ .... }
+팁
+    jax-rs 파일업로드 참고 
+        http://technopaper.blogspot.com/2009/03/multiple-file-upload-using-restful-web.html

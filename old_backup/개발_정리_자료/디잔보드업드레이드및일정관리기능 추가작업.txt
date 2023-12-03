@@ -1,0 +1,53 @@
+0. common 라이브러리 파일의 재정리...
+    -> TABLE 필드 자리수 변화-->
+
+1. MYSQL 버전에 따른 PASSWORD함수 
+    -> TABLE 필드 자리수 변화-->
+
+    " . getFunctionNameOfMysqlPassword() . "
+
+2. 멀티 파일 업로드
+
+3. 일정관리
+        학생의 과제 정보 함께 노출
+
+* 고민해야할것
+    - 기존 모듈 정리
+        --> 공감작업시 반영한 lib의 네이밍 정도로 분류
+        --> 기존 흩어져있는 작업이 어떤것이 잇나?
+            --> 
+
+    - Message처리 방법에대해서 신중히 처리해야함.
+    - HEAD함수 처리에따른 ONlOAD이벤트명 TITLE출력 부분에대한 고민
+    - SQL 쿼리 라이브러리 부분
+
+
+
+* 전체적인 구조적인 변화를 꽤해야한다.
+  require_once, include_once를 이용하는 방안을 생각해보자.
+  어떤 버전에서 부터 지원이 되는지 조사해보자.
+
+    -- > require_once() was added in PHP 4.0.1pl2 
+    -- > include_once() was added in PHP 4.0.1pl2 
+
+  dboard - admin
+                - lib
+                        - MYSQL
+         - common
+                    - js
+                    - lib
+                            - MYSQL
+         - data
+         - files
+                    - event
+                    - file
+                    - html
+                    - member
+                    - poll
+                    - session
+                    - tmp
+         - images
+         - skin     - board
+                    - login
+                    - notice
+                    - poll

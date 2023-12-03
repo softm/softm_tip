@@ -1,0 +1,11 @@
+Sub test()
+
+Do While ActiveCell <> ""
+    i = i + 1
+    ActiveCell = i
+    ActiveCell.Offset(1, 0).Activate
+    
+    
+Loop
+
+End Sub

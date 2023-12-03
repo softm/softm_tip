@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Dialog", "Dialog.vbproj", "{7F0B4B62-ABB1-41A0-B5F7-0EF907ED0EAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{7F0B4B62-ABB1-41A0-B5F7-0EF907ED0EAD}.Debug.ActiveCfg = Debug|.NET
+		{7F0B4B62-ABB1-41A0-B5F7-0EF907ED0EAD}.Debug.Build.0 = Debug|.NET
+		{7F0B4B62-ABB1-41A0-B5F7-0EF907ED0EAD}.Release.ActiveCfg = Release|.NET
+		{7F0B4B62-ABB1-41A0-B5F7-0EF907ED0EAD}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

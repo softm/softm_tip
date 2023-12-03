@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+    
+<sqlMap namespace="TB_S07_020CODE010">
+
+	<select id="findAll" resultClass="java.util.HashMap">
+		SELECT * 
+		  FROM TB_S07_020CODE010
+	</select>
+	
+	<insert id="create" parameterClass="java.util.HashMap">
+		
+		INSERT INTO TB_S07_020CODE010
+		(
+				COMPANY_CODE,
+				CD_TP,
+				CD_TP_MEANING,
+				CD_TP_EXPLAIN,
+				CD_V_INQUIRY_SEQ,
+				CD_V,
+				CD_V1,
+				CD_V2,
+				CD_V3,
+				CD_V4,
+				CD_V5,
+				CD_V_MEANING,
+				CD_V_MEANING1,
+				CD_V_MEANING2,
+				CD_V_MEANING3,
+				CD_V_MEANING4,
+				CD_V_MEANING5,
+				CD_V_EXPLAIN,
+				CD_V_EXPLAIN1,
+				CD_V_EXPLAIN2,
+				CD_V_EXPLAIN3,
+				CD_V_EXPLAIN4,
+				CD_V_EXPLAIN5,
+				ACTIVE_FLAG,
+				START_ACTIVE_DATE,
+				END_ACTIVE_DATE,
+				CREATED_OBJECT_TYPE,
+				CREATED_OBJECT_ID,
+				CREATED_PROGRAM_ID,
+				CREATION_TIMESTAMP,
+				LAST_UPDATED_OBJECT_TYPE,
+				LAST_UPDATED_OBJECT_ID,
+				LAST_UPDATE_PROGRAM_ID,
+				LAST_UPDATE_TIMESTAMP 
+		) VALUES (
+				'POSCO',
+				#CD_TP#,
+				#CD_TP_MEANING#,
+				#CD_TP_EXPLAIN#,
+				#CD_V_INQUIRY_SEQ#,
+				#CD_V#,
+				#CD_V1#,
+				#CD_V2#,
+				#CD_V3#,
+				#CD_V4#,
+				#CD_V5#,
+				#CD_V_MEANING#,
+				#CD_V_MEANING1#,
+				#CD_V_MEANING2#,
+				#CD_V_MEANING3#,
+				#CD_V_MEANING4#,
+				#CD_V_MEANING5#,
+				#CD_V_EXPLAIN#,
+				#CD_V_EXPLAIN1#,
+				#CD_V_EXPLAIN2#,
+				#CD_V_EXPLAIN3#,
+				#CD_V_EXPLAIN4#,
+				#CD_V_EXPLAIN5#,
+				#ACTIVE_FLAG#,
+				#START_ACTIVE_DATE#,
+				#END_ACTIVE_DATE#,
+				#CREATED_OBJECT_TYPE#,
+				#CREATED_OBJECT_ID#,
+				#CREATED_PROGRAM_ID#,
+				#CREATION_TIMESTAMP#,
+				#LAST_UPDATED_OBJECT_TYPE#,
+				#LAST_UPDATED_OBJECT_ID#,
+				#LAST_UPDATE_PROGRAM_ID#,
+				#LAST_UPDATE_TIMESTAMP#
+		)
+	
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM TB_S07_020CODE010
+	</delete>
+	
+</sqlMap>

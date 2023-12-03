@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Text Box Sub", "Text Box Sub.vbproj", "{A7F3DBC2-5A5F-4536-A0F0-722ED42D23AA}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{A7F3DBC2-5A5F-4536-A0F0-722ED42D23AA}.Debug.ActiveCfg = Debug|.NET
+		{A7F3DBC2-5A5F-4536-A0F0-722ED42D23AA}.Debug.Build.0 = Debug|.NET
+		{A7F3DBC2-5A5F-4536-A0F0-722ED42D23AA}.Release.ActiveCfg = Release|.NET
+		{A7F3DBC2-5A5F-4536-A0F0-722ED42D23AA}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

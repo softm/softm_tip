@@ -1,0 +1,804 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+    // browser Check
+    var is             = null;
+
+    function BrowserCheck() {
+        this.ie  = ( document.all     ) ? 1 : 0;
+        this.ns  = document.getElementById && !document.all ? 1 : 0;
+    }
+    // Browser  u?
+    is = new BrowserCheck();
+
+    function HashTable() {
+        this.k = new Array();
+        this.v = new Array();
+        this.putValue      = putValue;
+        this.appendValue   = appendValue;
+        this.getValue      = getValue;
+        this.getValues     = getValues;
+        this.getValueALL   = getValueALL;
+        this.getValueInclude = getValueInclude;
+        this.getKey        = getKey;
+        this.getKeys       = getKeys;
+        this.getKeyALL     = getKeyALL;
+        this.getKeyInclude = getKeyInclude;
+        this.getKeyHowMany = getKeyHowMany;
+        this.getKeyIdx     = getKeyIdx;
+        this.getVal        = getVal;
+        this.getSize       = getSize;
+        this.removeKey     = removeKey;
+        this.idxUp         = idxUp;
+        this.idxDown       = idxDown;
+    }
+
+    function removeKey(key) {
+        this.k.splice(key, 1);
+        this.v.splice(key, 1);
+    }
+
+    function idxUp(idx) {
+        var _rtn = 0;
+        if ( idx != 0 ) { // 맨 처음 자료
+            var tmpUpArray   = this.k[idx   ];
+            var tmpDownArray = this.k[idx-1 ];
+            this.k.splice(idx-1, 1, tmpUpArray  );
+            this.k.splice(idx  , 1, tmpDownArray);
+                tmpUpArray   = this.v[idx   ];
+                tmpDownArray = this.v[idx-1 ];
+            this.v.splice(idx-1, 1, tmpUpArray  );
+            this.v.splice(idx  , 1, tmpDownArray);
+            _rtn=idx-1;
+        }
+        return _rtn;
+    }
+
+    function idxDown(idx) {
+        var _rtn = 0;
+        if ( idx < this.k.length - 1 ) { // 맨 마지막 자료
+            var tmpDownArray = this.k[idx   ];
+            var tmpUpArray   = this.k[idx +1];
+            this.k.splice(idx+1, 1, tmpDownArray);
+            this.k.splice(idx  , 1, tmpUpArray  );
+                tmpDownArray = this.v[idx   ];
+                tmpUpArray   = this.v[idx +1];
+            this.v.splice(idx+1, 1, tmpDownArray);
+            this.v.splice(idx  , 1, tmpUpArray  );
+            _rtn=idx+1;
+        }
+        return _rtn;
+    }
+
+    function putValue(key, dpObj) {
+        /* 배열에 추가및 수정할 위치 */
+        var s = this.k.length;
+
+        for ( var i=0;i<s;i++ ){
+            if ( key == this.k[i] ) { s = i; break; }
+        }
+        /* key */
+        this.k [s] = key    ;
+        /* menu Object */
+        this.v [s] = dpObj;
+    }
+
+    function appendValue(key, dpObj) {
+        /* 배열에 추가및 수정할 위치 */
+        var s = this.k.length;
+        /* key */
+        this.k [s] = key    ;
+        /* menu Object */
+        this.v [s] = dpObj;
+    }
+
+
+    function getValue(key) {
+        var obj = null;
+        if ( typeof(key) == 'number' ) {
+            obj = this.v[key];
+        } else {
+            /* 배열에 추가및 수정할 위치 */
+            var s = this.k.length;
+            for ( var i=0;i<s;i++ ){
+                if ( key == this.k[i] ) {
+                    /* menu Object */
+                    obj = this.v[i];
+                    break;
+                }
+            }
+        }
+        return obj;
+    }
+
+    function getValues(key) {
+        var s    = this.k.length;
+        var values = new Array();
+        var idx  = 0;
+        for ( var i=0;i<s;i++ ){
+            if ( this.k[i] == key ) {
+                values[idx] = this.v[i];
+                idx++;
+            }
+        }
+        return values;
+    }
+
+    function getValueALL() {
+        var s    = this.k.length;
+        var values = new Array();
+        var idx  = 0;
+        for ( var i=0;i<s;i++ ){
+                values[idx] = this.v[i];
+                idx++;
+        }
+        return values;
+    }
+
+    function getValueInclude(value) {
+        var s    = this.k.length;
+        var values = new Array();
+        var idx  = 0;
+        for ( var i=0;i<s;i++ ){
+            if ( this.v[i].indexOf(value) >= 0 ) {
+                values[idx] = this.v[i];
+                idx++;
+            }
+        }
+        return values;
+    }
+
+    function getKey(idx) {
+        var key = null;
+        if ( typeof(idx) == 'number' ) {
+            key = this.k[idx];
+        } else {
+            key = "HashTable Function Exception 발생";
+        }
+        return key;
+    }
+
+    function getKeys(key) {
+        var s    = this.k.length;
+        var keys = new Array();
+        var idx  = 0;
+        for ( var i=0;i<s;i++ ){
+            if ( this.k[i] == key ) {
+                keys[idx] = this.k[i];
+                idx++;
+            }
+        }
+        return keys;
+    }
+
+    function getKeyALL() {
+        var s    = this.k.length;
+        var keys = new Array();
+        var idx  = 0;
+        for ( var i=0;i<s;i++ ){
+                keys[idx] = this.k[i];
+                idx++;
+        }
+        return keys;
+    }
+
+    function getKeyInclude(key) {
+        var s    = this.k.length;
+        var keys = new Array();
+        var idx  = 0;
+        for ( var i=0;i<s;i++ ){
+            if ( this.k[i].indexOf(key) >= 0 ) {
+                keys[idx] = this.k[i];
+                idx++;
+            }
+        }
+        return keys;
+    }
+
+    function getKeyHowMany(key) {
+        var s   = this.k.length;
+        var cnt = 0;             /* 갯수 */
+        for ( var i=0;i<s;i++ ){
+            if ( this.k[i].indexOf(key) >= 0 ) {
+                cnt++;
+            }
+        }
+        return cnt;
+    }
+
+    function getKeyIdx(key) {
+        var s    = this.k.length;
+        var idx  = null;
+        for ( var i=0;i<s;i++ ) {
+            if ( this.k[i] == key ) {
+                idx = i;
+                break;
+            }
+        }
+        return idx;
+    }
+
+    function getVal(idx) {
+        var val = null;
+        if ( typeof(idx) == 'number' ) {
+            val = this.v[idx];
+        }
+        return val;
+    }
+
+    function getSize() {
+        var s   = this.k.length;
+        return s;
+    }
+
+    var menuCindex = 0;
+    var panelName = "";
+    var panel     = "";
+    var MENU = new HashTable();
+
+    var menuWin = null;
+
+    var colorFGPop = null;
+    var colorBGPop = null;
+
+    function BoxMenu(obj, Name, tier) {
+        if ( is.ie ) {
+            obj.oncontextmenu  = ShowMenu;
+        } else if (is.ns) {
+            obj.ondblclick     = ShowMenu;
+        }
+        /* Menu panel 생성 */
+        obj.body.innerHTML += "<div id=\"" + Name + "\" style=\"position:absolute;visibility:hidden;top:0;left:0;z-index:1000;\"></div>";
+        panelName = Name;
+
+        obj.onclick  = HideMenu;
+
+        menuWin = tier;
+        panel   = getObject(Name, menuWin); 
+
+        panel.innerHTML = "";
+    }
+
+    function newMenu() {
+        var m = new HashTable();
+        return m;
+    }
+
+    function MENU_ITEM(name, command, level, objDepend, child){
+/*        this.menu_id= id     ; */
+        this.name       = name   ;
+        this.command    = command;
+        this.level      = level  ;
+        this.objDepend  = objDepend;
+        this.child      = child  ;
+    }
+
+    function setMenu(key, obj) {
+        MENU.putValue("menu" + menuCindex, obj);
+    }
+
+    function getMenu(key) {
+        return MENU.getValue("menu" + key);
+    }
+
+    function createMenu(panel,menu) {
+        setMenu(menuCindex, menu);
+
+        var menuStr = "";
+        var size = menu.getSize();
+/*        alert ( " menuCindex : " + menuCindex + " / " + size ); */
+        menuStr += "<div id=\"menu" + menuCindex + "\" style=\"position:absolute;visibility:show;top:0;left:0;width:100;z-index:1000;\">";
+        menuStr += "    <table cellpadding=0 cellspacing=0 border=0 width=80>";
+        menuStr += "        <tr>";
+        menuStr += "            <td height=3 bgcolor=E9E9E9></td>";
+        menuStr += "        </tr>";
+        menuStr += "        <tr>";
+        menuStr += "            <td height=1></td>";
+        menuStr += "        </tr>";
+        menuStr += "        <tr>";
+        menuStr += "            <td height=19 bgcolor=669999 align=center><FONT style='font-size:12px; color:ffffff;'><b>상세설정</b></FONT></td>";
+        menuStr += "        </tr>";
+        menuStr += "        <tr>";
+        menuStr += "            <td height=1 bgcolor=8BB1B1></td>";
+        menuStr += "        </tr>";
+//      menuStr += "    <table border=\"1\" bordercolor=\"#000000\" cellspacing=\"0\" cellpadding=\"0\">\n";
+        for ( i=0;i<size;i++ ) {
+            var item = menu.getValue(i);
+            if ( item.level == 0 ) {
+                var command ='';
+                if ( item.command != '' ) {
+                    command = " onclick=\"ExecCommand('" + item.command + "');return false;\"\n";
+                }
+
+                var id = "sub" + menuCindex + "_" + item.child;
+
+                if ( typeof(item.child) == 'string' && item.child != '' ) {
+                    menuStr += "    <tr class='ff' height=20 align=center style=\"font-size:9pt;cursor:hand;top:0;left:0\" onmouseover=\"objectBackColor( this, '#E4E4E4' );\" onmouseout=\"objectBackColor( this, '#FFFFFF' );\"" + command + "><td>\n";
+                } else {
+                    menuStr += "    <tr class='ff' height=20 align=center style=\"font-size:9pt;cursor:hand;top:0;left:0\" onmouseover=\"objectBackColor( this, '#E4E4E4' );HideSubMenu(" + menuCindex + ", " + item.level + ");\" onmouseout=\"objectBackColor( this, '#FFFFFF' );\"" + command + "><td>\n";
+                }
+                menuStr += item.name + "\n";
+
+                if ( typeof(item.child) == 'string' && item.child != '' ) {
+                    menuStr += "    <img height=\"10\" src=\"/Lecture/image/dhtml/dhtml01.gif\" onmouseover=\"ShowSubMenu( '" + id + "', event );\">\n";
+                }
+
+                menuStr += "    </td></tr>\n";
+                menuStr += "    <tr> <td height=1 background='/zzook/image/newadmin/dot_3.gif'></td> </tr>\n";
+                if ( typeof(item.child) == 'string' ) {
+/*                    alert ( menu + "/" + item.child ); */
+                    subCreateMenu(panel,menu, item.child)
+                }
+            }
+        }
+        menuStr += "    </table>\n";
+        menuStr += "</div>\n";
+        menuStr = panel.innerHTML + menuStr;
+
+        panel.innerHTML = menuStr;
+        alert ( panel.innerHTML );
+/*      panel.innerText = menuStr; */
+        menuCindex++;   /* Menu Group */
+/*        alert ( menuStr ); */
+
+    }
+    function getObject( objStr, tier ) {
+        var docStr = "";
+        var obj    = null;
+        if ( typeof(tier) == "string" ) {
+            docStr = tier + "." + "document";
+        } else {
+            docStr = "document";
+        }
+
+        if (is.ie) {
+            /* IE */
+            obj = eval( docStr + ".all['" + objStr + "']");
+        } else if ( is.ns ) {
+            /* NS */
+            obj = eval( docStr + ".getElementById('" + objStr + "');");
+        }
+        return obj;
+    }
+
+    function objectShow( id, tier ) {
+        var obj = null;
+        if ( typeof(id) == 'object' ) {
+            obj = id;
+        } else {
+            obj = getObject(id, tier);
+        }
+        if ( obj != null && typeof(obj) == 'object' ) { 
+            obj.style.visibility="visible"
+        }
+/*        obj.style.zIndex=0;     Object들의 기본적인 zIndex 값은 0 입니다. */
+    }
+
+    function objectHide( id, tier ) {
+        var obj = null;
+        if ( typeof(id) == 'object' ) {
+            obj = id;
+        } else {
+            obj = getObject(id, tier);
+        }
+        if ( obj != null && typeof(obj) == 'object' ) { 
+            obj.style.visibility="hidden"
+        }
+    }
+
+    function objectBackColor( id, color, tier ) {
+        var obj = null;
+        if ( typeof(id) == 'object' ) {
+            obj = id;
+        } else {
+            obj = getObject(id, tier);
+        }
+        if ( obj != null && typeof(obj) == 'object' ) { 
+            obj.style.backgroundColor = color;
+        }
+    }
+
+    function objectColor( id, color, tier ) {
+        var obj = null;
+        if ( typeof(id) == 'object' ) {
+            obj = id;
+        } else {
+            obj = getObject(id, tier);
+        }
+        if ( obj != null && typeof(obj) == 'object' ) { 
+            obj.style.color = color;
+        }
+    }
+
+    function objectMoveTo(id,X,Y, tier) {
+        var obj = null;
+        if ( typeof(id) == 'object' ) {
+            obj = id;
+        } else {
+            obj = getObject(id, tier);
+        }
+        if ( obj != null && typeof(obj) == 'object' ) { 
+                          obj.style.left = X;
+            if ( Y != 0 ) obj.style.top  = Y;
+        }
+    }
+
+    /* sytle의 Position 값을 설정합니다.
+       static , relative, absolute*/
+    function objectPosition(id,position, tier) {
+        var obj = null;
+        if ( typeof(id) == 'object' ) {
+            obj = id;
+        } else {
+            obj = getObject(id, tier);
+        }
+        if ( obj != null && typeof(obj) == 'object' ) { 
+            obj.style.position=position;
+        }
+    }
+    function subCreateMenu(panel, menu, child) {
+
+        var sub = menu.getValues(child);
+        var item   = null;
+        var menuStr = "";
+        var id = "sub" + menuCindex + "_" + child;
+        for ( var k=0;k<sub.length;k++ ){
+            item = sub[k];
+            if ( k == 0 ) {
+                menuStr += "<div id=\"" + id + "\" style=\"position:absolute;visibility:hidden;top:0;left:0;width:100;z-index:100" + menuCindex + item.level + ";\">\n";
+                menuStr += "    <table border=\"1\" bordercolor=\"#000000\" cellspacing=\"0\" cellpadding=\"0\" onmouseover=\"\">\n";
+            }
+
+                var command ='';
+                if ( item.command != '' ) {
+                    command = " onclick=ExecCommand('" + item.command + "');return false;\n";
+                }
+
+                if ( typeof(item.child) == 'string' && item.child != '' ) {
+                    menuStr += "    <tr bgcolor='#FFFFFF' style=\"font-size:9pt;cursor:hand;top:0;left:0\" onmouseover=\"objectBackColor( this, '#646464' );\" onmouseout=\"objectBackColor( this, '#FFFFFF' );\"" + command + "><td>\n";
+                } else {
+                    menuStr += "    <tr bgcolor='#FFFFFF' style=\"font-size:9pt;cursor:hand;top:0;left:0\" onmouseover=\"objectBackColor( this, '#646464' );HideSubMenu(" + menuCindex + ", " + item.level + ");\" onmouseout=\"objectBackColor( this, '#FFFFFF' );\"" + command + "><td>\n";
+                }
+
+                menuStr += item.name + "\n";
+                if ( typeof(item.child) == 'string' && item.child != '' ) {
+                    menuStr += "<img height=\"10\" src=\"/Lecture/image/dhtml/dhtml01.gif\" onmouseover=\"ShowSubMenu( '" + id + "', event )\">\n";
+                }
+                menuStr += "    </td></tr>\n";
+/*                alert ( menuStr ); */
+            if ( (k + 1) == sub.length ) {
+                menuStr += "    </table>\n";
+                menuStr += "</div>\n";
+                panel.innerHTML = panel.innerHTML + menuStr;
+/*                alert ( "sub : " + child + " / " + menuStr ); */
+            }
+            subCreateMenu(panel, menu, item.child);
+        }
+    }
+    var xPos=yPos=0;
+
+    function ShowMenu(e) {
+        // 수정 모드일 경우에만 메뉴가 동작하게.
+//      if ( typeof(designMode) != "undefined" && designMode == 0  ) {
+//        if ( currentObj != null ) {
+            HideMenu();
+            var obj = null;
+            for ( var i=0;i<MENU.getSize();i++){
+                obj = getObject("menu" + i,menuWin);
+                objectShow( obj );
+                if ( is.ie ) {
+                    var windowObj = eval(menuWin);
+                    xPos=windowObj.event.clientX;
+                    yPos=windowObj.event.clientY;
+                } else if( is.ns ) {
+                    xPos=e.pageX;
+                    yPos=e.pageY;
+                }
+                objectMoveTo(obj, xPos, yPos);
+            }
+//        }
+/*        objectShow( "menu_panel" ); */
+//      }
+    	return false;
+    }
+
+    function ShowSubMenu(objStr,e) {
+
+            var obj = getObject(objStr, menuWin);
+            objectShow( obj );
+            if ( is.ie ) {
+                var windowObj = eval(menuWin);
+                objectMoveTo(obj, windowObj.event.clientX, windowObj.event.clientY)
+            } else if( is.ns ) {
+                objectMoveTo(obj,e.pageX, e.pageY)
+            }
+
+        return false;
+    }
+
+    function HideMenu() {
+        var obj = null;
+        for ( var i=0;i<MENU.getSize();i++){
+            var menu = getMenu(i);
+            objectHide("menu" + i, menuWin);
+            var allValue = menu.getValueALL();
+            var allKey   = menu.getKeyALL();
+            for ( var j=0; j<allKey.length;j++) {
+                var item = allValue[j];
+                if  ( item.level >= 1 ) {
+                   objectHide("sub" + i + "_" + allKey[j], menuWin);
+                }
+            }
+        }
+//      document.Panel_MainForm.p_tpl.value += "HideMenu\n";
+    }
+
+    function HideSubMenu(menuID, level) {
+        var menu = getMenu(menuID);
+        var allValue = menu.getValueALL();
+        var allKey   = menu.getKeyALL();
+        for ( var i=0; i<allKey.length;i++) {
+            var item = allValue[i];
+            if  ( item.level > level ) {
+                objectHide("sub" + menuID + "_" + allKey[i], menuWin);
+            }
+        }
+    }
+
+    function ExecCommand(key, val){
+/*        alert ( key ); */
+        var obj = null;
+        if ( objectGB == "1" ) {
+            obj = currentObj;
+        } else if ( objectGB == "2" ) {
+            obj = selectObj;
+        }
+
+        switch(key) {
+            case "DELETE":
+                if ( currentObj != null && currentObj.id.indexOf("p_") != 0 ) {
+//                  alert ( currentObj.innerHTML );
+                    eval ( menuWin ).document.body.innerHTML = removeTagStrById(currentObj.id, menuWin);
+                    if ( currentFocusObj != null && currentObj.id == currentFocusObj.id ) {
+                        currentFocusObj = null;
+                    }
+                    currentObj = null;
+                }
+                break;
+            case "TOP":
+                if ( currentObj != null || selectObj != null  ) {
+                    for (var i=1;i<=itemCnt;i++){ 
+                        eval("item" + i + ".style.zIndex = " + "item" + i + ".style.zIndex - 1")
+                        if (eval("item" + i + ".style.zIndex") < 1) eval("item" + i + ".style.zIndex = 1") 
+                    }
+                    currentObj.style.zIndex = itemCnt;
+                }
+                break;
+            case "BOTTOM":
+                if ( currentObj != null || selectObj != null  ) {
+                    for (var i=1;i<=itemCnt;i++){ 
+                        eval("item" + i + ".style.zIndex = " + "item" + i + ".style.zIndex + 1")
+                        if (eval("item" + i + ".style.zIndex") <= 2) eval("item" + i + ".style.zIndex = 1") 
+                    }
+                    currentObj.style.zIndex = 1;
+                }
+                break;
+            case "PRESTEP":
+                if ( currentObj != null || selectObj != null  ) {
+                    if (currentObj.style.zIndex < itemCnt) { 
+                        currentObj.style.zIndex = currentObj.style.zIndex + 1;
+                    }
+                }
+                break;
+            case "AFTSTEP":
+                if ( currentObj != null || selectObj != null  ) {
+                    if (currentObj.style.zIndex > 2 ) { 
+                        currentObj.style.zIndex = currentObj.style.zIndex - 1;
+                    }
+                }
+                break;
+            case "FGCOLOR":
+                if ( obj ) {
+                    var width  = 465;height = 350;
+//                    var left = ( screen.width - width  ) / 2;
+//                    var top  = ( screen.height- height ) / 2;
+                    var left = ( screen.width - ( width  * 2 ) );
+                    var top  = 0;
+                    var myObject = new Object();
+                    myObject.Window         = window            ;
+                    myObject.designDocument = designDocument    ;
+                    myObject.attribute      = "color"           ;
+
+                    if ( colorFGPop != null ) {
+                        if ( typeof( colorFGPop.dialogHeight) == "unknown" ) {
+                            colorFGPop = window.showModelessDialog("/zzook/jsp/common/Color.html",myObject,"dialogHeight: " + height + "px; dialogWidth: " +  width + "px; dialogTop: " + top + "px; dialogLeft: " + left + "px; edge: Raised; center: Yes; help: Yes; resizable: Yes; status: Yes;");
+                        } else {
+                            colorFGPop.focus();
+                        }
+                    } else {
+                        colorFGPop = window.showModelessDialog("/zzook/jsp/common/Color.html",myObject,"dialogHeight: " + height + "px; dialogWidth: " +  width + "px; dialogTop: " + top + "px; dialogLeft: " + left + "px; edge: Raised; center: Yes; help: Yes; resizable: Yes; status: Yes;");
+                    }
+//                  var colorPop = window.open("/zzook/jsp/common/Color.html","color",'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',status=no, menubar=no, resizable=yes');
+                }
+                break;
+            case "BGCOLOR":
+                if ( obj != null ) {
+                    var width  = 465;height = 350;
+                    var left = ( screen.width - width  ) / 2;
+                        left += 465;
+//                    var top  = ( screen.height- height ) / 2;
+                    var top  = 0;
+                    var myObject = new Object();
+                    myObject.Window         = window            ;
+                    myObject.designDocument = designDocument    ;
+                    myObject.attribute      = "backgroundColor" ;
+                    if ( colorBGPop != null ) {
+                        if ( typeof( colorBGPop.dialogHeight) == "unknown" ) {
+                            colorBGPop = window.showModelessDialog("/zzook/jsp/common/Color.html",myObject,"dialogHeight: " + height + "px; dialogWidth: " +  width + "px; dialogTop: " + top + "px; dialogLeft: " + left + "px; edge: Raised; center: Yes; help: Yes; resizable: Yes; status: Yes;");
+                        } else {
+                            colorBGPop.focus();
+                        }
+                    } else {
+                        colorBGPop = window.showModelessDialog("/zzook/jsp/common/Color.html",myObject,"dialogHeight: " + height + "px; dialogWidth: " +  width + "px; dialogTop: " + top + "px; dialogLeft: " + left + "px; edge: Raised; center: Yes; help: Yes; resizable: Yes; status: Yes;");
+                    }
+//                  var colorPop = window.open("/zzook/jsp/common/Color.html","backgroundColor",'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',status=no, menubar=no, resizable=yes');
+                }
+                break;
+            case "FONT":
+                if ( obj ) {
+                    var width  = 400;height = 1;
+                    var left = ( screen.width - width  ) / 2;
+//                    var top  = ( screen.height- height ) / 2;
+                    var top  = 188;
+                    var fontPop  = window.open("/zzook/jsp/common/Font.html","10",'width=' + width + ', height=' + height + ', left=' + left + ', top=' + top + ',status=no, menubar=no, resizable=yes');
+                    fontPop.focus();
+                }
+                break;
+
+            case "WIDTHUP":
+                if ( currentObj != null ) {
+//                  alert ( "style width : " + typeof( obj.style.width ) + " / " + obj.style.width );
+//                  alert ( "width : " + typeof( obj.width ) + " / " + obj.width );
+                    var width = 0;
+                    if ( typeof( currentObj.height ) == "number" && currentObj.tagName.toUpperCase() != 'INPUT' ) {
+                        width = parseInt ( currentObj.width );
+                    } else {
+                        if ( typeof ( obj.style.width ) == "string" && currentObj.style.width != '' ) {
+                            width = currentObj.style.width;
+                            if ( width == '100%' ) {
+                                width = 100;
+                            } else {
+                                width = parseInt ( width );
+                            }
+                        } else {
+                            width = 0;
+                        }
+                    }
+                    currentObj.style.width = width + val;
+                }
+                break;
+            case "WIDTHDOWN":
+                if ( currentObj != null ) {
+//                  alert ( "style width : " + typeof( obj.style.width ) + " / " + obj.style.width );
+                    //alert ( "width : " + typeof( obj.width ) + " / " + obj.width );
+                    var width = 0;
+                    if ( typeof( currentObj.height ) == "number" && currentObj.tagName.toUpperCase() != 'INPUT' ) {
+                        width = parseInt ( currentObj.width );
+                    } else {
+                        if ( typeof ( currentObj.style.width ) == "string" && currentObj.style.width != '' ) {
+                            width = currentObj.style.width;
+                            if ( width == '100%' ) {
+                                width = 100;
+                            } else {
+                                width = parseInt ( width );
+                            }
+                        } else {
+                            width = 0;
+                        }
+                    }
+                    if ( width > val) {
+                        currentObj.style.width = width - val;
+                    }
+                }
+                break;
+            case "HEIGHTUP":
+                if ( currentObj != null ) {
+//                  alert ( "style height : " + typeof( obj.style.height ) + " / " + obj.style.height );
+//                  alert ( "height : " + typeof( obj.height ) + " / " + obj.height );
+
+                    var height = 0;
+                    if ( typeof( currentObj.height ) == "number" && currentObj.tagName.toUpperCase() != 'INPUT' ) {
+                        height = parseInt ( currentObj.height );
+
+                    } else {
+                        if ( typeof ( currentObj.style.height ) == "string" && currentObj.style.height != '' ) {
+                            height = currentObj.style.height;
+                            if ( height == '100%' ) {
+                                height = 25;
+                            } else {
+                                height = parseInt ( height );
+                            }
+                        } else {
+                            height = 1;
+                        }
+                    }
+                    currentObj.style.height = height + val;
+                }
+                break;
+            case "HEIGHTDOWN":
+                if ( currentObj != null ) {
+//                  alert ( "style height : " + typeof( obj.style.height ) + " / " + obj.style.height );
+//                  alert ( "height : " + typeof( obj.height ) + " / " + obj.height );
+                    var height = 0;
+                    if ( typeof( currentObj.height ) == "number" && currentObj.tagName.toUpperCase() != 'INPUT' ) {
+                        height = parseInt ( currentObj.height );
+                    } else {
+                        if ( typeof ( currentObj.style.height ) == "string" && currentObj.style.height != '' ) {
+                            height = currentObj.style.height;
+                            if ( height == '100%' ) {
+                                height = 25;
+                            } else {
+                                height = parseInt ( height );
+                            }
+                        } else {
+                            height = 1;
+                        }
+                    }
+                    if ( height > val) {
+                        currentObj.style.height = height - val;
+                    }
+                }
+                break;
+            case "TARGET":
+                if ( currentObj != null || selectObj != null  ) {
+
+                    var textPop  = window.open("/zzook/jsp/newadmin/html/HtmlInput_1.jsp","10",'width=700, height=500, left=0, top=0 ,status=no, menubar=no, resizable=yes');
+                    textPop.focus();
+                }
+                break;
+
+            case "INSERTTEXT":
+                var insertInput = "<DIV type='text'>2222222222222222</DIV>";
+                append(insertInput, 'div');
+                objectShow  ("CONTENTINSERT", designtier );
+                objectMoveTo("CONTENTINSERT", xPos, yPos, designtier );
+                break;
+
+            default:break;
+        }
+        HideMenu();
+        return false;
+    }
+function init() {
+        var menu0 = newMenu();// Menu Group 1
+        menu0.appendValue( "delete"     , new MENU_ITEM( '삭제'  , 'DELETE'      , 0, "required"));
+        menu0.appendValue( "align"      , new MENU_ITEM( '정렬'  , ''            , 0, "default", 'align-1'));
+        menu0.appendValue( "align-1"    , new MENU_ITEM( '맨위'      ,'TOP'      , 1, "default", 'align-2'));
+        menu0.appendValue( "align-1"    , new MENU_ITEM( '한단계위'  ,'PRESTEP'  , 1, "default"  ) );
+        menu0.appendValue( "align-1"    , new MENU_ITEM( '한단계아래','AFTSTEP'  , 1, "default"  ) );
+        menu0.appendValue( "align-1"    , new MENU_ITEM( '맨아래'    ,'BOTTOM'   , 1, "default"  ) );
+
+        menu0.appendValue( "align-2"    , new MENU_ITEM( 'ㅍㅍ'  , ''            , 2, "default"));
+
+        menu0.appendValue( "forecolor"  , new MENU_ITEM( '전경색', 'FGCOLOR'     , 0, "default"));
+        menu0.appendValue( "fgcolorer"  , new MENU_ITEM( '배경색', 'BGCOLOR'     , 0, "default"));
+        menu0.appendValue( "font"       , new MENU_ITEM( '폰트'  , 'FONT'        , 0, "default"));
+        window.name ='sample';
+        createMenu(document, menu0);
+        BoxMenu(document, "test", 'self');
+        }
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY onLoad='init()'>
+
+</BODY>
+</HTML>

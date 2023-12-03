@@ -1,0 +1,271 @@
+어제 오늘 테스트해보면서 느낀점을 적어봅니다.
+제가 여기서 알려드리고 싶은것은 정확히 언제  호출 되는지와 테스트하는 방법 등 입니다.
+이 소스는 여기 팁 게시판을 검색해 보시면 비슷하지만 조금씩은 다른 몇가지 형태로 존재합니다.
+기존에 좋은 자료가 참 많습니다. 참조 및 복사한 소스를 일일이 열거하지 못한점 죄송합니다.
+부족한 부분은 저도 더 알고 싶으니 많은 지적 부탁드립니다.
+
+테스트 방법은 소스를 실행시켜보면 화면에 1 2 3 4 5 같은 번호가 뜹니다.
+이 번호를 가지고 php 핸들러가 언제 어떤 함수들을 실행 시키는지 알아 볼수 있습니다.
+
+<?
+//session.inc
+//전역변수
+
+$LINK_ID = "";
+$HOST = "localhost";
+$DBNAME = "sessions";
+$USER = "root";
+$PASS = "1q2w3e";
+$SESS_TIME = get_cfg_var("session.gc_maxlifetime");
+
+// session_start()가 실행될때 호출되는 함수. DB 접속이 주 임무.
+function Sess_open($save_path, $session_name) {
+   GLOBAL $LINK_ID, $HOST, $DBNAME, $USER, $PASS;
+echo "1 open ";
+// DB 접속
+   if(! $LINK_ID = mysql_connect($HOST,$USER,$PASS)) {
+     $ERR_NO = mysql_errno();
+     $ERR_MSG = mysql_error();
+         echo ("접속안됨");
+
+   } else {
+      if(! mysql_select_db($DBNAME)) {
+         $ERR_NO = mysql_errno();
+         $ERR_MSG = mysql_error();
+                     echo ("선택안됨");
+      }
+   }
+   return true;
+}
+
+// session이 종료될때. 즉 페이지가 닫힐때 호출되는 함수.
+function Sess_close() {
+   mysql_close();
+   return true;
+}
+
+// session_start()가 실행될때 호출되는 함수. 정보 가져오기가 주 임무.
+// $key에 해당하는 저장된 세션값을 가져오는 함수.
+// 현재 시간보다 session 지속시간이 크다면( 즉 세션이 살아있다면..) 불러온다
+function Sess_read($key) {
+   global $LINK_ID;
+echo "2 read";
+       $time = time();
+       
+   $query = "SELECT session_value FROM sessions ";
+       $query.= "WHERE session_key = '$key' AND session_expiry > '$time'";
+
+       $result = mysql_query($query);
+
+       if(! $result = mysql_query($query)) {
+              $ERR_NO = mysql_errno();
+              $ERR_MSG = mysql_error();
+              echo (" $ERR_NO $ERR_MSG ");
+              exit;
+       }
+
+   if($row = mysql_fetch_object($result)) {
+          mysql_free_result($result);
+
+          return $row->session_value;
+       } else {
+          return "";   // must return "" here
+       }
+}
+
+// session_start()가 실행될때 호출되는 함수. 정보 저장 수정이 주 임무.
+// $key세션에 $val값을 저장. 즉 session_register() 실행시에 호출되는 함수.
+function Sess_write($key, $val) {
+   global $LINK_ID, $SESS_TIME;
+echo "3 write";
+       $time = time();
+   $expiry = $time + $SESS_TIME;   // session 유지 시간
+
+   $val = addslashes($val);
+
+   $query = "SELECT session_key FROM sessions WHERE session_key = '$key'";
+
+   $result = mysql_query($query);
+
+       if(! $result = mysql_query($query)) {
+              $ERR_NO = mysql_errno();
+              $ERR_MSG = mysql_error();
+              echo (" $ERR_NO $ERR_MSG ");
+              exit;
+       }
+
+// session이 이미 존재하면 시간만 증가
+       if(mysql_affected_rows()) {
+          $query = "UPDATE sessions SET session_expiry = '$expiry', session_value = '$val' ";
+              $query.= "WHERE session_key = '$key' AND session_expiry > '$time'";
+       } else {
+          $query = "INSERT INTO sessions ";
+          $query.= "(session_key, session_expiry, session_value) VALUES('$key', '$expiry', '$val')";
+       }
+       
+       if(! $result = mysql_query($query)) {
+              $ERR_NO = mysql_errno();
+              $ERR_MSG = mysql_error();
+              echo (" $ERR_NO $ERR_MSG ");
+              exit;
+       }
+
+       return $result;
+}
+
+// session_destroy() 함수가 실행되면 호출
+// $key에 해당하는 값을 지워 줌. session_unregister()를 실행함.
+function Sess_destroy($key) {
+   global $LINK_ID;
+echo "4 destroy";
+
+       $query = "DELETE FROM sessions WHERE session_key = '$key'";
+
+       $result = mysql_query($query);
+
+       if(! $result = mysql_query($query)) {
+              $ERR_NO = mysql_errno();
+              $ERR_MSG = mysql_error();
+              echo (" $ERR_NO $ERR_MSG ");
+              exit;
+       }
+
+       return $result;
+}
+
+// gc.probability에 지정된 확률로 시작될 때 호출됩니다.
+// 100이면 모든 요청마다 세션을 비움(100%확률).
+// session 지속 시간이 현재 시간보다 작으면 삭제.
+function Sess_gc($maxlifetime) {
+   global $LINK_ID;
+echo "5 gc";
+       $time = time();
+
+       $query = "DELETE FROM sessions WHERE session_expiry < '$time'";
+
+       $result = mysql_query($query);
+
+       if(! $result = mysql_query($query)) {
+              $ERR_NO = mysql_errno();
+              $ERR_MSG = mysql_error();
+              echo (" $ERR_NO $ERR_MSG ");
+              exit;
+       }
+
+       return mysql_affected_rows();
+}
+
+// PHP가 적시적때에 알아서 호출한다.
+// session_start() 실행되면 open, read, write 3개의 callback 함수가 순서대로 실행됨.
+// session_register() 실행되면 open, write 2개의 callback 함수가 순서대로 실행됨.
+session_set_save_handler("Sess_open","Sess_close","Sess_read","Sess_write","Sess_destroy","Sess_gc");
+session_set_cookie_params( 0, "/", ".ctjob.co.kr" );
+session_start();
+?>
+
+
+
+################### 이제 웹에서 실행하는 페이지 입니다. ######################
+<?
+//session_test.html
+include "./inc/session.inc";
+
+if($protype == "login") {
+       if($login_id == "webpd") {
+              echo (" login ok ");
+
+              $SESS_USERID = $login_id;
+              $SESS_USERPASS = $login_pass;
+
+              session_register("SESS_USERID");
+              session_register("SESS_USERPASS");
+
+              echo(" <meta http-equiv='Refresh' content='0; URL=session_test1.html'> ");
+              exit;
+       }
+
+       else {
+              echo (" login false ");
+
+              echo(" <a href=$PHP_SELF>뒤로</a> ");
+              exit;
+       }
+} else if($protype == "logout") {
+
+       session_destroy();
+
+       echo(" <meta http-equiv='Refresh' content='0; URL=$PHP_SELF'> ");
+       exit;
+}
+
+       echo ("
+              <form name=\"session\" method=\"post\" action=\"./session_test.html\">
+              <input type=\"hidden\" name=\"protype\" value=\"login\">
+              <input type=\"text\" name=\"login_id\">
+              <input type=\"text\" name=\"login_pass\">
+              <input type=\"submit\" value=\"로그인\">
+              </form>
+       ");
+?>
+
+
+######################## 로그인 후 페이지 ###########################
+<?
+include "./inc/session.inc";
+
+// if 안에 쓰인 함수는 session이 존재하는지 검사할때 쓰이는 방법을 php.net에서 보고 적어봤습니다.
+if(session_is_registered("SESS_USERID") && isset($_SESSION["SESS_USERPASS"])){
+          echo ("
+                     <form name=\"logout\" method=\"post\" action=\"session_test.html\">
+                     <input type=\"hidden\" name=\"protype\" value=\"logout\">
+                     <br>오케이 로그인 중이군~
+                     <br>아이디   : $SESS_USERID
+                     <br>패스워드 : $SESS_USERPASS
+                     
+         <br><a href='session_test.html'>갈은 도메인</a> 
+         <br><a href='http://ctjob.co.kr/~webpd/session_test.html?$SID'>다른 도메인</a> 
+
+
+                     <br><input type='submit' value='로그아웃'>
+                     </form>
+              ");
+       
+} else {
+         echo(" <meta http-equiv='Refresh' content='0; URL=session_test.html'> ");
+                     exit;
+}
+
+echo "session_id() 함수로 출력한 값(key 값) :"; echo session_id();
+echo "<br>";
+
+$ss = session_get_cookie_params(); 
+
+echo "session_get_cookie_params() 함수로 출력한 값 :";
+echo("life = $ss[lifetime] path = $ss[path] domain = $ss[domain] secure = $ss[secure]"); 
+echo "<br>";
+echo("아무나 다 보는 페이지..<br>"); 
+
+?> 
+
+ 
+ 
+
+   
+ 삶의향기 테이블을 빼먹었네요. ^^*
+
+CREATE TABLE sessions 
+(
+session_key char(32) not null,
+session_expiry int(11) unsigned not null, 
+session_value text not null, 
+PRIMARY KEY (session_key)
+);
+ 01/07 16:25:04  
+   
+ 삶의향기 제가 참고한 팁입니다.
+http://phpschool.com/bbs2/inc_view.html?id=8207&code=tnt2&start=0&mode=search&s_que=session_set_save&field=body&operator=and&period=all&category_id= 01/07 16:27:03  
+   
+ 삶의향기 http://man.phpschool.com/manual/kr/function.session-set-save-handler.php 01/07 16:31:06  
+   
+ 삶의향기 http://www.phpschool.com/classroom/session/index.html 
+

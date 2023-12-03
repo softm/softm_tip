@@ -1,0 +1,5 @@
+# web.xml
+      <mime-mapping>
+        <extension>apk</extension>
+        <mime-type>application/vnd.android.package-archive</mime-type>
+    </mime-mapping>

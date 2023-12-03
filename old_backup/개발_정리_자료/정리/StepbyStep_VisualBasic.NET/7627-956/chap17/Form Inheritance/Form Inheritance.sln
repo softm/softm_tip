@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Form Inheritance", "Form Inheritance.vbproj", "{0AB9763F-ECE3-4F75-B6E5-48891C0D439F}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{0AB9763F-ECE3-4F75-B6E5-48891C0D439F}.Debug.ActiveCfg = Debug|.NET
+		{0AB9763F-ECE3-4F75-B6E5-48891C0D439F}.Debug.Build.0 = Debug|.NET
+		{0AB9763F-ECE3-4F75-B6E5-48891C0D439F}.Release.ActiveCfg = Release|.NET
+		{0AB9763F-ECE3-4F75-B6E5-48891C0D439F}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

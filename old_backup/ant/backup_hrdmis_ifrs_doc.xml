@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="euc-kr"?>
+<project default="check" basedir="." name="문서_백업" >
+	<echo message="${ant.project.name}"/>
+	<tstamp>
+	   <format property="build.time" pattern="MM/dd/yyyy hh:mm aaa" offset="-1" unit="day" locale="en" />
+	   <format property="backup.make.time" pattern="yyyy-MM-dd HH_mm_ss_S"/>
+	</tstamp>
+	<property file="backup_hrdmis_ifrs_doc.properties"/>
+	<property name="backup.make.filename" value="${backup.make.time}"/>
+	<property environment="env" />
+<!-- check -->
+	 <target name="check" description="파일 검사">
+	   <echo>파일 검사</echo>
+	   <fileset dir="${dir.source}" id="src.files" defaultexcludes="true">
+	   <!--fileset dir="${svn.tmp_dir}/${backup.make.filename}" id="src.files" defaultexcludes="true"-->
+	      <include name="**/*.*"/>
+    	  <exclude name="**/.settings/**"/>
+    	  <exclude name="**/build/**"/>
+    	  <exclude name="**/WEB-INF/**"/>
+    	  <exclude name="**/RexServer/cab/**"/>
+    	  <exclude name="**/RexServer/doc/**"/>
+    	  <exclude name="**/RexServer/rexfiles/samples/**"/>
+    	  <exclude name="**/RexServer/rexfiles/sub/**"/>
+    	  <exclude name="**/install/cab_files/**"/>
+    	  <exclude name="**/install/component_files/**"/>
+    	  <exclude name="**/install/etc_files/**"/>
+    	  <exclude name="**/install/MiUpdater321/**"/>
+    	  <exclude name="**/install/msi_engine/**"/>
+		  <!--date datetime="${build.time}" when="after" /-->
+	    </fileset>
+		<pathconvert pathsep="${line.separator}"  property="javafiles" refid="src.files"/>
+		<echo>${dir.source}</echo>
+		<echo>${build.time}</echo>
+	 </target>
+
+<!-- copy -->
+	 <target name="copy" depends="mkdir, check" description="파일 복사">
+	    <echo>파일 복사</echo>
+		<copy todir="${env.TMP}/${backup.make.filename}" verbose="true" overwrite="false">
+			<fileset refid="src.files"></fileset>
+		</copy>
+	 </target>
+
+<!-- zip -->
+	<target name="zip" description="ZIP" depends="check">
+	    <echo>ZIP</echo>
+		<echo>ZIP PATH : ${env.TMP}/${prefix.file}${backup.make.filename}.zip</echo>
+		  <zip destfile="${env.TMP}/${prefix.file}${backup.make.filename}.zip"  encoding="euc-kr">
+			<fileset refid="src.files"></fileset>
+		  </zip>
+	</target>
+
+<!-- ftp_upload -->
+	<target name="ftp_upload" depends="check" description="파일 업로드">
+	    <echo>파일 업로드</echo>
+		 <ftp server="${ftp.server}"
+		       port="${ftp.port}"
+		       remotedir="${ftp.remotedir}"
+		       userid="${ftp.userid}"
+		       password="${ftp.password}"
+		       depends="${ftp.depends}"
+		       binary="${ftp.binary}"
+		  >
+		    <fileset refid="src.files">
+		    </fileset>
+		</ftp>
+	</target>
+
+	<!-- ftp_upload -->
+	<target name="zip_ftp_upload" depends="pass_week_ftp_delete,check, zip" description="파일 업로드">
+	    <echo>파일 업로드</echo>
+		 <ftp server="${ftp.server}"
+		       port="${ftp.port}"
+		       remotedir="${ftp.remotedir}"
+		       userid="${ftp.userid}"
+		       password="${ftp.password}"
+		       depends="${ftp.depends}"
+		       binary="${ftp.binary}"
+		  >
+		    <fileset dir="${env.TMP}" >
+		    	 <filename name="${prefix.file}${backup.make.filename}.zip"/>
+		    </fileset>
+		</ftp>
+		<delete file="${env.TMP}\${prefix.file}${backup.make.filename}.zip">
+		</delete>
+	</target>
+
+	<target name="pass_week_ftp_delete" description="이전파일삭제">
+	    <echo>이전파일삭제</echo>
+		 <tstamp>
+		    <format property="from_file7" pattern="yyyy-MM-dd" locale="kr" offset="-7"/>
+		    <format property="from_file8" pattern="yyyy-MM-dd" locale="kr" offset="-8"/>
+		    <format property="from_file9" pattern="yyyy-MM-dd" locale="kr" offset="-9"/>
+		    <format property="from_file10" pattern="yyyy-MM-dd" locale="kr" offset="-10"/>
+		    <format property="from_file11" pattern="yyyy-MM-dd" locale="kr" offset="-11"/>
+		    <format property="from_file12" pattern="yyyy-MM-dd" locale="kr" offset="-12"/>
+		    <format property="from_file13" pattern="yyyy-MM-dd" locale="kr" offset="-13"/>
+		  </tstamp>
+		    <echo>${from_file13} ~ ${from_file7}</echo>
+		 <ftp server="${ftp.server}"
+		       port="${ftp.port}"
+		       remotedir="${ftp.remotedir}"
+		       userid="${ftp.userid}"
+		       password="${ftp.password}"
+		       depends="${ftp.depends}"
+		       binary="${ftp.binary}"
+               action="list"
+		 	   listing="data/ftp.listing"
+                defaultDateFormatConfig="yyyy-MM-dd HH:mm"
+                verbose="yes" separator="/" serverTimeZoneConfig="KST-9"
+		  >
+		    <fileset>
+			      <include name="${prefix.file}${from_file7}*.zip"/>
+			      <include name="${prefix.file}${from_file8}*.zip"/>
+			      <include name="${prefix.file}${from_file9}*.zip"/>
+			      <include name="${prefix.file}${from_file10}*.zip"/>
+			      <include name="${prefix.file}${from_file11}*.zip"/>
+			      <include name="${prefix.file}${from_file12}*.zip"/>
+			      <include name="${prefix.file}${from_file13}*.zip"/>
+		    </fileset>
+		</ftp>
+
+		 <ftp server="${ftp.server}"
+		       port="${ftp.port}"
+		       remotedir="${ftp.remotedir}"
+		       userid="${ftp.userid}"
+		       password="${ftp.password}"
+		       depends="${ftp.depends}"
+		       binary="${ftp.binary}"
+               action="del"
+		 	   listing="data/ftp.listing"
+                defaultDateFormatConfig="yyyy-MM-dd HH:mm"
+                verbose="yes" separator="/" serverTimeZoneConfig="KST-9"
+		  >
+		    <fileset>
+			      <include name="${prefix.file}${from_file7}*.zip"/>
+			      <include name="${prefix.file}${from_file8}*.zip"/>
+			      <include name="${prefix.file}${from_file9}*.zip"/>
+			      <include name="${prefix.file}${from_file10}*.zip"/>
+			      <include name="${prefix.file}${from_file11}*.zip"/>
+			      <include name="${prefix.file}${from_file12}*.zip"/>
+			      <include name="${prefix.file}${from_file13}*.zip"/>
+		    </fileset>
+		</ftp>
+	</target>
+<!-- mkdir -->
+	<target name="mkdir" description="디렉토리 생성">
+	    <echo>디렉토리 생성</echo>
+		<echo>BACKUP PATH : ${backup.dir}/${prefix}${backup.make.filename}</echo>
+		<mkdir dir="${backup.dir}/${prefix}${backup.make.filename}"/>
+	</target>
+
+	<taskdef resource="org/tigris/subversion/svnant/svnantlib.xml"/>
+
+</project>

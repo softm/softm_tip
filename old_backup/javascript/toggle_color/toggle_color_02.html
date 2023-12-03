@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+    <title>CSS Floats 101</title>
+    <style>
+        .block {
+            width: 100px;
+            height: 100px;
+            border:1px solid black;
+        }
+        .float { float: left; }
+        .pink { background: #ee3e64; }
+        .blue { background: #44accf; }
+        .green { background: #b7d84b; }
+        .orange { background: #E2A741; }
+        .clear { clear:both }
+    </style>
+    <script>
+  //var colors = ["#ee3e64","#44accf","#b7d84b","#E2A741","#FF0000","#00FF00","#0000FF","#F0F000","#00F0F0","#F0000F","#0F000F","#0F0F00","#0000FF"];
+    var colors = ["#ff0000","#ff8c00","#ffff00","#008000","#0000ff","#4b0082","#800080"];
+    var winTimer = null;
+    var pos = 0;
+        function toggleColor(obj) {
+            var v = obj.get(0).style.visibility;
+                if ( v=="hidden" ) {
+                    v = "visible";
+                    //$("#btnToggleGreen").get(0).innerHTML = "show green";
+                } else {
+                    v = "hidden";
+                    //$("#btnToggleGreen").get(0).innerHTML = "hide green";
+                }
+            //obj.css("visibility",v); //visible
+            if (pos >= colors.length -1 ) {
+                pos = 0;
+            }
+            pos++;
+            obj.html(pos);
+            obj.css("background-color",colors[pos]); //visible
+        }
+
+        window.onload = function() {
+/*
+            winTimer = window.setInterval(function() {
+                toggleColor($(".pink"));
+            },500);
+            $("#btnToggleGreen").get(0).innerHTML = "Stop toggle color";
+ */
+            $("#btnToggleGreen").get(0).innerHTML = "Change Next Color~!";
+/*
+            window.setInterval(function() {
+                var pos =0;
+                toggleColor($(".blue"),pos);
+            },200);
+            window.setInterval(function() {
+                toggleColor($(".green"));
+            },200);
+            window.setInterval(function() {
+                toggleColor($(".orange"));
+            },200);
+*/
+        }
+
+        function setCssClear(obj) {
+            obj.get(0).style.backgroundColor ="#000";
+            obj.get(0).style.border ="10px solid #fff";
+            obj.get(0).style.color = "#fff";
+            obj.get(0).style.clear = "none";
+        }
+
+        var setTimer = function (start) {
+            start = typeof start === "boolean"?start:!!!start;
+            if ( start ) {
+                window.clearInterval(winTimer);
+                winTimer = null;
+                winTimer = window.setInterval(function() {
+                    toggleColor($(".pink"));
+                },500);
+                console.info("Start");
+            } else {
+                window.clearInterval(winTimer);
+                winTimer = null;
+                console.info("Stop");
+            }
+        }
+
+        function toggleTimer() {
+            if ( winTimer ) {
+                $("#btnToggleTimger").get(0).innerHTML = "Start";
+                setTimer(false);
+            } else {
+                $("#btnToggleTimger").get(0).innerHTML = "Stop";
+                setTimer(true);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="block pink float">row 1</div>
+    <div class="block blue float">row 1</div>
+    <div class="block green float">row 1</div>
+    <div class="block orange float">row 1</div>
+
+    <div class="block pink   float clear" id="div_clear">row 2</div>
+    <div class="block blue   float">&lt;-- clear:left row 2</div>
+    <div class="block green  float">row 2</div>
+    <div class="block orange float">row 2</div>
+    <button onclick='toggleTimer();' id="btnToggleTimger">Start</button>
+    <button onclick='toggleColor($(".pink"));' id="btnToggleGreen">Stop toggle color</button>
+    <button onclick='setCssClear($("#div_clear"));'>Clear:none</button>
+</body>
+</html>

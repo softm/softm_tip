@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+    
+<sqlMap namespace="Common">
+
+	<select id="findTableInfo" resultClass="java.util.HashMap">
+		SELECT * FROM TAB
+	</select>
+
+	<select id="findUserInfo" resultClass="java.util.HashMap">
+		SELECT * FROM USER_USERS
+	</select>
+	
+	<select id="get_column_info" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT *
+		  FROM USER_TAB_COLS
+		 WHERE TABLE_NAME = #value#
+		ORDER BY COLUMN_ID
+	</select>
+	
+	<select id="get_pk_info" parameterClass="java.util.HashMap" resultClass="java.util.HashMap">
+		SELECT  B.TABLE_NAME TABLE_NAME
+		      , B.COLUMN_NAME COLUMN_NAME
+		      , B.POSITION COLUMN_NAME
+		      ,  A.CONSTRAINT_NAME CONSTRAINT_NAME
+		      ,  A.CONSTRAINT_TYPE CONSTRAINT_TYPE
+		FROM  DBA_CONSTRAINTS A
+		      , DBA_CONS_COLUMNS B
+		WHERE 
+		-- A.OWNER           = 'PWMSU'
+		   A.TABLE_NAME  = #value#
+		   AND  A.CONSTRAINT_TYPE = 'P'
+		   AND  A.OWNER           = B.OWNER
+		   AND  A.CONSTRAINT_NAME = B.CONSTRAINT_NAME
+		ORDER BY B.TABLE_NAME, B.POSITION
+	</select>
+	
+</sqlMap>
+

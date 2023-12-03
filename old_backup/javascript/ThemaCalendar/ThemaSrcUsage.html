@@ -1,0 +1,537 @@
+<html>
+
+<head>
+<meta http-equiv="content-type" content="text/html; charset=euc-kr">
+<title>테마 달력 사용 설명서</title>
+<link href="http://myhome.naver.com/hullangi/baseStyle.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+BODY {
+	scrollbar-face-color: #ffffff;
+	scrollbar-highlight-color: #ffffff;
+	scrollbar-darkshadow-color: #ffffff;
+	scrollbar-track-color: #ffffff; 
+	scrollbar-arrow-color: #FF7200;
+	scrollbar-shadow-color: #FCB073; 
+	scrollbar-3dlight-color: #FCB073; 
+} 
+A:link    {COLOR: black; }
+A:visited {COLOR: black; }
+A:active  {COLOR: black; }
+A:hover   {COLOR: black; }
+-->
+</style>
+<script src="../JScript/Rainbow/rainbow.js"></script>
+<SCRIPT language="JavaScript" src="./JScript/Common/commonJS_01_HideURL.js"></SCRIPT>
+</head>
+
+<body bgcolor="white" text="black" link="blue" vlink="purple" alink="red" oncontextmenu="return false">
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<table align="center" border="1" width="300" cellspacing="0" bordercolordark="white" bordercolorlight="#CECFCE" style="line-height:120%; margin-top:0; margin-bottom:0;" height="30" bordercolor="#CECFCE">
+    <tr>
+        <td align="center" valign="middle">
+						<p align="center" style="line-height:120%; margin-top:0; margin-bottom:0;"><a href="../ThemaSrcMain.html" target="_self">테마소스 
+            메인으로 이동하기</a></td>
+    </tr>
+</table>
+
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<table align="center" border="0" width="410" height="314" cellspacing="0" bordercolordark="white" bordercolorlight="black" background="../Image/Main_Bkgrd.gif" cellpadding="0" style="line-height:120%; margin-top:0; margin-bottom:0;">
+    <tr>
+        <td align="left" valign="top" style="padding:20px;">
+						<p align="right" style="line-height:100%; margin-top:0; margin-bottom:0;">
+<b><font color="blue">테마 달력 사용 설명서</font></b>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left"><b><font color="#FF9900">01</font></b>. 
+            <font color="teal">다운받은 
+            ThemaCalendar.zip  파일의 압축을 푼다.</font></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left"><font color="#FF9900"><b>02</b></font>. 
+            <font color="teal">/CalJScript/CalUserConfig.js 환경설정 파일을 
+            열어</font></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left"><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;이미지 
+            및 다른 기타 환경을 설정한다.</font></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left"><b><font color="#FF9900">03</font></b>. 
+            <font color="teal">이용할 
+            페이지의 &lt;BODY&gt;&lt;/BODY&gt; 태그안에</font></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left"><font color="teal">&nbsp;&nbsp;&nbsp;&nbsp;다음의 코드를 삽입한다.</font></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;"><b>&lt;DIV</b> 
+            id=&quot;ThemaCalendarID&quot; style=&quot;width:185px;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;height:314px;&nbsp;position:absolute;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;left:<font color="fuchsia">0</font>px; top:<font color="fuchsia">0</font>px; z-index:1;&quot;<b>&gt;</b></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;iframe</b> 
+            name=&quot;ThemaCalendarFrame&quot;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;src=&quot;<font color="fuchsia">CalendarSrc.html</font>&quot; 
+            frameborder=&quot;0&quot;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;width=&quot;185&quot; height=&quot;314&quot; 
+            scrolling=&quot;no&quot;<b>&gt;</b></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>&lt;/iframe&gt;</b></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;"><b>&lt;/DIV&gt;</b></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;"><b><font color="#FF9900">04</font></b>. 
+            <font color="teal">경로는 
+            자신의 환경에 맞게 적절히 수정한다.</font></p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+            <p style="line-height:100%; margin-top:0; margin-bottom:0;" align="left"><font color="red">그 외 
+            소스 관련 수정은 소스 자체 설명서를 참조한다.</font></p>
+						</td>
+    </tr>
+</table>
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<table align="center" border="0" width="410" height="314" cellspacing="0" bordercolordark="white" bordercolorlight="black" background="../Image/Main_Bkgrd.gif" cellpadding="0" style="line-height:120%; margin-top:0; margin-bottom:0;">
+    <tr>
+        <td align="left" valign="top" style="padding:20px;">
+						<p align="right" style="line-height:120%; margin-top:0; margin-bottom:0;">
+<b><font color="#FF6600">2004. 07. 22 업데이트 정보</font></b>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">오래 
+            간만에 업데이트가 되었습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">특별한 
+            것은 없습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">단지, 
+            <font color="fuchsia">날짜 테이블의 간격을 적당히 조정</font>하였을 
+            뿐입니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">전에는 
+            %로 나누어 사용을 하면서</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">간격을 
+            정확히 계산도 안하고 무관심하게 방치했었는데</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">갈수록 
+            보기에 거슬려서 고쳤습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">말 
+            그대로 수치값만을 조금 바꾸었을 뿐입니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">소스 
+            중 <font color="teal">CalMainPrint.js</font> <font color="#FF9900">파일만 
+            수정</font>되었으니</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">압축파일을 
+            열어  이 파일만 <font color="blue">업데이트  </font>해 주시면 됩니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">부족하긴 
+            해도 테마달력을 사용해 주시는 분들이</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">있는 
+            것 같습니다. 메일로 질문하시는 분들도 있고</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">암튼, 
+            흐믓합니다. 그럼...</p>
+						</td>
+    </tr>
+</table>
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<table align="center" border="0" width="410" height="314" cellspacing="0" bordercolordark="white" bordercolorlight="black" background="../Image/Main_Bkgrd.gif" cellpadding="0" style="line-height:120%; margin-top:0; margin-bottom:0;">
+    <tr>
+        <td align="left" valign="top" style="padding:20px;">
+						<p align="right" style="line-height:120%; margin-top:0; margin-bottom:0;">
+<b><font color="#FF6600">2003. 12. 15 업데이트 정보</font></b>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left"><font color="fuchsia">2004</font> 
+            년도 <font color="teal">행사일 정보</font>가 새로이 업데이트 되었습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">행사일 
+            정보란 <font color="#999999">국경일, 법정 공휴일, 24 절기, 세시풍속 
+            그리고</font></p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left"><font color="#999999">기념일</font> 
+            등을 말합니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">제 
+            소스에서는 크게 3 가지로 분류하여 사용하고 있습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">첫째, 
+            공휴일 (국경일, 법정 공휴일) 정보</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">둘째, 
+            24 절기 (24 절기, 세시풍속) 정보</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">셋째, 
+            기념일 정보</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">소스 
+            중 <font color="teal">CalMainHeader.js</font> <font color="#FF9900">파일만 
+            수정</font>되었으니</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">전체를 
+            수정하기 어려우신 분은 이 파일만 <font color="blue">덮어 쓰시면</font> 됩니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">소스를 
+            벌써 많이 수정하여 그것도 어려우신 분은</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">배포본을 
+            참고로 또는 <font color="blue">아래의 2004 년도 행사 테이블</font>을 참고로</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">해당 부분의 코드를 직접 수정하시길 바랍니다.</p>
+						</td>
+    </tr>
+</table>
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;&nbsp;</p>
+<table align="center" border="0" width="410" height="314" cellspacing="0" bordercolordark="white" bordercolorlight="black" background="../Image/Main_Bkgrd.gif" cellpadding="0" style="line-height:120%; margin-top:0; margin-bottom:0;">
+    <tr>
+        <td align="left" valign="top" style="padding:20px;">
+						<p align="right" style="line-height:120%; margin-top:0; margin-bottom:0;">
+<b><font color="#FF6600">2003. 12. 05 업데이트 정보</font></b>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">테마 
+            달력 기능이 새로이 <font color="red">업데이트</font> 되었습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left"><font color="blue">홈 
+            방문자가 테마를 선택할 수 있는 기능</font>입니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">기존의 
+            CalendarSrc.html 파일 하나로 모여있던 스크립트들이</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">모두 
+            기능별로 각자의 <font color="teal">독립 파일</font>로 분리되었습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">그리고 
+            사용자가 쉽게 이용할 수 있도록 <font color="red">환경 설정 파일</font>을 
+            별도로</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">두었습니다. 
+            따라서, 환경설정 파일 수정과 삽입 코드만으로</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">테마 
+            달력을 바로 이용하실 수 있습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">또 
+            달라진 점이라면 각 <font color="blue">소스안에 주석을 모두 포함</font>시켜 
+            놓았습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">분석해서 
+            새로운 기능을 추가하려는 분들을 위해서입니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">압축 
+            파일에는 미리보기로 제공되는 이미지들을 넣어 놓았습니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">이미지는 
+            개인적인 취향에 따라 업데이트 해 주시길 바랍니다.</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">궁금한 
+            점은 메일이나 게시판에 남겨주세요. 이만.&nbsp;꾸우벅 -.-</p>
+						</td>
+    </tr>
+</table>
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<table align="center" border="1" width="410" height="314" cellspacing="0" bordercolordark="white" bordercolorlight="#CECFCE" style="line-height:120%; margin-top:0; margin-bottom:0;" bordercolor="#CECFCE">
+    <tr>
+        <td align="left" valign="top" style="padding:20px;">
+						<p align="right" style="line-height:120%; margin-top:0; margin-bottom:0;">
+<b><font color="#FF6600">2004 년도 행사 테이블 정보</font></b>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left"><font color="teal">코드의 
+            간략화를 위해</font></p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">DIVar_InfoTableLH</font><font color="teal"> 
+            테이블을 </font><font color="#999999">TA</font><font color="teal"> 
+            로,</font></p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">DIVar_InfoTableST</font><font color="teal"> 
+            테이블을 </font><font color="#999999">TB</font><font color="teal"> 
+            로,</font></p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">DIVar_InfoTableMD</font><font color="teal"> 
+            테이블을 </font><font color="#999999">TC</font><font color="teal"> 
+            로,</font></p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">DIFunc_InfoCreate</font><font color="teal"> 
+            함수를 </font><font color="#999999">Info</font><font color="teal"> 
+            로 표기하겠습니다.</font></p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;" align="left"><font color="teal">// 
+            공휴일(국경일, 법정공휴일)&nbsp;정보 테이블을 생성한다.</font></p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            1, 1, <font color="fuchsia">&quot;신정&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            1, 21, <font color="fuchsia">&quot;설날 연휴&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            1, 22, <font color="fuchsia">&quot;설날 연휴&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            1, 23, <font color="fuchsia">&quot;설날 연휴&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            3, 1, <font color="fuchsia">&quot;3.1 절&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 5, <font color="fuchsia">&quot;식목일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 5, <font color="fuchsia">&quot;어린이날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 26, <font color="fuchsia">&quot;석가탄신일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            6, 6, <font color="fuchsia">&quot;현충일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            7, 17, <font color="fuchsia">&quot;제헌절&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            8, 15, <font color="fuchsia">&quot;광복절&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            9, 27, <font color="fuchsia">&quot;추석 연휴&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            9, 28, <font color="fuchsia">&quot;추석 연휴&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            9, 29, <font color="fuchsia">&quot;추석 연휴&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 3, <font color="fuchsia">&quot;개천절&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TA</font>[<font color="#999999">TA</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            12, 25, <font color="fuchsia">&quot;성탄절&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="teal">// 
+            절기(세시풍속 포함) 정보 테이블을 생성한다.</font></p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            1, 6, <font color="fuchsia">&quot;소한&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            1, 21, <font color="fuchsia">&quot;대한&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            2, 4, <font color="fuchsia">&quot;입춘&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            2, 5, <font color="fuchsia">&quot;정월 대보름&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            2, 19, <font color="fuchsia">&quot;우수&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            3, 5, <font color="fuchsia">&quot;경칩&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            3, 20, <font color="fuchsia">&quot;춘분&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 4, <font color="fuchsia">&quot;청명&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 5, <font color="fuchsia">&quot;한식&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 20, <font color="fuchsia">&quot;곡우&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 5, <font color="fuchsia">&quot;입하&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 21, <font color="fuchsia">&quot;소만&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            6, 5, <font color="fuchsia">&quot;망종&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            6, 21, <font color="fuchsia">&quot;하지&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            6, 22, <font color="fuchsia">&quot;단오&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            7, 7, <font color="fuchsia">&quot;소서&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            7, 20, <font color="fuchsia">&quot;초복&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            7, 22, <font color="fuchsia">&quot;대서&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            7, 30, <font color="fuchsia">&quot;중복&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            7, 31, <font color="fuchsia">&quot;유두&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            8, 7, <font color="fuchsia">&quot;입추&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            8, 9, <font color="fuchsia">&quot;말복&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            8, 22, <font color="fuchsia">&quot;칠월칠석&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            8, 23, <font color="fuchsia">&quot;처서&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            9, 7, <font color="fuchsia">&quot;백로&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            9, 23, <font color="fuchsia">&quot;추분&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 8, <font color="fuchsia">&quot;한로&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 22, <font color="fuchsia">&quot;중앙절&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 23, <font color="fuchsia">&quot;상강&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            11, 7, <font color="fuchsia">&quot;입동&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            11, 22, <font color="fuchsia">&quot;소설&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            12, 7, <font color="fuchsia">&quot;대설&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TB</font>[<font color="#999999">TB</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            12, 21, <font color="fuchsia">&quot;동지&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="teal">// 
+            기념일 정보 테이블을 생성한다.</font></p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            3, 3, <font color="fuchsia">&quot;납세자의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            3, 17, <font color="fuchsia">&quot;상공의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            3, 22, <font color="fuchsia">&quot;물의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            3, 23, <font color="fuchsia">&quot;기상의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 3, <font color="fuchsia">&quot;향토예비군의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 7, <font color="fuchsia">&quot;보건의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 13, <font color="fuchsia">&quot;임시정부수립 기념일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 19, <font color="fuchsia">&quot;4.19 혁명 기념일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 20, <font color="fuchsia">&quot;장애인의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 21, <font color="fuchsia">&quot;과학의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 22, <font color="fuchsia">&quot;정보통신의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 25, <font color="fuchsia">&quot;법의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            4, 28, <font color="fuchsia">&quot;충무공 탄신일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 1, <font color="fuchsia">&quot;근로자의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 8, <font color="fuchsia">&quot;어버이날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 15, <font color="fuchsia">&quot;스승의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 17, <font color="fuchsia">&quot;성년의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 18, <font color="fuchsia">&quot;5.18 민주화운동 기념일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 19, <font color="fuchsia">&quot;발명의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 25, <font color="fuchsia">&quot;방재의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            5, 31, <font color="fuchsia">&quot;바다의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            6, 5, <font color="fuchsia">&quot;환경의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            6, 25, <font color="fuchsia">&quot;6.25 사변일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            9, 7, <font color="fuchsia">&quot;사회복지의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            9, 18, <font color="fuchsia">&quot;철도의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            9, 27, <font color="fuchsia">&quot;관광의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 1, <font color="fuchsia">&quot;국군의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 2, <font color="fuchsia">&quot;노인의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 8, <font color="fuchsia">&quot;재향군인의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 9, <font color="fuchsia">&quot;한글날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 15, <font color="fuchsia">&quot;체육의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 20, <font color="fuchsia">&quot;문화의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 21, <font color="fuchsia">&quot;경찰의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 24, <font color="fuchsia">&quot;국제연합일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 26, <font color="fuchsia">&quot;저축의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 27, <font color="fuchsia">&quot;대한적십자사창립 기념일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 28, <font color="fuchsia">&quot;교정의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            10, 30, <font color="fuchsia">&quot;항공의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            11, 3, <font color="fuchsia">&quot;학생의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            11, 9, <font color="fuchsia">&quot;소방의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            11, 11, <font color="fuchsia">&quot;농업인의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            11, 17, <font color="fuchsia">&quot;순국선열의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            11, 30, <font color="fuchsia">&quot;무역의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            12, 3, <font color="fuchsia">&quot;소비자의 날&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            12, 5, <font color="fuchsia">&quot;국민교육헌장선포 기념일&quot;</font>);</p>
+            <p style="line-height:120%; margin-top:0; margin-bottom:0;"><font color="#999999">TC</font>[<font color="#999999">TC</font>.length] 
+            = <font color="blue">new</font> <font color="#999999">Info</font>(2004, 
+            12, 10, <font color="fuchsia">&quot;세계인권선언 기념일&quot;</font>);</p>
+						</td>
+    </tr>
+</table>
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<table align="center" border="1" width="300" cellspacing="0" bordercolordark="white" bordercolorlight="#CECFCE" style="line-height:120%; margin-top:0; margin-bottom:0;" height="30" bordercolor="#CECFCE">
+    <tr>
+        <td align="center" valign="middle">
+						<p align="center" style="line-height:120%; margin-top:0; margin-bottom:0;"><a href="../ThemaSrcMain.html" target="_self">테마소스 
+            메인으로 이동하기</a></td>
+    </tr>
+</table>
+
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+<p style="line-height:120%; margin-top:0; margin-bottom:0;">&nbsp;</p>
+</body>
+
+</html>
+<script language=javascript>
+<!--
+document.write("<iframe src='http://lcs.naver.com/u{"+document.URL+"}' width=0 height=0 frameborder=0></iframe>");
+//-->
+</script>

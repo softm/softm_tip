@@ -1,0 +1,146 @@
+# mysql 서비스 등록
+    C:\WEB_APP\MYSQL50\bin\mysqld.exe --remove
+    C:\WEB_APP\MYSQL50\bin\mysqld.exe --install
+    net stop mysql
+    net start mysql
+
+   # other method starting
+    C:\WEB_APP\MYSQL50\bin\mysqld.exe --console
+
+# path에 추가
+K:\WEB_APP\MYSQL50\bin;K:\WEB_APP\Apache2\bin
+C:\WEB_APP\MYSQL50\bin;C:\WEB_APP\Apache2\bin
+
+# WINDOWS/php.ini extension_dir 경로 수정
+extension_dir = "K:\WEB_APP\php52\ext"
+extension_dir = "C:\WEB_APP\php52\ext"
+
+# hosts 수정
+127.0.0.1 local-softm1.net              # K:\Project\Project\my_home\1st\source
+127.0.0.1 local-softm2.net              # K:\Project\Project\my_home\2nd\source
+127.0.0.1 local-softm3.net              # K:\Project\Project\my_home\3rd\source
+127.0.0.1 local-okmmc.com               # K:\Project\Project\06.11-09.01_okmmc\okmmc_doc
+127.0.0.1 local-flex-okmmc.com          # K:\Project\Project\06.11-09.01_okmmc\flex_okmmc_doc
+127.0.0.1 local-homedirect.co.kr        # K:\Project\Project\09.03_09.06_homedirect.co.kr
+127.0.0.1 local-lab_doc.com             # K:\Project\Project\07.09-lab_doc
+127.0.0.1 local-re24.co.kr              # K:\Project\Project\06.11_06.12_re24.co.kr\source
+127.0.0.1 local-lvino.co.kr             # K:\Project\Project\06.08-06.09_www.lvino.co.kr\source
+127.0.0.1 local-midongfp.co.kr          # K:\Project\Project\04_XX_midongfp.co.kr\source
+127.0.0.1 local-iroon.com               # K:\Project\Project\04.09_04.12_iroon.com\source
+127.0.0.1 local-dothome.co.kr           # K:\Project\Project\04.02-04.03_dothome.co.kr\source
+127.0.0.1 local-designfor.net           # K:\Project\Project\03.09-designfor.net\source
+127.0.0.1 local-designboard.net         # K:\Project\Project\03.09-designboard.net\source
+127.0.0.1 local-iamt.com                # K:\Project\Project\01.03-01.03_iamt\source
+127.0.0.1 wiz-doc.com                   # 위즈개발건.
+127.0.0.1 local-calko.com               # 티센칼코.
+127.0.0.1 local-have.com               # haveenglish
+127.0.0.1 local-ipac.com               # ipac
+
+
+#httpd.conf
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:/Project/Project"
+    ServerName localhost
+</VirtualHost>
+
+# 바로 아래 이부분에 NameVirtualHost를NameVirtualHost를 설정하고 
+NameVirtualHost 127.0.0.1
+
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\my_home\1st\source"
+    ServerName local-softm1.net
+    ServerAlias local-softm1.net
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\my_home\2nd\source"
+    ServerName local-softm2.net
+    ServerAlias local-softm2.net
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\my_home\3rd\source"
+    ServerName local-softm3.net
+    ServerAlias local-softm3.net
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\06.11-09.01_okmmc\okmmc_doc"
+    ServerName local-okmmc.com
+    ServerAlias local-okmmc.com
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\06.11-09.01_okmmc\flex_okmmc_doc"
+    ServerName local-flex-okmmc.com
+    ServerAlias local-flex-okmmc.com
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\09.03_09.06_homedirect.co.kr"
+    ServerName local-homedirect.co.kr
+    ServerAlias local-homedirect.co.kr
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\07.09-lab_doc"
+    ServerName local-lab_doc.com
+    ServerAlias local-lab_doc.com
+</VirtualHost>
+
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\06.08-06.09_www.lvino.co.kr\source"
+    ServerName local-re24.co.kr
+    ServerAlias local-re24.co.kr
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\04_XX_midongfp.co.kr\source"
+    ServerName local-midongfp.co.kr
+    ServerAlias local-midongfp.co.kr
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\04.09_04.12_iroon.com\source"
+    ServerName local-iroon.com
+    ServerAlias local-iroon.com
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\04.02-04.03_dothome.co.kr\source"
+    ServerName local-dothome.co.kr
+    ServerAlias local-dothome.co.kr
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\03.09-designfor.net\source"
+    ServerName local-designfor.net
+    ServerAlias local-designfor.net
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\03.09-designboard.net\source"
+    ServerName local-designboard.net
+    ServerAlias local-designboard.net
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\01.03-01.03_iamt\source"
+    ServerName local-iamt.com
+    ServerAlias local-iamt.com
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:/Project/Project/wiz_doc"
+    ServerName wiz-doc.com
+    ServerAlias wiz-doc.com
+</VirtualHost>
+<VirtualHost 127.0.0.1>
+    ServerAdmin softm@nate.com
+    DocumentRoot "K:\Project\Project\09_07_calko.co.kr\source"
+    ServerName local-calko.com
+    ServerAlias local-calko.com
+</VirtualHost>

@@ -1,0 +1,256 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Preface, Notes, Licenses</title><link rel="stylesheet" href="mysql-html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.69.1"><link rel="start" href="index.html" title="MySQL 5.0 Reference Manual"><link rel="up" href="index.html" title="MySQL 5.0 Reference Manual"><link rel="prev" href="index.html" title="MySQL 5.0 Reference Manual"><link rel="next" href="introduction.html" title="Chapter 1. General Information"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Preface, Notes, Licenses</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="introduction.html">Next</a></td></tr></table><hr></div><div class="preface" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="preface"></a>Preface, Notes, Licenses</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="preface.html#copyright-mysql">1. MySQL Copyright Notice</a></span></dt><dt><span class="section"><a href="preface.html#license-regex">2. <code class="literal">regex</code> Library License</a></span></dt><dt><span class="section"><a href="preface.html#license-libedit">3. <code class="literal">libedit</code> License</a></span></dt></dl></div><p>
+    This is the Reference Manual for the MySQL Database System, version
+    5.0, through release 5.0.86. It is not
+    intended for use with older versions of the MySQL software due to
+    the many functional and other differences between MySQL
+    5.0 and previous versions. If you are using a version
+    4.1 release of the MySQL software, please refer to the
+    <a href="http://dev.mysql.com/doc/refman/4.1/en/" target="_top"><em class="citetitle">MySQL 3.23, 4.0, 4.1 Reference Manual</em></a>,
+    which covers the 3.23, 4.0, and 4.1 series of MySQL software
+    releases. Differences between minor versions of MySQL
+    5.0 are noted in the present text with reference to
+    release numbers (5.0.<em class="replaceable"><code>x</code></em>).
+  </p><p>
+    If you are using MySQL 5.1, please refer to the
+    <a href="http://dev.mysql.com/doc/refman/5.1/en/" target="_top"><em class="citetitle">MySQL 5.1 Reference Manual</em></a>.
+  </p><p>
+    If you are using MySQL 6.0, please refer to the
+    <a href="http://dev.mysql.com/doc/refman/6.0/en/" target="_top"><em class="citetitle">MySQL 6.0 Reference Manual</em></a>.
+  </p><p>
+    MySQL and the Reference Manual are covered under the copyrights
+    given in <a href="preface.html#copyright-mysql" title="1. MySQL Copyright Notice">Section 1, “MySQL Copyright Notice”</a>.
+  </p><p>
+    The following is a list of the creators of the libraries we have
+    included with the MySQL server source to make it easy to compile and
+    install MySQL. We are thankful to all individuals that have created
+    these. Some of these libraries require that their licensing terms be
+    included in the documentation of products that include them. Cross
+    references to these licensing terms are given with the applicable
+    items in the list.
+  </p><div class="itemizedlist"><ul type="disc"><li><p>
+        Fred Fish
+      </p><p>
+        For his excellent C debugging and trace library. Monty has made
+        a number of smaller improvements to the library (speed and
+        additional options).
+      </p></li><li><p>
+        Richard A. O'Keefe
+      </p><p>
+        For his public domain string library.
+      </p></li><li><p>
+        Henry Spencer
+      </p><p>
+        For his regex library, used for
+        <a href="functions.html#operator_regexp"><code class="literal">REGEXP</code></a> operations. License:
+        <a href="preface.html#license-regex" title="2. regex Library License">Section 2, “<code class="literal">regex</code> Library License”</a>
+      </p></li><li><p>
+        Jean-loup Gailly and Mark Adler
+      </p><p>
+        For the <code class="literal">zlib</code> library, used on MySQL on
+        Windows and on platforms where the host <code class="literal">zlib</code>
+        is too old.
+      </p></li><li><p>
+        Bjorn Benson
+      </p><p>
+        For his safe_malloc (memory checker) package which is used in
+        when you build MySQL using one of the
+        <code class="literal">BUILD/compile-*-debug</code> scripts or by manually
+        setting the <code class="option">-DSAFEMALLOC</code> flag.
+      </p></li><li><p>
+        Free Software Foundation
+      </p><p>
+        The <code class="literal">readline</code> library, used by the
+        <a href="programs.html#mysql" title="4.5.1. mysql — The MySQL Command-Line Tool"><span><strong class="command">mysql</strong></span></a> command-line client.
+      </p></li><li><p>
+        The NetBSD Foundation
+      </p><p>
+        The <code class="literal">libedit</code> library, optionally used by the
+        <a href="programs.html#mysql" title="4.5.1. mysql — The MySQL Command-Line Tool"><span><strong class="command">mysql</strong></span></a> command-line client.
+        <code class="literal">libedit</code> is used for commercial builds because
+        <code class="literal">readline</code> is covered under the GPL. License:
+        <a href="preface.html#license-libedit" title="3. libedit License">Section 3, “<code class="literal">libedit</code> License”</a>
+      </p></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="copyright-mysql"></a>1. MySQL Copyright Notice</h2></div></div></div><p>
+    Copyright © 2005-2008 MySQL AB, 2009 Sun Microsystems, Inc.,
+    4150 Network Circle, Santa Clara, California 95054, U.S.A. All
+    rights reserved. U.S. Government Rights - Commercial software.
+    Government users are subject to the Sun Microsystems, Inc. standard
+    license agreement and applicable provisions of the FAR and its
+    supplements. Sun, Sun Microsystems, the Sun logo, Java, Solaris,
+    StarOffice, MySQL and MySQL logo are trademarks or registered
+    trademarks of Sun Microsystems, Inc. in the U.S. and other
+    countries. UNIX is a registered trademark in the U.S. and other
+    countries, exclusively licensed through X/Open Company, Ltd.
+    Products covered by and information contained in this service manual
+    are controlled by U.S. Export Control laws and may be subject to the
+    export or import laws in other countries. Nuclear, missile, chemical
+    biological weapons or nuclear maritime end uses or end users,
+    whether direct or indirect, are strictly prohibited. Export or
+    reexport to countries subject to U.S. embargo or to entities
+    identified on U.S. export exclusion lists, including, but not
+    limited to, the denied persons and specially designated nationals
+    lists is strictly prohibited. DOCUMENTATION IS PROVIDED "AS IS" AND
+    ALL EXPRESS OR IMPLIED CONDITIONS, REPRESENTATIONS AND WARRANTIES,
+    INCLUDING ANY IMPLIED WARRANTY OF MERCHANTABILITY, FITNESS FOR A
+    PARTICULAR PURPOSE OR NON-INFRINGEMENT, ARE DISCLAIMED, EXCEPT TO
+    THE EXTENT THAT SUCH DISCLAIMERS ARE HELD TO BE LEGALLY INVALID.
+  </p><p>
+    Copyright © 2005-2008 MySQL AB, 2009 Sun Microsystems, Inc.,
+    4150 Network Circle, Santa Clara, California 95054, Etats-Unis. Tous
+    droits réservés. Sun, Sun Microsystems, le logo Sun, Java,
+    Solaris, StarOffice, MySQL et MySQL logo sont des marques de
+    fabrique ou des marques déposées de Sun Microsystems, Inc. aux
+    Etats-Unis et dans d'autres pays. UNIX est une marque déposée aux
+    Etats-Unis et dans d'autres pays et licenciée exlusivement par
+    X/Open Company, Ltd. Les produits qui font l'objet de ce manuel
+    d'entretien et les informations qu'il contient sont regis par la
+    legislation americaine en matiere de controle des exportations et
+    peuvent etre soumis au droit d'autres pays dans le domaine des
+    exportations et importations. Les utilisations finales, ou
+    utilisateurs finaux, pour des armes nucleaires, des missiles, des
+    armes biologiques et chimiques ou du nucleaire maritime, directement
+    ou indirectement, sont strictement interdites. Les exportations ou
+    reexportations vers des pays sous embargo des Etats-Unis, ou vers
+    des entites figurant sur les listes d'exclusion d'exportation
+    americaines, y compris, mais de maniere non exclusive, la liste de
+    personnes qui font objet d'un ordre de ne pas participer, d'une
+    facon directe ou indirecte, aux exportations des produits ou des
+    services qui sont regi par la legislation americaine en matiere de
+    controle des exportations et la liste de ressortissants
+    specifiquement designes, sont rigoureusement interdites. LA
+    DOCUMENTATION EST FOURNIE "EN L'ETAT" ET TOUTES AUTRES CONDITIONS,
+    DECLARATIONS ET GARANTIES EXPRESSES OU TACITES SONT FORMELLEMENT
+    EXCLUES, DANS LA MESURE AUTORISEE PAR LA LOI APPLICABLE, Y COMPRIS
+    NOTAMMENT TOUTE GARANTIE IMPLICITE RELATIVE A LA QUALITE MARCHANDE,
+    A L'APTITUDE A UNE UTILISATION PARTICULIERE OU A L'ABSENCE DE
+    CONTREFACON.
+  </p><p>
+    This documentation is NOT distributed under a GPL license. Use of
+    this documentation is subject to the following terms: You may create
+    a printed copy of this documentation solely for your own personal
+    use. Conversion to other formats is allowed as long as the actual
+    content is not altered or edited in any way. You shall not publish
+    or distribute this documentation in any form or on any media, except
+    if you distribute the documentation in a manner similar to how Sun
+    disseminates it (that is, electronically for download on a Web site
+    with the software) or on a CD-ROM or similar medium, provided
+    however that the documentation is disseminated together with the
+    software on the same medium. Any other use, such as any
+    dissemination of printed copies or use of this documentation, in
+    whole or in part, in another publication, requires the prior written
+    consent from an authorized representative of Sun Microsystems, Inc.
+    Sun Microsystems, Inc. and MySQL AB reserve any and all rights to
+    this documentation not expressly granted above.
+  </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="license-regex"></a>2. <code class="literal">regex</code> Library License</h2></div></div></div><p>
+    The <code class="literal">regex</code> library used for the
+    <code class="literal">REGEXP</code> operator is covered by this license:
+  </p><pre class="programlisting">Copyright 1992, 1993, 1994 Henry Spencer.  All rights reserved.
+This software is not subject to any license of the American Telephone
+and Telegraph Company or of the Regents of the University of California.
+
+Permission is granted to anyone to use this software for any purpose on
+any computer system, and to alter it and redistribute it, subject
+to the following restrictions:
+
+1. The author is not responsible for the consequences of use of this
+   software, no matter how awful, even if they arise from flaws in it.
+
+2. The origin of this software must not be misrepresented, either by
+   explicit claim or by omission.  Since few users ever read sources,
+   credits must appear in the documentation.
+
+3. Altered versions must be plainly marked as such, and must not be
+   misrepresented as being the original software.  Since few users
+   ever read sources, credits must appear in the documentation.
+
+4. This notice may not be removed or altered.
+</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="license-libedit"></a>3. <code class="literal">libedit</code> License</h2></div></div></div><p>
+    Each file in the <code class="literal">libedit</code> library is covered by
+    one of the following three licenses:
+  </p><pre class="programlisting">/*-
+ * Copyright (c) 1992, 1993
+ *	The Regents of the University of California.  All rights reserved.
+ *
+ * This code is derived from software contributed to Berkeley by
+ * Christos Zoulas of Cornell University.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ * 3. Neither the name of the University nor the names of its contributors
+ *    may be used to endorse or promote products derived from this software
+ *    without specific prior written permission.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE REGENTS AND CONTRIBUTORS ``AS IS'' AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED.  IN NO EVENT SHALL THE REGENTS OR CONTRIBUTORS BE LIABLE
+ * FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+ * DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS
+ * OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+ * HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
+ * LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
+ * OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
+ * SUCH DAMAGE.
+ */
+</pre><pre class="programlisting">/*-
+ * Copyright (c) 1997 The NetBSD Foundation, Inc.
+ * All rights reserved.
+ *
+ * This code is derived from software contributed to The NetBSD Foundation
+ * by Jaromir Dolecek.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+</pre><pre class="programlisting">/*-
+ * Copyright (c) 2001 The NetBSD Foundation, Inc.
+ * All rights reserved.
+ *
+ * This code is derived from software contributed to The NetBSD Foundation
+ * by Anthony Mallet.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions
+ * are met:
+ * 1. Redistributions of source code must retain the above copyright
+ *    notice, this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright
+ *    notice, this list of conditions and the following disclaimer in the
+ *    documentation and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE NETBSD FOUNDATION, INC. AND CONTRIBUTORS
+ * ``AS IS'' AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED
+ * TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR
+ * PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL THE FOUNDATION OR CONTRIBUTORS
+ * BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ */
+</pre></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="index.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="introduction.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">MySQL 5.0 Reference Manual </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 1. General Information</td></tr></table></div></body></html>

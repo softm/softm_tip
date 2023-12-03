@@ -1,0 +1,297 @@
+[Root]
+Most Recent Package=Standard Setup Package 2
+
+
+[Package|Standard Setup Package 1|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\u_cal\Package
+
+[Package|Standard Setup Package 1|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 1|Files Found]
+
+[Package|Standard Setup Package 1|Files Released]
+
+[Package|Standard Setup Package 1|Missing Dependency Information]
+
+[Package|Standard Setup Package 1|Out-of-Date Dependency Information]
+C:\WINDOWS\SYSTEM\scrrun.dll=
+C:\WINDOWS\SYSTEM\RICHTX32.OCX=
+C:\WINDOWS\SYSTEM\Mscomctl.ocx=
+
+[Package|Standard Setup Package 1|Files Added]
+c:\u_cal\div24.dat=
+c:\u_cal\suntolun.dat=
+c:\u_cal\ucalhelp.rtf=
+c:\u_cal\us000.jpg=
+c:\u_cal\구동파일.txt=
+
+[Package|Standard Setup Package 1|Files Removed]
+
+[Package|Standard Setup Package 1|Files In Project]
+C:\u_cal\u_cal.exe=Yes
+C:\WINDOWS\SYSTEM\MSVBVM60.DLL=Yes
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=Yes
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=Yes
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=Yes
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\WINDOWS\SYSTEM\VB6KO.DLL=Yes
+C:\WINDOWS\SYSTEM\scrrun.dll=Yes
+C:\WINDOWS\SYSTEM\MSVCRT.DLL=Yes
+C:\WINDOWS\SYSTEM\scrrnko.dll=Yes
+C:\WINDOWS\SYSTEM\MSCOMCTL.OCX=Yes
+C:\WINDOWS\SYSTEM\MSCMCKO.DLL=Yes
+C:\WINDOWS\SYSTEM\COMDLG32.OCX=Yes
+C:\WINDOWS\SYSTEM\CmDlgKO.dll=Yes
+C:\WINDOWS\SYSTEM\RICHTX32.OCX=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\GAPI32.DLL=Yes
+C:\WINDOWS\SYSTEM\RCHTXKO.DLL=Yes
+C:\WINDOWS\SYSTEM\COMCT232.OCX=Yes
+C:\WINDOWS\SYSTEM\CMCT2KO.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\WINDOWS\SYSTEM\VB6STKIT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\u_cal\div24.dat=Yes
+C:\u_cal\suntolun.dat=Yes
+C:\u_cal\ucalhelp.rtf=Yes
+C:\u_cal\us000.jpg=Yes
+C:\u_cal\구동파일.txt=Yes
+
+[Package|Standard Setup Package 1|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 1|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 1|Install Locations]
+C:\u_cal\u_cal.exe=$(AppPath)
+C:\WINDOWS\SYSTEM\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\VB6KO.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\scrrun.dll=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSVCRT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\scrrnko.dll=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSCMCKO.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\COMDLG32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\CmDlgKO.dll=$(WinSysPath)
+C:\WINDOWS\SYSTEM\RICHTX32.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\GAPI32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\RCHTXKO.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\COMCT232.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\CMCT2KO.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\SYSTEM\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\u_cal\div24.dat=$(AppPath)
+C:\u_cal\suntolun.dat=$(AppPath)
+C:\u_cal\ucalhelp.rtf=$(AppPath)
+C:\u_cal\us000.jpg=$(AppPath)
+C:\u_cal\구동파일.txt=$(AppPath)
+
+[Package|Standard Setup Package 1|Configure Shared Files]
+Applicable=Yes
+C:\u_cal\u_cal.exe=No
+C:\u_cal\div24.dat=No
+C:\u_cal\suntolun.dat=No
+C:\u_cal\ucalhelp.rtf=No
+C:\u_cal\us000.jpg=No
+C:\u_cal\구동파일.txt=No
+
+[Package|Standard Setup Package 1|Distribution]
+Type=single
+Size=
+Title=이기학 만세력
+
+[Package|Standard Setup Package 1|Package]
+PackageFolder=C:\u_cal\Package
+ProjectFolder=C:\u_cal
+ServerSideCab=
+File1=C:\u_cal\Package\setup.exe
+File2=C:\u_cal\Package\Setup.Lst
+File3=C:\u_cal\Package\u_cal.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|Standard Setup Package 1|IconGroups]
+Group0=이기학 만세력
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 1|이기학 만세력]
+Icon1=u_cal.exe
+Title1=이기학 만세력
+StartIn1=$(AppPath)
+Key1=Icon1
+
+
+[Package|Standard Setup Package 2|Root]
+SubWizProgID=PDWizard.SetupPkgSubWiz
+BuildFolder=C:\u_cal\Package
+
+[Package|Standard Setup Package 2|Configure DAO ISAMs]
+Applicable=No
+
+[Package|Standard Setup Package 2|Configure DAO ODBC]
+JetWorkspace=
+ODBCDirect=
+
+[Package|Standard Setup Package 2|Files Found]
+
+[Package|Standard Setup Package 2|Files Released]
+
+[Package|Standard Setup Package 2|Missing Dependency Information]
+
+[Package|Standard Setup Package 2|Out-of-Date Dependency Information]
+C:\WINDOWS\SYSTEM\scrrun.dll=
+C:\WINDOWS\SYSTEM\RICHTX32.OCX=
+C:\WINDOWS\SYSTEM\Mscomctl.ocx=
+C:\WINNT\system32\scrrun.dll=
+C:\WINNT\system32\RICHTX32.OCX=
+C:\WINNT\system32\MSCOMCTL.OCX=
+
+[Package|Standard Setup Package 2|Files Added]
+c:\u_cal\div24.dat=
+c:\u_cal\suntolun.dat=
+c:\u_cal\ucalhelp.rtf=
+c:\u_cal\us000.jpg=
+c:\u_cal\구동파일.txt=
+
+[Package|Standard Setup Package 2|Files Removed]
+
+[Package|Standard Setup Package 2|Files In Project]
+C:\u_cal\u_cal.exe=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\GAPI32.DLL=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=Yes
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=Yes
+C:\u_cal\div24.dat=Yes
+C:\u_cal\suntolun.dat=Yes
+C:\u_cal\ucalhelp.rtf=Yes
+C:\u_cal\us000.jpg=Yes
+C:\u_cal\구동파일.txt=Yes
+C:\WINNT\system32\MSVBVM60.DLL=Yes
+C:\WINNT\system32\OLEAUT32.DLL=Yes
+C:\WINNT\system32\OLEPRO32.DLL=Yes
+C:\WINNT\system32\ASYCFILT.DLL=Yes
+C:\WINNT\system32\STDOLE2.TLB=Yes
+C:\WINNT\system32\VB6KO.DLL=Yes
+C:\WINNT\system32\scrrun.dll=Yes
+C:\WINNT\system32\msvcrt.dll=Yes
+C:\WINNT\system32\scrrnko.dll=Yes
+C:\WINNT\system32\Mscomctl.ocx=Yes
+C:\WINNT\system32\MSCMCKO.DLL=Yes
+C:\WINNT\system32\Comdlg32.ocx=Yes
+C:\WINNT\system32\CMDLGKO.DLL=Yes
+C:\WINNT\system32\RICHTX32.OCX=Yes
+C:\WINNT\system32\RCHTXKO.DLL=Yes
+C:\WINNT\system32\Comct232.ocx=Yes
+C:\WINNT\system32\CMCT2KO.DLL=Yes
+C:\WINNT\system32\Vb6stkit.dll=Yes
+
+[Package|Standard Setup Package 2|Configure Registry Files]
+Applicable=No
+
+[Package|Standard Setup Package 2|Configure Remote Servers]
+Applicable=No
+
+[Package|Standard Setup Package 2|Install Locations]
+C:\u_cal\u_cal.exe=$(AppPath)
+C:\WINDOWS\SYSTEM\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\COMCAT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\VB6KO.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\scrrun.dll=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSVCRT.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\scrrnko.dll=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSCOMCTL.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\MSCMCKO.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\COMDLG32.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\CmDlgKO.dll=$(WinSysPath)
+C:\WINDOWS\SYSTEM\RICHTX32.OCX=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\RICHED32.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\Redist\GAPI32.DLL=$(WinSysPathSysFile)
+C:\WINDOWS\SYSTEM\RCHTXKO.DLL=$(WinSysPath)
+C:\WINDOWS\SYSTEM\COMCT232.OCX=$(WinSysPath)
+C:\WINDOWS\SYSTEM\CMCT2KO.DLL=$(WinSysPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP.EXE=$(AppPath)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\SETUP1.EXE=$(WinPath)
+C:\WINDOWS\SYSTEM\VB6STKIT.DLL=$(WinSysPathSysFile)
+C:\Program Files\Microsoft Visual Studio\VB98\Wizards\PDWizard\ST6UNST.EXE=$(WinPath)
+C:\u_cal\div24.dat=$(AppPath)
+C:\u_cal\suntolun.dat=$(AppPath)
+C:\u_cal\ucalhelp.rtf=$(AppPath)
+C:\u_cal\us000.jpg=$(AppPath)
+C:\u_cal\구동파일.txt=$(AppPath)
+C:\WINNT\system32\MSVBVM60.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEAUT32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\OLEPRO32.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\ASYCFILT.DLL=$(WinSysPathSysFile)
+C:\WINNT\system32\STDOLE2.TLB=$(WinSysPathSysFile)
+C:\WINNT\system32\VB6KO.DLL=$(WinSysPath)
+C:\WINNT\system32\scrrun.dll=$(WinSysPath)
+C:\WINNT\system32\msvcrt.dll=$(WinSysPathSysFile)
+C:\WINNT\system32\scrrnko.dll=$(WinSysPath)
+C:\WINNT\system32\Mscomctl.ocx=$(WinSysPath)
+C:\WINNT\system32\MSCMCKO.DLL=$(WinSysPath)
+C:\WINNT\system32\Comdlg32.ocx=$(WinSysPath)
+C:\WINNT\system32\CMDLGKO.DLL=$(WinSysPath)
+C:\WINNT\system32\RICHTX32.OCX=$(WinSysPath)
+C:\WINNT\system32\RCHTXKO.DLL=$(WinSysPath)
+C:\WINNT\system32\Comct232.ocx=$(WinSysPath)
+C:\WINNT\system32\CMCT2KO.DLL=$(WinSysPath)
+C:\WINNT\system32\Vb6stkit.dll=$(WinSysPathSysFile)
+
+[Package|Standard Setup Package 2|Configure Shared Files]
+Applicable=Yes
+C:\u_cal\u_cal.exe=No
+C:\u_cal\div24.dat=No
+C:\u_cal\suntolun.dat=No
+C:\u_cal\ucalhelp.rtf=No
+C:\u_cal\us000.jpg=No
+C:\u_cal\구동파일.txt=No
+
+[Package|Standard Setup Package 2|Distribution]
+Type=single
+Size=
+Title=이기학 만세력
+
+[Package|Standard Setup Package 2|Package]
+PackageFolder=C:\u_cal\Package
+ProjectFolder=C:\u_cal
+ServerSideCab=
+File1=C:\u_cal\Package\setup.exe
+File2=C:\u_cal\Package\Setup.Lst
+File3=C:\u_cal\Package\u_cal.CAB
+Handler1=PDWizard.FolderDplySubWiz
+Handler2=PDWizard.WebPostDplySubWiz
+
+[Package|Standard Setup Package 2|IconGroups]
+Group0=이기학 만세력
+PrivateGroup0=True
+Parent0=$(Programs)
+
+[Package|Standard Setup Package 2|이기학 만세력]
+Icon1=u_cal.exe
+Title1=이기학 만세력
+StartIn1=$(AppPath)
+Key1=Icon1

@@ -1,0 +1,58 @@
+■ viewport
+    ● webkit 브라우져에서 display할 화면의 크기(width,height),
+      배율(scale)을 설정할 수 있는 기능.
+
+    ● 설정예시
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+            :> 웹페이지의 가로(width) 값은 기기가 사용하는 가로 넓이 값(device-width) 만큼 적용하여 사용하라는 의미
+
+    ● webkit ( http://ko.wikipedia.org/wiki/%EC%9B%B9%ED%82%B7 )
+        - IOS 사파리 브라우져 기반
+        - android 브라우져 기반
+         웹킷(WebKit)은 웹 브라우저를 만드는 데 기반을 제공하는 오픈 소스 응용 프로그램 프레임워크이다.
+        원래는 맥 오에스 텐의 사파리 웹 브라우저 엔진으로 사용하기 위해 컨커러 브라우저의 KHTML 소프트웨어 라이브러리에서 가져온 것이었으나
+        지금은 옴니웹, 시이라, 아로라, 미도리, 유즈블, iCab, 어도비 통합 런타임, 휴대 전화(아이폰 포함),
+        노키아의 Series 60 브라우저, 구글의 안드로이드 플랫폼에 사용되고 있다.
+
+         한편 웹킷은 트롤테크(Trolltech)의 Qt 4.4에 기본 포함되어 있지만 KDE 프레임워크에 기반을 두는[1]
+         KDE 프로젝트는 머지 않아 KHTML의 초기 버전을 사용할 것임을 밝혔다.[2] Acid2 테스트를 통과하였으며
+         2008년 3월에는 웹킷 최신버전이 Acid3 테스트에서 100점 만점을 받았다.[3]
+
+※ 참고
+    http://sonnim2000.blog.me/120205788277
+    http://matthewjamestaylor.com/blog/ipad-layout-with-landscape-portrait-modes
+
+※ [뷰포트의 속성]
+    width         : 픽셀(pixels) 단위로 설정하는 뷰포트의 가로 넓이(상수로 속성값을 설정할 수 있고 기본값은 980px)
+    height        : 픽셀 단위로 설정하는 뷰포트의 세로 높이, 기본값은 너비 속성의 값과 기기의 비율에 따라 계산,
+                    상수로 속성값을 설정할 수 있다.
+    initial-scale : 배율로 설정할 수 있는 뷰포트의 초기 화면의 크기 값,
+                    기본값은 표시 영역에 있는 웹페이지에 맞게 계산되고 범위는 최소 크기과 최대 크기의 속성에 의해 결정된다.
+                    이 속성은 최초 보기 배율을 설정할 뿐 user-scalable 속성(사용자에 의한 확대/축소)이 NO로 설정되지 않는 한,
+                    이후에는 minimum-scale 또는 maximum-scale 속성에 의해 확대/축소가 가능.
+    minimum-scale : 뷰포트의 최소 배율값, 기본값은 0.25 설정범위 0~10.0
+    maximum-scale : 뷰포트의 최대 배율값, 기본값은 1.6 설정범위 0~10.0
+    user-scalable : 사용자 확대/축소를 설정하는 속성, 기본값은 Yes
+
+※ [특별한 뷰포트의 속성값]
+    device-width    : 기기의 가로 넓이 픽셀 값
+    device-height   : 기기의 세로 높이 픽셀 값
+
+※ [속성을 잘못 설정하는 경우의 문제점]
+    contents보다 작은 viewport width/height를 설정하면 무시된다.
+    viewport에서 initial-scale을 설정하지 않고 width/height를 설정하면 전체화면이 표시된다.
+    viewport에서 initial-scale도 width/height도 설정하지 않으면 width=980px/height=1091px이 된다.
+    표시영역과 contents의 크기가 일치하지 않을때 initial-scale를 설정하면, 의도하지 않은 layout가 발생한다.
+    참고  : http://developer.apple.com/library/safari/
+
+﻿
+※ 아이패드를 위한 레이아웃에서 뷰포트 메타 태그 설정﻿
+    <meta name="viewport" content="width=768px, minimum-scale=1.0, maximum-scale=1.0" />
+    - 최소/최대 배율값을 1.0으로 설정하였기 때문에 아이패드용 레이아웃은 1:1 비율의 최적화 화면을 표시할 것입니다.
+      다만 사용자에 의한 확대/축소는 작동하지 않게 됩니다.
+    - 가로(width)의 크기값을 768px로 설정하였습니다.
+      따라서 풍경 모드(Landscape Modes)에서는 이 설정 값이 무시됩니다.
+      만약 아이패드가 회전을 하여 초상화 모드(Portrait Modes)인 경우 가로값은 768px이 맞기 때문에
+      width="768px"은 정성적으로 작동하고 CSS에서 설정한 미디어 쿼리(@media)에서 받아 두었던 속성에
+      대한 값이 재정의 되어 각각의 DIV 엘리먼트들이 자신의 자리를 다시 찾게 됩니다.
+

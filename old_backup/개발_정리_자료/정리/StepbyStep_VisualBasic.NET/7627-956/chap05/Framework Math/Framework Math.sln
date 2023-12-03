@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 7.00
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Framework Math", "Framework Math.vbproj", "{EE9E4571-2665-4BF4-87F2-00479D494435}"
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		ConfigName.0 = Debug
+		ConfigName.1 = Release
+	EndGlobalSection
+	GlobalSection(ProjectDependencies) = postSolution
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{EE9E4571-2665-4BF4-87F2-00479D494435}.Debug.ActiveCfg = Debug|.NET
+		{EE9E4571-2665-4BF4-87F2-00479D494435}.Debug.Build.0 = Debug|.NET
+		{EE9E4571-2665-4BF4-87F2-00479D494435}.Release.ActiveCfg = Release|.NET
+		{EE9E4571-2665-4BF4-87F2-00479D494435}.Release.Build.0 = Release|.NET
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

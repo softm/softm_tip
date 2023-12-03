@@ -1,0 +1,68 @@
+Oracle에 연결하기 위해 Oracle Client를 설치하거나, 좀 심한경우에는 Oracle Enterprise까지 설치하는 경우가 있습니다.
+
+ 
+
+그저 Toad 나 P/L SQL Developer를 통해 연결하기 위해서 무거운 Oracle 프로그램을 설치할 필요가 없더군요..
+
+ 
+
+답은 Instant Client 라는 OTN 개발과 배포를 위한 프로그램입니다.
+
+ 
+
+프로그램 설치 방법
+
+ 
+
+1. 프로그램의 다운로드
+
+   http://www.oracle.com/technology/software/tech/oci/instantclient/index.html
+
+ 
+
+  일단 자신의 OS환경에 맞는 프로그램을 다운로드 받은 후 적당한 위치에 압축을 풉니다.
+
+  (제 경우는 Instant Client Package - Basic 버젼을 다운로드 받았습니다.)
+
+ 
+
+2. 환경 설정
+
+  Path                             예) C:\instantclient_10_2;
+
+ NLS_LANG                     예) NLS_LANG= KOREAN_KOREA.AL32UTF8
+
+  ORACLE_HOME            예) ORACLE_HOME= C:\\instantclient_10_2
+
+  TNS_ADMIN                 예) TNS_ADMIN= C:\\instantclient_10_2
+
+ 
+
+3. tnsnames.ora 파일 생성
+
+EXTPROC_CONNECTION_DATA =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = IPC)(KEY = EXTPROC))
+    )
+    (CONNECT_DATA =
+      (SID = PLSExtProc)
+      (PRESENTATION = RO)
+    )
+  )
+
+ALIAS = 
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = IP주소)(PORT = PORT))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = SID명)
+      (SRVR = DEDICATED)
+    )
+  )
+
+
+4. Toad 나 P/L SQL Developer에서 연결하면 됩니다.
+[출처] [Oracle] Instant Client 사용법 (헤르메스의 날개) |작성자 헤르메스
+

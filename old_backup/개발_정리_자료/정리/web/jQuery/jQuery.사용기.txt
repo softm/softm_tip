@@ -1,0 +1,71 @@
+◆ jQuery ( http://docs.jquery.com/Main_Page )
+    ▲ Downloading jQuery
+        ● About The Code
+            The code itself is written rather cleanly in an attempt to self-document.
+            If you've spotted some areas of code that could be improved, please feel free to discuss it
+            on the Development mailing list. All input is gladly appreciated!
+
+            All of the code is available in two formats:
+
+                * Compressed (which allows you to have a significantly smaller file size) and
+                * Uncompressed (good for debugging and to understand what is behind the magic).
+
+            If you're interested in downloading Plugins developed by jQuery contributors, please visit the Plugins page.
+
+            jQuery is provided under the following MIT and GPL licenses.
+
+        ● CDN Hosted jQuery
+            A number of large enterprises provide hosted copies of jQuery on existing CDN networks that are available
+            for public use. Below are links to the CDN-hosted copies of jQuery that you may hotlink to.
+
+            * jQuery CDN (Edgecast via (mt))
+                  o http://code.jquery.com/jquery-1.4.2.min.js Minified version
+                  o http://code.jquery.com/jquery-1.4.2.js Source version
+                  o Please do not link to versions of jQuery on static.jquery.com or dev.jquery.com; hotlinking to these subdomains will be disabled in Q3 of 2010 and your sites will break!
+            * Google Ajax API CDN
+                  o http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js
+                  o Google Ajax CDN Documentation
+            * Microsoft CDN
+                  o http://ajax.microsoft.com/ajax/jquery/jquery-1.4.2.min.js
+                  o Ajax CDN Announcement, Microsoft Ajax CDN Documentation
+
+
+◆ jQuery UI ( http://jqueryui.com/docs/Getting_Started )
+    ● What is jQuery UI?
+        jQuery UI는 widget, 상호작용 라이브러리를 장착한 jQuery Javacript Libaray입니다.
+
+    ● jQuery UI구성및 설치방법
+        0. jQuery UI categorized into groups
+            - core, interations, widgets, and effects.
+
+        1. http://jqueryui.com/download
+        2. Choose which components you need.
+        3. Select a theme (or roll your own custom theme)
+        4. Choose a version of jQuery UI
+        5. Click Download!
+
+    ● Intro to using jQuery UI
+        Once you've downloaded jQuery UI, you'll get a zip containing the following files:
+
+            * /css/
+            * /development-bundle/
+            * /js/
+            * index.html
+
+    ● Basic overview: using jQuery UI on a web page
+
+        Open up index.html in a text editor and you'll see that it links to a few dependencies:
+        your theme, jQuery, and jQuery UI. Generally, you'll need to include these 3 files on any page
+        to use jQuery UI widgets and interactions:
+
+            <link type="text/css" href="css/themename/jquery-ui-1.8.custom.css" rel="Stylesheet" />
+            <script type="text/javascript" src="js/jquery-1.4.2.min.js"></script>
+            <script type="text/javascript" src="js/jquery-ui-1.8.custom.min.js"></script>
+
+        Once you've included the necessary files, you can add some jQuery widgets to your page.
+        For example, to make a datepicker widget, you'll add a text input element to your page and then
+        call .datepicker(); on it.
+        Like this: HTML: <input type="text" name="date" id="date" />
+
+        $('●date').datepicker();
+

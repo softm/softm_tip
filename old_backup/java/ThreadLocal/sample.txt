@@ -1,0 +1,2 @@
+# 참고 주소 : http://electrotek.wordpress.com/2009/06/09/thread-bound-db-connection-threadlocal/
+

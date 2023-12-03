@@ -1,0 +1,166 @@
+webadmin : http://localhost:9744/webadmin/app?page=NodeList&service=page ( administrator / [jeus 설치시 기입한 비밀번호] )
+
+INSTALL DIR : D:\WEB_APP\JWAS\JEUS5.0
+
+JEUS_HOME : D:\WEB_APP\JWAS\JEUS5.0
+JAVA_HOME : D:\WEB_APP\jdk1.5.0_12
+
+설치확인 : http://localhost:8080/
+	   http://localhost:8080/examples/index.jsp
+	   기본으로 example이 잘뜨면 설치 정상.
+
+#  자동으로 등록되는 제우스 서비스명 : jeusservice-jeus
+
+jeusadmin -version   '제우스 버전체크
+jeusadmin -fullversion  '제우스 풀버전
+jeusadmin -licensedue  '제우스 라이센스 기간
+jeusadmin -licenseinfo   '제우스 라이센스 정보
+
+2 . 기동, 종료
+   제우스는 두개의 자바 프로세스(제우스매니저, 제우스컨테이너)로 구성되어있다.
+
+[실행순서]
+    제우스매니저 띄우기 ( jeus) -> 제우스컨테이너 띄우기(boot)  -> 제우스 컨테이너 내리기(down)-> 제우스매니저 내리기(jeusexit)
+    제우스 System 관리 Tool 는 크게 세가지 종류가 있다.
+   ⓐ GUI : Jmanager  (jeus 5.x이전버전)
+   ⓑ Console :jeusadmin
+   ⓒ Web : web admin (jeus 5.x버전)
+
+실습>
+  ①  콘솔방법
+        command 창 두개를 띄운다.
+
+    첫 번째 command 창> jeus '제우스매니저실행 할 수 있는 환경 Ready
+        JeusServer is Ready
+
+    두 번째 command 창> jeusadmin lekpro '제우스매니저시작
+     Login name>administrator  'unix|linux 인경우 해당 유저ID
+
+     Password>
+       JEUS 5.0 (fix #2) Jeus Manager Controller
+     lekpro> boot  ' 컨테이너실행
+     lekpro >down ' 컨테이너종료
+     lekpro >jeusexit '제우스매니저 종료
+     lekpro>exit  '컨네이너종료
+
+ ②  web 방법
+    - 시작 >프로그램>TmaxSoft>JEUS5>jeus or 콘솔창에서 jeus
+    - 웹브라우저에 http://localhost:9744/webadmin/index.html
+       cf>9744 포트 ->JEUS BASEPORT에 +8를 해준다.
+
+    ※  한방 시작/종료
+
+    window일경우 *.bat, linux | unix 인 경우 *.sh 파일로 만들어 %JEUS_HOME%Bin 아래에 넣어준다.
+     시작파일 >  jeus -xml _Uadministrator _P1234567
+     종료파일 >  jeusadmin lekpro jeusexit _Uadministrator _P1234567
+
+# jeus_down.bat
+jeusadmin softm-PC -Uadministrator -Psoftm123 jeusexit
+
+# jeus_boot.bat
+jeus -xml -Uadministrator -Psoftm123
+
+# jeus_admin.bat
+jeusadmin softm-PC -Uadministrator -Psoftm123
+
+# jeus_restart.bat
+net start jeusservice-jeus
+net stop jeusservice-jeus
+
+------------------------------------------------------------------------------------------------------------------------
+boot : 제우스 관리자로 전달된다. 제우스 매니저는 config/lekpro/JEUSMain.xml 을 읽어 런타임 환경을 구성한수 제우스 서비스를 시작한다.
+# JEUSMain.xml : Sytstem log 설정
+        <enable-webadmin>true</enable-webadmin>
+        <system-logging>
+            <level>INFO</level>
+            <handler>
+                <file-handler>
+                    <name>handler</name>
+                    <file-name>D:\WEB_APP\JWAS\JEUS5.0\logs\JeusServer.log</file-name>
+                    <valid-day>1</valid-day>
+                    <buffer-size>4096</buffer-size> <!-- 디버깅시에는 0으로 설정해아 바로 바로 올라옴. //-->
+                </file-handler>
+            </handler>
+        </system-logging>
+    </node>
+
+# WEBMain.xml
+<?xml version="1.0" encoding="UTF-8"?>
+<web-container xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+    <context-group>
+       <group-name>MyGroup</group-name>
+       <webserver-connection>
+           <http-listener>
+               <listener-id>http2</listener-id>
+               <port>8910</port>
+               <output-buffer-size>8192</output-buffer-size>
+               <thread-pool>
+                   <min>10</min>
+                   <max>20</max>
+               </thread-pool>
+           </http-listener>
+       </webserver-connection>
+        <jsp-engine>
+            <!-- <java-complier>D:\WEB_APP\jdk1.5.0_22\bin\javac</java-complier> -->
+           <keep-generated>true</keep-generated>
+            <!-- //옵션은 JSP 포맷에서 변환을 거친 후 Servlet 소스 코드를 저장해 둘지를 결정한다.-->
+            <!-- //디버깅을 위해서 이 옵션을 “true”로 해 놓으면 유용하다. -->
+            <!-- <java-compiler>javac</java-compiler> -->
+            <!-- <jsp-work-dir>D:\WEB_APP\JWAS\JEUS5.0\webhome\jspwork\</jsp-work-dir>
+            <compile-output-dir>D:\WEB_APP\JWAS\JEUS5.0\webhome\jspwork\</compile-output-dir> -->
+            <!-- <compile-option>-g:none -verbose</compile-option> -->
+            <compile-encoding>UTF-8</compile-encoding>
+            <!-- //이 설정은 Web Container 가 적당한 인코딩을 알아서 지정하므로 많이 사용되지 않는다. -->
+            <check-included-jspfile>true</check-included-jspfile>
+
+            <!-- //설정이 “true”로 설정되면 요청한 JSP 페이지 뿐만 아니라 <%@ include file=”xxx.jsp” %> directive 로
+            //include 된 모든 JSP 들에 대하여 변경되었는지 확인한다.
+            //이 설정이 “true”로 설정되고 include 된 JSP 파일이 변경되었음이 확인되면 변경된 파일은 재컴파일 된다.
+            //기본 설정인 “false”는 변경 확인을 하지 않는다. 즉, 요청된 JSP 만 변경확인 된다. -->
+
+        </jsp-engine>
+    </context-group>
+</web-container>
+
+# WEBMain.xml ( 세부적으로 에러 표시되게 ). <attach-stacktrace-on-error>false</attach-stacktrace-on-error>
+<?xml version="1.0" encoding="UTF-8"?>
+
+<jeus-web-dd version="6.0" xmlns="http://www.tmaxsoft.com/xml/ns/jeus">
+
+    <context-path>/</context-path>
+
+    <enable-jsp>true</enable-jsp>
+
+    <auto-reload>
+
+        <enable-reload>true</enable-reload>
+
+        <check-on-demand>true</check-on-demand>
+
+    </auto-reload>
+
+    <max-instance-pool-size>-1</max-instance-pool-size>
+
+    <webinf-first>false</webinf-first>
+
+    <attach-stacktrace-on-error>false</attach-stacktrace-on-error>
+
+</jeus-web-dd>
+
+
+==============================================================================================================
+mssql client download
+    http://www.microsoft.com/korea/msdn/vstudio/express/sql/download/
+
+    Microsoft SQL Server Management Studio Express : http://www.microsoft.com/downloads/ko-kr/details.aspx?FamilyID=C243A5AE-4BD1-4E3D-94B8-5A0F62BF7796
+
+    # 접속확인
+        C:\Program Files (x86)\Microsoft SQL Server\90\Tools\Binn>sqlcmd -S 203.245.82.102\sqlexpress,42433 -U sys_pjmobile
+
+
+ms sql2005 express 외부접속 설정 mssql / Database
+
+2009/01/28 17:11
+
+복사 http://blog.naver.com/annsungsu/80062252318
+

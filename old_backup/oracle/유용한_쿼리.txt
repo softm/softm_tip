@@ -1,0 +1,77 @@
+/* Oracle Dictionary에서 컬럼의 Comment 와 Type, Null 여부 쿼리 */
+SELECT 
+        A.OWNER
+      , A.TABLE_NAME
+      , A.COLUMN_NAME
+      , A.COLUMN_ID AS COL_ORDER
+      , CASE WHEN A.DATA_TYPE IN (‘VARCHAR’, ‘VARCHAR2′, ‘CHAR’) THEN
+                            A.DATA_TYPE || ‘(‘ || A.DATA_LENGTH || ‘)’
+             WHEN A.DATA_TYPE = ‘NUMBER’ THEN
+                            A.DATA_TYPE || ‘(‘ || A.DATA_PRECISION || ‘,’ || DECODE(A.DATA_SCALE,0,’0′,A.DATA_SCALE) || ‘)’
+             ELSE A.DATA_TYPE
+        END AS FULL_DATA_TYPE
+      , A.DATA_TYPE
+      , A.DATA_LENGTH
+      , A.DATA_PRECISION
+      , A.DATA_SCALE
+      , A.NULLABLE
+      , B.COMMENTS
+  FROM  DBA_TAB_COLUMNS A
+      , DBA_COL_COMMENTS B
+WHERE  A.OWNER = ‘HSON’
+   AND  A.TABLE_NAME  LIKE ‘TB%’
+   AND  A.OWNER       = B.OWNER(+)
+   AND  A.TABLE_NAME  = B.TABLE_NAME(+)
+   AND  A.COLUMN_NAME = B.COLUMN_NAME(+)
+–ORDER BY A.TABLE_NAME, A.COLUMN_ID
+;
+
+/* Oracle Dictionary에서 PK 필드 쿼리
+Constraint Type
+P : Primary
+U : Unique Index
+C : Check
+R : Relation Ship (Forgin Key)
+*/
+SELECT  B.TABLE_NAME
+      , B.COLUMN_NAME
+      , B.POSITION
+      –,  A.CONSTRAINT_NAME
+      –,  A.CONSTRAINT_TYPE
+  FROM  DBA_CONSTRAINTS A
+      , DBA_CONS_COLUMNS B
+WHERE  A.OWNER           = ‘HSON’
+   AND  A.TABLE_NAME  LIKE ‘TB%’
+   AND  A.CONSTRAINT_TYPE = ‘P’
+   AND  A.OWNER           = B.OWNER
+   AND  A.CONSTRAINT_NAME = B.CONSTRAINT_NAME
+–ORDER BY B.TABLE_NAME, B.POSITION
+;
+
+/* Oracle Dictionary에서 INDEX 필드 쿼리 */
+SELECT  A.INDEX_OWNER
+      , A.INDEX_NAME
+      , A.TABLE_OWNER
+      , A.TABLE_NAME
+      , A.COLUMN_NAME
+      , A.COLUMN_POSITION
+      , A.COLUMN_LENGTH
+      , A.CHAR_LENGTH
+      , A.DESCEND
+      , B.CONSTRAINT_TYPE
+  FROM  DBA_IND_COLUMNS A
+      , DBA_CONSTRAINTS B
+WHERE  A.INDEX_OWNER = ‘HSON’
+   AND  A.TABLE_NAME  LIKE ‘TB%’
+   AND  A.INDEX_OWNER = B.OWNER (+)
+   AND  A.INDEX_NAME  = B.CONSTRAINT_NAME (+)
+–ORDER BY A.TABLE_NAME, A.INDEX_NAME, A.COLUMN_POSITION     
+;
+
+/* 테이블 코멘트 */
+SELECT *
+  FROM DBA_TAB_COMMENTS
+WHERE OWNER = ‘HSON’
+   AND TABLE_NAME LIKE ‘TB%’
+   AND COMMENTS IS NOT NULL
+;   

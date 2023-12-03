@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Lucky Seven", "Lucky Seven.vbproj", "{A6FCB6C5-90A1-4719-8BBA-532415ED4A37}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Lucky", "..\Lucky\Lucky.vdproj", "{DC1CFA69-DBD8-4B84-981E-6726B7A8EE60}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A6FCB6C5-90A1-4719-8BBA-532415ED4A37}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FCB6C5-90A1-4719-8BBA-532415ED4A37}.Debug|Any CPU.Build.0 = Release|Any CPU
+		{A6FCB6C5-90A1-4719-8BBA-532415ED4A37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FCB6C5-90A1-4719-8BBA-532415ED4A37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC1CFA69-DBD8-4B84-981E-6726B7A8EE60}.Debug|Any CPU.ActiveCfg = Debug
+		{DC1CFA69-DBD8-4B84-981E-6726B7A8EE60}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

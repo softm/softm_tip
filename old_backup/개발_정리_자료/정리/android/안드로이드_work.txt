@@ -1,0 +1,65 @@
+﻿고려해햐할 사항
+- 다국어에대한 설정 resource레벨에서 가능함. ( 137페이지 참조)
+    
+아이콘 사이트
+http://iconnara.pe.kr/
+http://www.bestsiteslist.net/Best-XP,Vista-Icon-Download-Sites-List.html
+
+이클립스 플러그인 주소
+jdocs - http://jdocs.com/plugins/eclipse/plugin33
+http://www.jgit.org/update-site
+    --> http://www.androidside.com/bbs/board.php?bo_table=B46&wr_id=1715 ( 참고주소 )
+
+안드로이드 소스 : http://android.git.kernel.org/ --> git를이용해야함.
+
+안드로이드 소스 import 하기
+    http://www.androidside.com/bbs/board.php?bo_table=B46&wr_id=1715
+
+    "Available Software" - Add
+        - http://www.jgit.org/update-site
+
+    Project에서 import
+        - Git Repository
+        - URI 입력 
+            예) git://android.git.kernel.org/platform/development.git
+            예) git://android.googlesource.com/platform/development.git
+                git://android.git.kernel.org/platform/frameworks/base.git
+
+
+# 해야할일
+    1. context 넘겨서 Alert 처리하게끔 ( 공통 ) 
+    2. 아이디/비밀번호 저장
+        - sqlight 또는 preperence
+
+    3. REST를 이용한 database 로그인 체크
+
+    4. 메뉴
+    4. 메뉴
+
+    5. 입력
+        입력
+
+    6. 조회
+        - sample 조사? table 레이아웃및 책 소스 참고
+
+
+
+menu
+
+http://www.mikeplate.com/show-a-context-menu-for-long-clicks-in-an-android-listview/
+http://manpage.textcube.com/69
+
+2. 안드로이드 다운로드
+   1. 안드로이드 폰에서 브라우져 실행
+   2. apk file download : http://218.38.136.66/down/WoodNsoft.apk
+   3. login 실행 - admin / 1
+   4. Menu-WoodNsoft01 실행
+
+1. Web login 
+   http://218.38.136.66/
+   (admin/1)
+
+
+
+
+   

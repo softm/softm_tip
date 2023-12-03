@@ -1,0 +1,43 @@
+REST는 2000년도에 Roy Fielding의 박사학위 논문에서 네트워크 시스템의 구조적 형식(architecture style)을 설명하기 위해 만들어진 용어이다. 
+최근도 아니고 이미 뜰만큼 뜬 REST에 대해 정리해보자.
+
+정의
+    REST stands for "REpresentational State Transfer"
+    REST is an architecture style not a standard : REST는 비표준 아키텍쳐 스타일
+    Data and Service are represented by unique URI : unique한 URI를 통해 Data와 Service를 표현한다.
+
+
+특징
+    Addressable Resources
+    Every "thing" should have a URI
+    Statelessness 
+    scalability and decoupling
+    Representation Orientted
+    Different applications need different formats
+    Uniform interface
+    Use the standard methods of the protocol
+
+Addressable Resources
+    모든 것은 URI을 가지고 있다. 예를 들면 "User", "article" 책의 "ISBN", 운전면허증의 "라이센스 번호"등은
+    모두 Resource 라고 한다. 이 리소스에 클라이언트가 바로 액세스할 수 있게 주소를 가르키는 URI를 가지고 있어야 한다. URI를 가지고 접근 가능하도록 하는것.
+
+    http://www.flyburi.com/article/1
+
+Statelessness(상태비보존성) 
+    웹 어플리케이션이 클라이언트의 상태에 대한 정보를 보관하지 않는다.
+    모든 HTTP 요청이 완전히 독립적으로 발생한다 .
+    어떤 요청을 했을때 다른 페이지에 의존적이지 않고, searchForm을 입력해서 "buri" 를 
+    찾는게 아닌 /user/buri를 URL로 입력하여 접근 가능하도록 한다.
+    이렇게 되면 사용자는 URI만 보고 예측하여 계층적인 접근을 가능하므로 직관적이다.
+
+    서버는 클라이언트 time out에 대해 신경쓸 필요도 없고 
+    클라이언트가 애플리케이션의 "어디"에 있었는지 기억한 정보를 잃어버릴 일도 없다.
+    클라이언트는 매 요청마다 필요한 모든 정보를 준다. 
+    REST에서는 상태가 서버가 아니라 클라이언트에 유지되며 매 요청마다 필요한 정보를 서버에 보낸다.
+    이렇게 하면 쉽게 북마크 할 수 있다.
+
+Uniform interface
+    모든 Resource는 일반적인 인터페이스(HTTP GET, POST, PUT, DELETE)로 접근되어야 한다.
+
+
+    RESTful 웹서비스는 REST 아키텍쳐 스타일을 사용하는 웹서비스.

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+    
+<sqlMap namespace="$!tableName">
+
+	<select id="findAll" resultClass="java.util.HashMap">
+		SELECT * 
+		  FROM $!tableName
+	</select>
+	
+	<insert id="create" parameterClass="java.util.HashMap">
+		
+		INSERT INTO $!tableName
+		(
+		#foreach( $columnName in $columnNameList )
+#if($velocityCount!=$columnNameList.size())
+		$columnName.get("COLUMN_NAME"),
+#{else}
+		$columnName.get("COLUMN_NAME") 
+#end 
+		#end
+) VALUES (
+		#foreach( $columnName in $columnNameList )
+#if($velocityCount!=$columnNameList.size())
+		#$columnName.get("COLUMN_NAME")#,
+#{else}
+		#$columnName.get("COLUMN_NAME")#
+#end 
+		#end
+)
+	
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM $!tableName
+	</delete>
+	
+</sqlMap>

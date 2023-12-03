@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> 메뉴 테스트 </TITLE>
+<SCRIPT LANGUAGE="JavaScript" src='BrowserCheck.js'></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src='HashTable.js'></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src='ObjectRef.js'></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+    function newMenu() {
+        var m = new HashTable();
+        return m;
+    }
+
+    function MENU_ITEM( upId      ,
+                        menuNm    ,
+                        event     ,
+                        mode      ,
+                        command   ,
+                        width ,
+                        height
+    ){
+        this.upId       = upId      ;
+        this.menuNm     = menuNm    ;
+        this.event      = event     ;
+        this.mode       = mode      ;
+        this.command    = command   ;
+        this.width      = width     ;
+        this.height     = height    ;
+        this.drawYn     = 'N'       ;
+        this.depth      = 0         ;
+    }
+
+/*
+id              아이디
+upId            상위아이디
+mainMenuDspMode         H : 수평 : horizon
+                V : 수직 : vertical
+
+menuNm          메뉴명
+event           실행할 동작 이벤트 ( Click, MouseOver )
+mode            "SUB", "" : 서브메뉴 보이기
+                "URL" : URL로 이동
+                "JS"  : 자바스크립트 실행
+command         실행명령
+width       메뉴높이
+height      메뉴넓이
+--------------------------------------------
+
+initEvent       초기메뉴가 보이기위한 이벤트
+fontColor       글자색
+backColor       배경색
+
+aFontColor      활성화시 글자색
+aBackColor      활성화시 배경색
+
+eventArea       서브메뉴 링크 영역  "▶",
+
+
+*/
+//-->
+</SCRIPT>
+<!-- #c0c0c0 -->
+<link rel=stylesheet href='menu.css' type='text/css'>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+    var menuObj = newMenu();
+        menuObj.appendValue( "menu1"        , new MENU_ITEM( ""       , "메인메뉴1"    , "Click", "SUB", "http://www.daum.net", 180, 20));
+        menuObj.appendValue( "menu1-1"      , new MENU_ITEM( "menu1"  , "메뉴1-1"  , "Click", "SUB", "http://www.daum.net", 180, 20));
+        menuObj.appendValue( "menu1-1-1"    , new MENU_ITEM( "menu1-1", "메뉴1-1-1", "Click", "SUB", "http://www.daum.net", 180, 20));
+        menuObj.appendValue( "menu1-1-2"    , new MENU_ITEM( "menu1-1", "메뉴1-1-2", "Click", "SUB", "http://www.daum.net", 180, 20));
+        menuObj.appendValue( "menu1-1-2-1"  , new MENU_ITEM( "menu1-1-2", "메뉴1-1-2-1", "Click", "SUB", "http://www.daum.net", 180, 20));
+
+        menuObj.appendValue( "menu2"        , new MENU_ITEM( ""       , "메인메뉴2"    , "Click", "SUB", "http://www.daum.net", 180, 20));
+        menuObj.appendValue( "menu2-1"      , new MENU_ITEM( "menu2"  , "메뉴2-1"  , "Click", "SUB", "http://www.daum.net", 180, 20));
+        menuObj.appendValue( "menu3"        , new MENU_ITEM( ""       , "메뉴3"    , "Click", "SUB", "http://www.daum.net", 180, 20));
+
+    var tmpX = 0;
+    var tmpY = 0;
+    var MAX_DEPTH = 0;
+
+    var eventArea = "▶";
+    var dmenu = null;
+    var mainMenuDspMode = 'H';
+    var subMenuDspMode  = 'V';
+
+    var keyPath   = new Array();
+    var depthPath = new Array();
+
+    function savePath (key, saveKey) {
+        var size = menuObj.getSize();
+        for ( var i=0; i<size; i++ ) {
+            var menuItem = menuObj.getValue(i);
+            var menuId   = menuObj.getKey  (i);
+            if ( key == menuItem.upId ) {
+                keyPath [saveKey] += "," + menuId;
+                savePath (menuId, saveKey);
+            }
+        }
+    }
+
+    function findDepth (key) {
+        var menuItem;
+        var d = 1
+        var k
+        k = key
+        while (1) {
+            menuItem = menuObj.getValue(k);
+            if ( menuItem.upId == "" )
+            {
+                break;
+            } else {
+                k = menuItem.upId;
+                d++;
+            }
+        }
+        return d;
+    }
+
+function test_forin(test_parameter) {
+    var test_obj = "";
+    for(var num in test_parameter) {
+        // test_obj += test_parameter.name + "." + num + " = " + test_parameter[num] + "\n"
+        test_obj += num + " = " + test_parameter[num] + "<BR>";
+    }
+    alert(test_obj);
+
+}
+    function initMenu() {
+        dmenu = getObject ("dmenu");
+//      dmenu.style.border      = "2px solid";
+//      dmenu.style.padding     = "4px 2px 4px 2px";
+        dmenu.style.visibility  = "visible" ;
+        dmenu.style.position    = "absolute";
+        dmenu.style.top         = "0"       ;
+
+        var menuStr = "";
+        var size = menuObj.getSize();
+        var d
+
+        for ( var i=0; i<size; i++ ) {
+            var menuItem= menuObj.getValue(i);
+            var menuId  = menuObj.getKey(i);
+            // createMenuGroup(menuItem.upId);
+            // createMenu (menuItem, menuId);
+            if ( menuItem.upId == "" ) {
+                keyPath [menuId] = menuId;
+                savePath (menuId,menuId);
+            }
+            d = findDepth (menuId);
+            menuItem.depth = d;
+            if ( MAX_DEPTH < d ) MAX_DEPTH = d
+            //alert (menuId + " / " + d)
+        }
+
+
+        // test_forin(keyPath);
+        // alert ( keyPath );
+        var test_obj =null;
+        for(var num in keyPath) {
+            // test_obj += test_parameter.name + "." + num + " = " + test_parameter[num] + "\n"
+            // test_obj += num + " = " + keyPath[num] + "<BR>";
+            // CreateMenu (keyPath[num].split(','));
+        }
+
+        for ( var i=1; i<=MAX_DEPTH; i++ ) {
+            dmenu.innerHTML += "<span id=\"group"+ i +"\" onClick='viewSubMenu(this, \"" + mainMenuDspMode + "\");' style='position:relative;cursor:hand;border:1 solid;border-color:blue'></span>";
+        }
+        var menuItem, menuId, memu;
+        var groupObj
+        var style1
+        for ( var i=0; i<size; i++ ) {
+            var menuItem= menuObj.getValue(i);
+            var menuId  = menuObj.getKey(i);
+            groupObj = getObject ("group" + menuItem.depth);
+            groupObj.innerHTML += "<BR><span id=\""+ menuId +"\" onClick='viewSubMenu(this, \"" + mainMenuDspMode + "\");' style='position:relative;cursor:hand;border:1 solid;border-color:green'>" + menuItem.menuNm+ "</span>";
+        }
+        getObject ("group3").style.visibility = "hidden"
+        //while(1) {
+
+        //}
+//      alert ( test_obj);
+    }
+
+    function CreateMenu111 (menuKeys) {
+        var keys = menuKeys.split(',');
+        alert ( keys.length );
+        for ( var i=0; i<keys.length; i++ ) {
+            alert ( keys[i] );
+            var menuItem = menuObj.getValue(keys[i]);
+            dmenu.innerHTML += "<span id=\"group"+ keys[i] +"\">"+menuItem.menuNm+"</span>";
+        }
+    }
+
+    function CreateSubMenu (menuKeys) {
+    }
+
+    function CreateMenu(keys) {
+        var menuStr = "";
+        var size = keys.length;
+        var first = true;
+        var group_dmenu;
+        var cTop = 0;
+        var cLeft= 0;
+        var style
+        for ( var i=0; i<size; i++ ) {
+            var menuItem = menuObj.getValue(keys[i]);
+            var menuId   = keys[i];
+            // alert ( "menuId : " + menuId );
+//            alert ( "menuItem.menuNm: " + menuItem.menuNm);
+//background-color:red
+            if ( i == 0 ) {
+                if (mainMenuDspMode == 'H') {
+                    tmpX = 0
+                    tmpY += menuItem.height
+                    //alert("")
+                    style  = "width:"  + menuItem.width + ";height:" + menuItem.height + ";left:" + tmpX + ";top:"  + tmpY
+                    style += ";border:1 solid"
+                    tmpX += menuItem.width
+
+                } else {
+                    tmpY = 0
+                    style  = "width:"  + menuItem.width + ";height:" + menuItem.height + ";left:" + tmpX + ";top:"  + tmpY
+                    style += ";border:1 solid"
+                    tmpY += menuItem.height
+                }
+            } else {
+                if (subMenuDspMode == 'H') {
+                    tmpX  += menuItem.width
+                    //alert("")
+                    style  = "width:"  + menuItem.width + ";height:" + menuItem.height + ";left:" + tmpX + ";top:"  + tmpY
+                    style += ";border:1 solid"
+
+                } else {
+                    tmpY  += menuItem.height
+                    style  = "width:"  + menuItem.width + ";height:" + menuItem.height + ";left:" + tmpX + ";top:"  + tmpY
+                    style += ";border:1 solid"
+                }
+            }
+
+            alert ( style )
+            dmenu.innerHTML += "<span id=\""+ menuId +"\" onClick='viewSubMenu(this, \"" + mainMenuDspMode + "\");' style='position:absolute;cursor:hand;" + style + "'></span>";
+            dmenuItem = getObject (menuId);
+/*
+            if ( menuId != "" ) {
+//                alert("1111111111")
+                dmenuItem.style.position   = 'absolute';
+                dmenuItem.style.visibility = "visible";
+            } else {
+                dmenuItem.style.position   = 'absolute';
+                dmenuItem.style.visibility = "visible";
+            }
+*/
+//            dmenuItem.style.width  = cLeft;
+//            dmenuItem.style.height = cTop ;
+            dmenuItem.innerHTML    = menuItem.menuNm;
+            dmenuItem.style.fontSize = '10pt';
+
+            menuItem.drawYn = 'Y';
+
+            if  ( mainMenuDspMode == 'H' ) cLeft += menuItem.width ;
+            else                           cTop  += menuItem.height;
+        }
+    }
+
+    function viewSubMenu(obj, mainMenuDspMode) {
+        var x = 0;
+        var y = 0;
+        var subObj = getObject("group" + obj.id);
+        alert ( "group" + obj.id );
+        if ( typeof (subObj) == 'object' ) {
+/*
+            if ( subMenuDspMode == 'H' ) x += obj.offsetWidth ;
+            else                         y += obj.offsetHeight;
+
+            subObj.style.left = x + "px";
+            subObj.style.top  = y + "px";
+            alert ( x + ' / ' + y );
+*/
+
+//            if ( subMenuDspMode == 'H' ) x = ;
+//            else                         y = ;
+
+            var menuItem = menuObj.getValue(obj.id);
+            alert ( menuItem.width );
+            subObj.style.visibility = "visible" ;
+            subObj.style.position   = "relative";
+        }
+    }
+//-->
+</SCRIPT>
+</HEAD>
+
+
+<BODY onLoad='initMenu();' topmargin=0 leftmargin=0>
+<span id="dmenu" style='border:2 solid;width:100;height:100'></span>
+<!-- <button onclick='alert ( keyPath["menu1"] );'>test1</button>
+<button onclick='alert ( keyPath["menu2"] );'>test2</button> -->
+
+</BODY>
+</HTML>

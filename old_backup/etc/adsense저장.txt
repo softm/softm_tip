@@ -1,0 +1,24 @@
+<script async src="http://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<div style="margin-top;2px; margin-bottom:30px; overflow:hidden" align="center">
+<div style="width:336px; float:left">
+<!-- ±¤°í1 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-7630597330371534"
+     data-ad-slot="8034473609"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+
+<div style="width:336px; float:right">
+<!-- ±¤°í2 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-7630597330371534"
+     data-ad-slot="8034473609"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div>
+</div>

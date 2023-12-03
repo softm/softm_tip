@@ -1,0 +1,43 @@
+알파벳순으로 나열할것.
+참고 : [Any]는 사용되어질수있는데 이것은 다른 사용자들에게 권한을 부여할때 사용한다.
+
+A  :
+alter [Any] function :>  함수의 재 컴파일을 위해서는 이것을 사용합니다. 
+alter [Any] package  :>  팩키지의 재 컴파을 위해서는 이것을 사용합니다.
+
+alter [Any] table :> alter table명령을 사용할수있는 권한.
+alter [Any] trigger :> 트리거를 변경할수있는 권한
+
+alter [Any] procedure :>  프로시저를 변화시킬수있는 것이라고 이해하고. 
+			옵션을 compile을 사용하면 지정된 프로시저에 대해 재 컴파일을 할수있다.
+
+B :
+ 
+C :
+Create [public]|[private] database link :> 공용데이터 베이스를 작성을 위한 권한.
+Create [Any] Index :> 인덱스 생성 권한
+
+Create [Any] procedure :> 프로시주얼 오브젝트를 작성하기위해서 필요한권한.
+Create [Any] procedure :> 프로시주얼 오브젝트가 다른 사용자의 스키마에 속해있다면...
+
+Create [Any] SnapShot :> 스냅샷을 하기위한것.
+Create Session        :> 원격 데이터 베이스에 접속하기 위한 권한.
+
+Create [Any] Table :> 테이블 생성 권한
+
+Create [Any] View  :> 뷰     생성 권한
+
+
+D:
+Drop [Any] trigger :> 트리거를 없앨수있는권한
+
+E: 
+Execute :> 프로시저 실행에 대한 권한입니다.
+	예 ) grant execute on MY_PROCEDURE to Talbot;
+	설명) MY_PROCEDURE라는 이름의 프로시저에 대해  talbot라는 사용자에게 
+	      실행 권한을 부여합니다. 
+EXECUTE [ANY] PROCEDURE :> 외의 모든 사용자들에게 권한을 할당합니다. 
+
+
+
+

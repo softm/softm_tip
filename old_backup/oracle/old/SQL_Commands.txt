@@ -1,0 +1,602 @@
+<Oracle 7.2 SQL Commands>
+
+SQL Data Definition Language commands include the following: 
+
+ALTER CLUSTER           CREATE DATABASE          DROP INDEX 
+ALTER DATABASE          CREATE DATABASE LINK     DROP PACKAGE 
+ALTER FUNCTION          CREATE FUNCTION          DROP PROCEDURE 
+ALTER INDEX             CREATE INDEX             DROP PROFILE 
+ALTER PACKAGE           CREATE PACKAGE           DROP ROLE 
+ALTER PROCEDURE         CREATE PACKAGE BODY      DROP ROLLBACK SEGMENT 
+ALTER PROFILE           CREATE PROCEDURE         DROP SEQUENCE 
+ALTER RESOURCE COST     CREATE PROFILE           DROP SNAPSHOT 
+ALTER ROLE              CREATE ROLE              DROP SNAPSHOT LOG 
+ALTER ROLLBACK SEGMENT  CREATE ROLLBACK SEGMENT  DROP SYNONYM 
+ALTER SEQUENCE          CREATE SCHEMA            DROP TABLE 
+ALTER SNAPSHOT          CREATE SEQUENCE          DROP TABLESPACE 
+ALTER SNAPSHOT LOG      CREATE SNAPSHOT          DROP TRIGGER 
+ALTER TABLE             CREATE SNAPSHOT LOG      DROP USER 
+ALTER TABLESPACE        CREATE SYNONYM           DROP VIEW 
+ALTER TRIGGER           CREATE TABLE             GRANT 
+ALTER USER              CREATE TABLESPACE        NOAUDIT 
+ALTER VIEW              CREATE TRIGGER           RENAME 
+ANALYZE                 CREATE USER              REVOKE 
+AUDIT                   CREATE VIEW              TRUNCATE 
+COMMENT                 DROP CLUSTER             UPDATE 
+CREATE CLUSTER          DROP DATABASE LINK 
+CREATE CONTROLFILE      DROP FUNCTION 
+
+SQL Data Manipulation Language commands include the following: 
+
+    DELETE 
+    EXPLAIN PLAN 
+    INSERT 
+    LOCK TABLE 
+    SELECT 
+
+SQL Transaction Control commands include the following: 
+
+    COMMIT 
+    ROLLBACK 
+    SAVEPOINT 
+    SET TRANSACTION 
+
+SQL Session Control commands include the following: 
+
+    ALTER SESSION 
+    SET ROLE 
+
+SQL System Control command (only one command): 
+
+    ALTER SYSTEM 
+
+===============================================================
+ALTER CLUSTER [schema.]cluster 
+    [PCTUSED integer] [PCTFREE integer] 
+    [SIZE integer [K|M] ] 
+    [INITRANS integer] [MAXTRANS integer] 
+    [STORAGE storage_clause] 
+    [  PARALLEL ( [ DEGREE { integer | DEFAULT } ] 
+                  [ INSTANCES { integer | DEFAULT } ] 
+
+                ) 
+     | NOPARALLEL ] 
+    [  CACHE | NOCACHE  ] 
+    [ALLOCATE EXTENT [( [SIZE integer [K|M] ] 
+                        [DATAFILE 'filename'] 
+                        [INSTANCE integer] )] ] 
+
+ALTER DATABASE [database] 
+    { MOUNT [EXCLUSIVE | PARALLEL] 
+    | CONVERT 
+    | OPEN [RESETLOGS | NORESETLOGS] 
+    | ARCHIVELOG 
+    | NOARCHIVELOG 
+    | RECOVER recover_clause 
+    | ADD LOGFILE [THREAD integer] [GROUP integer] filespec 
+                                [, [GROUP integer] filespec] ... 
+    | ADD LOGFILE MEMBER 'filename' [REUSE] [, 'filename' [REUSE]] ... 
+
+        TO { GROUP integer 
+           | ('filename' [,'filename'] ...) 
+           |  'filename' } 
+                     [, 'filename' [REUSE] [, 'filename' [REUSE]] ... 
+        TO { GROUP integer 
+           | ('filename' [, 'filename'] ...) 
+           |  'filename' } ] ... 
+    | DROP LOGFILE {  GROUP integer 
+                   | ('filename' [, 'filename'] ...) 
+                   |  'filename' } 
+
+               [,  {  GROUP integer 
+                   | ('filename' [,'filename'] ...) 
+                   |  'filename' } ] ... 
+    | DROP LOGFILE MEMBER 'filename' [, 'filename'] ... 
+    | RENAME FILE 'filename' [, 'filename'] ... 
+               TO 'filename' [, 'filename'] ... 
+    | BACKUP CONTROLFILE TO 'filename' [REUSE] 
+    | CREATE DATAFILE 'filename' [, filename] ... 
+                  [AS  filespec  [, filespec] ... 
+
+    | DATAFILE 'filename' { ONLINE | OFFLINE [DROP] } 
+    | ENABLE [PUBLIC] THREAD integer 
+    | DISABLE         THREAD integer 
+    | RENAME GLOBAL_NAME TO database[.domain]... 
+    | SET { DBMAC {ON | OFF} 
+          | DBHIGH = 'text' 
+          | DBLOW  = 'text' } 
+    | RESET COMPATIBILITY } 
+
+ALTER FUNCTION [schema.]function 
+     COMPILE 
+
+ALTER INDEX [schema.]index 
+    [INITRANS integer] [MAXTRANS integer] 
+    [STORAGE storage_clause] 
+
+ALTER PACKAGE [schema.]package 
+    COMPILE [PACKAGE | BODY] 
+
+ALTER PROCEDURE [schema.]procedure 
+    COMPILE 
+
+ALTER PROFILE profile 
+    LIMIT   [SESSIONS_PER_USER          {integer | UNLIMITED | DEFAULT}] 
+            [CPU_PER_SESSION            {integer | UNLIMITED | DEFAULT}] 
+            [CPU_PER_CALL               {integer | UNLIMITED | DEFAULT}] 
+            [CONNECT_TIME               {integer | UNLIMITED | DEFAULT}] 
+
+            [IDLE_TIME                  {integer | UNLIMITED | DEFAULT}] 
+            [LOGICAL_READS_PER_SESSION  {integer | UNLIMITED | DEFAULT}] 
+            [LOGICAL_READS_PER_CALL     {integer | UNLIMITED | DEFAULT}] 
+            [COMPOSITE_LIMIT            {integer | UNLIMITED | DEFAULT}] 
+            [PRIVATE_SGA          {integer [K|M] | UNLIMITED | DEFAULT}] 
+
+ALTER RESOURCE 
+    COST   [CPU_PER_SESSION              integer] 
+           [CONNECT_TIME                 integer] 
+           [LOGICAL_READS_PER_SESSION    integer] 
+
+           [PRIVATE_SGA                  integer] 
+
+ALTER ROLE role 
+    { NOT IDENTIFIED 
+    | IDENTIFIED {BY password | EXTERNALLY } 
+
+ALTER ROLLBACK SEGMENT rollback_segment 
+    { ONLINE 
+    | OFFLINE 
+    | STORAGE storage_clause } 
+
+ALTER SEQUENCE [schema.]sequence 
+    [INCREMENT BY integer] 
+
+    [MAXVALUE integer | NOMAXVALUE] 
+    [MINVALUE integer | NOMINVALUE] 
+    [CYCLE | NOCYCLE] 
+    [CACHE integer | NOCACHE] 
+    [ORDER | NOORDER] 
+
+ALTER SESSION 
+   { SET { SQL_TRACE              = { TRUE | FALSE } 
+         | GLOBAL_NAMES           = { TRUE | FALSE } 
+         | NLS_LANGUAGE           =   language 
+         | NLS_TERRITORY          =   territory 
+
+         | NLS_DATE_FORMAT        =  'fmt' 
+         | NLS_DATE_LANGUAGE      =   language 
+         | NLS_NUMERIC_CHARACTERS =  'text' 
+         | NLS_ISO_CURRENCY       =   territory 
+         | NLS_CURRENCY           =  'text' 
+         | NLS_SORT               = { sort  | BINARY } 
+         | LABEL                  = {'text' | DBHIGH | DBLOW | OSLABEL } 
+         | MLS_LABEL_FORMAT       =  'fmt' 
+         | OPTIMIZER_GOAL         = { RULE | ALL_ROWS | FIRST_ROWS | CHOOSE } 
+
+         | FLAGGER                = { ENTRY | INTERMEDIATE | FULL | OFF } 
+         | CLOSE_CACHED_OPEN_CURSORS = { TRUE | FALSE } 
+   } ... 
+   | CLOSE DATABASE LINK dblink 
+   | ADVISE {COMMIT | ROLLBACK | NOTHING} 
+   | {ENABLE | DISABLE} COMMIT IN PROCEDURE } 
+
+ALTER SNAPSHOT [schema.]snapshot 
+    [ PCTFREE  integer | PCTUSED  integer 
+    | INITRANS integer | MAXTRANS integer 
+    | STORAGE storage_clause ] ... 
+    [ USING INDEX [   INITTRANS integer | MAXTRANS integer 
+
+                    | STORAGE storage_clause] ... 
+    [REFRESH [FAST | COMPLETE | FORCE] [START WITH date] [NEXT date]] 
+
+ALTER SNAPSHOT LOG ON [schema.]table 
+    [PCTFREE  integer]    [PCTUSED  integer] 
+    [INITRANS integer]    [MAXTRANS integer] 
+    [STORAGE storage_clause] 
+
+ALTER SYSTEM 
+    { {ENABLE | DISABLE} RESTRICTED SESSION 
+
+    | FLUSH SHARED_POOL 
+    | {CHECKPOINT | CHECK DATAFILES} [GLOBAL | LOCAL] 
+    | SET { RESOURCE_LIMIT           = { TRUE | FALSE } 
+          | GLOBAL_NAMES             = { TRUE | FALSE } 
+          | MTS_DISPATCHERS          = 'protocol, integer' 
+          | MTS_SERVERS              = integer 
+          | LICENSE_MAX_SESSIONS     = integer 
+          | LICENSE_SESSIONS_WARNING = integer 
+          | LICENSE_MAX_USERS        = integer 
+
+          | SESSION_CACHED_CURSORS   = integer } ... 
+    | SWITCH LOGFILE 
+    | {ENABLE | DISABLE} DISTRIBUTED RECOVERY 
+    | ARCHIVE LOG archive_log_clause 
+    | KILL SESSION 'integer1, integer2' } 
+
+ALTER TABLE [schema.]table 
+    [ADD {    { column datatype [DEFAULT expr] [column_constraint] ... 
+              | table_constraint} 
+         |  ( { column datatype [DEFAULT expr] [column_constraint] ... 
+              | table_constraint} 
+           [, { column datatype [DEFAULT expr] [column_constraint] ... 
+              | table_constraint} ] ... ) } ] 
+    [MODIFY {   column [datatype] [DEFAULT expr] [column_constraint] ... 
+
+            |  (column [datatype] [DEFAULT expr] [column_constraint] ... 
+ [, column datatype [DEFAULT expr] [column_constraint] ...] ...) } ] 
+    [PCTFREE  integer] [PCTUSED  integer] 
+    [INITRANS integer] [MAXTRANS integer] 
+    [STORAGE storage_clause] 
+    [DROP drop_clause] ... 
+    [ALLOCATE EXTENT [( [SIZE integer [K|M] ] 
+                        [DATAFILE 'filename'] 
+                        [INSTANCE integer] )] 
+
+    [  PARALLEL ( [ DEGREE { integer | DEFAULT } ] 
+                  [ INSTANCES { integer | DEFAULT } ] 
+                ) 
+     | NOPARALLEL ] 
+    [  CACHE | NOCACHE  ] 
+    [ ENABLE   enable_clause 
+    | DISABLE disable_clause ] ... 
+
+ALTER TABLESPACE tablespace 
+    { ADD DATAFILE filespec [, filespec] ... 
+    | RENAME DATAFILE 'filename' [,'filename'] ... 
+
+                   TO 'filename' [,'filename'] ... 
+    | DEFAULT STORAGE storage_clause 
+    | ONLINE 
+    | OFFLINE [NORMAL | TEMPORARY | IMMEDIATE] 
+    | READ ONLY 
+    | READ WRITE 
+    | {BEGIN | END} BACKUP} 
+
+ALTER TRIGGER [schema.]trigger 
+    { ENABLE 
+    | DISABLE } 
+
+ALTER USER user 
+    [IDENTIFIED {BY password | EXTERNALLY}] 
+
+    [DEFAULT TABLESPACE tablespace] 
+    [TEMPORARY TABLESPACE tablespace] 
+    [QUOTA {integer [K|M] | UNLIMITED} ON tablespace] ... 
+    [PROFILE profile] 
+    [DEFAULT ROLE { role [, role] ... 
+                  | ALL [EXCEPT role [, role] ...] 
+                  | NONE}] 
+
+ALTER VIEW [schema.]view 
+    COMPILE 
+
+ANALYZE 
+    { INDEX [schema.]index 
+            { { COMPUTE STATISTICS 
+              | ESTIMATE STATISTICS [SAMPLE integer {ROWS | PERCENT}] 
+              | DELETE STATISTICS } 
+            | VALIDATE STRUCTURE } 
+    | {TABLE [schema.]table | CLUSTER [schema.]cluster} 
+            { { COMPUTE 
+              | ESTIMATE [SAMPLE integer {ROWS | PERCENT}] 
+              | DELETE } STATISTICS 
+
+            | VALIDATE STRUCTURE [CASCADE] 
+            | LIST CHAINED ROWS [INTO [schema.]table] } } 
+
+AUDIT {statement_opt | system_priv} 
+   [, {statement_opt | system_priv} ] ... 
+    [BY user [, user] ...] 
+    [BY {SESSION | ACCESS}] 
+    [WHENEVER [NOT] SUCCESSFUL] 
+
+COMMENT ON {  TABLE [schema.]{table | view | snapshot} 
+           | COLUMN [schema.]{table | view | snapshot}.column } 
+    IS 'text' 
+
+COMMIT [WORK] 
+    [ COMMENT 'text' 
+    | FORCE 'text' [, integer] ] 
+
+CREATE CLUSTER [schema.]cluster 
+    (column datatype [,column datatype] ... ) 
+    [PCTUSED integer] [PCTFREE integer] 
+    [SIZE integer [K|M] ] 
+    [INITRANS integer] [MAXTRANS integer] 
+    [TABLESPACE tablespace] 
+
+    [STORAGE storage_clause] 
+    [  PARALLEL ( [ DEGREE { integer | DEFAULT } ] 
+                  [ INSTANCES { integer | DEFAULT } ] 
+                ) 
+     | NOPARALLEL ] 
+    [  CACHE | NOCACHE  ] 
+    [INDEX 
+    | [HASH IS column] HASHKEYS integer] 
+
+CREATE CONTROLFILE [REUSE] 
+    [SET] DATABASE database 
+    LOGFILE [GROUP integer] filespec [, [GROUP integer] filespec] ... 
+    {RESETLOGS | NORESETLOGS} 
+    DATAFILE filespec [, filespec] ... 
+    [MAXLOGFILES integer] 
+
+    [MAXLOGMEMBERS integer] 
+    [MAXLOGHISTORY integer] 
+    [MAXDATAFILES integer] 
+    [MAXINSTANCES integer] 
+    [ARCHIVELOG | NOARCHIVELOG] 
+
+CREATE DATABASE [database] 
+    [CONTROLFILE REUSE] 
+    [LOGFILE [GROUP integer] filespec [, [GROUP integer] filespec] ...] 
+    [MAXLOGFILES integer ] 
+    [MAXLOGMEMBERS integer] 
+    [MAXLOGHISTORY integer] 
+    [DATAFILE filespec [, filespec] ...] 
+    [MAXDATAFILES integer] 
+
+    [MAXINSTANCES integer] 
+    [ARCHIVELOG | NOARCHIVELOG] 
+    [EXCLUSIVE] 
+    [CHARACTER SET charset] 
+
+CREATE [PUBLIC] DATABASE LINK dblink 
+    [CONNECT TO user IDENTIFIED BY password] 
+
+    [USING 'connect_string'] 
+
+CREATE [OR REPLACE] FUNCTION [schema.]function 
+    [ (argument [IN] datatype 
+    [, argument [IN] datatype] ...)] 
+
+    RETURN datatype 
+    {IS | AS} pl/sql_subprogram_body 
+
+CREATE INDEX [schema.]index 
+    ON { [schema.]table (column [ASC|DESC][, column [ASC|DESC]] ...) 
+
+       | CLUSTER [schema.]cluster } 
+    [INITRANS integer] [MAXTRANS integer] 
+    [TABLESPACE tablespace] 
+    [STORAGE storage_clause] 
+    [PARALLEL ( [DEGREE { integer | DEFAULT }] 
+                [INSTANCES {integer | DEFAULT }] 
+              ) 
+    | NOPARALLEL ] 
+    [PCTFREE integer] 
+    [NOSORT] 
+
+CREATE [OR REPLACE] PACKAGE [schema.]package 
+    {IS | AS} pl/sql_package_spec 
+
+CREATE [OR REPLACE] PACKAGE BODY [schema.]package 
+    {IS | AS} pl/sql_package_body 
+
+CREATE [OR REPLACE] PROCEDURE [schema.]procedure 
+    [ (argument [IN | OUT | IN OUT] datatype 
+    [, argument [IN | OUT | IN OUT] datatype] ...)] 
+    {IS | AS} pl/sql_subprogram_body 
+
+CREATE PROFILE profile 
+    LIMIT   [SESSIONS_PER_USER          {integer | UNLIMITED | DEFAULT}] 
+            [CPU_PER_SESSION            {integer | UNLIMITED | DEFAULT}] 
+            [CPU_PER_CALL               {integer | UNLIMITED | DEFAULT}] 
+
+            [CONNECT_TIME               {integer | UNLIMITED | DEFAULT}] 
+            [IDLE_TIME                  {integer | UNLIMITED | DEFAULT}] 
+            [LOGICAL_READS_PER_SESSION  {integer | UNLIMITED | DEFAULT}] 
+            [LOGICAL_READS_PER_CALL     {integer | UNLIMITED | DEFAULT}] 
+            [COMPOSITE_LIMIT            {integer | UNLIMITED | DEFAULT}] 
+            [PRIVATE_SGA          {integer [K|M] | UNLIMITED | DEFAULT}] 
+
+CREATE ROLE role 
+    [ NOT IDENTIFIED 
+    | IDENTIFIED {BY password | EXTERNALLY} ] 
+
+CREATE [PUBLIC] ROLLBACK SEGMENT rollback_segment 
+    [TABLESPACE tablespace] 
+    [STORAGE storage_clause] 
+
+CREATE SCHEMA AUTHORIZATION schema 
+    { CREATE TABLE command 
+    | CREATE VIEW command 
+    | GRANT command } ... 
+
+CREATE SEQUENCE [schema.]sequence 
+    [INCREMENT BY integer] 
+    [START WITH integer] 
+    [MAXVALUE integer | NOMAXVALUE] 
+    [MINVALUE integer | NOMINVALUE] 
+
+    [CYCLE | NOCYCLE] 
+    [CACHE integer | NOCACHE] 
+    [ORDER | NOORDER] 
+
+CREATE SNAPSHOT [schema.]snapshot 
+    [ [PCTFREE  integer] [PCTUSED  integer] 
+      [INITRANS integer] [MAXTRANS integer] 
+      [TABLESPACE tablespace] 
+      [STORAGE storage_clause] 
+
+    [ USING INDEX [  PCTFREE integer | TABLESPACE tablespace 
+                    | INITTRANS integer | MAXTRANS integer 
+                    | STORAGE storage_clause ] ... 
+    | [CLUSTER cluster (column [, column]...)] ] 
+    [ REFRESH [FAST | COMPLETE | FORCE] [START WITH date] [NEXT date]] 
+    AS subquery 
+
+CREATE SNAPSHOT LOG ON [schema.]table 
+    [PCTFREE  integer]    [PCTUSED  integer] 
+
+    [INITRANS integer]    [MAXTRANS integer] 
+    [TABLESPACE tablespace] 
+    [STORAGE storage_clause] 
+
+CREATE [PUBLIC] SYNONYM [schema.]synonym 
+    FOR [schema.]object[@dblink] 
+
+CREATE TABLE [schema.]table 
+     ( { column datatype [DEFAULT expr] [column_constraint] ... 
+
+       | table_constraint} 
+    [, { column datatype [DEFAULT expr] [column_constraint] ... 
+       | table_constraint} ]...) 
+    [ [PCTFREE  integer] [PCTUSED  integer] 
+      [INITRANS integer] [MAXTRANS integer] 
+      [TABLESPACE tablespace] 
+      [STORAGE storage_clause] 
+    [  PARALLEL ( [ DEGREE { integer | DEFAULT } ] 
+                  [ INSTANCES { integer | DEFAULT } ] 
+                ) 
+
+     | NOPARALLEL ] 
+    [  CACHE | NOCACHE  ] 
+    | [CLUSTER cluster (column [, column]...)] ] 
+    [ ENABLE   enable_clause 
+    | DISABLE disable_clause ] ... 
+    [AS subquery] 
+
+CREATE TABLESPACE tablespace 
+    DATAFILE filespec [, filespec] ... 
+    [DEFAULT STORAGE storage_clause] 
+    [ONLINE | OFFLINE] 
+
+CREATE [OR REPLACE] TRIGGER [schema.]trigger 
+    {BEFORE | AFTER} 
+    {DELETE | INSERT | UPDATE [OF column [, column] ...]} 
+
+[OR {DELETE | INSERT | UPDATE [OF column [, column] ...]}] ... 
+    ON [schema.]table 
+    [ [REFERENCING { OLD [AS] old [NEW [AS] new] 
+                   | NEW [AS] new [OLD [AS] old] } ] 
+     FOR EACH ROW 
+     [WHEN (condition)] ] 
+    pl/sql_block 
+
+CREATE USER user 
+    IDENTIFIED {BY password | EXTERNALLY} 
+    [DEFAULT TABLESPACE tablespace] 
+    [TEMPORARY TABLESPACE tablespace] 
+    [QUOTA {integer [K|M] | UNLIMITED} ON tablespace] ... 
+    [PROFILE profile] 
+
+CREATE [OR REPLACE] [FORCE | NOFORCE] VIEW [schema.]view 
+    [(alias [,alias]...)] 
+    AS subquery 
+    [WITH CHECK OPTION [CONSTRAINT constraint]] 
+
+DELETE [FROM] [schema.]{table | view}[@dblink] [alias] 
+    [WHERE condition] 
+
+DROP CLUSTER [schema.]cluster 
+    [INCLUDING TABLES [CASCADE CONSTRAINTS] ] 
+
+DROP [PUBLIC] DATABASE LINK dblink 
+
+DROP FUNCTION [schema.]function 
+
+DROP INDEX [schema.]index 
+
+DROP PACKAGE [BODY] [schema.]package 
+
+DROP PROCEDURE [schema.]procedure 
+
+DROP PROFILE profile 
+    [CASCADE] 
+
+DROP ROLE role 
+
+DROP ROLLBACK SEGMENT rollback_segment 
+
+DROP SEQUENCE [schema.]sequence 
+
+DROP SNAPSHOT [schema.]snapshot 
+
+DROP SNAPSHOT LOG ON [schema.]table 
+
+DROP [PUBLIC] SYNONYM [schema.]synonym 
+
+DROP TABLE [schema.]table 
+    [CASCADE CONSTRAINTS] 
+
+DROP TABLESPACE tablespace 
+    [INCLUDING CONTENTS [CASCADE CONSTRAINTS]] 
+
+DROP TRIGGER [schema.]trigger 
+
+DROP USER user [CASCADE] 
+
+DROP VIEW [schema.]view 
+
+EXPLAIN PLAN 
+    [SET STATEMENT ID = 'text'] 
+
+    [INTO [schema.]table[@dblink]] 
+    FOR statement 
+
+GRANT {system_priv | role} [, {system_priv | role}] ... 
+    TO {user | role | PUBLIC} [, {user | role | PUBLIC}] ... 
+    [WITH ADMIN OPTION] 
+
+INSERT INTO [schema.]{table | view}[@dblink] 
+    [ (column [, column] ...) ] 
+    {VALUES (expr [, expr] ...) | subquery} 
+
+LOCK TABLE [schema.]{table | view}[@dblink] 
+         [, [schema.]{table | view}[@dblink] ]... 
+    IN lockmode MODE 
+    [NOWAIT] 
+
+NOAUDIT {statement_opt | system_priv} 
+     [, {statement_opt | system_priv} ] ... 
+    [BY user [, user] ...] 
+    [WHENEVER [NOT] SUCCESSFUL] RENAME old TO new 
+
+REVOKE {system_priv | role} [, {system_priv | role}] ... 
+    FROM {user | role | PUBLIC} [, {user | role | PUBLIC}] ... 
+
+ROLLBACK [WORK] 
+    [ TO [SAVEPOINT] savepoint 
+    | FORCE 'text' ] 
+
+SAVEPOINT savepoint 
+
+SELECT [DISTINCT | ALL] { * 
+                        | { [schema.]{table | view | snapshot}.* 
+                          | expr }  [ [AS] c_alias ] 
+                       [, { [schema.]{table | view | snapshot}.* 
+                          | expr } [ [AS] c_alias ]  ] ... } 
+    FROM [schema.]{table | view | snapshot}[@dblink] [t_alias] 
+
+      [, [schema.]{table | view | snapshot}[@dblink] [t_alias] ] ... 
+    [WHERE condition ] 
+    [ [START WITH condition] CONNECT BY condition] 
+    [GROUP BY expr [, expr] ... [HAVING condition] ] 
+    [{UNION | UNION ALL | INTERSECT | MINUS} SELECT command ] 
+    [ORDER BY {expr|position} [ASC | DESC] 
+           [, {expr|position} [ASC | DESC]] ...] 
+    [FOR UPDATE [OF [[schema.]{table | view}.]column 
+
+                 [, [[schema.]{table | view}.]column] ...] [NOWAIT] ] 
+
+SET ROLE     { role [IDENTIFIED BY password] 
+        [, role [IDENTIFIED BY password] ] ... 
+         | ALL [EXCEPT role [, role] ...] 
+         | NONE } 
+
+SET TRANSACTION 
+    { READ ONLY 
+    | READ WRITE 
+    | USE ROLLBACK SEGMENT rollback_segment } 
+
+TRUNCATE {TABLE [schema.]table | CLUSTER [schema.]cluster} 
+    [ {DROP | REUSE} STORAGE] 
+
+UPDATE [schema.]{table | view}[@dblink] [alias] 
+    SET { (column [, column] ...) = (subquery) 
+        |  column = { expr | (subquery) } } 
+     [,    { (column [, column] ...) = (subquery) 
+        |  column = { expr | (subquery) } } ] ... 
+    [WHERE condition] 
+

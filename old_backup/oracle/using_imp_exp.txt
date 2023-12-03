@@ -1,0 +1,22 @@
+sqlplus "/as sysdba"
+
+
+drop user oradms
+
+
+create user oradms
+identified by oradms;
+
+
+grant connect,resource to oradms;
+
+grant dba to oradms;
+
+sqlplus oradms/oradms
+
+
+imp oradms/oradms
+     - 임포트 파일명 입력
+
+
+exp oradms/oradms

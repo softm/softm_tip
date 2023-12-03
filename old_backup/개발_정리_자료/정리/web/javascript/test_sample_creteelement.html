@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Havⓔnglish - 온라인 영어학습의 절대강자!</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Cache-Control" content="no-cache"/>
+<meta http-equiv="Expires" content="0"/>
+<meta http-equiv="Pragma" content="no-cache"/>
+<script src="http://local-just10.com:8080/service/common/js/asyncConnector.js" language="javascript"></script>
+<script src="http://local-just10.com:8080/service/common/js/have.js" language="javascript"></script>
+</head>
+<body >
+<script type="text/javascript">
+<!--
+var Create = {
+//  Create.textNode({value:"aa"})
+    textNode:function(o) {
+        var el = $CT(o.value);
+        return el;
+    },
+//  Create.textTag({tag:"span",name:'tmp_name1',value:"sssssssssss"})
+    textTag:function(o) {
+        var el = $C(o.tag);
+        el.name      = o.name;
+        el.innerHTML = o.value;
+        return el;
+    },
+//  Create.textBox({name:'tmp_name2',value:""})
+    textBox:function(o) {
+        var el = $C('INPUT');
+            el.name = o.name;
+            el.type = 'text';
+            el.value= o.value;
+        return el;
+    },
+//  Create.checkbox({name:'tmp_name3',value:"Y",checked:true})
+    checkbox:function(o) {
+        var el = $C('INPUT');
+            el.name = o.name;
+            el.type = 'checkbox';
+            el.value= o.value;
+            el.checked= o.checked;
+        return el;
+    },
+//  Create.radio({name:'tmp_name4',value:"Y",checked:true})
+    radio:function(o) {
+        var el = $C('INPUT');
+            el.name = o.name;
+            el.type = 'radio';
+            el.value= o.value;
+            el.checked= o.checked;
+        return el;
+    },
+//  Create.listBox({name:'tmp_name5',value:{"1":"1값","2":"2값","3":"3값"}})
+    listBox:function(o) {
+        var el = $C('SELECT');
+            el.name = o.name;
+            //alert(o.value instanceof Array );
+            //this instanceof Array
+        var prototype = o.value.constructor.prototype;
+        var idx=0;
+        for ( var k in o.value ) {
+            if (k in prototype) continue;
+            if (o.value instanceof Array ) continue;
+            var op = new Option(o.value[k],k);
+            //alert(oo[i].value + " / " + oo[i].text );
+            el.options[idx++] = op;
+        }
+
+        return el;
+    }
+}
+function ff_textNode() {
+    var o = $('test');
+    o.appendChild(Create.textNode({value:"aa"}));
+    return false;
+}
+function ff_textTag() {
+    var o = $('test');
+    o.appendChild(Create.textTag({tag:"span",name:'tmp_name1',value:"sssssssssss"}));
+    return false;
+}
+function ff_textBox() {
+    var o = $('test');
+    o.appendChild(Create.textBox({name:'tmp_name2',value:""}));
+    return false;
+}
+function ff_checkbox() {
+    var o = $('test');
+    o.appendChild(Create.checkbox({name:'tmp_name3',value:"Y",checked:true}));
+    return false;
+}
+function ff_radio() {
+    var o = $('test');
+    o.appendChild(Create.radio({name:'tmp_name4',value:"Y",checked:true}));
+    return false;
+}
+function ff_listBox() {
+    var o = $('test');
+    o.appendChild(Create.listBox({name:'tmp_name5',value:{"1":"1값","2":"2값","3":"3값"}}));
+    return false;
+}
+//-->
+</script>
+<form>
+<button onclick="return ff_textNode();">ff_textNode</button>
+<button onclick="return ff_textTag();">ff_textTag</button>
+<button onclick="return ff_textBox();">ff_textBox</button>
+<button onclick="return ff_checkbox();">ff_checkbox</button>
+<button onclick="return ff_radio();">ff_radio</button>
+<button onclick="return ff_listBox();">ff_listBox</button>
+<SPAN id="test" style='border:1px solid red'></SPAN>
+</form>
+
+<iframe name="ifrm_temp" id="ifrm_temp" src="about:blank" frameborder="1" scrolling="auto" width="100" height="100" style='position:absolute;left:1100px;top:10px'></iframe>
+<iframe name="ifrm_login" id="ifrm_login" src="about:blank" frameborder="0" width="0" height="0"></iframe>
+</BODY>
+</HTML>

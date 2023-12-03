@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+    "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+    
+    
+<sqlMap namespace="TB_S07_020DEPT010">
+
+	<select id="findAll" resultClass="java.util.HashMap">
+		SELECT * 
+		  FROM TB_S07_020DEPT010
+	</select>
+	
+	<insert id="create" parameterClass="java.util.HashMap">
+		
+		INSERT INTO TB_S07_020DEPT010
+		(
+				COMPANY_CODE,
+				ORGANIZATION_SEQ,
+				ORGANIZATION_CODE,
+				ORGANIZATION_NAME,
+				HR_ORGANIZATION_TYPE_CODE,
+				START_DATE,
+				END_DATE,
+				WORKS_CODE,
+				ORGANIZATION_SORT_ORDER,
+				PARENT_HR_ORGANIZATION_CODE,
+				CREATED_OBJECT_TYPE,
+				CREATED_OBJECT_ID,
+				CREATED_PROGRAM_ID,
+				CREATION_TIMESTAMP,
+				LAST_UPDATED_OBJECT_TYPE,
+				LAST_UPDATED_OBJECT_ID,
+				LAST_UPDATE_PROGRAM_ID,
+				LAST_UPDATE_TIMESTAMP,
+				ORGANIZATION_NAME_SHORT 
+		) VALUES (
+				#COMPANY_CODE#,
+				#ORGANIZATION_SEQ#,
+				#ORGANIZATION_CODE#,
+				#ORGANIZATION_NAME#,
+				#HR_ORGANIZATION_TYPE_CODE#,
+				#START_DATE#,
+				#END_DATE#,
+				#WORKS_CODE#,
+				#ORGANIZATION_SORT_ORDER#,
+				#PARENT_HR_ORGANIZATION_CODE#,
+				#CREATED_OBJECT_TYPE#,
+				#CREATED_OBJECT_ID#,
+				#CREATED_PROGRAM_ID#,
+				#CREATION_TIMESTAMP#,
+				#LAST_UPDATED_OBJECT_TYPE#,
+				#LAST_UPDATED_OBJECT_ID#,
+				#LAST_UPDATE_PROGRAM_ID#,
+				#LAST_UPDATE_TIMESTAMP#,
+				#ORGANIZATION_NAME_SHORT#
+		)
+	
+	</insert>
+	
+	<delete id="delete">
+		DELETE FROM TB_S07_020DEPT010
+	</delete>
+	
+</sqlMap>

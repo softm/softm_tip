@@ -1,0 +1,155 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script type="text/javascript">
+<!--
+var sForm;
+var sTr;
+var proc = "";
+function fSetAtion(params,f) {
+    f = f?f:sForm;
+    f.action            = "Sample2.do?" + params;
+    f.ServiceName.value = "Sample2-service";
+}
+
+function fList(){
+    fSetAtion("list=1");
+    sForm.s_name_tmp.value  = sForm.s_name_tmp.value.replace(/%/g,"");
+    sForm.s_name.value      = sForm.s_name_tmp.value +"%";
+    return true;
+}
+
+function fGoWrite(mode){
+    fSetAtion("forminsert=1&p_mode=I");
+    sForm.submit();
+}
+
+function fDetail(o){
+    var k = o.getAttribute("key");
+    var info = k.split(",");
+    o.style.backgroundColor = "gray";
+    fSetAtion("view=1&p_no="+info[0]);
+    sForm.submit();
+}
+
+function fChgOrder(a,arrow) {
+    var td    = a.parentNode    ;
+    var tr    = td.parentNode   ;
+    var tbl   = td.offsetParent ;
+    var tBody = tbl.tBodies[0]  ;
+    var hRL = !tBody.parentNode.tHead?0:tBody.parentNode.tHead.rows.length;
+    var sIndex = -1;
+    var tIndex = -1;
+    if ( arrow == "UP" )  {
+        sIndex = tr.rowIndex-hRL;
+        tIndex = tr.rowIndex-hRL -1;
+    } else {
+        sIndex = tr.rowIndex-hRL;
+        tIndex = tr.rowIndex-hRL +1;
+    }
+//    tBody.moveRow(sIndex,tIndex);
+    moveToRow (tBody,sIndex,tIndex,arrow);
+    return false;
+}
+
+function moveToRow (tBody,sIndex,tIndex,arrow) {
+    if (tBody.moveRow) { // Internet Explorer
+        tIndex = tIndex==tBody.rows.length?0:tIndex;
+        tBody.moveRow (sIndex, tIndex);
+    } else { // Cross browser
+        if ( arrow == "UP" )  {
+            var firstRow = tBody.rows[sIndex];
+            var secondRow = tBody.rows[tIndex];
+            tBody.insertBefore (firstRow, secondRow);
+        } else {
+            var firstRow = tBody.rows[sIndex];
+            var secondRow = tBody.rows[tIndex];
+            if ( !secondRow ) {
+                firstRow  = tBody.rows[0];
+                secondRow = tBody.rows[tBody.rows.length-1];
+            }
+            tBody.insertBefore (secondRow,firstRow);
+        }
+    }
+//    console.log(sIndex,tIndex,tBody.rows.length);
+}
+
+window.onload = function() {
+    sForm = document.sForm;
+    if ("") alert("");
+}
+
+function handleError(err, url, line) {
+    alert ( '오류 : ' + err + '\nURL : ' + url + '\nLine : ' + line);
+    //log('오류 : ' + err + '\nURL : ' + url + '\nLine : ' + line);
+    return true;
+}
+window.onerror = handleError;
+//-->
+</script>
+<style>
+    * {font-family:"굴림체";color:#000;}
+    table {width:100%;margin:10px 10px 10px 10px;}
+    table tbody .anchor {cursor:pointer}
+    table tbody td {height:30px;padding-left:10px}
+    table th {background-color: gray;color:#fff;width:200px;text-align:left;padding-left:10px}
+</style>
+</head>
+<body>
+
+<form name="sForm" method="post" onsubmit="return fList();">
+    <input type="hidden" name="ServiceName" />
+<div>
+    <input type="hidden" name="s_name"/>
+    <button type="submit">검색</button>
+    <button type="button" onclick="fSaveOrder();">저장</button>
+</div>
+<table border="1" style='table-layout:fixed;border-collapse:collapse'>
+<colgroup>
+<col width="30" align=center></col>
+<col width="100" align=center></col>
+<col width="50" align=center></col>
+<col width=""></col>
+</colgroup>
+    <thead>
+    <th> </th>
+    <th>name</th>
+    <th>oSeq</th>
+    <th>address</th>
+    </thead>
+    <tbody>
+
+        <tr key="1" class="anchor" style="background-color:red">
+        <td><a href="" onclick="return fChgOrder(this,'UP');">▲</a><a href="" onclick="return fChgOrder(this,'DN');">▼</a></td>
+        <td><input type=text value="1" style="width:30px;text-align:center"> - 1111</td>
+        <td>1</td>
+        <td>1111</td>
+        </tr>
+
+        <tr key="2" class="anchor" style="background-color:green">
+        <td><a href="" onclick="return fChgOrder(this,'UP');">▲</a><a href="" onclick="return fChgOrder(this,'DN');">▼</a></td>
+        <td><input type=text value="2" style="width:30px;text-align:center"> - 2222</td>
+        <td>2</td>
+        <td>2222</td>
+        </tr>
+
+        <tr key="3" class="anchor"  style="background-color:blue">
+        <td><a href="" onclick="return fChgOrder(this,'UP');">▲</a><a href="" onclick="return fChgOrder(this,'DN');">▼</a></td>
+        <td><input type=text value="3" style="width:30px;text-align:center"> - 3333</td>
+        <td>3</td>
+        <td>3333</td>
+        </tr>
+
+    </tbody>
+    <tfoot>
+    <th> </th>
+    <th> </th>
+    <th> </th>
+    <th> </th>
+    </tfoot>
+</table>
+</form>
+
+ </body>
+</html>
+

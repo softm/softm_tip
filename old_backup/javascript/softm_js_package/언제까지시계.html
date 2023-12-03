@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> New Document </TITLE>
+<META NAME="Generator" CONTENT="EditPlus">
+<META NAME="Author" CONTENT="">
+<META NAME="Keywords" CONTENT="">
+<META NAME="Description" CONTENT="">
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+function divTime(data){
+    
+    var Syear, Sdec_mon, Smon, Sday, Shour, Shourtosec;
+    var STime="";
+    Syear = data.substring(0,4);
+    Sdec_mon = data.substring(5,7);
+    Sday = data.substring(8,10);
+    Shourtosec = data.substring(11,19);
+    
+         if(Sdec_mon == '01') Smon = "Jan";
+    else if(Sdec_mon == '02') Smon = "Feb";
+    else if(Sdec_mon == '03') Smon = "Mar";
+    else if(Sdec_mon == '04') Smon = "Apr";
+    else if(Sdec_mon == '05') Smon = "May";
+    else if(Sdec_mon == '06') Smon = "June";
+    else if(Sdec_mon == '07') Smon = "July";
+    else if(Sdec_mon == '08') Smon = "Aug";
+    else if(Sdec_mon == '09') Smon = "Sem";
+    else if(Sdec_mon == '10') Smon = "Oct";
+    else if(Sdec_mon == '11') Smon = "Nov";
+    else if(Sdec_mon == '12') Smon = "Dec";
+    
+    STime = Smon + " " + Sday + " " + Syear + " " + Shourtosec ;
+
+    return STime;
+}
+
+function getTime() {
+    
+    now = new Date(current);
+    y2k = new Date(enddate);
+    
+    imsi = (y2k - now ) / 1000 - checker++;
+    
+    days = imsi / 60 / 60 / 24;
+    submitChk = days;
+    daysRound = Math.floor(days);
+    hours = imsi / 60 / 60 - (24 * daysRound);
+    hoursRound = Math.floor(hours);
+    minutes = imsi /60 - (24 * 60 * daysRound) - (60 * hoursRound);
+    minutesRound = Math.floor(minutes);
+    seconds = imsi - (24 * 60 * 60 * daysRound) - (60 * 60 * hoursRound) - (60 * minutesRound);
+    secondsRound = Math.round(seconds);
+
+    if (days >= 0){
+      document.form1.time.value = daysRound  +"일 " + hoursRound + "시간 " + minutesRound + "분 " + secondsRound + "초";
+    }
+    else {
+      document.form1.time.value = "           종  료  ";
+    }
+    newtime = window.setTimeout("getTime();", 1000);
+}
+
+var current, enddate, checker=0, submitChk, done=0;
+    function auto () {
+        current = "2001-12-20 23:59:50.0";
+        current= divTime(current);
+        enddate = "2001-12-20 23:59:59.0";      
+        enddate = divTime(enddate);
+        getTime();
+    }
+//-->
+</SCRIPT>
+</HEAD>
+
+<BODY onload='auto();'>
+<FORM name='form1' METHOD=POST ACTION="">
+    <INPUT TYPE="text" NAME="time">
+</FORM>
+</BODY>
+</HTML>

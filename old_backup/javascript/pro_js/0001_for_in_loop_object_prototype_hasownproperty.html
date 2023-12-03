@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+  <script type="text/javascript">
+  <!--
+  var man={
+  	hands:2,
+  	legs:2,
+  	heads:1
+  };
+  
+  if  ( typeof Object.prototype.clone === "undefined") {
+  	Object.prototype.clone = function() {};
+  }
+  for( var i in man ) {
+  	if (man.hasOwnProperty(i)){ // 프로토타입 프로퍼티를 걸러낸다.
+  		console.info(i,":",man[i]);
+  	}
+  }
+  //안티패턴. 
+  for( var i in man ) {
+  	console.info(i,":",man[i]);
+  }
+  
+  for( var i in man ) {
+      if ( Object.prototype.hasOwnProperty.call(man,i)) {
+          console.log(i,":",man[i]);
+      }
+  }
+  
+  var i,
+      hasOwn = Object.prototype.hasOwnProperty;
+      for( i in man) {
+      	if (hasOwn.call(man,i)) {
+          	console.log(i,":",man[i]);      	
+      	}
+      }
+  //-->
+  </script>
+</body>
+</html>

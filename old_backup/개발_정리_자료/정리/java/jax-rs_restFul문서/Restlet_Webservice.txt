@@ -1,0 +1,12 @@
+튜토리얼 : http://www.vogella.de/articles/REST/article.html#rest
+
+
+http://www.google.co.kr/search?sourceid=navclient&hl=ko&ie=UTF-8&rlz=1T4PCTC_koKR382&q=jax+rs+%ea%b0%95%ec%a2%8c
+
+http://mar.gar.in/kwon37xi/jax-rs
+
+
+
+
+jersey 관련 jar download
+  --> http://jersey.java.net/nonav/documentation/latest/chapter_deps.html

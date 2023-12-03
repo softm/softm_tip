@@ -1,0 +1,20 @@
+<xsd:schema id="dsInstructors" targetNamespace="http://www.tempuri.org/dsInstructors.xsd" xmlns="http://www.tempuri.org/dsInstructors.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xsd:element name="dsInstructors" msdata:IsDataSet="true">
+    <xsd:complexType>
+      <xsd:choice maxOccurs="unbounded">
+        <xsd:element name="Instructors">
+          <xsd:complexType>
+            <xsd:sequence>
+              <xsd:element name="Instructor" type="xsd:string" minOccurs="0" />
+              <xsd:element name="InstructorID" msdata:AutoIncrement="true" type="xsd:int" />
+            </xsd:sequence>
+          </xsd:complexType>
+        </xsd:element>
+      </xsd:choice>
+    </xsd:complexType>
+    <xsd:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xsd:selector xpath=".//Instructors" />
+      <xsd:field xpath="InstructorID" />
+    </xsd:unique>
+  </xsd:element>
+</xsd:schema>

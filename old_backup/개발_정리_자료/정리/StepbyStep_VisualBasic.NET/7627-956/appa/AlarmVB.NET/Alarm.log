@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<UpgradeLog>
+    <Settings>
+        <Setting
+            Name = "LogFile"
+            Value = "Alarm.log"
+        />
+        <Setting
+            Name = "GenerateInterfacesForClasses"
+            Value = "FALSE"
+        />
+        <Setting
+            Name = "ProjectName"
+            Value = "Alarm"
+        />
+        <Setting
+            Name = "OutputName"
+            Value = "Alarm.vbproj"
+        />
+        <Setting
+            Name = "OutputDir"
+            Value = "C:\vbnetsbs\appa\AlarmVB.NET"
+        />
+        <Setting
+            Name = "ProjectPath"
+            Value = "C:\vbnetsbs\appa\AlarmVB6\Alarm.vbp"
+        />
+        <Setting
+            Name = "MigrateProjectTo"
+            Value = "0"
+        />
+    </Settings>
+    <File
+        OldPath = "C:\vbnetsbs\appa\AlarmVB6\Alarm.frm"
+        NewPath = "C:\vbnetsbs\appa\AlarmVB.NET\Alarm.vb"
+        FileType = "Form"
+        Upgraded = "True"
+    >
+        <Section Name = "(Layout)" >
+            <Issue
+                Type = "Design"
+                Number = "2064"
+                ObjectName = "Form1"
+                ObjectType = "Form"
+                PME = "PaletteMode"
+            >Form property Form1.PaletteMode was not upgraded.</Issue>
+        </Section>
+        <Section Name = "Timer1_Timer" >
+            <Issue
+                Type = "Runtime"
+                Number = "1037"
+            >Couldn't resolve default property of object CurrentTime.</Issue>
+        </Section>
+    </File>
+</UpgradeLog>
+

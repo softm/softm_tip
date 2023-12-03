@@ -1,0 +1,7 @@
+http://cafe.naver.com/jvman.cafe?iframe_url=/ArticleRead.nhn%3Farticleid=264
+
+<span style="overflow:hidden; width:108px; height:24px; 
+      background-image:url('<fmt:message key="button.ImgUpload"/>');">
+      <input type="file" name="pic_save_path"       style="width:0;height:18px;filter:alpha(opacity=0);border-:0;cursor:hand;"                     
+      onchange="checkImgType(this.value);">
+</span>

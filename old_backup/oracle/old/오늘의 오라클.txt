@@ -1,0 +1,33 @@
+
+  Table insert시 약간의 차이가 있습니다.
+
+  sample>
+
+   create table temp1 (date1 date); date type의 컬럼 하나를 가진
+   테이블을 하나 만들고
+   
+   insert into temp1 values (to_date('00/01/01','yy/mm/dd'));
+   insert into temp1 values (to_date('00/01/01','rr/mm/dd'));
+   위와같이 insert를 하였을경우 select의 결과가 다릅니다.
+
+   select한 결과
+   select to_char(date1,'rrrr/mm/dd') from temp1;
+
+   TO_CHAR(DA
+   ----------
+   1900/01/01
+   2000/01/01
+
+   select to_char(date1,'yyyy/mm/dd') from temp1;
+
+   TO_CHAR(DA
+   ----------
+   1900/01/01
+   2000/01/01
+
+   결론.
+         to_date('00/01/01','YY/MM/DD')  -> 1900/01/01
+         to_date('00/01/01','RR/MM/DD')  -> 2000/01/01
+
+         이와같이 insert시 약간의 차이가 있습니다.
+         Y2k 문제를 주의해서 사용할 필요가 있겠죠.  

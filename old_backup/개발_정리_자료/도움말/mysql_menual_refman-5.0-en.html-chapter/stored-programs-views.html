@@ -1,0 +1,1669 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>Chapter 18. Stored Programs and Views</title><link rel="stylesheet" href="mysql-html.css" type="text/css"><meta name="generator" content="DocBook XSL Stylesheets V1.69.1"><link rel="start" href="index.html" title="MySQL 5.0 Reference Manual"><link rel="up" href="index.html" title="MySQL 5.0 Reference Manual"><link rel="prev" href="mysql-cluster.html" title="Chapter 17. MySQL Cluster"><link rel="next" href="information-schema.html" title="Chapter 19. INFORMATION_SCHEMA Tables"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="3" align="center">Chapter 18. Stored Programs and Views</th></tr><tr><td width="20%" align="left"><a accesskey="p" href="mysql-cluster.html">Prev</a> </td><th width="60%" align="center"> </th><td width="20%" align="right"> <a accesskey="n" href="information-schema.html">Next</a></td></tr></table><hr></div><div class="chapter" lang="en"><div class="titlepage"><div><div><h2 class="title"><a name="stored-programs-views"></a>Chapter 18. Stored Programs and Views</h2></div></div></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="section"><a href="stored-programs-views.html#stored-programs-defining">18.1. Defining Stored Programs</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#stored-routines">18.2. Using Stored Routines (Procedures and Functions)</a></span></dt><dd><dl><dt><span class="section"><a href="stored-programs-views.html#stored-routines-syntax">18.2.1. Stored Routine Syntax</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#stored-routines-privileges">18.2.2. Stored Routines and MySQL Privileges</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#stored-routines-metadata">18.2.3. Stored Routine Metadata</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#stored-routines-last-insert-id">18.2.4. Stored Procedures, Functions, Triggers, and
+      <code class="literal">LAST_INSERT_ID()</code></a></span></dt></dl></dd><dt><span class="section"><a href="stored-programs-views.html#triggers">18.3. Using Triggers</a></span></dt><dd><dl><dt><span class="section"><a href="stored-programs-views.html#trigger-syntax">18.3.1. Trigger Syntax</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#trigger-metadata">18.3.2. Trigger Metadata</a></span></dt></dl></dd><dt><span class="section"><a href="stored-programs-views.html#views">18.4. Using Views</a></span></dt><dd><dl><dt><span class="section"><a href="stored-programs-views.html#view-syntax">18.4.1. View Syntax</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#view-algorithms">18.4.2. View Processing Algorithms</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#view-updatability">18.4.3. Updatable and Insertable Views</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#view-metadata">18.4.4. View Metadata</a></span></dt></dl></dd><dt><span class="section"><a href="stored-programs-views.html#stored-programs-logging">18.5. Binary Logging of Stored Programs</a></span></dt></dl></div><a class="indexterm" name="id2314957"></a><a class="indexterm" name="id2314966"></a><a class="indexterm" name="id2314978"></a><a class="indexterm" name="id2314987"></a><p>
+    This chapter discusses stored programs and views, which are database
+    objects defined in terms of SQL code that is stored on the server
+    for later invocation.
+  </p><p>
+    Stored programs include these objects:
+  </p><div class="itemizedlist"><ul type="disc"><li><p>
+        Stored routines, that is, stored procedures and functions. A
+        stored function is used much like a built-in function. you
+        invoke it in an expression and it returns a value during
+        expression evaluation. A stored procedure is invoked using the
+        <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statement. A procedure does
+        not have a return value but can modify its parameters for later
+        inspection by the caller. It can also generate result sets to be
+        returned to the client program.
+      </p></li><li><p>
+        Triggers. A trigger is a named database object that is
+        associated with a table and that is activated when a particular
+        event occurs for the table, such as an insert or update.
+      </p></li></ul></div><p>
+    Views are stored queries that when invoked produce a result set. A
+    view acts as a virtual table.
+  </p><p>
+    This chapter describes how to use each type of stored program and
+    views.
+
+
+    Additional information about SQL syntax for statements related to
+    these objects is available in the following locations:
+  </p><div class="itemizedlist"><ul type="disc"><li><p>
+        For each object type, there are <code class="literal">CREATE</code>,
+        <code class="literal">ALTER</code>, and <code class="literal">DROP</code> statements
+        that control which objects exist and how they are defined. See
+        <a href="sql-syntax.html#sql-syntax-data-definition" title="12.1. Data Definition Statements">Section 12.1, “Data Definition Statements”</a>.
+      </p></li><li><p>
+        The <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statement is used to
+        invoke stored procedures. See <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax">Section 12.2.1, “<code class="literal">CALL</code> Syntax”</a>.
+      </p></li><li><p>
+        Stored program definitions contain a body that may use compound
+        statements, loops, conditionals, and declared variables. See
+        <a href="sql-syntax.html#sql-syntax-compound-statements" title="12.8. MySQL Compound-Statement Syntax">Section 12.8, “MySQL Compound-Statement Syntax”</a>.
+      </p></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="stored-programs-defining"></a>18.1. Defining Stored Programs</h2></div></div></div><p>
+      Each stored program contains a body that consists of an SQL
+      statement. This statement may be a compound statement made up of
+      several statements separated by semicolon (<code class="literal">;</code>)
+      characters. For example, the following stored procedure has a body
+      made up of a <code class="literal">BEGIN ... END</code> block that contains
+      a <a href="sql-syntax.html#set-option" title="12.5.4. SET Syntax"><code class="literal">SET</code></a>
+      statement and a
+      <a href="sql-syntax.html#repeat-statement" title="12.8.6.6. REPEAT
+        Statement"><code class="literal">REPEAT</code></a>
+      loop that itself contains another
+      <a href="sql-syntax.html#set-option" title="12.5.4. SET Syntax"><code class="literal">SET</code></a>
+      statement:
+    </p><pre class="programlisting">CREATE PROCEDURE dorepeat(p1 INT)
+BEGIN
+  SET @x = 0;
+  REPEAT SET @x = @x + 1; UNTIL @x &gt; p1 END REPEAT;
+END
+</pre><p>
+      If you use the <a href="programs.html#mysql" title="4.5.1. mysql — The MySQL Command-Line Tool"><span><strong class="command">mysql</strong></span></a> client program to define a
+      stored program that contains the semicolon characters within its
+      definition, a problem arises. By default, <a href="programs.html#mysql" title="4.5.1. mysql — The MySQL Command-Line Tool"><span><strong class="command">mysql</strong></span></a>
+      itself recognizes semicolon as a statement delimiter, so you must
+      redefine the delimiter temporarily to cause
+      <a href="programs.html#mysql" title="4.5.1. mysql — The MySQL Command-Line Tool"><span><strong class="command">mysql</strong></span></a> to pass the entire stored program
+      definition to the server.
+    </p><p>
+      To redefine the <a href="programs.html#mysql" title="4.5.1. mysql — The MySQL Command-Line Tool"><span><strong class="command">mysql</strong></span></a> delimiter, use the
+      <code class="literal">delimiter</code> command. The following example shows
+      how to do this for the <code class="literal">dorepeat()</code> procedure
+      just shown. The delimiter is changed to <code class="literal">//</code> to
+      enable the entire definition to be passed to the server as a
+      single statement, and then restored to <code class="literal">;</code> before
+      invoking the procedure. This allows the <code class="literal">;</code>
+      delimiter used in the procedure body to be passed through to the
+      server rather than being interpreted by <a href="programs.html#mysql" title="4.5.1. mysql — The MySQL Command-Line Tool"><span><strong class="command">mysql</strong></span></a>
+      itself.
+    </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>delimiter //</code></strong>
+
+mysql&gt; <strong class="userinput"><code>CREATE PROCEDURE dorepeat(p1 INT)</code></strong>
+    -&gt; <strong class="userinput"><code>BEGIN</code></strong>
+    -&gt;   <strong class="userinput"><code>SET @x = 0;</code></strong>
+    -&gt;   <strong class="userinput"><code>REPEAT SET @x = @x + 1; UNTIL @x &gt; p1 END REPEAT;</code></strong>
+    -&gt; <strong class="userinput"><code>END</code></strong>
+    -&gt; <strong class="userinput"><code>//</code></strong>
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; <strong class="userinput"><code>delimiter ;</code></strong>
+
+mysql&gt; <strong class="userinput"><code>CALL dorepeat(1000);</code></strong>
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; <strong class="userinput"><code>SELECT @x;</code></strong>
++------+
+| @x   |
++------+
+| 1001 |
++------+
+1 row in set (0.00 sec)
+</pre><p>
+      You can redefine the delimiter to a string other than
+      <code class="literal">//</code>, and the delimiter can consist of a single
+      character or multiple characters. You should avoid the use of the
+      backslash (“<span class="quote"><code class="literal">\</code></span>”) character because
+      that is the escape character for MySQL.
+    </p><p>
+      The following is an example of a function that takes a parameter,
+      performs an operation using an SQL function, and returns the
+      result. In this case, it is unnecessary to use
+      <code class="literal">delimiter</code> because the function definition
+      contains no internal <code class="literal">;</code> statement delimiters:
+    </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>CREATE FUNCTION hello (s CHAR(20))</code></strong>
+mysql&gt; <strong class="userinput"><code>RETURNS CHAR(50) DETERMINISTIC</code></strong>
+    -&gt; <strong class="userinput"><code>RETURN CONCAT('Hello, ',s,'!');</code></strong>
+Query OK, 0 rows affected (0.00 sec)
+
+mysql&gt; <strong class="userinput"><code>SELECT hello('world');</code></strong>
++----------------+
+| hello('world') |
++----------------+
+| Hello, world!  |
++----------------+
+1 row in set (0.00 sec)
+</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="stored-routines"></a>18.2. Using Stored Routines (Procedures and Functions)</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="stored-programs-views.html#stored-routines-syntax">18.2.1. Stored Routine Syntax</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#stored-routines-privileges">18.2.2. Stored Routines and MySQL Privileges</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#stored-routines-metadata">18.2.3. Stored Routine Metadata</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#stored-routines-last-insert-id">18.2.4. Stored Procedures, Functions, Triggers, and
+      <code class="literal">LAST_INSERT_ID()</code></a></span></dt></dl></div><a class="indexterm" name="id2315382"></a><a class="indexterm" name="id2315391"></a><a class="indexterm" name="id2315403"></a><a class="indexterm" name="id2315412"></a><p>
+    Stored routines (procedures and functions) are supported in MySQL
+    5.0. A stored routine is a set of SQL statements that
+    can be stored in the server. Once this has been done, clients don't
+    need to keep reissuing the individual statements but can refer to
+    the stored routine instead.
+  </p><p>
+    Stored routines require the <code class="literal">proc</code> table in the
+    <code class="literal">mysql</code> database. This table is created during the
+    MySQL 5.0 installation procedure. If you are upgrading
+    to MySQL 5.0 from an earlier version, be sure to update
+    your grant tables to make sure that the <code class="literal">proc</code>
+    table exists. See <a href="programs.html#mysql-upgrade" title="4.4.9. mysql_upgrade — Check Tables for MySQL Upgrade">Section 4.4.9, “<span><strong class="command">mysql_upgrade</strong></span> — Check Tables for MySQL Upgrade”</a>.
+  </p><p class="mnmas"><b>MySQL Enterprise</b>
+      For expert advice on using stored procedures and functions
+      subscribe to the MySQL Enterprise Monitor. For more information,
+      see <a href="http://www.mysql.com/products/enterprise/advisors.html" target="_top">http://www.mysql.com/products/enterprise/advisors.html</a>.
+    </p><p>
+    Stored routines can be particularly useful in certain situations:
+  </p><div class="itemizedlist"><ul type="disc"><li><p>
+        When multiple client applications are written in different
+        languages or work on different platforms, but need to perform
+        the same database operations.
+      </p></li><li><p>
+        When security is paramount. Banks, for example, use stored
+        procedures and functions for all common operations. This
+        provides a consistent and secure environment, and routines can
+        ensure that each operation is properly logged. In such a setup,
+        applications and users would have no access to the database
+        tables directly, but can only execute specific stored routines.
+      </p></li></ul></div><p>
+    Stored routines can provide improved performance because less
+    information needs to be sent between the server and the client. The
+    tradeoff is that this does increase the load on the database server
+    because more of the work is done on the server side and less is done
+    on the client (application) side. Consider this if many client
+    machines (such as Web servers) are serviced by only one or a few
+    database servers.
+  </p><p>
+    Stored routines also allow you to have libraries of functions in the
+    database server. This is a feature shared by modern application
+    languages that allow such design internally (for example, by using
+    classes). Using these client application language features is
+    beneficial for the programmer even outside the scope of database
+    use.
+  </p><p>
+    MySQL follows the SQL:2003 syntax for stored routines, which is also
+    used by IBM's DB2.
+  </p><p>
+    The MySQL implementation of stored routines is still in progress.
+    All syntax described here is supported and any limitations and
+    extensions are documented where appropriate.
+  </p><p>
+    <span class="bold"><strong>Additional resources</strong></span>
+  </p><div class="itemizedlist"><ul type="disc"><li><p>
+        You may find the <a href="http://forums.mysql.com/list.php?98" target="_top">Stored
+        Procedures User Forum</a> of use when working with stored
+        procedures and functions.
+      </p></li><li><p>
+        For answers to some commonly asked questions regarding stored
+        routines in MySQL, see <a href="faqs.html#faqs-stored-procs" title="A.4. MySQL 5.0 FAQ — Stored Procedures and Functions">Section A.4, “MySQL 5.0 FAQ — Stored Procedures and Functions”</a>.
+      </p></li><li><p>
+        There are some restrictions on the use of stored routines. See
+        <a href="restrictions.html#stored-program-restrictions" title="D.1. Restrictions on Stored Routines and Triggers">Section D.1, “Restrictions on Stored Routines and Triggers”</a>.
+      </p></li><li><p>
+        Binary logging for stored routines takes place as described in
+        <a href="stored-programs-views.html#stored-programs-logging" title="18.5. Binary Logging of Stored Programs">Section 18.5, “Binary Logging of Stored Programs”</a>.
+      </p></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="stored-routines-syntax"></a>18.2.1. Stored Routine Syntax</h3></div></div></div><p>
+      A stored routine is either a procedure or a function. Stored
+      routines are created with the <a href="sql-syntax.html#create-procedure" title="12.1.9. CREATE PROCEDURE and
+      CREATE FUNCTION Syntax"><code class="literal">CREATE
+      PROCEDURE</code></a> and <a href="sql-syntax.html#create-function" title="12.1.7. CREATE FUNCTION Syntax"><code class="literal">CREATE
+      FUNCTION</code></a> statements (see
+      <a href="sql-syntax.html#create-procedure" title="12.1.9. CREATE PROCEDURE and
+      CREATE FUNCTION Syntax">Section 12.1.9, “<code class="literal">CREATE PROCEDURE</code> and
+      <code class="literal">CREATE FUNCTION</code> Syntax”</a>). A procedure is invoked using
+      a <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statement (see
+      <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax">Section 12.2.1, “<code class="literal">CALL</code> Syntax”</a>), and can only pass back values using
+      output variables. A function can be called from inside a statement
+      just like any other function (that is, by invoking the function's
+      name), and can return a scalar value. The body of a stored routine
+      can use compound statements (see
+      <a href="sql-syntax.html#sql-syntax-compound-statements" title="12.8. MySQL Compound-Statement Syntax">Section 12.8, “MySQL Compound-Statement Syntax”</a>).
+    </p><p>
+      Stored routines can be dropped with the <a href="sql-syntax.html#drop-procedure" title="12.1.16. DROP PROCEDURE and
+      DROP FUNCTION Syntax"><code class="literal">DROP
+      PROCEDURE</code></a> and <a href="sql-syntax.html#drop-function" title="12.1.14. DROP FUNCTION Syntax"><code class="literal">DROP
+      FUNCTION</code></a> statements (see
+      <a href="sql-syntax.html#drop-procedure" title="12.1.16. DROP PROCEDURE and
+      DROP FUNCTION Syntax">Section 12.1.16, “<code class="literal">DROP PROCEDURE</code> and
+      <code class="literal">DROP FUNCTION</code> Syntax”</a>), and altered with the
+      <a href="sql-syntax.html#alter-procedure" title="12.1.3. ALTER PROCEDURE Syntax"><code class="literal">ALTER PROCEDURE</code></a> and
+      <a href="sql-syntax.html#alter-function" title="12.1.2. ALTER FUNCTION Syntax"><code class="literal">ALTER FUNCTION</code></a> statements (see
+      <a href="sql-syntax.html#alter-procedure" title="12.1.3. ALTER PROCEDURE Syntax">Section 12.1.3, “<code class="literal">ALTER PROCEDURE</code> Syntax”</a>).
+    </p><p>
+      As of MySQL 5.0.1, a stored procedure or function is associated
+      with a particular database. This has several implications:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          When the routine is invoked, an implicit <code class="literal">USE
+          <em class="replaceable"><code>db_name</code></em></code> is performed (and
+          undone when the routine terminates).
+          <a href="sql-syntax.html#use" title="12.3.4. USE Syntax"><code class="literal">USE</code></a> statements within stored
+          routines are disallowed.
+        </p></li><li><p>
+          You can qualify routine names with the database name. This can
+          be used to refer to a routine that is not in the current
+          database. For example, to invoke a stored procedure
+          <code class="literal">p</code> or function <code class="literal">f</code> that is
+          associated with the <code class="literal">test</code> database, you can
+          say <code class="literal">CALL test.p()</code> or
+          <code class="literal">test.f()</code>.
+        </p></li><li><p>
+          When a database is dropped, all stored routines associated
+          with it are dropped as well.
+        </p></li></ul></div><p>
+      (In MySQL 5.0.0, stored routines are global and not associated
+      with a database. They inherit the default database from the
+      caller. If a <code class="literal">USE
+      <em class="replaceable"><code>db_name</code></em></code> is executed within
+      the routine, the original default database is restored upon
+      routine exit.)
+    </p><p>
+      Stored functions cannot be recursive.
+    </p><p>
+      Recursion in stored procedures is allowed but disabled by default.
+      To enable recursion, set the
+      <a href="server-administration.html#sysvar_max_sp_recursion_depth"><code class="literal">max_sp_recursion_depth</code></a> server
+      system variable to a value greater than zero. Stored procedure
+      recursion increases the demand on thread stack space. If you
+      increase the value of
+      <a href="server-administration.html#sysvar_max_sp_recursion_depth"><code class="literal">max_sp_recursion_depth</code></a>, it may be
+      necessary to increase thread stack size by increasing the value of
+      <a href="server-administration.html#sysvar_thread_stack"><code class="literal">thread_stack</code></a> at server startup.
+      See <a href="server-administration.html#server-system-variables" title="5.1.3. Server System Variables">Section 5.1.3, “Server System Variables”</a>, for more
+      information.
+    </p><p>
+      MySQL supports the very useful extension that allows the use of
+      regular <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> statements (that is,
+      without using cursors or local variables) inside a stored
+      procedure. The result set of such a query is simply sent directly
+      to the client. Multiple <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a>
+      statements generate multiple result sets, so the client must use a
+      MySQL client library that supports multiple result sets. This
+      means the client must use a client library from a version of MySQL
+      at least as recent as 4.1. The client should also specify the
+      <code class="literal">CLIENT_MULTI_RESULTS</code> option when it connects.
+      For C programs, this can be done with the
+      <a href="connectors-apis.html#mysql-real-connect" title="20.9.3.52. mysql_real_connect()"><code class="literal">mysql_real_connect()</code></a> C API
+      function. See <a href="connectors-apis.html#mysql-real-connect" title="20.9.3.52. mysql_real_connect()">Section 20.9.3.52, “<code class="literal">mysql_real_connect()</code>”</a>, and
+      <a href="connectors-apis.html#c-api-multiple-queries" title="20.9.12. C API Support for Multiple Statement Execution">Section 20.9.12, “C API Support for Multiple Statement Execution”</a>.
+    </p><p class="mnmas-kb"><b>MySQL Enterprise</b>
+        MySQL Enterprise subscribers will find numerous articles about
+        stored routines in the MySQL Enterprise Knowledge Base. Access
+        to this collection of articles is one of the advantages of
+        subscribing to MySQL Enterprise. For more information, see
+        <a href="http://www.mysql.com/products/enterprise/advisors.html" target="_top">http://www.mysql.com/products/enterprise/advisors.html</a>.
+      </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="stored-routines-privileges"></a>18.2.2. Stored Routines and MySQL Privileges</h3></div></div></div><p>
+      Beginning with MySQL 5.0.3, the grant system takes stored routines
+      into account as follows:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          The <a href="server-administration.html#priv_create-routine"><code class="literal">CREATE ROUTINE</code></a> privilege is
+          needed to create stored routines.
+        </p></li><li><p>
+          The <a href="server-administration.html#priv_alter-routine"><code class="literal">ALTER ROUTINE</code></a> privilege is
+          needed to alter or drop stored routines. This privilege is
+          granted automatically to the creator of a routine if
+          necessary, and dropped when the routine creator drops the
+          routine.
+        </p></li><li><p>
+          The <a href="server-administration.html#priv_execute"><code class="literal">EXECUTE</code></a> privilege is
+          required to execute stored routines. However, this privilege
+          is granted automatically to the creator of a routine if
+          necessary (and dropped when the creator drops the routine).
+          Also, the default <code class="literal">SQL SECURITY</code>
+          characteristic for a routine is <code class="literal">DEFINER</code>,
+          which enables users who have access to the database with which
+          the routine is associated to execute the routine.
+        </p></li><li><p>
+          If the
+          <a href="server-administration.html#sysvar_automatic_sp_privileges"><code class="literal">automatic_sp_privileges</code></a>
+          system variable is 0, the
+          <a href="server-administration.html#priv_execute"><code class="literal">EXECUTE</code></a> and
+          <a href="server-administration.html#priv_alter-routine"><code class="literal">ALTER ROUTINE</code></a> privileges are
+          not automatically granted and dropped.
+        </p></li></ul></div><p>
+      The server manipulates the <code class="literal">mysql.proc</code> table in
+      response to statements that create, alter, or drop stored
+      routines. It is not supported that the server will notice manual
+      manipulation of this table.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="stored-routines-metadata"></a>18.2.3. Stored Routine Metadata</h3></div></div></div><a class="indexterm" name="id2315995"></a><a class="indexterm" name="id2316008"></a><p>
+      Metadata about stored routines can be obtained as follows:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          Query the <a href="information-schema.html#routines-table" title="19.14. The INFORMATION_SCHEMA ROUTINES Table"><code class="literal">ROUTINES</code></a> table of the
+          <code class="literal">INFORMATION_SCHEMA</code> database. See
+          <a href="information-schema.html#routines-table" title="19.14. The INFORMATION_SCHEMA ROUTINES Table">Section 19.14, “The <code class="literal">INFORMATION_SCHEMA ROUTINES</code> Table”</a>.
+        </p></li><li><p>
+          Use the <a href="sql-syntax.html#show-create-procedure" title="12.5.5.8. SHOW CREATE PROCEDURE Syntax"><code class="literal">SHOW CREATE PROCEDURE</code></a>
+          and <a href="sql-syntax.html#show-create-function" title="12.5.5.7. SHOW CREATE FUNCTION Syntax"><code class="literal">SHOW CREATE FUNCTION</code></a>
+          statements to see routine definitions. See
+          <a href="sql-syntax.html#show-create-procedure" title="12.5.5.8. SHOW CREATE PROCEDURE Syntax">Section 12.5.5.8, “<code class="literal">SHOW CREATE PROCEDURE</code> Syntax”</a>.
+        </p></li><li><p>
+          Use the <a href="sql-syntax.html#show-procedure-status" title="12.5.5.26. SHOW PROCEDURE STATUS Syntax"><code class="literal">SHOW PROCEDURE STATUS</code></a>
+          and <a href="sql-syntax.html#show-function-status" title="12.5.5.16. SHOW FUNCTION STATUS Syntax"><code class="literal">SHOW FUNCTION STATUS</code></a>
+          statements to see routine characteristics. See
+          <a href="sql-syntax.html#show-procedure-status" title="12.5.5.26. SHOW PROCEDURE STATUS Syntax">Section 12.5.5.26, “<code class="literal">SHOW PROCEDURE STATUS</code> Syntax”</a>.
+        </p></li><li><p>
+          <code class="literal">INFORMATION_SCHEMA</code> does not have a
+          <code class="literal">PARAMETERS</code> table until MySQL 6.0, so
+          applications that need to acquire routine parameter
+          information at runtime must use workarounds such as parsing
+          the output of <code class="literal">SHOW CREATE</code> statements or the
+          <code class="literal">param_list</code> column of the
+          <code class="literal">mysql.proc</code> table.
+          <code class="literal">param_list</code> contents can be processed from
+          within a stored routine, unlike the output from
+          <a href="sql-syntax.html#show" title="12.5.5. SHOW Syntax"><code class="literal">SHOW</code></a>.
+        </p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="stored-routines-last-insert-id"></a>18.2.4. Stored Procedures, Functions, Triggers, and
+      <code class="literal">LAST_INSERT_ID()</code></h3></div></div></div><a class="indexterm" name="id2316167"></a><a class="indexterm" name="id2316176"></a><a class="indexterm" name="id2316185"></a><a class="indexterm" name="id2316198"></a><p>
+      Within the body of a stored routine (procedure or function) or a
+      trigger, the value of
+      <a href="functions.html#function_last-insert-id"><code class="literal">LAST_INSERT_ID()</code></a> changes the same
+      way as for statements executed outside the body of these kinds of
+      objects (see <a href="functions.html#information-functions" title="11.10.3. Information Functions">Section 11.10.3, “Information Functions”</a>). The effect
+      of a stored routine or trigger upon the value of
+      <a href="functions.html#function_last-insert-id"><code class="literal">LAST_INSERT_ID()</code></a> that is seen by
+      following statements depends on the kind of routine:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          If a stored procedure executes statements that change the
+          value of <a href="functions.html#function_last-insert-id"><code class="literal">LAST_INSERT_ID()</code></a>, the
+          changed value is seen by statements that follow the procedure
+          call.
+        </p></li><li><p>
+          For stored functions and triggers that change the value, the
+          value is restored when the function or trigger ends, so
+          following statements do not see a changed value.
+        </p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="triggers"></a>18.3. Using Triggers</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="stored-programs-views.html#trigger-syntax">18.3.1. Trigger Syntax</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#trigger-metadata">18.3.2. Trigger Metadata</a></span></dt></dl></div><a class="indexterm" name="id2316272"></a><p>
+    Support for triggers is included beginning with MySQL 5.0.2. A
+    trigger is a named database object that is associated with a table,
+    and that activates when a particular event occurs for the table.
+    Some uses for triggers are to perform checks of values to be
+    inserted into a table or to perform calculations on values involved
+    in an update.
+  </p><p>
+    A trigger is defined to activate when an
+    <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a>,
+    <a href="sql-syntax.html#delete" title="12.2.2. DELETE Syntax"><code class="literal">DELETE</code></a>, or
+    <a href="sql-syntax.html#update" title="12.2.11. UPDATE Syntax"><code class="literal">UPDATE</code></a> statement executes for the
+    associated table. A trigger can be set to activate either before or
+    after the triggering statement. For example, you can have a trigger
+    activate before each row that is inserted into a table or after each
+    row that is updated.
+  </p><div class="important" style="margin-left: 0.5in; margin-right: 0.5in;"><h3 class="title">Important</h3><p>
+      MySQL triggers are activated by SQL statements
+      <span class="emphasis"><em>only</em></span>. They are not activated by changes in
+      tables made by APIs that do not transmit SQL statements to the
+      MySQL Server; in particular, they are not activated by updates
+      made using the <code class="literal">NDB</code> API.
+    </p></div><p>
+    To use triggers if you have upgraded to MySQL 5.0 from
+    an older release that did not support triggers, you should upgrade
+    your grant tables so that they contain the trigger-related
+    privileges. See <a href="programs.html#mysql-upgrade" title="4.4.9. mysql_upgrade — Check Tables for MySQL Upgrade">Section 4.4.9, “<span><strong class="command">mysql_upgrade</strong></span> — Check Tables for MySQL Upgrade”</a>.
+  </p><p>
+    The following discussion describes the syntax for creating and
+    dropping triggers, and shows some examples of how to use them.
+  </p><p>
+    <span class="bold"><strong>Additional resources</strong></span>
+  </p><div class="itemizedlist"><ul type="disc"><li><p>
+        You may find the <a href="http://forums.mysql.com/list.php?100" target="_top">Triggers
+        User Forum</a> of use when working with views.
+      </p></li><li><p>
+        For answers to some commonly asked questions regarding triggers
+        in MySQL, see <a href="faqs.html#faqs-triggers" title="A.5. MySQL 5.0 FAQ — Triggers">Section A.5, “MySQL 5.0 FAQ — Triggers”</a>.
+      </p></li><li><p>
+        There are some restrictions on the use of triggers; see
+        <a href="restrictions.html#stored-program-restrictions" title="D.1. Restrictions on Stored Routines and Triggers">Section D.1, “Restrictions on Stored Routines and Triggers”</a>.
+      </p></li><li><p>
+        Binary logging for triggers takes place as described in
+        <a href="stored-programs-views.html#stored-programs-logging" title="18.5. Binary Logging of Stored Programs">Section 18.5, “Binary Logging of Stored Programs”</a>.
+      </p></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="trigger-syntax"></a>18.3.1. Trigger Syntax</h3></div></div></div><p>
+      To create a trigger or drop a trigger, use the
+      <a href="sql-syntax.html#create-trigger" title="12.1.11. CREATE TRIGGER Syntax"><code class="literal">CREATE TRIGGER</code></a> or
+      <a href="sql-syntax.html#drop-trigger" title="12.1.18. DROP TRIGGER Syntax"><code class="literal">DROP TRIGGER</code></a> statement. The syntax
+      for these statements is described in
+      <a href="sql-syntax.html#create-trigger" title="12.1.11. CREATE TRIGGER Syntax">Section 12.1.11, “<code class="literal">CREATE TRIGGER</code> Syntax”</a>, and
+      <a href="sql-syntax.html#drop-trigger" title="12.1.18. DROP TRIGGER Syntax">Section 12.1.18, “<code class="literal">DROP TRIGGER</code> Syntax”</a>.
+    </p><p>
+      Here is a simple example that associates a trigger with a table
+      for <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> statements. The trigger
+      acts as an accumulator, summing the values inserted into one of
+      the columns of the table.
+    </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>CREATE TABLE account (acct_num INT, amount DECIMAL(10,2));</code></strong>
+Query OK, 0 rows affected (0.03 sec)
+
+mysql&gt; <strong class="userinput"><code>CREATE TRIGGER ins_sum BEFORE INSERT ON account</code></strong>
+    -&gt; <strong class="userinput"><code>FOR EACH ROW SET @sum = @sum + NEW.amount;</code></strong>
+Query OK, 0 rows affected (0.06 sec)
+</pre><p>
+      The <a href="sql-syntax.html#create-trigger" title="12.1.11. CREATE TRIGGER Syntax"><code class="literal">CREATE TRIGGER</code></a> statement
+      creates a trigger named <code class="literal">ins_sum</code> that is
+      associated with the <code class="literal">account</code> table. It also
+      includes clauses that specify the trigger activation time, the
+      triggering event, and what to do with the trigger activates:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          The keyword <code class="literal">BEFORE</code> indicates the trigger
+          action time. In this case, the trigger should activate before
+          each row inserted into the table. The other allowable keyword
+          here is <code class="literal">AFTER</code>.
+        </p></li><li><p>
+          The keyword <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> indicates
+          the event that activates the trigger. In the example,
+          <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> statements cause trigger
+          activation. You can also create triggers for
+          <a href="sql-syntax.html#delete" title="12.2.2. DELETE Syntax"><code class="literal">DELETE</code></a> and
+          <a href="sql-syntax.html#update" title="12.2.11. UPDATE Syntax"><code class="literal">UPDATE</code></a> statements.
+        </p></li><li><p>
+          The statement following <code class="literal">FOR EACH ROW</code>
+          defines the statement to execute each time the trigger
+          activates, which occurs once for each row affected by the
+          triggering statement In the example, the triggered statement
+          is a simple
+          <a href="sql-syntax.html#set-option" title="12.5.4. SET Syntax"><code class="literal">SET</code></a> that
+          accumulates the values inserted into the
+          <code class="literal">amount</code> column. The statement refers to the
+          column as <code class="literal">NEW.amount</code> which means “<span class="quote">the
+          value of the <code class="literal">amount</code> column to be inserted
+          into the new row.</span>”
+        </p></li></ul></div><p>
+      To use the trigger, set the accumulator variable to zero, execute
+      an <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> statement, and then see
+      what value the variable has afterward:
+    </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>SET @sum = 0;</code></strong>
+mysql&gt; <strong class="userinput"><code>INSERT INTO account VALUES(137,14.98),(141,1937.50),(97,-100.00);</code></strong>
+mysql&gt; <strong class="userinput"><code>SELECT @sum AS 'Total amount inserted';</code></strong>
++-----------------------+
+| Total amount inserted |
++-----------------------+
+| 1852.48               |
++-----------------------+
+</pre><p>
+      In this case, the value of <code class="literal">@sum</code> after the
+      <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> statement has executed is
+      <code class="literal">14.98 + 1937.50 - 100</code>, or
+      <code class="literal">1852.48</code>.
+    </p><p>
+      To destroy the trigger, use a <a href="sql-syntax.html#drop-trigger" title="12.1.18. DROP TRIGGER Syntax"><code class="literal">DROP
+      TRIGGER</code></a> statement. You must specify the schema name if
+      the trigger is not in the default schema:
+    </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>DROP TRIGGER test.ins_sum;</code></strong>
+</pre><p>
+      Triggers for a table are also dropped if you drop the table.
+    </p><p>
+      Trigger names exist in the schema namespace, meaning that all
+      triggers must have unique names within a schema. Triggers in
+      different schemas can have the same name.
+    </p><p>
+      In addition to the requirement that trigger names be unique for a
+      schema, there are other limitations on the types of triggers you
+      can create. In particular, you cannot have two triggers for a
+      table that have the same activation time and activation event. For
+      example, you cannot define two <code class="literal">BEFORE INSERT</code>
+      triggers or two <code class="literal">AFTER UPDATE</code> triggers for a
+      table. This should rarely be a significant limitation, because it
+      is possible to define a trigger that executes multiple statements
+      by using the <code class="literal">BEGIN ... END</code> compound statement
+      construct after <code class="literal">FOR EACH ROW</code>. (An example
+      appears later in this section.)
+    </p><p>
+      The <code class="literal">OLD</code> and <code class="literal">NEW</code> keywords
+      enable you to access columns in the rows affected by a trigger.
+      (<code class="literal">OLD</code> and <code class="literal">NEW</code> are not case
+      sensitive.) In an <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> trigger,
+      only <code class="literal">NEW.<em class="replaceable"><code>col_name</code></em></code>
+      can be used; there is no old row. In a
+      <a href="sql-syntax.html#delete" title="12.2.2. DELETE Syntax"><code class="literal">DELETE</code></a> trigger, only
+      <code class="literal">OLD.<em class="replaceable"><code>col_name</code></em></code> can be
+      used; there is no new row. In an
+      <a href="sql-syntax.html#update" title="12.2.11. UPDATE Syntax"><code class="literal">UPDATE</code></a> trigger, you can use
+      <code class="literal">OLD.<em class="replaceable"><code>col_name</code></em></code> to
+      refer to the columns of a row before it is updated and
+      <code class="literal">NEW.<em class="replaceable"><code>col_name</code></em></code> to
+      refer to the columns of the row after it is updated.
+    </p><p>
+      A column named with <code class="literal">OLD</code> is read only. You can
+      refer to it (if you have the <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a>
+      privilege), but not modify it. A column named with
+      <code class="literal">NEW</code> can be referred to if you have the
+      <a href="server-administration.html#priv_select"><code class="literal">SELECT</code></a> privilege for it. In a
+      <code class="literal">BEFORE</code> trigger, you can also change its value
+      with <code class="literal">SET NEW.<em class="replaceable"><code>col_name</code></em> =
+      <em class="replaceable"><code>value</code></em></code> if you have the
+      <a href="server-administration.html#priv_update"><code class="literal">UPDATE</code></a> privilege for it. This means
+      you can use a trigger to modify the values to be inserted into a
+      new row or that are used to update a row.
+    </p><p>
+      In a <code class="literal">BEFORE</code> trigger, the <code class="literal">NEW</code>
+      value for an <code class="literal">AUTO_INCREMENT</code> column is 0, not
+      the automatically generated sequence number that will be generated
+      when the new record actually is inserted.
+    </p><p>
+      <code class="literal">OLD</code> and <code class="literal">NEW</code> are MySQL
+      extensions to triggers.
+    </p><p>
+      By using the <code class="literal">BEGIN ... END</code> construct, you can
+      define a trigger that executes multiple statements. Within the
+      <code class="literal">BEGIN</code> block, you also can use other syntax that
+      is allowed within stored routines such as conditionals and loops.
+      However, just as for stored routines, if you use the
+      <a href="programs.html#mysql" title="4.5.1. mysql — The MySQL Command-Line Tool"><span><strong class="command">mysql</strong></span></a> program to define a trigger that executes
+      multiple statements, it is necessary to redefine the
+      <a href="programs.html#mysql" title="4.5.1. mysql — The MySQL Command-Line Tool"><span><strong class="command">mysql</strong></span></a> statement delimiter so that you can use
+      the <code class="literal">;</code> statement delimiter within the trigger
+      definition. The following example illustrates these points. It
+      defines an <a href="sql-syntax.html#update" title="12.2.11. UPDATE Syntax"><code class="literal">UPDATE</code></a> trigger that
+      checks the new value to be used for updating each row, and
+      modifies the value to be within the range from 0 to 100. This must
+      be a <code class="literal">BEFORE</code> trigger because the value needs to
+      be checked before it is used to update the row:
+    </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>delimiter //</code></strong>
+mysql&gt; <strong class="userinput"><code>CREATE TRIGGER upd_check BEFORE UPDATE ON account</code></strong>
+    -&gt; <strong class="userinput"><code>FOR EACH ROW</code></strong>
+    -&gt; <strong class="userinput"><code>BEGIN</code></strong>
+    -&gt;     <strong class="userinput"><code>IF NEW.amount &lt; 0 THEN</code></strong>
+    -&gt;         <strong class="userinput"><code>SET NEW.amount = 0;</code></strong>
+    -&gt;     <strong class="userinput"><code>ELSEIF NEW.amount &gt; 100 THEN</code></strong>
+    -&gt;         <strong class="userinput"><code>SET NEW.amount = 100;</code></strong>
+    -&gt;     <strong class="userinput"><code>END IF;</code></strong>
+    -&gt; <strong class="userinput"><code>END;//</code></strong>
+mysql&gt; <strong class="userinput"><code>delimiter ;</code></strong>
+</pre><p>
+      It can be easier to define a stored procedure separately and then
+      invoke it from the trigger using a simple
+      <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statement. This is also
+      advantageous if you want to invoke the same routine from within
+      several triggers.
+    </p><p>
+      There are some limitations on what can appear in statements that a
+      trigger executes when activated:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          The trigger cannot use the <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a>
+          statement to invoke stored procedures that return data to the
+          client or that use dynamic SQL. (Stored procedures are allowed
+          to return data to the trigger through <code class="literal">OUT</code>
+          or <code class="literal">INOUT</code> parameters.)
+        </p></li><li><p>
+          The trigger cannot use statements that explicitly or
+          implicitly begin or end a transaction such as
+          <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">START
+          TRANSACTION</code></a>, <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">COMMIT</code></a>,
+          or <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">ROLLBACK</code></a>.
+        </p></li><li><p>
+          Prior to MySQL 5.0.10, triggers cannot contain direct
+          references to tables by name.
+        </p></li></ul></div><p>
+      MySQL handles errors during trigger execution as follows:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          If a <code class="literal">BEFORE</code> trigger fails, the operation on
+          the corresponding row is not performed.
+        </p></li><li><p>
+          A <code class="literal">BEFORE</code> trigger is activated by the
+          <span class="emphasis"><em>attempt</em></span> to insert or modify the row,
+          regardless of whether the attempt subsequently succeeds.
+        </p></li><li><p>
+          An <code class="literal">AFTER</code> trigger is executed only if the
+          <code class="literal">BEFORE</code> trigger (if any) and the row
+          operation both execute successfully.
+        </p></li><li><p>
+          An error during either a <code class="literal">BEFORE</code> or
+          <code class="literal">AFTER</code> trigger results in failure of the
+          entire statement that caused trigger invocation.
+        </p></li><li><p>
+          For transactional tables, failure of a statement should cause
+          rollback of all changes performed by the statement. Failure of
+          a trigger causes the statement to fail, so trigger failure
+          also causes rollback. For nontransactional tables, such
+          rollback cannot be done, so although the statement fails, any
+          changes performed prior to the point of the error remain in
+          effect.
+        </p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="trigger-metadata"></a>18.3.2. Trigger Metadata</h3></div></div></div><a class="indexterm" name="id2317236"></a><a class="indexterm" name="id2317249"></a><p>
+      Metadata about triggers can be obtained as follows:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          Query the <a href="information-schema.html#triggers-table" title="19.16. The INFORMATION_SCHEMA TRIGGERS Table"><code class="literal">TRIGGERS</code></a> table of the
+          <code class="literal">INFORMATION_SCHEMA</code> database. See
+          <a href="information-schema.html#triggers-table" title="19.16. The INFORMATION_SCHEMA TRIGGERS Table">Section 19.16, “The <code class="literal">INFORMATION_SCHEMA TRIGGERS</code> Table”</a>.
+        </p></li><li><p>
+          Use the <a href="sql-syntax.html#show-triggers" title="12.5.5.35. SHOW TRIGGERS Syntax"><code class="literal">SHOW TRIGGERS</code></a>
+          statement. See <a href="sql-syntax.html#show-triggers" title="12.5.5.35. SHOW TRIGGERS Syntax">Section 12.5.5.35, “<code class="literal">SHOW TRIGGERS</code> Syntax”</a>.
+        </p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="views"></a>18.4. Using Views</h2></div></div></div><div class="toc"><dl><dt><span class="section"><a href="stored-programs-views.html#view-syntax">18.4.1. View Syntax</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#view-algorithms">18.4.2. View Processing Algorithms</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#view-updatability">18.4.3. Updatable and Insertable Views</a></span></dt><dt><span class="section"><a href="stored-programs-views.html#view-metadata">18.4.4. View Metadata</a></span></dt></dl></div><a class="indexterm" name="id2317321"></a><p>
+    Views (including updatable views) are available in MySQL Server
+    5.0. Views are stored queries that when invoked produce
+    a result set. A view acts as a virtual table. Views are available in
+    binary releases from 5.0.1 and up.
+  </p><p>
+    To use views if you have upgraded to MySQL 5.0.1 from an older
+    release, you should upgrade your grant tables so that they contain
+    the view-related privileges. See <a href="programs.html#mysql-upgrade" title="4.4.9. mysql_upgrade — Check Tables for MySQL Upgrade">Section 4.4.9, “<span><strong class="command">mysql_upgrade</strong></span> — Check Tables for MySQL Upgrade”</a>.
+  </p><p>
+    The following discussion describes the syntax for creating and
+    dropping views, and shows some examples of how to use them.
+  </p><p>
+    <span class="bold"><strong>Additional resources</strong></span>
+  </p><div class="itemizedlist"><ul type="disc"><li><p>
+        You may find the <a href="http://forums.mysql.com/list.php?100" target="_top">Views
+        User Forum</a> of use when working with views.
+      </p></li><li><p>
+        For answers to some commonly asked questions regarding views in
+        MySQL, see <a href="faqs.html#faqs-views" title="A.6. MySQL 5.0 FAQ — Views">Section A.6, “MySQL 5.0 FAQ — Views”</a>.
+      </p></li><li><p>
+        There are some restrictions on the use of views; see
+        <a href="restrictions.html#view-restrictions" title="D.4. Restrictions on Views">Section D.4, “Restrictions on Views”</a>.
+      </p></li></ul></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="view-syntax"></a>18.4.1. View Syntax</h3></div></div></div><p>
+      The <a href="sql-syntax.html#create-view" title="12.1.12. CREATE VIEW Syntax"><code class="literal">CREATE VIEW</code></a> statement creates a
+      new view (see <a href="sql-syntax.html#create-view" title="12.1.12. CREATE VIEW Syntax">Section 12.1.12, “<code class="literal">CREATE VIEW</code> Syntax”</a>). To alter the
+      definition of a view or drop a view, use
+      <a href="sql-syntax.html#alter-view" title="12.1.5. ALTER VIEW Syntax"><code class="literal">ALTER VIEW</code></a> (see
+      <a href="sql-syntax.html#alter-view" title="12.1.5. ALTER VIEW Syntax">Section 12.1.5, “<code class="literal">ALTER VIEW</code> Syntax”</a>), or <a href="sql-syntax.html#drop-view" title="12.1.19. DROP VIEW Syntax"><code class="literal">DROP
+      VIEW</code></a> (see <a href="sql-syntax.html#drop-view" title="12.1.19. DROP VIEW Syntax">Section 12.1.19, “<code class="literal">DROP VIEW</code> Syntax”</a>).
+    </p><p>
+      A view can be created from many kinds of
+      <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> statements. It can refer to
+      base tables or other views. It can use joins,
+      <a href="sql-syntax.html#union" title="12.2.8.3. UNION Syntax"><code class="literal">UNION</code></a>, and subqueries. The
+      <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> need not even refer to any
+      tables. The following example defines a view that selects two
+      columns from another table, as well as an expression calculated
+      from those columns:
+    </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>CREATE TABLE t (qty INT, price INT);</code></strong>
+mysql&gt; <strong class="userinput"><code>INSERT INTO t VALUES(3, 50), (5, 60);</code></strong>
+mysql&gt; <strong class="userinput"><code>CREATE VIEW v AS SELECT qty, price, qty*price AS value FROM t;</code></strong>
+mysql&gt; <strong class="userinput"><code>SELECT * FROM v;</code></strong>
++------+-------+-------+
+| qty  | price | value |
++------+-------+-------+
+|    3 |    50 |   150 |
+|    5 |    60 |   300 |
++------+-------+-------+
+mysql&gt; <strong class="userinput"><code>SELECT * FROM v WHERE qty = 5;</code></strong>
++------+-------+-------+
+| qty  | price | value |
++------+-------+-------+
+|    5 |    60 |   300 |
++------+-------+-------+
+</pre></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="view-algorithms"></a>18.4.2. View Processing Algorithms</h3></div></div></div><a class="indexterm" name="id2317528"></a><p>
+      The optional <code class="literal">ALGORITHM</code> clause for
+      <a href="sql-syntax.html#create-view" title="12.1.12. CREATE VIEW Syntax"><code class="literal">CREATE VIEW</code></a> or
+      <a href="sql-syntax.html#alter-view" title="12.1.5. ALTER VIEW Syntax"><code class="literal">ALTER VIEW</code></a> is a MySQL extension to
+      standard SQL. It affects how MySQL processes the view.
+      <code class="literal">ALGORITHM</code> takes three values:
+      <code class="literal">MERGE</code>, <code class="literal">TEMPTABLE</code>, or
+      <code class="literal">UNDEFINED</code>. The default algorithm is
+      <code class="literal">UNDEFINED</code> if no <code class="literal">ALGORITHM</code>
+      clause is present.
+    </p><p>
+      For <code class="literal">MERGE</code>, the text of a statement that refers
+      to the view and the view definition are merged such that parts of
+      the view definition replace corresponding parts of the statement.
+    </p><p>
+      For <code class="literal">TEMPTABLE</code>, the results from the view are
+      retrieved into a temporary table, which then is used to execute
+      the statement.
+    </p><p>
+      For <code class="literal">UNDEFINED</code>, MySQL chooses which algorithm to
+      use. It prefers <code class="literal">MERGE</code> over
+      <code class="literal">TEMPTABLE</code> if possible, because
+      <code class="literal">MERGE</code> is usually more efficient and because a
+      view cannot be updatable if a temporary table is used.
+    </p><p>
+      A reason to choose <code class="literal">TEMPTABLE</code> explicitly is that
+      locks can be released on underlying tables after the temporary
+      table has been created and before it is used to finish processing
+      the statement. This might result in quicker lock release than the
+      <code class="literal">MERGE</code> algorithm so that other clients that use
+      the view are not blocked as long.
+    </p><p>
+      A view algorithm can be <code class="literal">UNDEFINED</code> for three
+      reasons:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          No <code class="literal">ALGORITHM</code> clause is present in the
+          <a href="sql-syntax.html#create-view" title="12.1.12. CREATE VIEW Syntax"><code class="literal">CREATE VIEW</code></a> statement.
+        </p></li><li><p>
+          The <a href="sql-syntax.html#create-view" title="12.1.12. CREATE VIEW Syntax"><code class="literal">CREATE VIEW</code></a> statement has
+          an explicit <code class="literal">ALGORITHM = UNDEFINED</code> clause.
+        </p></li><li><p>
+          <code class="literal">ALGORITHM = MERGE</code> is specified for a view
+          that can be processed only with a temporary table. In this
+          case, MySQL generates a warning and sets the algorithm to
+          <code class="literal">UNDEFINED</code>.
+        </p></li></ul></div><p>
+      As mentioned earlier, <code class="literal">MERGE</code> is handled by
+      merging corresponding parts of a view definition into the
+      statement that refers to the view. The following examples briefly
+      illustrate how the <code class="literal">MERGE</code> algorithm works. The
+      examples assume that there is a view <code class="literal">v_merge</code>
+      that has this definition:
+    </p><pre class="programlisting">CREATE ALGORITHM = MERGE VIEW v_merge (vc1, vc2) AS
+SELECT c1, c2 FROM t WHERE c3 &gt; 100;
+</pre><p>
+      Example 1: Suppose that we issue this statement:
+    </p><pre class="programlisting">SELECT * FROM v_merge;
+</pre><p>
+      MySQL handles the statement as follows:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          <code class="literal">v_merge</code> becomes <code class="literal">t</code>
+        </p></li><li><p>
+          <code class="literal">*</code> becomes <code class="literal">vc1, vc2</code>,
+          which corresponds to <code class="literal">c1, c2</code>
+        </p></li><li><p>
+          The view <code class="literal">WHERE</code> clause is added
+        </p></li></ul></div><p>
+      The resulting statement to be executed becomes:
+    </p><pre class="programlisting">SELECT c1, c2 FROM t WHERE c3 &gt; 100;
+</pre><p>
+      Example 2: Suppose that we issue this statement:
+    </p><pre class="programlisting">SELECT * FROM v_merge WHERE vc1 &lt; 100;
+</pre><p>
+      This statement is handled similarly to the previous one, except
+      that <code class="literal">vc1 &lt; 100</code> becomes <code class="literal">c1 &lt;
+      100</code> and the view <code class="literal">WHERE</code> clause is
+      added to the statement <code class="literal">WHERE</code> clause using an
+      <a href="functions.html#operator_and"><code class="literal">AND</code></a> connective (and parentheses are
+      added to make sure the parts of the clause are executed with
+      correct precedence). The resulting statement to be executed
+      becomes:
+    </p><pre class="programlisting">SELECT c1, c2 FROM t WHERE (c3 &gt; 100) AND (c1 &lt; 100);
+</pre><p>
+      Effectively, the statement to be executed has a
+      <code class="literal">WHERE</code> clause of this form:
+    </p><pre class="programlisting">WHERE (select WHERE) AND (view WHERE)
+</pre><p>
+      If the <code class="literal">MERGE</code> algorithm cannot be used, a
+      temporary table must be used instead. <code class="literal">MERGE</code>
+      cannot be used if the view contains any of the following
+      constructs:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          Aggregate functions (<a href="functions.html#function_sum"><code class="literal">SUM()</code></a>,
+          <a href="functions.html#function_min"><code class="literal">MIN()</code></a>,
+          <a href="functions.html#function_max"><code class="literal">MAX()</code></a>,
+          <a href="functions.html#function_count"><code class="literal">COUNT()</code></a>, and so forth)
+        </p></li><li><p>
+          <code class="literal">DISTINCT</code>
+        </p></li><li><p>
+          <code class="literal">GROUP BY</code>
+        </p></li><li><p>
+          <code class="literal">HAVING</code>
+        </p></li><li><p>
+          <code class="literal">LIMIT</code>
+        </p></li><li><p>
+          <a href="sql-syntax.html#union" title="12.2.8.3. UNION Syntax"><code class="literal">UNION</code></a> or
+          <a href="sql-syntax.html#union" title="12.2.8.3. UNION Syntax"><code class="literal">UNION ALL</code></a>
+        </p></li><li><p>
+          Subquery in the select list
+        </p></li><li><p>
+          Refers only to literal values (in this case, there is no
+          underlying table)
+        </p></li></ul></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="view-updatability"></a>18.4.3. Updatable and Insertable Views</h3></div></div></div><a class="indexterm" name="id2318083"></a><a class="indexterm" name="id2318092"></a><a class="indexterm" name="id2318104"></a><p>
+      Some views are updatable. That is, you can use them in statements
+      such as <a href="sql-syntax.html#update" title="12.2.11. UPDATE Syntax"><code class="literal">UPDATE</code></a>,
+      <a href="sql-syntax.html#delete" title="12.2.2. DELETE Syntax"><code class="literal">DELETE</code></a>, or
+      <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> to update the contents of
+      the underlying table. For a view to be updatable, there must be a
+      one-to-one relationship between the rows in the view and the rows
+      in the underlying table. There are also certain other constructs
+      that make a view nonupdatable. To be more specific, a view is not
+      updatable if it contains any of the following:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          Aggregate functions (<a href="functions.html#function_sum"><code class="literal">SUM()</code></a>,
+          <a href="functions.html#function_min"><code class="literal">MIN()</code></a>,
+          <a href="functions.html#function_max"><code class="literal">MAX()</code></a>,
+          <a href="functions.html#function_count"><code class="literal">COUNT()</code></a>, and so forth)
+        </p></li><li><p>
+          <code class="literal">DISTINCT</code>
+        </p></li><li><p>
+          <code class="literal">GROUP BY</code>
+        </p></li><li><p>
+          <code class="literal">HAVING</code>
+        </p></li><li><p>
+          <a href="sql-syntax.html#union" title="12.2.8.3. UNION Syntax"><code class="literal">UNION</code></a> or
+          <a href="sql-syntax.html#union" title="12.2.8.3. UNION Syntax"><code class="literal">UNION ALL</code></a>
+        </p></li><li><p>
+          Subquery in the select list
+        </p></li><li><p>
+          Certain joins (see additional join discussion later in this
+          section)
+        </p></li><li><p>
+          Nonupdatable view in the <code class="literal">FROM</code> clause
+        </p></li><li><p>
+          A subquery in the <code class="literal">WHERE</code> clause that refers
+          to a table in the <code class="literal">FROM</code> clause
+        </p></li><li><p>
+          Refers only to literal values (in this case, there is no
+          underlying table to update)
+        </p></li><li><p>
+          Uses <code class="literal">ALGORITHM = TEMPTABLE</code> (use of a
+          temporary table always makes a view nonupdatable)
+        </p></li><li><p>
+          Multiple references to any column of a base table.
+        </p></li></ul></div><p>
+      With respect to insertability (being updatable with
+      <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> statements), an updatable
+      view is insertable if it also satisfies these additional
+      requirements for the view columns:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          There must be no duplicate view column names.
+        </p></li><li><p>
+          The view must contain all columns in the base table that do
+          not have a default value.
+        </p></li><li><p>
+          The view columns must be simple column references and not
+          derived columns. A derived column is one that is not a simple
+          column reference but is derived from an expression. These are
+          examples of derived columns:
+        </p><pre class="programlisting">3.14159
+col1 + 3
+UPPER(col2)
+col3 / col4
+(<em class="replaceable"><code>subquery</code></em>)
+</pre></li></ul></div><p>
+      A view that has a mix of simple column references and derived
+      columns is not insertable, but it can be updatable if you update
+      only those columns that are not derived. Consider this view:
+    </p><pre class="programlisting">CREATE VIEW v AS SELECT col1, 1 AS col2 FROM t;
+</pre><p>
+      This view is not insertable because <code class="literal">col2</code> is
+      derived from an expression. But it is updatable if the update does
+      not try to update <code class="literal">col2</code>. This update is
+      allowable:
+    </p><pre class="programlisting">UPDATE v SET col1 = 0;
+</pre><p>
+      This update is not allowable because it attempts to update a
+      derived column:
+    </p><pre class="programlisting">UPDATE v SET col2 = 0;
+</pre><p>
+      It is sometimes possible for a multiple-table view to be
+      updatable, assuming that it can be processed with the
+      <code class="literal">MERGE</code> algorithm. For this to work, the view
+      must use an inner join (not an outer join or a
+      <a href="sql-syntax.html#union" title="12.2.8.3. UNION Syntax"><code class="literal">UNION</code></a>). Also, only a single table
+      in the view definition can be updated, so the
+      <code class="literal">SET</code> clause must name only columns from one of
+      the tables in the view. Views that use
+      <a href="sql-syntax.html#union" title="12.2.8.3. UNION Syntax"><code class="literal">UNION ALL</code></a> are
+      disallowed even though they might be theoretically updatable,
+      because the implementation uses temporary tables to process them.
+    </p><p>
+      For a multiple-table updatable view,
+      <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> can work if it inserts into
+      a single table. <a href="sql-syntax.html#delete" title="12.2.2. DELETE Syntax"><code class="literal">DELETE</code></a> is not
+      supported.
+    </p><p>
+      <a href="sql-syntax.html#insert-delayed" title="12.2.5.2. INSERT DELAYED Syntax"><code class="literal">INSERT DELAYED</code></a> is not supported for
+      views.
+    </p><p>
+      If a table contains an <code class="literal">AUTO_INCREMENT</code> column,
+      inserting into an insertable view on the table that does not
+      include the <code class="literal">AUTO_INCREMENT</code> column does not
+      change the value of
+      <a href="functions.html#function_last-insert-id"><code class="literal">LAST_INSERT_ID()</code></a>, because the side
+      effects of inserting default values into columns not part of the
+      view should not be visible.
+    </p><p>
+      The <code class="literal">WITH CHECK OPTION</code> clause can be given for
+      an updatable view to prevent inserts or updates to rows except
+      those for which the <code class="literal">WHERE</code> clause in the
+      <em class="replaceable"><code>select_statement</code></em> is true.
+    </p><p>
+      In a <code class="literal">WITH CHECK OPTION</code> clause for an updatable
+      view, the <code class="literal">LOCAL</code> and <code class="literal">CASCADED</code>
+      keywords determine the scope of check testing when the view is
+      defined in terms of another view. The <code class="literal">LOCAL</code>
+      keyword restricts the <code class="literal">CHECK OPTION</code> only to the
+      view being defined. <code class="literal">CASCADED</code> causes the checks
+      for underlying views to be evaluated as well. When neither keyword
+      is given, the default is <code class="literal">CASCADED</code>. Consider the
+      definitions for the following table and set of views:
+    </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>CREATE TABLE t1 (a INT);</code></strong>
+mysql&gt; <strong class="userinput"><code>CREATE VIEW v1 AS SELECT * FROM t1 WHERE a &lt; 2</code></strong>
+    -&gt; <strong class="userinput"><code>WITH CHECK OPTION;</code></strong>
+mysql&gt; <strong class="userinput"><code>CREATE VIEW v2 AS SELECT * FROM v1 WHERE a &gt; 0</code></strong>
+    -&gt; <strong class="userinput"><code>WITH LOCAL CHECK OPTION;</code></strong>
+mysql&gt; <strong class="userinput"><code>CREATE VIEW v3 AS SELECT * FROM v1 WHERE a &gt; 0</code></strong>
+    -&gt; <strong class="userinput"><code>WITH CASCADED CHECK OPTION;</code></strong>
+</pre><p>
+      Here the <code class="literal">v2</code> and <code class="literal">v3</code> views are
+      defined in terms of another view, <code class="literal">v1</code>.
+      <code class="literal">v2</code> has a <code class="literal">LOCAL</code> check option,
+      so inserts are tested only against the <code class="literal">v2</code>
+      check. <code class="literal">v3</code> has a <code class="literal">CASCADED</code>
+      check option, so inserts are tested not only against its own
+      check, but against those of underlying views. The following
+      statements illustrate these differences:
+    </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>INSERT INTO v2 VALUES (2);</code></strong>
+Query OK, 1 row affected (0.00 sec)
+mysql&gt; <strong class="userinput"><code>INSERT INTO v3 VALUES (2);</code></strong>
+ERROR 1369 (HY000): CHECK OPTION failed 'test.v3'
+</pre><p>
+      MySQL sets a flag, called the view updatability flag, at
+      <a href="sql-syntax.html#create-view" title="12.1.12. CREATE VIEW Syntax"><code class="literal">CREATE VIEW</code></a> time. The flag is set
+      to <code class="literal">YES</code> (true) if
+      <a href="sql-syntax.html#update" title="12.2.11. UPDATE Syntax"><code class="literal">UPDATE</code></a> and
+      <a href="sql-syntax.html#delete" title="12.2.2. DELETE Syntax"><code class="literal">DELETE</code></a> (and similar operations) are
+      legal for the view. Otherwise, the flag is set to
+      <code class="literal">NO</code> (false). The <code class="literal">IS_UPDATABLE</code>
+      column in the
+      <a href="information-schema.html#views-table" title="19.15. The INFORMATION_SCHEMA VIEWS Table"><code class="literal">INFORMATION_SCHEMA.VIEWS</code></a> table
+      displays the status of this flag. It means that the server always
+      knows whether a view is updatable. If the view is not updatable,
+      statements such <a href="sql-syntax.html#update" title="12.2.11. UPDATE Syntax"><code class="literal">UPDATE</code></a>,
+      <a href="sql-syntax.html#delete" title="12.2.2. DELETE Syntax"><code class="literal">DELETE</code></a>, and
+      <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> are illegal and will be
+      rejected. (Note that even if a view is updatable, it might not be
+      possible to insert into it, as described elsewhere in this
+      section.)
+    </p><p>
+      The updatability of views may be affected by the value of the
+      <a href="server-administration.html#sysvar_updatable_views_with_limit"><code class="literal">updatable_views_with_limit</code></a> system
+      variable. See <a href="server-administration.html#server-system-variables" title="5.1.3. Server System Variables">Section 5.1.3, “Server System Variables”</a>.
+    </p></div><div class="section" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="view-metadata"></a>18.4.4. View Metadata</h3></div></div></div><a class="indexterm" name="id2318785"></a><a class="indexterm" name="id2318797"></a><p>
+      Metadata about views can be obtained as follows:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          Query the <a href="information-schema.html#views-table" title="19.15. The INFORMATION_SCHEMA VIEWS Table"><code class="literal">VIEWS</code></a> table of the
+          <code class="literal">INFORMATION_SCHEMA</code> database. See
+          <a href="information-schema.html#views-table" title="19.15. The INFORMATION_SCHEMA VIEWS Table">Section 19.15, “The <code class="literal">INFORMATION_SCHEMA VIEWS</code> Table”</a>.
+        </p></li><li><p>
+          Use the <a href="sql-syntax.html#show-create-view" title="12.5.5.10. SHOW CREATE VIEW Syntax"><code class="literal">SHOW CREATE VIEW</code></a>
+          statement. See <a href="sql-syntax.html#show-create-view" title="12.5.5.10. SHOW CREATE VIEW Syntax">Section 12.5.5.10, “<code class="literal">SHOW CREATE VIEW</code> Syntax”</a>.
+        </p></li></ul></div></div></div><div class="section" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="stored-programs-logging"></a>18.5. Binary Logging of Stored Programs</h2></div></div></div><p>
+      The binary log contains information about SQL statements that
+      modify database contents. This information is stored in the form
+      of “<span class="quote">events</span>” that describe the modifications. The
+      binary log has two important purposes:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          For replication, the binary log is used on master replication
+          servers as a record of the statements to be sent to slave
+          servers. The master server sends the events contained in its
+          binary log to its slaves, which execute those events to make
+          the same data changes that were made on the master. See
+          <a href="replication.html#replication-implementation" title="16.4. Replication Implementation Overview">Section 16.4, “Replication Implementation Overview”</a>.
+        </p></li><li><p>
+          Certain data recovery operations require use of the binary
+          log. After a backup file has been restored, the events in the
+          binary log that were recorded after the backup was made are
+          re-executed. These events bring databases up to date from the
+          point of the backup. See
+          <a href="backup-and-recovery.html#recovery-from-backups" title="6.2.2. Using Backups for Recovery">Section 6.2.2, “Using Backups for Recovery”</a>.
+        </p></li></ul></div><p>
+      However, there are certain binary logging issues that apply with
+      respect to stored programs (stored procedures and functions, and
+      triggers):
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          Logging occurs at the statement level. In some cases, it is
+          possible that a statement will affect different sets of rows
+          on a master and a slave.
+        </p></li><li><p>
+          Replicated statements executed on a slave are processed by the
+          slave SQL thread, which has full privileges. It is possible
+          for a procedure to follow different execution paths on master
+          and slave servers, so a user can write a routine containing a
+          dangerous statement that will execute only on the slave where
+          it is processed by a thread that has full privileges.
+        </p></li><li><p>
+          If a stored program that modifies data is nondeterministic, it
+          is not repeatable. This can result in different data on a
+          master and slave, or cause restored data to differ from the
+          original data.
+        </p></li></ul></div><p>
+      This section describes how MySQL 5.0 handles binary
+      logging for stored programs. The discussion first states the
+      current conditions that the implementation places on the use of
+      stored programs, and what you can do to avoid problems. Then it
+      summarizes the changes that have taken place in the logging
+      implementation. Finally, implementation details are given that
+      provide information about when and why various changes were made.
+      These details show how several aspects of the current logging
+      behavior were implemented in response to shortcomings identified
+      in earlier versions of MySQL.
+    </p><p>
+      In general, the issues described here occur due to the fact that
+      binary logging occurs at the SQL statement level. MySQL
+      5.1 implements row-level binary logging, which solves or
+      alleviates these issues because the log contains changes made to
+      individual rows as a result of executing SQL statements.
+    </p><p>
+      Unless noted otherwise, the remarks here assume that you have
+      enabled binary logging by starting the server with the
+      <a href="replication.html#option_mysqld_log-bin"><code class="option">--log-bin</code></a> option. (See
+      <a href="server-administration.html#binary-log" title="5.2.3. The Binary Log">Section 5.2.3, “The Binary Log”</a>.) If the binary log is not enabled,
+      replication is not possible, nor is the binary log available for
+      data recovery.
+    </p><p>
+      The current conditions on the use of stored functions in MySQL
+      5.0 can be summarized as follows. These conditions do
+      not apply to stored procedures and they do not apply unless binary
+      logging is enabled.
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          To create or alter a stored function, you must have the
+          <a href="server-administration.html#priv_super"><code class="literal">SUPER</code></a> privilege, in addition to
+          the <a href="server-administration.html#priv_create-routine"><code class="literal">CREATE ROUTINE</code></a> or
+          <a href="server-administration.html#priv_alter-routine"><code class="literal">ALTER ROUTINE</code></a> privilege that is
+          normally required.
+        </p></li><li><p>
+          When you create a stored function, you must declare either
+          that it is deterministic or that it does not modify data.
+          Otherwise, it may be unsafe for data recovery or replication.
+        </p><p>
+          By default, for a <a href="sql-syntax.html#create-function" title="12.1.7. CREATE FUNCTION Syntax"><code class="literal">CREATE
+          FUNCTION</code></a> statement to be accepted, at least one of
+          <code class="literal">DETERMINISTIC</code>, <code class="literal">NO SQL</code>,
+          or <code class="literal">READS SQL DATA</code> must be specified
+          explicitly. Otherwise an error occurs:
+        </p><pre class="programlisting">ERROR 1418 (HY000): This function has none of DETERMINISTIC, NO SQL,
+or READS SQL DATA in its declaration and binary logging is enabled
+(you *might* want to use the less safe log_bin_trust_function_creators
+variable)
+</pre><p>
+          This function is deterministic (and does not modify data), so
+          it is safe:
+        </p><pre class="programlisting">CREATE FUNCTION f1(i INT)
+RETURNS INT
+DETERMINISTIC
+READS SQL DATA
+BEGIN
+  RETURN i;
+END;
+</pre><p>
+          This function uses <a href="functions.html#function_uuid"><code class="literal">UUID()</code></a>,
+          which is not deterministic, so the function also is not
+          deterministic and is not safe:
+        </p><pre class="programlisting">CREATE FUNCTION f2()
+RETURNS CHAR(36) CHARACTER SET utf8
+BEGIN
+  RETURN UUID();
+END;
+</pre><p>
+          This function modifies data, so it may not be safe:
+        </p><pre class="programlisting">CREATE FUNCTION f3(p_id INT)
+RETURNS INT
+BEGIN
+  UPDATE t SET modtime = NOW() WHERE id = p_id;
+  RETURN ROW_COUNT();
+END;
+</pre><p>
+          Assessment of the nature of a function is based on the
+          “<span class="quote">honesty</span>” of the creator: MySQL does not check
+          that a function declared <code class="literal">DETERMINISTIC</code> is
+          free of statements that produce nondeterministic results.
+        </p></li><li><p>
+          To relax the preceding conditions on function creation (that
+          you must have the <a href="server-administration.html#priv_super"><code class="literal">SUPER</code></a>
+          privilege and that a function must be declared deterministic
+          or to not modify data), set the global
+          <a href="server-administration.html#sysvar_log_bin_trust_function_creators"><code class="literal">log_bin_trust_function_creators</code></a>
+          system variable to 1. By default, this variable has a value of
+          0, but you can change it like this:
+        </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>SET GLOBAL log_bin_trust_function_creators = 1;</code></strong>
+</pre><p>
+          You can also set this variable by using the
+          <a href="replication.html#option_mysqld_log-bin-trust-function-creators"><code class="option">--log-bin-trust-function-creators=1</code></a>
+          option when starting the server.
+        </p><p>
+          If binary logging is not enabled,
+          <a href="server-administration.html#sysvar_log_bin_trust_function_creators"><code class="literal">log_bin_trust_function_creators</code></a>
+          does not apply and <a href="server-administration.html#priv_super"><code class="literal">SUPER</code></a> is not
+          required for routine creation.
+        </p></li><li><p>
+          For information about built-in functions that may be unsafe
+          for replication (and thus cause stored functions that use them
+          to be unsafe as well), see
+          <a href="replication.html#replication-features" title="16.3.1. Replication Features and Issues">Section 16.3.1, “Replication Features and Issues”</a>.
+        </p></li></ul></div><p>
+      Triggers are similar to stored functions, so the preceding remarks
+      regarding functions also apply to triggers with the following
+      exception: <a href="sql-syntax.html#create-trigger" title="12.1.11. CREATE TRIGGER Syntax"><code class="literal">CREATE TRIGGER</code></a> does not
+      have an optional <code class="literal">DETERMINISTIC</code> characteristic,
+      so triggers are assumed to be always deterministic. However, this
+      assumption might in some cases be invalid. For example, the
+      <a href="functions.html#function_uuid"><code class="literal">UUID()</code></a> function is nondeterministic
+      (and does not replicate). You should be careful about using such
+      functions in triggers.
+    </p><p>
+      Triggers can update tables, so error messages similar to those for
+      stored functions occur with <a href="sql-syntax.html#create-trigger" title="12.1.11. CREATE TRIGGER Syntax"><code class="literal">CREATE
+      TRIGGER</code></a> if you do not have the required privileges. On
+      the slave side, the slave uses the trigger
+      <code class="literal">DEFINER</code> attribute to determine which user is
+      considered to be the creator of the trigger.
+    </p><p>
+      The rest of this section provides details on the development of
+      stored routine logging. You need not read it unless you are
+      interested in the background on the rationale for the current
+      logging-related conditions on stored routine use.
+    </p><p>
+      The development of stored routine logging in MySQL 5.0 can be
+      summarized as follows:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          Before MySQL 5.0.6: In the initial implementation of stored
+          routine logging, statements that create stored routines and
+          <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements are not logged.
+          These omissions can cause problems for replication and data
+          recovery.
+        </p></li><li><p>
+          MySQL 5.0.6: Statements that create stored routines and
+          <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements are logged.
+          Stored function invocations are logged when they occur in
+          statements that update data (because those statements are
+          logged). However, function invocations are not logged when
+          they occur in statements such as
+          <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> that do not change data,
+          even if a data change occurs within a function itself; this
+          can cause problems. Under some circumstances, functions and
+          procedures can have different effects if executed at different
+          times or on different (master and slave) machines, and thus
+          can be unsafe for data recovery or replication. To handle
+          this, measures are implemented to allow identification of safe
+          routines and to prevent creation of unsafe routines except by
+          users with sufficient privileges.
+        </p></li><li><p>
+          MySQL 5.0.12: For stored functions, when a function invocation
+          that changes data occurs within a nonlogged statement such as
+          <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a>, the server logs a
+          <code class="literal">DO <em class="replaceable"><code>func_name</code></em>()</code>
+          statement that invokes the function so that the function gets
+          executed during data recovery or replication to slave servers.
+          For stored procedures, the server does not log
+          <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements. Instead, it
+          logs individual statements within a procedure that are
+          executed as a result of a <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a>.
+          This eliminates problems that may occur when a procedure would
+          follow a different execution path on a slave than on the
+          master.
+        </p></li><li><p>
+          MySQL 5.0.16: The procedure logging changes made in 5.0.12
+          allow the conditions on unsafe routines to be relaxed for
+          stored procedures. Consequently, the user interface for
+          controlling these conditions is revised to apply only to
+          functions. Procedure creators are no longer bound by them.
+        </p></li><li><p>
+          MySQL 5.0.17: Logging of stored functions as <code class="literal">DO
+          <em class="replaceable"><code>func_name</code></em>()</code> statements
+          (per the changes made in 5.0.12) are logged as <code class="literal">SELECT
+          <em class="replaceable"><code>func_name</code></em>()</code> statements
+          instead for better control over error checking.
+        </p></li></ul></div><p>
+      <span class="bold"><strong>Routine logging before MySQL
+      5.0.6:</strong></span> Statements that create and use stored routines
+      are not written to the binary log, but statements invoked within
+      stored routines are logged. Suppose that you issue the following
+      statements:
+    </p><pre class="programlisting">CREATE PROCEDURE mysp INSERT INTO t VALUES(1);
+CALL mysp();
+</pre><p>
+      For this example, only the <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a>
+      statement appears in the binary log. The
+      <a href="sql-syntax.html#create-procedure" title="12.1.9. CREATE PROCEDURE and
+      CREATE FUNCTION Syntax"><code class="literal">CREATE PROCEDURE</code></a> and
+      <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements do not appear. The
+      absence of routine-related statements in the binary log means that
+      stored routines are not replicated correctly. It also means that
+      for a data recovery operation, re-executing events in the binary
+      log does not recover stored routines.
+    </p><p>
+      <span class="bold"><strong>Routine logging changes in MySQL
+      5.0.6:</strong></span> To address the absence of logging for stored
+      routine creation and <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a>
+      statements (and the consequent replication and data recovery
+      concerns), the characteristics of binary logging for stored
+      routines were changed as described here. (Some of the items in the
+      following list point out issues that are dealt with in later
+      versions.)
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          The server writes <a href="sql-syntax.html#create-procedure" title="12.1.9. CREATE PROCEDURE and
+      CREATE FUNCTION Syntax"><code class="literal">CREATE
+          PROCEDURE</code></a>, <a href="sql-syntax.html#create-function" title="12.1.7. CREATE FUNCTION Syntax"><code class="literal">CREATE
+          FUNCTION</code></a>, <a href="sql-syntax.html#alter-procedure" title="12.1.3. ALTER PROCEDURE Syntax"><code class="literal">ALTER
+          PROCEDURE</code></a>, <a href="sql-syntax.html#alter-function" title="12.1.2. ALTER FUNCTION Syntax"><code class="literal">ALTER
+          FUNCTION</code></a>, <a href="sql-syntax.html#drop-procedure" title="12.1.16. DROP PROCEDURE and
+      DROP FUNCTION Syntax"><code class="literal">DROP
+          PROCEDURE</code></a>, and <a href="sql-syntax.html#drop-function" title="12.1.14. DROP FUNCTION Syntax"><code class="literal">DROP
+          FUNCTION</code></a> statements to the binary log. Also, the
+          server logs <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements,
+          not the statements executed within procedures. Suppose that
+          you issue the following statements:
+        </p><pre class="programlisting">CREATE PROCEDURE mysp INSERT INTO t VALUES(1);
+CALL mysp();
+</pre><p>
+          For this example, the <a href="sql-syntax.html#create-procedure" title="12.1.9. CREATE PROCEDURE and
+      CREATE FUNCTION Syntax"><code class="literal">CREATE
+          PROCEDURE</code></a> and <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a>
+          statements appear in the binary log, but the
+          <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a> statement does not
+          appear. This corrects the problem that occurred before MySQL
+          5.0.6 such that only the <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a>
+          was logged.
+        </p></li><li><p>
+          Logging <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements has a
+          security implication for replication, which arises from two
+          factors:
+        </p><div class="itemizedlist"><ul type="circle"><li><p>
+              Statements executed on a slave are processed by the slave
+              SQL thread which has full privileges.
+            </p></li><li><p>
+              It is possible for a procedure to follow different
+              execution paths on master and slave servers.
+            </p></li></ul></div><p>
+          The implication is that although a user must have the
+          <a href="server-administration.html#priv_create-routine"><code class="literal">CREATE ROUTINE</code></a> privilege to
+          create a routine, the user can write a routine containing a
+          dangerous statement that will execute only on the slave where
+          it is processed by a thread that has full privileges. For
+          example, if the master and slave servers have server ID values
+          of 1 and 2, respectively, a user on the master server could
+          create and invoke an unsafe procedure
+          <code class="literal">unsafe_sp()</code> as follows:
+        </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>delimiter //</code></strong>
+mysql&gt; <strong class="userinput"><code>CREATE PROCEDURE unsafe_sp ()</code></strong>
+    -&gt; <strong class="userinput"><code>BEGIN</code></strong>
+    -&gt;   <strong class="userinput"><code>IF @@server_id=2 THEN DROP DATABASE accounting; END IF;</code></strong>
+    -&gt; <strong class="userinput"><code>END;</code></strong>
+    -&gt; <strong class="userinput"><code>//</code></strong>
+mysql&gt; <strong class="userinput"><code>delimiter ;</code></strong>
+mysql&gt; <strong class="userinput"><code>CALL unsafe_sp();</code></strong>
+</pre><p>
+          The <a href="sql-syntax.html#create-procedure" title="12.1.9. CREATE PROCEDURE and
+      CREATE FUNCTION Syntax"><code class="literal">CREATE PROCEDURE</code></a> and
+          <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements are written to
+          the binary log, so the slave will execute them. Because the
+          slave SQL thread has full privileges, it will execute the
+          <a href="sql-syntax.html#drop-database" title="12.1.13. DROP DATABASE Syntax"><code class="literal">DROP DATABASE</code></a> statement that
+          drops the <code class="literal">accounting</code> database. Thus, the
+          <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statement has different
+          effects on the master and slave and is not replication-safe.
+        </p><p>
+          The preceding example uses a stored procedure, but similar
+          problems can occur for stored functions that are invoked
+          within statements that are written to the binary log: Function
+          invocation has different effects on the master and slave.
+        </p><p>
+          To guard against this danger for servers that have binary
+          logging enabled, MySQL 5.0.6 introduces the requirement that
+          stored procedure and function creators must have the
+          <a href="server-administration.html#priv_super"><code class="literal">SUPER</code></a> privilege, in addition to
+          the usual <a href="server-administration.html#priv_create-routine"><code class="literal">CREATE ROUTINE</code></a>
+          privilege that is required. Similarly, to use
+          <a href="sql-syntax.html#alter-procedure" title="12.1.3. ALTER PROCEDURE Syntax"><code class="literal">ALTER PROCEDURE</code></a> or
+          <a href="sql-syntax.html#alter-function" title="12.1.2. ALTER FUNCTION Syntax"><code class="literal">ALTER FUNCTION</code></a>, you must have
+          the <a href="server-administration.html#priv_super"><code class="literal">SUPER</code></a> privilege in addition
+          to the <a href="server-administration.html#priv_alter-routine"><code class="literal">ALTER ROUTINE</code></a> privilege.
+          Without the <a href="server-administration.html#priv_super"><code class="literal">SUPER</code></a> privilege, an
+          error will occur:
+        </p><pre class="programlisting">ERROR 1419 (HY000): You do not have the SUPER privilege and
+binary logging is enabled (you *might* want to use the less safe
+log_bin_trust_routine_creators variable)
+</pre><p>
+          If you do not want to require routine creators to have the
+          <a href="server-administration.html#priv_super"><code class="literal">SUPER</code></a> privilege (for example,
+          if all users with the <a href="server-administration.html#priv_create-routine"><code class="literal">CREATE
+          ROUTINE</code></a> privilege on your system are experienced
+          application developers), set the global
+          <code class="literal">log_bin_trust_routine_creators</code> system
+          variable to 1. You can also set this variable by using the
+          <a href="replication.html#option_mysqld_log-bin-trust-routine-creators"><code class="option">--log-bin-trust-routine-creators=1</code></a>
+          option when starting the server. If binary logging is not
+          enabled, <code class="literal">log_bin_trust_routine_creators</code>
+          does not apply and <a href="server-administration.html#priv_super"><code class="literal">SUPER</code></a> is not
+          required for routine creation.
+        </p></li><li><p>
+          If a routine that performs updates is nondeterministic, it is
+          not repeatable. This can have two undesirable effects:
+        </p><div class="itemizedlist"><ul type="circle"><li><p>
+              It will make a slave different from the master.
+            </p></li><li><p>
+              Restored data will be different from the original data.
+            </p></li></ul></div><p>
+          To deal with these problems, MySQL enforces the following
+          requirement: On a master server, creation and alteration of a
+          routine is refused unless you declare the routine to be
+          deterministic or to not modify data. Two sets of routine
+          characteristics apply here:
+        </p><div class="itemizedlist"><ul type="circle"><li><p>
+              The <code class="literal">DETERMINISTIC</code> and <code class="literal">NOT
+              DETERMINISTIC</code> characteristics indicate whether a
+              routine always produces the same result for given inputs.
+              The default is <code class="literal">NOT DETERMINISTIC</code> if
+              neither characteristic is given. To declare that a routine
+              is deterministic, you must specify
+              <code class="literal">DETERMINISTIC</code> explicitly.
+            </p></li><li><p>
+              The <code class="literal">CONTAINS SQL</code>, <code class="literal">NO
+              SQL</code>, <code class="literal">READS SQL DATA</code>, and
+              <code class="literal">MODIFIES SQL DATA</code> characteristics
+              provide information about whether the routine reads or
+              writes data. Either <code class="literal">NO SQL</code> or
+              <code class="literal">READS SQL DATA</code> indicates that a routine
+              does not change data, but you must specify one of these
+              explicitly because the default is <code class="literal">CONTAINS
+              SQL</code> if no characteristic is given.
+            </p></li></ul></div><p>
+          By default, for a <a href="sql-syntax.html#create-procedure" title="12.1.9. CREATE PROCEDURE and
+      CREATE FUNCTION Syntax"><code class="literal">CREATE
+          PROCEDURE</code></a> or <a href="sql-syntax.html#create-function" title="12.1.7. CREATE FUNCTION Syntax"><code class="literal">CREATE
+          FUNCTION</code></a> statement to be accepted, at least one of
+          <code class="literal">DETERMINISTIC</code>, <code class="literal">NO SQL</code>,
+          or <code class="literal">READS SQL DATA</code> must be specified
+          explicitly. Otherwise an error occurs:
+        </p><pre class="programlisting">ERROR 1418 (HY000): This routine has none of DETERMINISTIC, NO SQL,
+or READS SQL DATA in its declaration and binary logging is enabled
+(you *might* want to use the less safe log_bin_trust_routine_creators
+variable)
+</pre><p>
+          If you set <code class="literal">log_bin_trust_routine_creators</code>
+          to 1, the requirement that routines be deterministic or not
+          modify data is dropped.
+        </p></li><li><p>
+          A <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statement is written to
+          the binary log if the routine returns no error, but not
+          otherwise. When a routine that modifies data fails, you get
+          this warning:
+        </p><pre class="programlisting">ERROR 1417 (HY000): A routine failed and has neither NO SQL nor
+READS SQL DATA in its declaration and binary logging is enabled; if
+non-transactional tables were updated, the binary log will miss their
+changes
+</pre><p>
+          This logging behavior has the potential to cause problems. If
+          a routine partly modifies a nontransactional table (such as a
+          <code class="literal">MyISAM</code> table) and returns an error, the
+          binary log will not reflect these changes. To protect against
+          this, you should use transactional tables in the routine and
+          modify the tables within transactions.
+        </p><p>
+          If you use the <code class="literal">IGNORE</code> keyword with
+          <a href="sql-syntax.html#insert" title="12.2.5. INSERT Syntax"><code class="literal">INSERT</code></a>,
+          <a href="sql-syntax.html#delete" title="12.2.2. DELETE Syntax"><code class="literal">DELETE</code></a>, or
+          <a href="sql-syntax.html#update" title="12.2.11. UPDATE Syntax"><code class="literal">UPDATE</code></a> to ignore errors within
+          a routine, a partial update might occur but no error will
+          result. Such statements are logged and they replicate
+          normally.
+        </p></li><li><p>
+          Although statements normally are not written to the binary log
+          if they are rolled back, <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a>
+          statements are logged even when they occur within a
+          rolled-back transaction. This can result in a
+          <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> being rolled back on the
+          master but executed on slaves.
+        </p></li><li><p>
+          If a stored function is invoked within a statement such as
+          <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> that does not modify
+          data, execution of the function is not written to the binary
+          log, even if the function itself modifies data. This logging
+          behavior has the potential to cause problems. Suppose that a
+          function <code class="literal">myfunc()</code> is defined as follows:
+        </p><pre class="programlisting">CREATE FUNCTION myfunc () RETURNS INT DETERMINISTIC
+BEGIN
+  INSERT INTO t (i) VALUES(1);
+  RETURN 0;
+END;
+</pre><p>
+          Given that definition, the following statement is not written
+          to the binary log because it is a
+          <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a>. Nevertheless, it
+          modifies the table <code class="literal">t</code> because
+          <code class="literal">myfunc()</code> modifies <code class="literal">t</code>:
+        </p><pre class="programlisting">SELECT myfunc();
+</pre><p>
+          A workaround for this problem is to invoke functions that do
+          updates only within statements that do updates (and which
+          therefore are written to the binary log). Note that although
+          the <a href="sql-syntax.html#do" title="12.2.3. DO Syntax"><code class="literal">DO</code></a> statement sometimes is
+          executed for the side effect of evaluating an expression,
+          <a href="sql-syntax.html#do" title="12.2.3. DO Syntax"><code class="literal">DO</code></a> is not a workaround here
+          because it is not written to the binary log.
+        </p></li><li><p>
+          On slave servers, <code class="option">--replicate-*-table</code> rules
+          do not apply to <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements
+          or to statements within stored routines. These statements are
+          always replicated. If such statements contain references to
+          tables that do not exist on the slave, they could have
+          undesirable effects when executed on the slave.
+        </p></li></ul></div><p>
+      <span class="bold"><strong>Routine logging changes in MySQL
+      5.0.12:</strong></span> The changes in 5.0.12 address several problems
+      that were present in earlier versions:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          Stored function invocations in nonlogged statements such as
+          <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> were not being logged,
+          even when a function itself changed data.
+        </p></li><li><p>
+          Stored procedure logging at the
+          <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> level could cause
+          different effects on a master and slave if a procedure took
+          different execution paths on the two machines.
+        </p></li><li><p>
+          <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements were logged
+          even when they occurred within a rolled-back transaction.
+        </p></li></ul></div><p>
+      To deal with these issues, MySQL 5.0.12 implements the following
+      changes to function and procedure logging:
+    </p><div class="itemizedlist"><ul type="disc"><li><p>
+          A stored function invocation is logged as a
+          <a href="sql-syntax.html#do" title="12.2.3. DO Syntax"><code class="literal">DO</code></a> statement if the function
+          changes data and occurs within a statement that would not
+          otherwise be logged. This corrects the problem of
+          nonreplication of data changes that result from use of stored
+          functions in nonlogged statements. For example,
+          <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> statements are not
+          written to the binary log, but a
+          <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> might invoke a stored
+          function that makes changes. To handle this, a <code class="literal">DO
+          <em class="replaceable"><code>func_name</code></em>()</code> statement is
+          written to the binary log when the given function makes a
+          change. Suppose that the following statements are executed on
+          the master:
+        </p><pre class="programlisting">CREATE FUNCTION f1(a INT) RETURNS INT
+BEGIN
+  IF (a &lt; 3) THEN
+    INSERT INTO t2 VALUES (a);
+  END IF;
+  RETURN 0;
+END;
+
+CREATE TABLE t1 (a INT);
+INSERT INTO t1 VALUES (1),(2),(3);
+
+SELECT f1(a) FROM t1;
+</pre><p>
+          When the <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> statement
+          executes, the function <code class="literal">f1()</code> is invoked
+          three times. Two of those invocations insert a row, and MySQL
+          logs a <a href="sql-syntax.html#do" title="12.2.3. DO Syntax"><code class="literal">DO</code></a> statement for each of
+          them. That is, MySQL writes the following statements to the
+          binary log:
+        </p><pre class="programlisting">DO f1(1);
+DO f1(2);
+</pre><p>
+          The server also logs a <a href="sql-syntax.html#do" title="12.2.3. DO Syntax"><code class="literal">DO</code></a>
+          statement for a stored function invocation when the function
+          invokes a stored procedure that causes an error. In this case,
+          the server writes the <a href="sql-syntax.html#do" title="12.2.3. DO Syntax"><code class="literal">DO</code></a>
+          statement to the log along with the expected error code. On
+          the slave, if the same error occurs, that is the expected
+          result and replication continues. Otherwise, replication
+          stops.
+        </p><p>
+          Note: See later in this section for changes made in MySQL
+          5.0.19: These logged <code class="literal">DO
+          <em class="replaceable"><code>func_name</code></em>()</code> statements
+          are logged as <code class="literal">SELECT
+          <em class="replaceable"><code>func_name</code></em>()</code> statements
+          instead.
+        </p></li><li><p>
+          Stored procedure calls are logged at the statement level
+          rather than at the <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> level.
+          That is, the server does not log the
+          <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statement, it logs those
+          statements within the procedure that actually execute. As a
+          result, the same changes that occur on the master will be
+          observed on slave servers. This eliminates the problems that
+          could result from a procedure having different execution paths
+          on different machines. For example, the
+          <a href="sql-syntax.html#drop-database" title="12.1.13. DROP DATABASE Syntax"><code class="literal">DROP DATABASE</code></a> problem shown
+          earlier for the <code class="literal">unsafe_sp()</code> procedure does
+          not occur and the routine is no longer replication-unsafe
+          because it has the same effect on master and slave servers.
+        </p><p>
+          In general, statements executed within a stored procedure are
+          written to the binary log using the same rules that would
+          apply were the statements to be executed in standalone
+          fashion. Some special care is taken when logging procedure
+          statements because statement execution within procedures is
+          not quite the same as in nonprocedure context:
+        </p><div class="itemizedlist"><ul type="circle"><li><p>
+              <a class="indexterm" name="id2320409"></a>
+
+              A statement to be logged might contain references to local
+              procedure variables. These variables do not exist outside
+              of stored procedure context, so a statement that refers to
+              such a variable cannot be logged literally. Instead, each
+              reference to a local variable is replaced by this
+              construct for logging purposes:
+            </p><pre class="programlisting">NAME_CONST(<em class="replaceable"><code>var_name</code></em>, <em class="replaceable"><code>var_value</code></em>)
+</pre><p>
+              <em class="replaceable"><code>var_name</code></em> is the local variable
+              name, and <em class="replaceable"><code>var_value</code></em> is a
+              constant indicating the value that the variable has at the
+              time the statement is logged.
+              <a href="functions.html#function_name-const"><code class="literal">NAME_CONST()</code></a> has a value of
+              <em class="replaceable"><code>var_value</code></em>, and a
+              “<span class="quote">name</span>” of
+              <em class="replaceable"><code>var_name</code></em>. Thus, if you invoke
+              this function directly, you get a result like this:
+            </p><pre class="programlisting">mysql&gt; <strong class="userinput"><code>SELECT NAME_CONST('myname', 14);</code></strong>
++--------+
+| myname |
++--------+
+|     14 |
++--------+
+</pre><p>
+              <a href="functions.html#function_name-const"><code class="literal">NAME_CONST()</code></a> allows a
+              logged standalone statement to be executed on a slave with
+              the same effect as the original statement that was
+              executed on the master within a stored procedure.
+            </p><p>
+              The use of <a href="functions.html#function_name-const"><code class="literal">NAME_CONST()</code></a> can
+              result in a problem for
+              <a href="sql-syntax.html#create-table" title="12.1.10. CREATE TABLE Syntax"><code class="literal">CREATE TABLE
+              ... SELECT</code></a> statements when the source column
+              expressions refer to local variables. Converting these
+              references to <a href="functions.html#function_name-const"><code class="literal">NAME_CONST()</code></a>
+              expressions can result in column names that are different
+              on the master and slave servers, or names that are too
+              long to be legal column identifiers. A workaround is to
+              supply aliases for columns that refer to local variables.
+              Consider this statement when <code class="literal">myvar</code> has
+              a value of 1:
+            </p><pre class="programlisting">CREATE TABLE t1 SELECT myvar;
+</pre><p>
+              That will be rewritten as follows:
+            </p><pre class="programlisting">CREATE TABLE t1 SELECT NAME_CONST(myvar, 1);
+</pre><p>
+              To ensure that the master and slave tables have the same
+              column names, write the statement like this:
+            </p><pre class="programlisting">CREATE TABLE t1 SELECT myvar AS myvar;
+</pre><p>
+              The rewritten statement becomes:
+            </p><pre class="programlisting">CREATE TABLE t1 SELECT NAME_CONST(myvar, 1) AS myvar;
+</pre></li><li><p>
+              A statement to be logged might contain references to
+              user-defined variables. To handle this, MySQL writes a
+              <a href="sql-syntax.html#set-option" title="12.5.4. SET Syntax"><code class="literal">SET</code></a>
+              statement to the binary log to make sure that the variable
+              exists on the slave with the same value as on the master.
+              For example, if a statement refers to a variable
+              <code class="literal">@my_var</code>, that statement will be
+              preceded in the binary log by the following statement,
+              where <em class="replaceable"><code>value</code></em> is the value of
+              <code class="literal">@my_var</code> on the master:
+            </p><pre class="programlisting">SET @my_var = <em class="replaceable"><code>value</code></em>;
+</pre></li><li><p>
+              Procedure calls can occur within a committed or
+              rolled-back transaction. Previously,
+              <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> statements were logged
+              even if they occurred within a rolled-back transaction. As
+              of MySQL 5.0.12, transactional context is accounted for so
+              that the transactional aspects of procedure execution are
+              replicated correctly. That is, the server logs those
+              statements within the procedure that actually execute and
+              modify data, and also logs
+              <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">BEGIN</code></a>,
+              <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">COMMIT</code></a>, and
+              <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">ROLLBACK</code></a>
+              statements as necessary. For example, if a procedure
+              updates only transactional tables and is executed within a
+              transaction that is rolled back, those updates are not
+              logged. If the procedure occurs within a committed
+              transaction,
+              <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">BEGIN</code></a>
+              and <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">COMMIT</code></a> statements are
+              logged with the updates. For a procedure that executes
+              within a rolled-back transaction, its statements are
+              logged using the same rules that would apply if the
+              statements were executed in standalone fashion:
+            </p><div class="itemizedlist"><ul type="square"><li><p>
+                  Updates to transactional tables are not logged.
+                </p></li><li><p>
+                  Updates to nontransactional tables are logged because
+                  rollback does not cancel them.
+                </p></li><li><p>
+                  Updates to a mix of transactional and nontransactional
+                  tables are logged surrounded by
+                  <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">BEGIN</code></a>
+                  and
+                  <a href="sql-syntax.html#commit" title="12.4.1. START TRANSACTION,
+      COMMIT, and
+      ROLLBACK Syntax"><code class="literal">ROLLBACK</code></a>
+                  so that slaves will make the same changes and
+                  rollbacks as on the master.
+                </p></li></ul></div></li></ul></div></li><li><p>
+          A stored procedure call is <span class="emphasis"><em>not</em></span> written to
+          the binary log at the statement level if the procedure is
+          invoked from within a stored function. In that case, the only
+          thing logged is the statement that invokes the function (if it
+          occurs within a statement that is logged) or a
+          <a href="sql-syntax.html#do" title="12.2.3. DO Syntax"><code class="literal">DO</code></a> statement (if it occurs
+          within a statement that is not logged). For this reason, care
+          still should be exercised in the use of stored functions that
+          invoke a procedure, even if the procedure is otherwise safe in
+          itself.
+        </p></li><li><p>
+          Because procedure logging occurs at the statement level rather
+          than at the <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> level,
+          interpretation of the <code class="option">--replicate-*-table</code>
+          options is revised to apply only to stored functions. They no
+          longer apply to stored procedures, except those procedures
+          that are invoked from within functions.
+        </p></li></ul></div><p>
+      <span class="bold"><strong>Routine logging changes in MySQL
+      5.0.16:</strong></span> In 5.0.12, a change was introduced to log
+      stored procedure calls at the statement level rather than at the
+      <a href="sql-syntax.html#call" title="12.2.1. CALL Syntax"><code class="literal">CALL</code></a> level. This change eliminates
+      the requirement that procedures be identified as safe. The
+      requirement now exists only for stored functions, because they
+      still appear in the binary log as function invocations rather than
+      as the statements executed within the function. To reflect the
+      lifting of the restriction on stored procedures, the
+      <code class="literal">log_bin_trust_routine_creators</code> system variable
+      is renamed to
+      <a href="server-administration.html#sysvar_log_bin_trust_function_creators"><code class="literal">log_bin_trust_function_creators</code></a>
+      and the
+      <a href="replication.html#option_mysqld_log-bin-trust-routine-creators"><code class="option">--log-bin-trust-routine-creators</code></a>
+      server option is renamed to
+      <a href="replication.html#option_mysqld_log-bin-trust-function-creators"><code class="option">--log-bin-trust-function-creators</code></a>.
+      (For backward compatibility, the old names are recognized but
+      result in a warning.) Error messages that now apply only to
+      functions and not to routines in general are re-worded.
+    </p><p>
+      <span class="bold"><strong>Routine logging changes in MySQL
+      5.0.19:</strong></span> In 5.0.12, a change was introduced to log a
+      stored function invocation as <code class="literal">DO
+      <em class="replaceable"><code>func_name</code></em>()</code> if the invocation
+      changes data and occurs within a nonlogged statement, or if the
+      function invokes a stored procedure that produces an error. In
+      5.0.19, these invocations are logged as <code class="literal">SELECT
+      <em class="replaceable"><code>func_name</code></em>()</code> instead. The
+      change to <a href="sql-syntax.html#select" title="12.2.8. SELECT Syntax"><code class="literal">SELECT</code></a> was made because
+      use of <a href="sql-syntax.html#do" title="12.2.3. DO Syntax"><code class="literal">DO</code></a> was found to yield
+      insufficient control over error code checking.
+    </p></div></div><div class="navfooter"><hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="mysql-cluster.html">Prev</a> </td><td width="20%" align="center"> </td><td width="40%" align="right"> <a accesskey="n" href="information-schema.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 17. MySQL Cluster </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> Chapter 19. <code class="literal">INFORMATION_SCHEMA</code> Tables</td></tr></table></div></body></html>

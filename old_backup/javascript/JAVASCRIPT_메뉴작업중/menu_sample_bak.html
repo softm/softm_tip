@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> 메뉴 테스트 </TITLE>
+<SCRIPT LANGUAGE="JavaScript" src='BrowserCheck.js'></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src='HashTable.js'></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript" src='ObjectRef.js'></SCRIPT>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+    function newMenu() {
+        var m = new HashTable();
+        return m;
+    }
+
+    function MENU_ITEM( upId      ,
+                        dspMode   ,
+                        menuNm    ,
+                        event     ,
+                        mode      ,
+                        command   ,
+                        menuWidth ,
+                        menuHeight
+    ){
+        this.upId       = upId      ;
+        this.dspMode    = dspMode   ;
+        this.menuNm     = menuNm    ;
+        this.event      = event     ;
+        this.mode       = mode      ;
+        this.command    = command   ;
+        this.menuWidth  = menuWidth ;
+        this.menuHeight = menuHeight;
+        this.drawYn     = 'N'       ;
+    }
+
+/*
+id              아이디
+upId            상위아이디
+dspMode         H : 수평 : horizon
+                V : 수직 : vertical
+
+menuNm          메뉴명
+event           실행할 동작 이벤트 ( Click, MouseOver )
+mode            "SUB", "" : 서브메뉴 보이기
+                "URL" : URL로 이동
+                "JS"  : 자바스크립트 실행
+command         실행명령
+menuWidth       메뉴높이
+menuHeight      메뉴넓이
+--------------------------------------------
+
+initEvent       초기메뉴가 보이기위한 이벤트
+fontColor       글자색
+backColor       배경색
+
+aFontColor      활성화시 글자색
+aBackColor      활성화시 배경색
+
+eventArea       서브메뉴 링크 영역  "▶",
+
+
+*/
+//-->
+</SCRIPT>
+<!-- #c0c0c0 -->
+<link rel=stylesheet href='menu.css' type='text/css'>
+</HEAD>
+
+<BODY>
+<SCRIPT LANGUAGE="JavaScript">
+<!--
+    var menuObj = newMenu();
+        menuObj.appendValue( "menu1-1", new MENU_ITEM( "menu1", "H", "메인메뉴1-1", "Click", "SUB", "http://www.daum.net", 180, 20));
+        menuObj.appendValue( "menu1"  , new MENU_ITEM( ""     , "H", "메인메뉴1"  , "Click", "SUB", "http://www.daum.net", 180, 20));
+        menuObj.appendValue( "menu2"  , new MENU_ITEM( ""     , "H", "메인메뉴2"  , "Click", "SUB", "http://www.daum.net", 180, 20));
+        menuObj.appendValue( "menu3"  , new MENU_ITEM( ""     , "H", "메인메뉴3"  , "Click", "SUB", "http://www.daum.net", 180, 20));
+
+    var intY = 0;
+
+    var cTop = 0;
+    var cLeft= 0;
+    var eventArea = "▶";
+    var dmenu = null;
+
+    function initMenu() {
+        document.body.innerHTML = "<span id=\"dmenu\" class=\"menuBar\"></span>";
+        dmenu = getObject ("dmenu");
+        dmenu.innerHTML = '';
+        dmenu.style.border      = "2px solid";
+        dmenu.style.padding     = "4px 2px 4px 2px";
+        dmenu.style.visibility  = "visible";
+
+        var menuStr = "";
+        var size = menuObj.getSize();
+
+        for ( var i=0; i<size; i++ ) {
+            var menuItem= menuObj.getValue(i);
+            var menuId  = menuObj.getKey(i);
+            createMenu (menuItem, menuId);
+        }
+        dmenu.style.width  = cLeft+4+4+2+2+1+2+2;
+        dmenu.style.height = cTop ;
+    }
+
+// <TABLE border=0 cellspacing=0 cellpadding=0><TR><TD></TD><TD></TD></TR></TABLE>
+    function createMenu (menuItem, menuId, subExist) {
+        if ( menuItem.drawYn == 'N' ) {
+            dmenu.innerHTML += "<TABLE border=0 cellspacing=0 cellpadding=0><TR><TD><a href='#' id=\""+ menuId +"\" class=\"menuButton\"></a></TD><TD><a href='#' id=\""+ menuId +"_arrow\" class=\"menuButton\"></a></TD></TR></TABLE>";
+
+            var sub_dmenu = getObject (menuId);
+            sub_dmenu.style.margin     = "1px";
+            sub_dmenu.style.padding    = "2px 6px 2px 6px";
+            sub_dmenu.style.border     = "1px solid";
+
+            sub_dmenu.style.width = menuItem.menuWidth;
+            sub_dmenu.style.height= menuItem.menuHeight;
+            sub_dmenu.innerHTML   = menuItem.menuNm;
+            if ( subExist == 'Y' && menuItem.upId != '' )  {
+                var sub_dmenu_arrow = getObject (menuId + '_arrow');
+                    sub_dmenu_arrow.innerHTML = eventArea;
+            }
+
+            if ( menuItem.upId == '' ) {
+                sub_dmenu.style.visibility = 'visible';
+                if ( menuItem.dspMode == 'H' ) cLeft += menuItem.menuWidth ;
+                else                           cTop  += menuItem.menuHeight;
+            } else {
+                sub_dmenu.style.position   = 'absolute';
+                sub_dmenu.style.visibility = 'hidden';
+                var upMenuItemObj = menuObj.getValue(menuItem.upId);
+                if ( typeof(upMenuItemObj) == 'object') {
+                    createMenu (upMenuItemObj, menuItem.upId, 'Y');
+                }
+            }
+            menuItem.drawYn = 'Y';
+        }
+    }
+    initMenu();
+//-->
+</SCRIPT>
+</BODY>
+</HTML>
